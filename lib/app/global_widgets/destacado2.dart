@@ -8,9 +8,10 @@ class Destacado2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final bool web = size.width > 800;
+  final bool web = size.width > 800;
     return Container(
       width: 646,
+      margin: EdgeInsets.only(top: 5,bottom: 5,left: 5,right: web?50:10),
       padding:
           EdgeInsets.only(top: 25.07, right: 35.11, left: 36.06, bottom: 23.92),
       decoration: BoxDecoration(
@@ -31,7 +32,7 @@ class Destacado2 extends StatelessWidget {
             height: 30,
           ),
           Container(
-            width: web ? 382.59 : 646,
+            width:  382.59 ,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -51,12 +52,8 @@ class Destacado2 extends StatelessWidget {
           ),
           Container(
               width: 646,
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.start,
-                alignment:
-                    web ? WrapAlignment.spaceBetween : WrapAlignment.center,
-                runAlignment: WrapAlignment.center,
-                runSpacing: 20,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     children: [
@@ -71,7 +68,7 @@ class Destacado2 extends StatelessWidget {
                         height: 10,
                       ),
                       Container(
-                        width: web ? 382.59 : 646,
+                        width: 382.59 ,
                         child: Row(
                           children: [
                             Icon(
@@ -97,7 +94,7 @@ class Destacado2 extends StatelessWidget {
                         height: 20,
                       ),
                       ButtonWid(
-                          width: web ? 382.59 : 646,
+                          width:  382.59,
                           height: 50,
                           color1: ColorsUtils.orange1,
                           color2: ColorsUtils.orange2,

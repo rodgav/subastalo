@@ -16,9 +16,12 @@ class Destacado1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final bool web = size.width > 800;
     return Container(
       width: 300,
       height: 450,
+      margin: EdgeInsets.only(right: web?50:10,left: 5,top: 5,bottom: 5),
       decoration: BoxDecoration(
           color: ColorsUtils.white,
           borderRadius: BorderRadius.all(Radius.circular(20)),
