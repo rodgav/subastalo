@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class Destacado1 extends StatelessWidget {
-  final Color color1;
-  final Color color2;
-  final String textButt;
+  final Subasta subasta;
+  final VoidCallback voidCallback;
 
   const Destacado1(
-      {Key? key,
-      required this.color1,
-      required this.color2,
-      required this.textButt})
+      {Key? key, required this.subasta, required this.voidCallback})
       : super(key: key);
 
   @override
@@ -21,12 +18,15 @@ class Destacado1 extends StatelessWidget {
     return Container(
       width: 300,
       height: 450,
-      margin: EdgeInsets.only(right: web?50:10,left: 5,top: 5,bottom: 5),
+      margin: EdgeInsets.only(right: web ? 50 : 10, left: 5, top: 5, bottom: 5),
       decoration: BoxDecoration(
           color: ColorsUtils.white,
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
           boxShadow: [
-            BoxShadow(color: ColorsUtils.grey2.withOpacity(0.5), offset: Offset(0, 2),blurRadius:5)
+            BoxShadow(
+                color: ColorsUtils.grey2.withOpacity(0.5),
+                offset: const Offset(0, 2),
+                blurRadius: 5)
           ]),
       child: Column(
         children: [
@@ -34,43 +34,46 @@ class Destacado1 extends StatelessWidget {
             width: 300,
             height: 150,
             decoration: BoxDecoration(
-                color: ColorsUtils.grey1,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20))),
+                    topLeft: Radius.circular(20)),
+                image: DecorationImage(
+                  image: AssetImage(subasta.imagePrimary),
+                  fit: BoxFit.cover,
+                )),
           ),
           Container(
             width: 300,
             height: 300,
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  '2008 CHEVROLET SILVERADO K2500 HEAVY DUTY',
-                  style: TextStyle(
+                  subasta.name,
+                  style: const TextStyle(
                     fontSize: 12,
                   ),
                   textAlign: TextAlign.justify,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'VENDEDOR',
                       style: TextStyle(fontSize: 9),
                     ),
                     Text(
-                      'SUBASTA - HNS ASOCIADOS',
-                      style: TextStyle(fontSize: 9),
+                      subasta.nameVendedor,
+                      style: const TextStyle(fontSize: 9),
                     ),
                   ],
                 ),
-                Divider(
+                const Divider(
                   color: ColorsUtils.grey2,
                 ),
                 Row(
@@ -78,42 +81,60 @@ class Destacado1 extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.print,
-                      color: color2,
+                      color: subasta.type == 'Vivo'
+                          ? ColorsUtils.orange2
+                          : ColorsUtils.blue3,
                       size: 20,
                     ),
                     Text(
                       'Abierto para negociaciones',
-                      style: TextStyle(color: color2, fontSize: 8),
+                      style: TextStyle(
+                          color: subasta.type == 'Vivo'
+                              ? ColorsUtils.orange2
+                              : ColorsUtils.blue3,
+                          fontSize: 8),
                     )
                   ],
                 ),
                 Column(
-                  children: [
+                  children: const [
                     Text('Esta oferta negociable se cierra el',
                         style: TextStyle(fontSize: 10)),
                     Text('Miercoles 28 de Oct. | 8:00 PM',
                         style: TextStyle(fontSize: 12)),
                   ],
                 ),
-                ButtonWid(width: 200,height: 50,color1: color1, color2: color2, textButt: textButt),
+                ButtonWid(
+                    width: 200,
+                    height: 50,
+                    color1: subasta.type == 'Vivo'
+                        ? ColorsUtils.orange1
+                        : ColorsUtils.blue3,
+                    color2: subasta.type == 'Vivo'
+                        ? ColorsUtils.orange2
+                        : ColorsUtils.blue4,
+                    textButt: subasta.type == 'Vivo'
+                        ? 'Deseo participar'
+                        : 'Quiero negociar',
+                    voidCallback: voidCallback),
                 Container(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: ColorsUtils.grey1)),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.remove_red_eye,
                         color: ColorsUtils.blue3,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 5,
                       ),
                       Text(
-                        '89 visitantes',
-                        style: TextStyle(
+                        '${subasta.views} visitantes',
+                        style: const TextStyle(
                           color: ColorsUtils.blue3,
                         ),
                       )

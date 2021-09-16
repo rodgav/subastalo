@@ -6,6 +6,7 @@ class ButtonWid extends StatelessWidget {
   final Color color1;
   final Color color2;
   final String textButt;
+  final VoidCallback voidCallback;
 
   const ButtonWid(
       {Key? key,
@@ -13,21 +14,22 @@ class ButtonWid extends StatelessWidget {
       required this.height,
       required this.color1,
       required this.color2,
-      required this.textButt})
+      required this.textButt,
+      required this.voidCallback})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: height,
       width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         ),
-        onPressed: () => null,
+        onPressed: voidCallback,
         child: Ink(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -42,7 +44,7 @@ class ButtonWid extends StatelessWidget {
             child: Text(
               textButt,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ),
         ),

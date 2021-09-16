@@ -1,26 +1,16 @@
 part of 'app_pages.dart';
+
 abstract class Routes {
   Routes._();
 
-  static const HOME = _Paths.HOME;
-  static const PROFILE = _Paths.HOME + _Paths.PROFILE;
+  static const home = _Paths.home;
+  static const subastas = _Paths.home + _Paths.subastas;
 
-  static const SETTINGS = _Paths.SETTINGS;
-
-  static const PRODUCTS = _Paths.HOME + _Paths.PRODUCTS;
-  static String PRODUCT_DETAILS(String productId) => '$PRODUCTS/$productId';
-  static const LOGIN = _Paths.LOGIN;
-  static String LOGIN_THEN(String afterSuccessfulLogin) =>
-      '$LOGIN?then=${Uri.encodeQueryComponent(afterSuccessfulLogin)}';
-  static const DASHBOARD = _Paths.HOME + _Paths.DASHBOARD;
+  static String subastasDetail(String subastaId) => '$subastas/$subastaId';
 }
 
 abstract class _Paths {
-  static const HOME = '/home';
-  static const PRODUCTS = '/products';
-  static const PROFILE = '/profile';
-  static const SETTINGS = '/settings';
-  static const PRODUCT_DETAILS = '/:productId';
-  static const LOGIN = '/login';
-  static const DASHBOARD = '/dashboard';
+  static const home = '/home';
+  static const subastas = '/subastas';
+  static const subastasDetail = '/:subastaId';
 }

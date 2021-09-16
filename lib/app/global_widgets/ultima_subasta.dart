@@ -6,12 +6,15 @@ class UltimaSubastaWid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final bool web = size.width > 800;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment:
+          web ? CrossAxisAlignment.start : CrossAxisAlignment.center,
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          children:const [
             Icon(
               Icons.web,
               color: Colors.red,
@@ -24,162 +27,180 @@ class UltimaSubastaWid extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Container(
           width: 600,
-          height: 376,
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: ColorsUtils.white,
               borderRadius: BorderRadius.circular(25)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: Wrap(
+            alignment: web ? WrapAlignment.spaceBetween : WrapAlignment.center,
+            runAlignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 20,
+            runSpacing: 20,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Productos subastados',
-                    style: TextStyle(color: ColorsUtils.blue3, fontSize: 16),
-                  ),
-                  Text(
-                    'Lote de Saldos de ferretería y otros materiales.',
-                    style: TextStyle(color: ColorsUtils.orange2, fontSize: 18),
-                  ),
-                  Text(
-                    'HNOS. ASOCIADOS 1',
-                    style: TextStyle(
-                      fontSize: 10,
+              SizedBox(
+                height: 325,
+                child: Column(
+                  crossAxisAlignment: web
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const  Text(
+                      'Productos subastados',
+                      style: TextStyle(color: ColorsUtils.blue3, fontSize: 16),
                     ),
-                  ),
-                  Container(
-                    width: 378,
-                    height: 94,
-                    decoration: BoxDecoration(
-                        color: ColorsUtils.grey1,
-                        borderRadius: BorderRadius.circular(12)),
-                  ),
-                  Container(
-                    width: 378,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text('Precio base',
-                                  style: TextStyle(
-                                      color: ColorsUtils.blue3, fontSize: 15)),
-                              Text('US\$ 3.500.00',
-                                  style: TextStyle(
-                                      color: ColorsUtils.orange2,
-                                      fontSize: 24)),
-                            ]),
-                        Container(
-                          height: 56,
-                          width: 1,
-                          color: ColorsUtils.orange2,
-                        ),
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text('Precio base',
-                                  style: TextStyle(
-                                      color: ColorsUtils.blue3, fontSize: 15)),
-                              Text('US\$ 3.500.00',
-                                  style: TextStyle(
-                                      color: ColorsUtils.orange2,
-                                      fontSize: 24)),
-                            ]),
-                      ],
+                    const   Text(
+                      'Lote de Saldos de ferretería y otros materiales.',
+                      style:
+                          TextStyle(color: ColorsUtils.orange2, fontSize: 18),
                     ),
-                  ),
-                  Container(
-                    width: 378,
-                    height: 83,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                            color: ColorsUtils.grey1.withOpacity(0.5))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Danilo 33',
-                          style:
-                              TextStyle(color: ColorsUtils.blue3, fontSize: 12),
-                        ),
-                        Text(
-                          '“No habia participado en subastas en línea,'
-                          ' me guiaron desde el principio y pude participar,'
-                          ' me sentí a gusto”',
-                          style: TextStyle(fontSize: 10),
-                        ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text('Calificación',
-                                style: TextStyle(
-                                    color: ColorsUtils.blue3, fontSize: 10))
-                          ],
-                        )
-                      ],
+                    const  Text(
+                      'HNOS. ASOCIADOS 1',
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
                     ),
-                  )
-                ],
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 127,
-                    height: 184,
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: ColorsUtils.orange1, width: 2),
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.email,
-                          color: ColorsUtils.blue3,
-                          size: 25,
-                        ),
-                        Text(
-                          '25 ofertantes',
-                          style:
-                              TextStyle(color: ColorsUtils.blue3, fontSize: 10),
-                        ),
-                        Divider(
-                          color: ColorsUtils.orange1,
-                        ),
-                        Icon(
-                          Icons.email,
-                          color: ColorsUtils.blue3,
-                          size: 25,
-                        ),
-                        Text(
-                          '10 pujas',
-                          style:
-                              TextStyle(color: ColorsUtils.blue3, fontSize: 10),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                      width: 128,
-                      height: 119,
+                    Container(
+                      width: web ? 378 : double.infinity,
+                      height: 94,
                       decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(12)))
-                ],
+                          color: ColorsUtils.grey1,
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                    SizedBox(
+                      width: web ? 378 : double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                 Text('Precio base',
+                                    style: TextStyle(
+                                        color: ColorsUtils.blue3,
+                                        fontSize: 15)),
+                                Text('US\$ 3.500.00',
+                                    style: TextStyle(
+                                        color: ColorsUtils.orange2,
+                                        fontSize: 24)),
+                              ]),
+                          Container(
+                            height: 56,
+                            width: 1,
+                            color: ColorsUtils.orange2,
+                          ),
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children:const  [
+                                Text('Precio base',
+                                    style: TextStyle(
+                                        color: ColorsUtils.blue3,
+                                        fontSize: 15)),
+                                Text('US\$ 3.500.00',
+                                    style: TextStyle(
+                                        color: ColorsUtils.orange2,
+                                        fontSize: 24)),
+                              ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: web ? 378 : double.infinity,
+                      height: 83,
+                      padding:const  EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                              color: ColorsUtils.grey1.withOpacity(0.5))),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Danilo 33',
+                            style: TextStyle(
+                                color: ColorsUtils.blue3, fontSize: 12),
+                          ),
+                          const  Text(
+                            '“No habia participado en subastas en línea,'
+                            ' me guiaron desde el principio y pude participar,'
+                            ' me sentí a gusto”',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Text('Calificación',
+                                  style: TextStyle(
+                                      color: ColorsUtils.blue3, fontSize: 10))
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 325,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 127,
+                      height: 184,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(color: ColorsUtils.orange1, width: 2),
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.email,
+                            color: ColorsUtils.blue3,
+                            size: 25,
+                          ),
+                          Text(
+                            '25 ofertantes',
+                            style: TextStyle(
+                                color: ColorsUtils.blue3, fontSize: 10),
+                          ),
+                          Divider(
+                            color: ColorsUtils.orange1,
+                          ),
+                          Icon(
+                            Icons.email,
+                            color: ColorsUtils.blue3,
+                            size: 25,
+                          ),
+                          Text(
+                            '10 pujas',
+                            style: TextStyle(
+                                color: ColorsUtils.blue3, fontSize: 10),
+                          )
+                        ],
+                      ),
+                    ),
+                    const  SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                        width: 128,
+                        height: 119,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(12)))
+                  ],
+                ),
               )
             ],
           ),

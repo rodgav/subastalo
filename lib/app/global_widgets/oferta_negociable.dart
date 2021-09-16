@@ -3,16 +3,22 @@ import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class OfertaNegociableWid extends StatelessWidget {
-  const OfertaNegociableWid({Key? key}) : super(key: key);
+  final VoidCallback voidCallback;
+
+  const OfertaNegociableWid({Key? key, required this.voidCallback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final bool web = size.width > 800;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment:
+          web ? CrossAxisAlignment.start : CrossAxisAlignment.center,
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          children: const [
             Icon(
               Icons.web,
               color: Colors.red,
@@ -21,68 +27,70 @@ class OfertaNegociableWid extends StatelessWidget {
             SizedBox(width: 10),
             Text(
               'OFERTAS \nNEGOCIABLES',
-              style: TextStyle(
-                  fontSize: 25, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
-          width: 600,
-          height: 376,
-          padding: EdgeInsets.all(15),
+          width: web ? 600 : size.width,
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: ColorsUtils.white,
               borderRadius: BorderRadius.circular(25)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          child: Wrap(
+            alignment: web ? WrapAlignment.spaceBetween : WrapAlignment.center,
+            runAlignment: WrapAlignment.spaceBetween,
+            runSpacing: 20,
             children: [
-              Container(
-                width: 300,
+              SizedBox(
+                width: web ? 300 : double.infinity,
+                height: 325,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       'Miles de productos',
-                      style: TextStyle(
-                          color: ColorsUtils.blue3, fontSize: 28),
+                      style: TextStyle(color: ColorsUtils.blue3, fontSize: 28),
                     ),
                     Text(
                       'Accede a todas las ofertas con precios negociables',
-                      style: TextStyle(
-                          color: ColorsUtils.orange2, fontSize: 28),
+                      style:
+                          TextStyle(color: ColorsUtils.orange2, fontSize: 28),
                     ),
                     Text(
                       'Texto de ayuda',
-                      style: TextStyle(
-                          color: ColorsUtils.blue3, fontSize: 28),
+                      style: TextStyle(color: ColorsUtils.blue3, fontSize: 28),
                     ),
                     Text(
                       'Categoria 1, Categoria 2, Categoria 3, '
-                          'Categoria 4, Categoria 5, Categoria 6 ',
-                      style: TextStyle(
-                          color: ColorsUtils.blue3, fontSize: 16),
+                      'Categoria 4, Categoria 5, Categoria 6 ',
+                      style: TextStyle(color: ColorsUtils.blue3, fontSize: 16),
                     ),
                   ],
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Icon(
-                    Icons.store,
-                    size: 167,
-                  ),
-                  ButtonWid(
-                      width: 250,
-                      height: 50,
-                      color1: ColorsUtils.orange1,
-                      color2: ColorsUtils.orange2,
-                      textButt: 'VISITAR')
-                ],
+              SizedBox(
+                height: 325,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Icon(
+                      Icons.store,
+                      size: 167,
+                    ),
+                    ButtonWid(
+                        width: 250,
+                        height: 50,
+                        color1: ColorsUtils.orange1,
+                        color2: ColorsUtils.orange2,
+                        textButt: 'VISITAR',
+                        voidCallback: voidCallback)
+                  ],
+                ),
               )
             ],
           ),
