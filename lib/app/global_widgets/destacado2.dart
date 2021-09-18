@@ -32,7 +32,10 @@ class Destacado2 extends StatelessWidget {
         children: [
           Text(
             subasta.name,
-            style: const TextStyle(color: ColorsUtils.blue3, fontSize: 20),
+            style: const TextStyle(
+                color: ColorsUtils.blue3,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 30,

@@ -6,4 +6,5 @@ class LocalDataRepository {
   final _localDataProvider = Get.find<LocalDataProvider>();
 
   Future<SubastasModel?> getSubastas() => _localDataProvider.getSubastas();
+  Future<Subasta?> getSubastaId(String subastaId) => _localDataProvider.getSubastaId(subastaId);
 }

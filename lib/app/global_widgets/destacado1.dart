@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
@@ -53,8 +54,7 @@ class Destacado1 extends StatelessWidget {
                 Text(
                   subasta.name,
                   style: const TextStyle(
-                    fontSize: 12,
-                  ),
+                      fontSize: 12, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.justify,
                 ),
                 const SizedBox(
@@ -109,10 +109,10 @@ class Destacado1 extends StatelessWidget {
                     height: 50,
                     color1: subasta.type == 'Vivo'
                         ? ColorsUtils.orange1
-                        : ColorsUtils.blue3,
+                        : ColorsUtils.blueButt1,
                     color2: subasta.type == 'Vivo'
                         ? ColorsUtils.orange2
-                        : ColorsUtils.blue4,
+                        : ColorsUtils.blueButt2,
                     textButt: subasta.type == 'Vivo'
                         ? 'Deseo participar'
                         : 'Quiero negociar',

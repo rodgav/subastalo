@@ -33,7 +33,10 @@ class SubastaEmpresa extends StatelessWidget {
         children: [
           Text(
             subasta.name,
-            style: const TextStyle(color: ColorsUtils.blue3, fontSize: 20),
+            style: const TextStyle(
+                color: ColorsUtils.blue3,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
           ),
           const Divider(),
           Row(
@@ -95,8 +98,8 @@ class SubastaEmpresa extends StatelessWidget {
           ButtonWid(
               width: 346,
               height: 55,
-              color1: ColorsUtils.blue2,
-              color2: ColorsUtils.blue3,
+              color1: ColorsUtils.blueButt1,
+              color2: ColorsUtils.blueButt2,
               textButt: 'Quiero negociar',
               voidCallback: voidCallback),
         ],

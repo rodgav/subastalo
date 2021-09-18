@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       scrollBehavior: MyCustomScrollBehavior(),
       title: 'Subastalo',
       getPages: AppPages.routes,
+      theme: ThemeData(fontFamily: 'Mulish'),
     );
   }
 }

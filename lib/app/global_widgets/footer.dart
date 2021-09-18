@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class FooterWid extends StatelessWidget {
@@ -25,10 +27,10 @@ class FooterWid extends StatelessWidget {
           width: size.width,
           padding: EdgeInsets.symmetric(vertical: web ? 40 : 20),
           decoration: const BoxDecoration(
-            gradient: RadialGradient(
-              colors: [ColorsUtils.blue3, ColorsUtils.blue4],
-            ),
-          ),
+              gradient: LinearGradient(
+                  colors: [ColorsUtils.blue3, ColorsUtils.blue4],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight)),
           child: Wrap(
             crossAxisAlignment: WrapCrossAlignment.start,
             alignment: WrapAlignment.spaceAround,
@@ -41,7 +43,10 @@ class FooterWid extends StatelessWidget {
                 children: [
                   const Text(
                     'SUBASTAS',
-                    style: TextStyle(color: ColorsUtils.white, fontSize: 16),
+                    style: TextStyle(
+                        color: ColorsUtils.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 30),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
@@ -121,7 +126,10 @@ class FooterWid extends StatelessWidget {
                 children: [
                   const Text(
                     'COMUNIDAD',
-                    style: TextStyle(color: ColorsUtils.white, fontSize: 16),
+                    style: TextStyle(
+                        color: ColorsUtils.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 30),
                   const Text(
@@ -174,8 +182,55 @@ class FooterWid extends StatelessWidget {
                     web ? CrossAxisAlignment.start : CrossAxisAlignment.center,
                 children: [
                   const Text(
+                    'ASISTENCIA TÉCNICA',
+                    style: TextStyle(
+                        color: ColorsUtils.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 30),
+                  const Text(
+                    'Centro de ayuda',
+                    style: TextStyle(fontSize: 14, color: ColorsUtils.white),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Asistencia para empresas',
+                    style: TextStyle(fontSize: 14, color: ColorsUtils.white),
+                  ),
+                  SizedBox(height: web ? 80 : 40),
+                  const Text('Perú',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: ColorsUtils.white,
+                          fontWeight: FontWeight.bold)),
+                  const Text('0800 33333',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: ColorsUtils.white,
+                          fontWeight: FontWeight.bold)),
+                ],
+              ),
+              web
+                  ? Container(
+                      height: 256,
+                      width: 1,
+                      color: ColorsUtils.white,
+                    )
+                  : const Divider(
+                      color: ColorsUtils.white,
+                      height: 2,
+                    ),
+              Column(
+                crossAxisAlignment:
+                    web ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+                children: [
+                  const Text(
                     'ASP SUBASTAS PERÚ',
-                    style: TextStyle(color: ColorsUtils.white, fontSize: 16),
+                    style: TextStyle(
+                        color: ColorsUtils.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 30),
                   const Text(
@@ -241,7 +296,10 @@ class FooterWid extends StatelessWidget {
                                 color: ColorsUtils.white, width: 1))),
                     child: const Text(
                       'TE CONTACTAMOS',
-                      style: TextStyle(color: ColorsUtils.white, fontSize: 16),
+                      style: TextStyle(
+                          color: ColorsUtils.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],

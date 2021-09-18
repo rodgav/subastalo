@@ -6,6 +6,7 @@ class ButtonWid extends StatelessWidget {
   final Color color1;
   final Color color2;
   final String textButt;
+  final double fontSize;
   final VoidCallback voidCallback;
 
   const ButtonWid(
@@ -15,6 +16,7 @@ class ButtonWid extends StatelessWidget {
       required this.color1,
       required this.color2,
       required this.textButt,
+      this.fontSize = 16,
       required this.voidCallback})
       : super(key: key);
 
@@ -44,7 +46,7 @@ class ButtonWid extends StatelessWidget {
             child: Text(
               textButt,
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: fontSize),
             ),
           ),
         ),
