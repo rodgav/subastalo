@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:subastalo/app/data/models/images_subastas.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/data/repositorys/local_repositorys/local_data_repository.dart';
 
@@ -9,8 +10,11 @@ class SubastasDetailLogic extends GetxController {
 
   final _localDataRepository = Get.find<LocalDataRepository>();
   Subasta? _subasta;
+  List<ImagesSubasta> _imagesSubasta = [];
 
   Subasta? get subasta => _subasta;
+
+  List<ImagesSubasta> get imagesSubasta => _imagesSubasta;
 
   @override
   void onReady() {
@@ -20,6 +24,7 @@ class SubastasDetailLogic extends GetxController {
 
   void _getSubasta(String subastaId) async {
     _subasta = await _localDataRepository.getSubastaId(subastaId);
-    update(['subasta']);
+    _imagesSubasta = await _localDataRepository.getImagesSubastas(subastaId);
+    update(['subasta', 'images']);
   }
 }

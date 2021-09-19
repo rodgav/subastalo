@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/footer.dart';
@@ -47,13 +49,81 @@ class SubastasDetailPage extends StatelessWidget {
                                           image:
                                               AssetImage(subasta.imagePrimary),
                                           fit: BoxFit.cover)),
+                                  child: Container(
+                                      margin: const EdgeInsets.all(10),
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                              right: 20,
+                                              left: 20,
+                                              bottom: 20,
+                                              child:
+                                                  GetBuilder<
+                                                          SubastasDetailLogic>(
+                                                      id: 'images',
+                                                      builder: (_) {
+                                                        final images =
+                                                            _.imagesSubasta;
+                                                        return SizedBox(
+                                                          height: 100,
+                                                          child:
+                                                              ListView.builder(
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(0),
+                                                            physics:
+                                                                const BouncingScrollPhysics(),
+                                                            itemBuilder:
+                                                                (__, index) {
+                                                              if (index ==
+                                                                  images
+                                                                      .length) {
+                                                                return Container(
+                                                                  width: 100,
+                                                                  height: 100,
+                                                                  decoration: BoxDecoration(
+                                                                      color: Colors
+                                                                          .red,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10)),
+                                                                );
+                                                              }
+                                                              return Container(
+                                                                width: 100,
+                                                                height: 100,
+                                                                margin:
+                                                                    const EdgeInsets
+                                                                            .only(
+                                                                        right:
+                                                                            20),
+                                                                decoration: BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            10),
+                                                                    image: DecorationImage(
+                                                                        image: AssetImage(images[index]
+                                                                            .imageUrl),
+                                                                        fit: BoxFit
+                                                                            .cover)),
+                                                              );
+                                                            },
+                                                            itemCount:
+                                                                images.length +
+                                                                    1,
+                                                          ),
+                                                        );
+                                                      }))
+                                        ],
+                                      )),
                                 ),
                                 SizedBox(
                                   width: web ? size.width * 0.5 : size.width,
                                   height: 651,
                                   child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
                                         Icons.live_tv,
@@ -61,38 +131,327 @@ class SubastasDetailPage extends StatelessWidget {
                                             ColorsUtils.grey1.withOpacity(0.2),
                                         size: 94,
                                       ),
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        subasta.type == 'Vivo'
+                                            ? 'OFERTA EN VIVO'
+                                            : 'OFERTA NEGOCIABLE',
+                                        style: TextStyle(
+                                            color: ColorsUtils.grey1
+                                                .withOpacity(0.2),
+                                            fontSize: 14),
+                                      ),
+                                      const SizedBox(height: 20),
                                       ButtonWid(
                                           width: 380,
                                           height: 100,
-                                          color1: ColorsUtils.orange1,
-                                          color2: ColorsUtils.orange2,
-                                          textButt: 'Deseo participar',
+                                          color1: subasta.type == 'Vivo'
+                                              ? ColorsUtils.orange1
+                                              : ColorsUtils.blueButt1,
+                                          color2: subasta.type == 'Vivo'
+                                              ? ColorsUtils.orange2
+                                              : ColorsUtils.blueButt2,
+                                          textButt: subasta.type == 'Vivo'
+                                              ? 'Deseo participar'
+                                              : 'Quiero negociar',
                                           fontSize: 26,
                                           voidCallback: () => null),
+                                      const SizedBox(height: 20),
                                       Row(
                                         mainAxisSize: MainAxisSize.min,
-                                        children: const [
+                                        children: [
                                           Icon(
                                             Icons.home,
                                             size: 20,
-                                            color: ColorsUtils.blue3,
+                                            color: subasta.type == 'Vivo'
+                                                ? ColorsUtils.blue3
+                                                : ColorsUtils.grey1,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 5,
                                           ),
                                           Text(
-                                            'Mínimo 2 participantes',
-                                            style: TextStyle( color: ColorsUtils.blue3,
+                                            subasta.type == 'Vivo'
+                                                ? 'Mínimo 2 participantes'
+                                                : 'Comisión del 05% del valor final',
+                                            style: const TextStyle(
+                                                color: ColorsUtils.blue3,
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.bold),
                                           )
                                         ],
+                                      ),
+                                      const SizedBox(height: 20),
+                                      subasta.type == 'Vivo'
+                                          ? Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10,
+                                                      horizontal: 30),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                  border: Border.all(
+                                                      color:
+                                                          ColorsUtils.orange2)),
+                                              child: Column(
+                                                children: const [
+                                                  Text('0.5% DE COMISIÓN',
+                                                      style: TextStyle(
+                                                          fontSize: 8,
+                                                          color: ColorsUtils
+                                                              .grey1)),
+                                                  Text('US\$ 32400.00',
+                                                      style: TextStyle(
+                                                          fontSize: 20,
+                                                          color: ColorsUtils
+                                                              .orange2)),
+                                                ],
+                                              ),
+                                            )
+                                          : const SizedBox(),
+                                      const SizedBox(height: 20),
+                                      subasta.type == 'Vivo'
+                                          ? const Text('PRECIO DE RESERVA',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: ColorsUtils.grey1))
+                                          : const SizedBox(),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Wrap(
+                              children: [
+                                SizedBox(
+                                  width: web ? size.width * 0.5 : size.width,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width:
+                                            web ? size.width * 0.5 : size.width,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        color: const Color(0xffF6F6F6),
+                                        height: 169,
+                                        child: Wrap(
+                                          alignment: web
+                                              ? WrapAlignment.spaceBetween
+                                              : WrapAlignment.center,
+                                          runAlignment: WrapAlignment.center,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.center,
+                                          spacing: 20,
+                                          runSpacing: 20,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Container(
+                                                  width: 47,
+                                                  height: 47,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                          color: ColorsUtils
+                                                              .orange2,
+                                                          shape:
+                                                              BoxShape.circle),
+                                                  child: const Icon(
+                                                    Icons.settings,
+                                                    color: ColorsUtils.white,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 5),
+                                                  decoration: const BoxDecoration(
+                                                      border: Border(
+                                                          bottom: BorderSide(
+                                                              color: ColorsUtils
+                                                                  .orange2,
+                                                              width: 2.5))),
+                                                  child: const Text(
+                                                      'INFORMACIÓN',
+                                                      style: TextStyle(
+                                                          color:
+                                                              ColorsUtils.blue3,
+                                                          fontSize: 20)),
+                                                )
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Container(
+                                                  width: 47,
+                                                  height: 47,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                          color: ColorsUtils
+                                                              .orange2,
+                                                          shape:
+                                                              BoxShape.circle),
+                                                  child: const Icon(
+                                                    Icons.baby_changing_station,
+                                                    color: ColorsUtils.white,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 5),
+                                                  decoration: const BoxDecoration(
+                                                      border: Border(
+                                                          bottom: BorderSide(
+                                                              color: ColorsUtils
+                                                                  .orange2,
+                                                              width: 2.5))),
+                                                  child: const Text('ESTADO',
+                                                      style: TextStyle(
+                                                          color:
+                                                              ColorsUtils.blue3,
+                                                          fontSize: 20)),
+                                                )
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Container(
+                                                  width: 47,
+                                                  height: 47,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                          color: ColorsUtils
+                                                              .orange2,
+                                                          shape:
+                                                              BoxShape.circle),
+                                                  child: const Icon(
+                                                    Icons.location_pin,
+                                                    color: ColorsUtils.white,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          bottom: 5),
+                                                  decoration: const BoxDecoration(
+                                                      border: Border(
+                                                          bottom: BorderSide(
+                                                              color: ColorsUtils
+                                                                  .orange2,
+                                                              width: 2.5))),
+                                                  child: const Text('UBICACIÓN',
+                                                      style: TextStyle(
+                                                          color:
+                                                              ColorsUtils.blue3,
+                                                          fontSize: 20)),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text('Descripción',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20)),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            Text(subasta.description,
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                )),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            const Text('Ficha Técnica',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20)),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            Text(subasta.fileTecnique,
+                                                style: const TextStyle(
+                                                  fontSize: 20,
+                                                )),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: web ? size.width * 0.5 : size.width,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        color: const Color(0xffF6F6F6),
+                                        height: 169,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 20),
+                                        child: Center(
+                                            child: Text(
+                                          subasta.name,
+                                          style: const TextStyle(
+                                              color: ColorsUtils.grey1,
+                                              fontSize: 30),
+                                        )),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.all(20),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              width: 474,
+                                              height: 407,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(46),
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          subasta.imagePrimary),
+                                                      fit: BoxFit.cover)),
+                                            ),
+                                            const SizedBox(
+                                              height: 30,
+                                            ),
+                                            ButtonWid(
+                                                width: 383,
+                                                height: 54,
+                                                color1: ColorsUtils.grey1,
+                                                color2: ColorsUtils.grey2,
+                                                textButt:
+                                                    'Descargar ficha técnica',
+                                                voidCallback: () => null)
+                                          ],
+                                        ),
                                       )
                                     ],
                                   ),
                                 ),
                               ],
                             ),
+                            SizedBox(height: web ? 100 : 20),
                             const FooterWid()
                           ])),
                 )

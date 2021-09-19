@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/card1.dart';
+import 'package:subastalo/app/global_widgets/price.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class Destacado2 extends StatelessWidget {
@@ -121,46 +123,7 @@ class Destacado2 extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Container(
-                        width: 174.09,
-                        height: 172.14,
-                        padding: const EdgeInsets.symmetric(horizontal: 25),
-                        decoration: const BoxDecoration(
-                            color: ColorsUtils.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: ColorsUtils.grey2,
-                                  offset: Offset(0, 1.5),
-                                  blurRadius: 7)
-                            ]),
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.height,
-                                color: ColorsUtils.orange1,
-                              ),
-                              const Text(
-                                'Abierto para ofertas',
-                                style: TextStyle(fontSize: 10),
-                              ),
-                              const Divider(
-                                color: ColorsUtils.orange1,
-                              ),
-                              const Icon(
-                                Icons.remove_red_eye,
-                                color: ColorsUtils.orange1,
-                              ),
-                              Text(
-                                '${subasta.views} vistas',
-                                style: const TextStyle(fontSize: 10),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      Card1Wid(views: subasta.views),
                       const SizedBox(
                         height: 10,
                       ),
@@ -174,25 +137,7 @@ class Destacado2 extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        width: 174.09,
-                        height: 52.63,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(
-                                color: ColorsUtils.orange1, width: 2.0)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text('Precio reserva',
-                                style: TextStyle(
-                                    color: ColorsUtils.orange1, fontSize: 8)),
-                            Text('US\$ ${subasta.price.toStringAsFixed(2)}',
-                                style: const TextStyle(
-                                    color: ColorsUtils.orange1, fontSize: 20)),
-                          ],
-                        ),
-                      ),
+                      PriceWid(price: subasta.price),
                       const SizedBox(
                         height: 20,
                       ),

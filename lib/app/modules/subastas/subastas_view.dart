@@ -1,14 +1,20 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/card1.dart';
 import 'package:subastalo/app/global_widgets/destacado1.dart';
 import 'package:subastalo/app/global_widgets/destacado2.dart';
 import 'package:subastalo/app/global_widgets/footer.dart';
 import 'package:subastalo/app/global_widgets/loading.dart';
 import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/app/global_widgets/oferta_negociable.dart';
+import 'package:subastalo/app/global_widgets/price.dart';
 import 'package:subastalo/app/global_widgets/subasta_empresa.dart';
 import 'package:subastalo/app/global_widgets/ultima_subasta.dart';
 import 'package:subastalo/utils/colors_utils.dart';
@@ -42,7 +48,9 @@ class SubastasPage extends StatelessWidget {
                               'assets/images/bgSlider.png',
                             ),
                             fit: BoxFit.cover)),
-                  ), Positioned(right: 0,child: Image.asset('assets/images/autos.png')),
+                  ),
+                  Positioned(
+                      right: 0, child: Image.asset('assets/images/autos.png')),
                   Container(
                     height: 616,
                     margin: EdgeInsets.only(left: web ? 50 : 20),
@@ -376,7 +384,123 @@ class SubastasPage extends StatelessWidget {
                 alignment: WrapAlignment.spaceBetween,
                 runAlignment: WrapAlignment.spaceBetween,
                 crossAxisAlignment: WrapCrossAlignment.center,
-                children: const [],
+                children: [
+                  SizedBox(
+                    width: web ? size.width*0.5 : size.width,
+                    child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.end,
+                      children: [
+                        SizedBox(
+                          width: web ? size.width * 0.3 : size.width,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                          SizedBox(
+                          width: web ? size.width * 0.3 : size.width,
+                            child:  Wrap(
+                                runAlignment: WrapAlignment.spaceBetween,
+                                  alignment: WrapAlignment.spaceBetween,
+                                  children: const [
+                                    Text(
+                                      'Ofertas en vivo',
+                                      style: TextStyle(
+                                          fontSize: 35,
+                                          color: ColorsUtils.grey2,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    PriceWid(price: 300.00)
+                                  ])),
+                              const SizedBox(height: 10),
+                          SizedBox(
+                            width: web ? size.width * 0.3 : size.width,
+                            child: Wrap(
+                                alignment: WrapAlignment.spaceBetween,
+                                children: const [
+                                  Text('VENDEDOR',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: ColorsUtils.grey2)),
+                                  Text('HNOS. ASOCIADOS',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: ColorsUtils.grey2,
+                                          fontWeight: FontWeight.bold)),
+                                ],
+                              ),),
+                              const SizedBox(height: 10),
+                              const Text(
+                                'VOLQUETE SCHACMAN F3000 DEL 2020 NUEVO',
+                                style: TextStyle(
+                                    color: ColorsUtils.blue3,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.calendar_today,
+                                    size: 35,
+                                    color: ColorsUtils.blue3,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: const [
+                                      Text('Inicia',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: ColorsUtils.blue3)),
+                                      Text('Miercoles 28 de Oct. |  8.00 PM',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: ColorsUtils.blue3,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              ButtonWid(
+                                  width: 383,
+                                  height: 54,
+                                  color1: ColorsUtils.orange1,
+                                  color2: ColorsUtils.orange2,
+                                  textButt: 'Deseo participar',
+                                  voidCallback: () => null),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: const [
+                                  Icon(
+                                    Icons.home,
+                                    color: ColorsUtils.blue3,
+                                    size: 15,
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text(
+                                    'Mínimo 2 participantes',
+                                    style: TextStyle(
+                                        fontSize: 13, color: ColorsUtils.blue3),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        const Card1Wid(views: 465)
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: 587,
+                    height: 368,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/volquete0.png'))),
+                  )
+                ],
               ),
             ),
             const FooterWid()

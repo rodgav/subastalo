@@ -57,7 +57,7 @@ class Subasta {
   String location;
   DateTime date;
   int views;
-  int price;
+  double price;
 
   factory Subasta.fromJson(Map<String, dynamic> json) => Subasta(
     id: json["id"],
