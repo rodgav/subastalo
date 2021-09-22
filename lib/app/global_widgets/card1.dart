@@ -24,8 +24,8 @@ class Card1Wid extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
-              Icons.height,
+            const ImageIcon(
+              AssetImage('assets/icons/negociar.png'),
               color: ColorsUtils.orange1,
             ),
             const Text(
@@ -38,8 +38,8 @@ class Card1Wid extends StatelessWidget {
             const Divider(
               color: ColorsUtils.orange1,
             ),
-            const Icon(
-              Icons.remove_red_eye,
+            const ImageIcon(
+              AssetImage('assets/icons/ojo.png'),
               color: ColorsUtils.orange1,
             ),
             Text(

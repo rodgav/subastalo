@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/card1.dart';
+import 'package:subastalo/app/global_widgets/like.dart';
 import 'package:subastalo/app/global_widgets/price.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
@@ -78,7 +79,7 @@ class Destacado2 extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(8)),
                             image: DecorationImage(
                                 image: AssetImage(subasta.imagePrimary),
-                                fit: BoxFit.cover)),
+                                fit: BoxFit.cover)),child: const Like(left: 10,top: 10),
                       ),
                       const SizedBox(
                         height: 10,
@@ -87,11 +88,12 @@ class Destacado2 extends StatelessWidget {
                         width: 382.59,
                         child: Row(
                           children: [
-                            const Icon(
-                              Icons.calendar_today,
+                            const ImageIcon(
+                             AssetImage('assets/icons/calendario.png'),
                               color: ColorsUtils.grey2,
                               size: 17,
                             ),
+                            const SizedBox(width: 5),
                             RichText(
                                 text: const TextSpan(children: [
                               TextSpan(

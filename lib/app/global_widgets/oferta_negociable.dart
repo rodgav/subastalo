@@ -18,14 +18,10 @@ class OfertaNegociableWid extends StatelessWidget {
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
-          children: const [
-            Icon(
-              Icons.web,
-              color: Colors.red,
-              size: 78,
-            ),
-            SizedBox(width: 10),
-            Text(
+          children: [
+            Image.asset('assets/icons/porcentaje.png', width: 78, height: 78),
+            const SizedBox(width: 20),
+            const Text(
               'OFERTAS \nNEGOCIABLES',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             )
@@ -78,10 +74,7 @@ class OfertaNegociableWid extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Icon(
-                      Icons.store,
-                      size: 167,
-                    ),
+                    Image.asset('assets/icons/compra.png',width: 167,height: 167),
                     ButtonWid(
                         width: 250,
                         height: 50,

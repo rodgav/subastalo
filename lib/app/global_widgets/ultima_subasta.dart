@@ -14,14 +14,10 @@ class UltimaSubastaWid extends StatelessWidget {
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
-          children:const [
-            Icon(
-              Icons.web,
-              color: Colors.red,
-              size: 78,
-            ),
-            SizedBox(width: 10),
-            Text(
+          children: [
+            Image.asset('assets/icons/copa.png', width: 78, height: 78),
+            const SizedBox(width: 20),
+            const Text(
               'MIRA LA ÚLTIMA \n SUBASTA',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             )
@@ -49,16 +45,16 @@ class UltimaSubastaWid extends StatelessWidget {
                       : CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const  Text(
+                    const Text(
                       'Productos subastados',
                       style: TextStyle(color: ColorsUtils.blue3, fontSize: 16),
                     ),
-                    const   Text(
+                    const Text(
                       'Lote de Saldos de ferretería y otros materiales.',
                       style:
                           TextStyle(color: ColorsUtils.orange2, fontSize: 18),
                     ),
-                    const  Text(
+                    const Text(
                       'HNOS. ASOCIADOS 1',
                       style: TextStyle(
                         fontSize: 10,
@@ -80,7 +76,7 @@ class UltimaSubastaWid extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: const [
-                                 Text('Precio base',
+                                Text('Precio base',
                                     style: TextStyle(
                                         color: ColorsUtils.blue3,
                                         fontSize: 15)),
@@ -97,7 +93,7 @@ class UltimaSubastaWid extends StatelessWidget {
                           Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
-                              children:const  [
+                              children: const [
                                 Text('Precio base',
                                     style: TextStyle(
                                         color: ColorsUtils.blue3,
@@ -113,7 +109,7 @@ class UltimaSubastaWid extends StatelessWidget {
                     Container(
                       width: web ? 378 : double.infinity,
                       height: 83,
-                      padding:const  EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
@@ -127,7 +123,7 @@ class UltimaSubastaWid extends StatelessWidget {
                             style: TextStyle(
                                 color: ColorsUtils.blue3, fontSize: 12),
                           ),
-                          const  Text(
+                          const Text(
                             '“No habia participado en subastas en línea,'
                             ' me guiaron desde el principio y pude participar,'
                             ' me sentí a gusto”',
@@ -164,10 +160,10 @@ class UltimaSubastaWid extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
-                          Icon(
-                            Icons.email,
+                          ImageIcon(
+                            AssetImage('assets/icons/personas.png'),
                             color: ColorsUtils.blue3,
-                            size: 25,
+                            size: 40,
                           ),
                           Text(
                             '25 ofertantes',
@@ -177,10 +173,10 @@ class UltimaSubastaWid extends StatelessWidget {
                           Divider(
                             color: ColorsUtils.orange1,
                           ),
-                          Icon(
-                            Icons.email,
+                          ImageIcon(
+                            AssetImage('assets/icons/pujas.png'),
                             color: ColorsUtils.blue3,
-                            size: 25,
+                            size: 40,
                           ),
                           Text(
                             '10 pujas',
@@ -190,7 +186,7 @@ class UltimaSubastaWid extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const  SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Container(

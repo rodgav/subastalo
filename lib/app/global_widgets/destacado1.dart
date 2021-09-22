@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/like.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class Destacado1 extends StatelessWidget {
@@ -32,17 +33,17 @@ class Destacado1 extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: 300,
-            height: 150,
-            decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20)),
-                image: DecorationImage(
-                  image: AssetImage(subasta.imagePrimary),
-                  fit: BoxFit.cover,
-                )),
-          ),
+              width: 300,
+              height: 150,
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(20)),
+                  image: DecorationImage(
+                    image: AssetImage(subasta.imagePrimary),
+                    fit: BoxFit.cover,
+                  )),
+              child: const Like(right: 10, top: 10)),
           Container(
             width: 300,
             height: 300,
@@ -79,13 +80,14 @@ class Destacado1 extends StatelessWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(
-                      Icons.print,
+                    ImageIcon(
+                      const AssetImage('assets/icons/negociar.png'),
                       color: subasta.type == 'Vivo'
                           ? ColorsUtils.orange2
                           : ColorsUtils.blue3,
                       size: 20,
                     ),
+                    const SizedBox(width: 5),
                     Text(
                       'Abierto para negociaciones',
                       style: TextStyle(
@@ -125,8 +127,8 @@ class Destacado1 extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(
-                        Icons.remove_red_eye,
+                      const ImageIcon(
+                        AssetImage('assets/icons/ojo.png'),
                         color: ColorsUtils.blue3,
                       ),
                       const SizedBox(

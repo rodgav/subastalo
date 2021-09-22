@@ -37,7 +37,7 @@ class SubastasPage extends StatelessWidget {
           children: [
             SizedBox(
               width: size.width,
-              height: 650,
+              height: 680,
               child: Stack(
                 children: [
                   Container(
@@ -146,7 +146,7 @@ class SubastasPage extends StatelessWidget {
                   ),
                   Positioned(
                     right: 0,
-                    bottom: 75,
+                    bottom: 150,
                     child: Container(
                       padding: const EdgeInsets.only(
                           top: 20, bottom: 20, right: 40, left: 20),
@@ -169,12 +169,13 @@ class SubastasPage extends StatelessWidget {
                   ),
                   Positioned(
                       bottom: 0,
-                      right: web ? 50 : 20,
+                      right: web ? 100 : 20,
                       child: Container(
+                        width: 128,height: 128,
                         decoration: const BoxDecoration(
                             color: ColorsUtils.orange1, shape: BoxShape.circle),
                         child: IconButton(
-                            iconSize: 40,
+                            iconSize: 65,
                             onPressed: () => null,
                             icon: const ImageIcon(
                               AssetImage('assets/icons/mensaje.png'),
@@ -438,9 +439,9 @@ class SubastasPage extends StatelessWidget {
                               const SizedBox(height: 10),
                               Row(
                                 children: [
-                                  const Icon(
-                                    Icons.calendar_today,
-                                    size: 35,
+                                  const  ImageIcon(
+                                    AssetImage('assets/icons/calendario.png'),
+                                    size: 36,
                                     color: ColorsUtils.blue3,
                                   ),
                                   const SizedBox(width: 5),
@@ -472,8 +473,8 @@ class SubastasPage extends StatelessWidget {
                               const SizedBox(height: 10),
                               Row(
                                 children: const [
-                                  Icon(
-                                    Icons.home,
+                                  ImageIcon(
+                                    AssetImage('assets/icons/personas.png'),
                                     color: ColorsUtils.blue3,
                                     size: 15,
                                   ),
