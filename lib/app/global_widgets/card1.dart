@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
@@ -17,7 +18,7 @@ class Card1Wid extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(8)),
           boxShadow: [
             BoxShadow(
-                color: ColorsUtils.grey2, offset: Offset(0, 1.5), blurRadius: 7)
+                color: ColorsUtils.grey1, offset: Offset(0, 0), blurRadius: 2)
           ]),
       child: Center(
         child: Column(
@@ -29,7 +30,10 @@ class Card1Wid extends StatelessWidget {
             ),
             const Text(
               'Abierto para ofertas',
-              style: TextStyle(fontSize: 10),
+              style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: ColorsUtils.orange2),
             ),
             const Divider(
               color: ColorsUtils.orange1,
@@ -40,7 +44,10 @@ class Card1Wid extends StatelessWidget {
             ),
             Text(
               '$views vistas',
-              style: const TextStyle(fontSize: 10),
+              style: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: ColorsUtils.orange2),
             ),
           ],
         ),

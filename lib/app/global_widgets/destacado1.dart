@@ -54,7 +54,7 @@ class Destacado1 extends StatelessWidget {
                 Text(
                   subasta.name,
                   style: const TextStyle(
-                      fontSize: 12, fontWeight: FontWeight.bold),
+                      fontSize: 13, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.justify,
                 ),
                 const SizedBox(

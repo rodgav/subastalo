@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/global_widgets/categoria.dart';
+import 'package:subastalo/app/global_widgets/loading.dart';
+import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
@@ -47,16 +50,20 @@ class RootPage extends StatelessWidget {
                               ),
                               hint: const Text('Nosotros'),
                               items: const [
-                                DropdownMenuItem(child: Text('Nosotros',style: TextStyle(fontSize: 16)))
+                                DropdownMenuItem(
+                                    child: Text('Nosotros',
+                                        style: TextStyle(fontSize: 16)))
                               ]),
                           cursor: SystemMouseCursors.click,
                         ),
                         const MouseRegion(
-                          child: Text('¿Cómo comprar?',style: TextStyle(fontSize: 16)),
+                          child: Text('¿Cómo comprar?',
+                              style: TextStyle(fontSize: 16)),
                           cursor: SystemMouseCursors.click,
                         ),
                         const MouseRegion(
-                          child: Text('Empieza a vender',style: TextStyle(fontSize: 16)),
+                          child: Text('Empieza a vender',
+                              style: TextStyle(fontSize: 16)),
                           cursor: SystemMouseCursors.click,
                         ),
                         Container(
@@ -66,13 +73,18 @@ class RootPage extends StatelessWidget {
                                 color: ColorsUtils.grey1.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(100)),
                             child: TextField(
-                              style: const TextStyle(fontStyle: FontStyle.italic),
+                              style:
+                                  const TextStyle(fontStyle: FontStyle.italic),
                               decoration: InputDecoration(
-                                suffixIcon: const Icon(Icons.search,
-                                    size: 24, color: ColorsUtils.blue3),
+                                suffixIcon:const Padding(padding: EdgeInsets.only(right: 10),
+                                  child:  ImageIcon(
+                                      AssetImage('assets/icons/buscar.png'),
+                                      size: 24,
+                                      color: ColorsUtils.blue3),
+                                ),
                                 contentPadding:
                                     const EdgeInsets.symmetric(horizontal: 20),
-                                hintText: 'Busca productos en ASP SUBASTAS',
+                                hintText: 'Busca productos en SUBASTALO',
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(100.0)),
@@ -116,9 +128,9 @@ class RootPage extends StatelessWidget {
                 ? Container(
                     width: size.width,
                     padding: const EdgeInsets.all(20),
-                    decoration: const BoxDecoration(gradient: LinearGradient(
-                        colors: [ColorsUtils.blue3, ColorsUtils.blue4]
-                    )),
+                    decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [ColorsUtils.blue3, ColorsUtils.blue4])),
                     child: Wrap(
                       alignment: WrapAlignment.spaceAround,
                       crossAxisAlignment: WrapCrossAlignment.center,
@@ -146,110 +158,32 @@ class RootPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(
-                            width: (size.width * 0.85) - 40,
-                            child: Wrap(
-                              alignment: WrapAlignment.spaceAround,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              runAlignment: WrapAlignment.spaceAround,
-                              runSpacing: 10,
-                              children: List.generate(
-                                  5,
-                                  (index) => Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          SizedBox(
-                                            height: 35,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                const Icon(
-                                                  Icons.event,
-                                                  color: ColorsUtils.orange1,
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                Container(
-                                                  width: 154,
-                                                  decoration: BoxDecoration(
-                                                      color: ColorsUtils.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20)),
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      vertical: 5,
-                                                      horizontal: 15),
-                                                  child: DropdownButton(
-                                                      isExpanded: true,
-                                                      underline: Container(
-                                                        height: 0,
-                                                        color:
-                                                            Colors.transparent,
-                                                      ),
-                                                      items: const [
-                                                        DropdownMenuItem(
-                                                            child: Text(
-                                                          'Vehículos',
-                                                          style: TextStyle(
-                                                              color: ColorsUtils
-                                                                  .black),
-                                                        ))
-                                                      ]),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          SizedBox(
-                                            height: 35,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                const Icon(
-                                                  Icons.event,
-                                                  color: ColorsUtils.orange1,
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                Container(
-                                                  width: 154,
-                                                  decoration: BoxDecoration(
-                                                      color: ColorsUtils.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20)),
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      vertical: 5,
-                                                      horizontal: 15),
-                                                  child: DropdownButton(
-                                                      isExpanded: true,
-                                                      underline: Container(
-                                                        height: 0,
-                                                        color:
-                                                            Colors.transparent,
-                                                      ),
-                                                      items: const [
-                                                        DropdownMenuItem(
-                                                            child: Text(
-                                                          'Vehículos',
-                                                          style: TextStyle(
-                                                              color: ColorsUtils
-                                                                  .black),
-                                                        ))
-                                                      ]),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                            ))
+                        GetBuilder<RootLogic>(
+                            id: 'categorias',
+                            builder: (_) {
+                              final categorias = _.categoriasModel?.categorias;
+                              return categorias != null
+                                  ? Container(
+                                      width: (size.width * 0.85) - 40,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 20),
+                                      child: Wrap(
+                                        alignment: WrapAlignment.spaceAround,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.center,
+                                        runAlignment: WrapAlignment.spaceAround,
+                                        spacing: 20,
+                                        runSpacing: 20,
+                                        children: categorias.isNotEmpty
+                                            ? List.generate(
+                                                categorias.length,
+                                                (index) => CategoriaWid(
+                                                    categoria:
+                                                        categorias[index]))
+                                            : [const NoDataWid()],
+                                      ))
+                                  : const Center(child: LoadingWid());
+                            })
                       ],
                     ),
                   )

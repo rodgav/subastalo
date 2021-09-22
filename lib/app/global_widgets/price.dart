@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
@@ -23,7 +24,7 @@ class PriceWid extends StatelessWidget {
                   color: ColorsUtils.orange1, fontSize: 8)),
           Text('US\$ ${price.toStringAsFixed(2)}',
               style: const TextStyle(
-                  color: ColorsUtils.orange1, fontSize: 20)),
+                  color: ColorsUtils.orange1, fontSize: 20,fontWeight: FontWeight.bold)),
         ],
       ),
     );
