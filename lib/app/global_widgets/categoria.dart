@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/data/models/categorias.dart';
-import 'package:subastalo/app/modules/root/root_logic.dart';
+import 'package:subastalo/app/modules/home/home_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class CategoriaWid extends StatelessWidget {
@@ -15,7 +15,7 @@ class CategoriaWid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return GetBuilder<RootLogic>(builder: (_) {
+    return GetBuilder<HomeLogic>(builder: (_) {
       return SizedBox(
         width: ((size.width * 0.85) - 40) / 6,
         height: 35,
