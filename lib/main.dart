@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 import 'package:subastalo/utils/dependency_injection.dart';
 
@@ -16,7 +17,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp.router(
-      initialBinding: BindingsBuilder(() {}),
+      initialBinding: BindingsBuilder(() {
+        Get.put(AuthService());
+      }),
       scrollBehavior: MyCustomScrollBehavior(),
       title: 'Subastalo',
       getPages: AppPages.routes,

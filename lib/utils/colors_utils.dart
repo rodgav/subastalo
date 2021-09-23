@@ -15,4 +15,5 @@ class ColorsUtils {
   static const Color orange1 = Color(0xffF97110);
   static const Color orange2 = Color(0xffFF3D00);
   static const Color black = Color(0xff000000);
+  static const Color black1 = Color(0xff1C1C1C);
 }

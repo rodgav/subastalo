@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
+import 'package:subastalo/app/data/middlewares/auth_middleware.dart';
 import 'package:subastalo/app/modules/home/home_binding.dart';
 import 'package:subastalo/app/modules/home/home_view.dart';
+import 'package:subastalo/app/modules/login/login_binding.dart';
+import 'package:subastalo/app/modules/login/login_view.dart';
 import 'package:subastalo/app/modules/root/root_binding.dart';
 import 'package:subastalo/app/modules/root/root_view.dart';
 import 'package:subastalo/app/modules/subastas/subastas_binding.dart';
@@ -22,6 +25,11 @@ class AppPages {
         participatesInRootNavigator: true,
         preventDuplicates: true,
         children: [
+          GetPage(
+              middlewares: [EnsureNotAuthMiddleware()],
+              name: _Paths.login,
+              page: () => LoginPage(),
+              binding: LoginBinding()),
           GetPage(
               preventDuplicates: true,
               name: _Paths.home,

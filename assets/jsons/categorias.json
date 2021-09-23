@@ -11,32 +11,12 @@
       ]
     },
     {
-      "name": "Chatarra",
-      "asset": "assets/icons/chatarra.png",
-      "data": [
-        {
-          "id": "1232",
-          "name": "prueba2"
-        }
-      ]
-    },
-    {
       "name": "Propiedades",
       "asset": "assets/icons/propiedad.png",
       "data": [
         {
           "id": "1233",
           "name": "prueba3"
-        }
-      ]
-    },
-    {
-      "name": "Maquinaria",
-      "asset": "assets/icons/maquinaria.png",
-      "data": [
-        {
-          "id": "1234",
-          "name": "prueba4"
         }
       ]
     },
@@ -51,32 +31,12 @@
       ]
     },
     {
-      "name": "Electrónica",
-      "asset": "assets/icons/electronica.png",
-      "data": [
-        {
-          "id": "1236",
-          "name": "prueba6"
-        }
-      ]
-    },
-    {
       "name": "Mobiliaria",
       "asset": "assets/icons/mobiliaria.png",
       "data": [
         {
-          "id": "1236",
-          "name": "prueba7"
-        }
-      ]
-    },
-    {
-      "name": "Empresas",
-      "asset": "assets/icons/empresa.png",
-      "data": [
-        {
           "id": "1237",
-          "name": "prueba8"
+          "name": "prueba7"
         }
       ]
     },
@@ -87,6 +47,46 @@
         {
           "id": "1238",
           "name": "prueba9"
+        }
+      ]
+    },
+    {
+      "name": "Chatarra",
+      "asset": "assets/icons/chatarra.png",
+      "data": [
+        {
+          "id": "1232",
+          "name": "prueba2"
+        }
+      ]
+    },
+    {
+      "name": "Maquinaria",
+      "asset": "assets/icons/maquinaria.png",
+      "data": [
+        {
+          "id": "1234",
+          "name": "prueba4"
+        }
+      ]
+    },
+    {
+      "name": "Electrónica",
+      "asset": "assets/icons/electronica.png",
+      "data": [
+        {
+          "id": "1236",
+          "name": "prueba6"
+        }
+      ]
+    },
+    {
+      "name": "Empresas",
+      "asset": "assets/icons/empresa.png",
+      "data": [
+        {
+          "id": "1237",
+          "name": "prueba8"
         }
       ]
     },

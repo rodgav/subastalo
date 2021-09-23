@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/txt_field_circ.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class FooterWid extends StatelessWidget {
@@ -50,8 +52,8 @@ class FooterWid extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(
-                      Icons.image,
+                    ImageIcon(
+                      AssetImage('assets/icons/image.png'),
                       color: ColorsUtils.white,
                       size: 14,
                     ),
@@ -65,8 +67,8 @@ class FooterWid extends StatelessWidget {
                   ]),
                   const SizedBox(height: 20),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(
-                      Icons.image,
+                    ImageIcon(
+                      AssetImage('assets/icons/image.png'),
                       color: ColorsUtils.white,
                       size: 14,
                     ),
@@ -80,8 +82,8 @@ class FooterWid extends StatelessWidget {
                   ]),
                   const SizedBox(height: 20),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(
-                      Icons.image,
+                    ImageIcon(
+                      AssetImage('assets/icons/image.png'),
                       color: ColorsUtils.white,
                       size: 14,
                     ),
@@ -95,8 +97,8 @@ class FooterWid extends StatelessWidget {
                   ]),
                   SizedBox(height: web ? 80 : 40),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(
-                      Icons.security,
+                    ImageIcon(
+                      AssetImage('assets/icons/secure.png'),
                       color: ColorsUtils.white,
                       size: 14,
                     ),
@@ -143,24 +145,24 @@ class FooterWid extends StatelessWidget {
                   ),
                   SizedBox(height: web ? 80 : 40),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
-                    Icon(
-                      Icons.security,
+                    ImageIcon(
+                      AssetImage('assets/icons/facebook.png'),
                       color: ColorsUtils.white,
                       size: 47,
                     ),
                     SizedBox(
                       width: 20,
                     ),
-                    Icon(
-                      Icons.security,
+                    ImageIcon(
+                      AssetImage('assets/icons/instagram.png'),
                       color: ColorsUtils.white,
                       size: 47,
                     ),
                     SizedBox(
                       width: 20,
                     ),
-                    Icon(
-                      Icons.security,
+                    ImageIcon(
+                      AssetImage('assets/icons/linkedin.png'),
                       color: ColorsUtils.white,
                       size: 47,
                     ),
@@ -301,7 +303,24 @@ class FooterWid extends StatelessWidget {
                           fontSize: 16,
                           fontWeight: FontWeight.bold),
                     ),
-                  ),
+                  ),const SizedBox(height: 20),
+                  const TxtFieldCirWid(
+                      width: 320,
+                      hint: 'Nombre completo',
+                      color: ColorsUtils.white,
+                      suffix: false),const SizedBox(height: 20),
+                  const TxtFieldCirWid(
+                      width: 320,
+                      hint: 'Número de teléfono o celular',
+                      color: ColorsUtils.white,
+                      suffix: false),const SizedBox(height: 20),
+                  ButtonWid(
+                      width: 320,
+                      height: 55,
+                      color1: ColorsUtils.blueButt2,
+                      color2: ColorsUtils.blueButt2,
+                      textButt: 'ENVIAR DATOS',
+                      voidCallback: ()=>null)
                 ],
               ),
             ],

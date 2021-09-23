@@ -65,7 +65,9 @@ class UltimaSubastaWid extends StatelessWidget {
                       height: 94,
                       decoration: BoxDecoration(
                           color: ColorsUtils.grey1,
-                          borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(12),
+                          image: const DecorationImage(
+                              image: AssetImage('assets/images/lote.png'))),
                     ),
                     SizedBox(
                       width: web ? 378 : double.infinity,
@@ -190,11 +192,27 @@ class UltimaSubastaWid extends StatelessWidget {
                       height: 20,
                     ),
                     Container(
-                        width: 128,
-                        height: 119,
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(12)))
+                      width: 128,
+                      height: 119,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          ImageIcon(
+                            AssetImage('assets/icons/play.png'),
+                            size: 64,
+                            color: ColorsUtils.white,
+                          ),
+                          SizedBox(height: 10),
+                          Text(
+                            'VER VIDEO',
+                            style: TextStyle(color: ColorsUtils.white),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
               )
