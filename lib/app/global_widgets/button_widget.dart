@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ButtonWid extends StatelessWidget {
@@ -46,7 +47,7 @@ class ButtonWid extends StatelessWidget {
             child: Text(
               textButt,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(fontSize: fontSize,fontWeight: FontWeight.bold),
             ),
           ),
         ),

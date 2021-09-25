@@ -20,7 +20,7 @@ class Destacado2 extends StatelessWidget {
     final bool web = size.width > 800;
     return Container(
       width: 646,
-      margin: EdgeInsets.only(top: 5, bottom: 5, left: 5, right: web ? 50 : 10),
+      margin: EdgeInsets.only(top: 5, bottom: 5, left: web ? 40 : 10, right: web ? 50 : 10),
       padding: const EdgeInsets.only(
           top: 25.07, right: 35.11, left: 36.06, bottom: 23.92),
       decoration: const BoxDecoration(

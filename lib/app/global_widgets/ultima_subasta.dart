@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
@@ -29,7 +30,11 @@ class UltimaSubastaWid extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: ColorsUtils.white,
-              borderRadius: BorderRadius.circular(25)),
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: [
+                BoxShadow(
+                    color: ColorsUtils.grey1.withOpacity(0.5), blurRadius: 7)
+              ]),
           child: Wrap(
             alignment: web ? WrapAlignment.spaceBetween : WrapAlignment.center,
             runAlignment: WrapAlignment.spaceBetween,
@@ -51,8 +56,10 @@ class UltimaSubastaWid extends StatelessWidget {
                     ),
                     const Text(
                       'Lote de Saldos de ferretería y otros materiales.',
-                      style:
-                          TextStyle(color: ColorsUtils.orange2, fontSize: 18),
+                      style: TextStyle(
+                          color: ColorsUtils.orange2,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
                     ),
                     const Text(
                       'HNOS. ASOCIADOS 1',
@@ -85,7 +92,8 @@ class UltimaSubastaWid extends StatelessWidget {
                                 Text('US\$ 3.500.00',
                                     style: TextStyle(
                                         color: ColorsUtils.orange2,
-                                        fontSize: 24)),
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold)),
                               ]),
                           Container(
                             height: 56,
@@ -103,7 +111,8 @@ class UltimaSubastaWid extends StatelessWidget {
                                 Text('US\$ 3.500.00',
                                     style: TextStyle(
                                         color: ColorsUtils.orange2,
-                                        fontSize: 24)),
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold)),
                               ]),
                         ],
                       ),

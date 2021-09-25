@@ -18,7 +18,7 @@ class SubastaEmpresa extends StatelessWidget {
     final bool web = size.width > 800;
     return Container(
       width: 420,
-      margin: EdgeInsets.only(top: 5, bottom: 5, right: web ? 50 : 10, left: 5),
+      margin: EdgeInsets.only(top: 5, bottom: 5, right: web ? 50 : 10, left: web ? 40 : 10),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: ColorsUtils.white,

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/like.dart';
@@ -20,7 +21,7 @@ class Destacado1 extends StatelessWidget {
     return Container(
       width: 300,
       height: 450,
-      margin: EdgeInsets.only(right: web ? 50 : 10, left: 5, top: 5, bottom: 5),
+      margin: EdgeInsets.only(right: web ? 50 : 10, left:  web?40:10, top: 5, bottom: 5),
       decoration: BoxDecoration(
           color: ColorsUtils.white,
           borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -75,7 +76,6 @@ class Destacado1 extends StatelessWidget {
                   ],
                 ),
                 const Divider(
-                  color: ColorsUtils.grey2,
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.min,
@@ -103,7 +103,7 @@ class Destacado1 extends StatelessWidget {
                     Text('Esta oferta negociable se cierra el',
                         style: TextStyle(fontSize: 10)),
                     Text('Miercoles 28 de Oct. | 8:00 PM',
-                        style: TextStyle(fontSize: 12)),
+                        style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold)),
                   ],
                 ),
                 ButtonWid(
@@ -123,7 +123,7 @@ class Destacado1 extends StatelessWidget {
                   padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: ColorsUtils.grey1)),
+                      border: Border.all(color: ColorsUtils.grey1.withOpacity(0.5))),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

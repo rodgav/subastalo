@@ -35,7 +35,11 @@ class OfertaNegociableWid extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: ColorsUtils.white,
-              borderRadius: BorderRadius.circular(25)),
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: [
+                BoxShadow(
+                    color: ColorsUtils.grey1.withOpacity(0.5), blurRadius: 7)
+              ]),
           child: Wrap(
             alignment: web ? WrapAlignment.spaceBetween : WrapAlignment.center,
             runAlignment: WrapAlignment.spaceBetween,
@@ -54,8 +58,10 @@ class OfertaNegociableWid extends StatelessWidget {
                     ),
                     Text(
                       'Accede a todas las ofertas con precios negociables',
-                      style:
-                          TextStyle(color: ColorsUtils.orange2, fontSize: 28),
+                      style: TextStyle(
+                          color: ColorsUtils.orange2,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold),
                     ),
                     Text(
                       'Texto de ayuda',
@@ -72,9 +78,10 @@ class OfertaNegociableWid extends StatelessWidget {
               SizedBox(
                 height: 325,
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Image.asset('assets/icons/compra.png',width: 167,height: 167),
+                    Image.asset('assets/icons/compra.png',
+                        width: 180, height: 180),
                     ButtonWid(
                         width: 250,
                         height: 50,
