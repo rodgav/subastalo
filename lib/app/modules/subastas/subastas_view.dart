@@ -192,8 +192,8 @@ class SubastasPage extends StatelessWidget {
                   top: 239,
                   child: Container(
                     width: size.width,
-                    height: size.height*0.6,
-                    decoration:const BoxDecoration(
+                    height: size.height * 0.6,
+                    decoration: const BoxDecoration(
                         color: ColorsUtils.blue3,
                         borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(150),
@@ -226,8 +226,8 @@ class SubastasPage extends StatelessWidget {
                                     Container(
                                       width: size.width,
                                       height: 460,
-                                      margin: EdgeInsets.only(
-                                          top: web ? 30 : 10),
+                                      margin:
+                                          EdgeInsets.only(top: web ? 30 : 10),
                                       child: subastas.isNotEmpty
                                           ? ListView.builder(
                                               padding: const EdgeInsets.all(0),
@@ -239,7 +239,8 @@ class SubastasPage extends StatelessWidget {
                                                       subasta: subastas[index],
                                                       voidCallback: () =>
                                                           _.toSubastaDetail(
-                                                              subastas[index])),
+                                                              subastas[index]
+                                                                  .id)),
                                               itemCount: subastas.length,
                                             )
                                           : const NoDataWid(),
@@ -256,8 +257,7 @@ class SubastasPage extends StatelessWidget {
                               ? Container(
                                   width: size.width,
                                   height: 433,
-                                  margin: EdgeInsets.only(
-                                      top: web ? 30 : 10),
+                                  margin: EdgeInsets.only(top: web ? 30 : 10),
                                   child: subastas.isNotEmpty
                                       ? ListView.builder(
                                           padding: const EdgeInsets.all(0),
@@ -269,7 +269,7 @@ class SubastasPage extends StatelessWidget {
                                                   subasta: subastas[index],
                                                   voidCallback: () =>
                                                       _.toSubastaDetail(
-                                                          subastas[index])),
+                                                          subastas[index].id)),
                                           itemCount: subastas.length,
                                         )
                                       : const NoDataWid())
@@ -314,8 +314,7 @@ class SubastasPage extends StatelessWidget {
                             Container(
                                 width: size.width,
                                 height: 440,
-                                margin: EdgeInsets.only(
-                                    top: web ? 30 : 10),
+                                margin: EdgeInsets.only(top: web ? 30 : 10),
                                 child: subastas.isNotEmpty
                                     ? ListView.builder(
                                         padding: const EdgeInsets.all(0),
@@ -326,7 +325,7 @@ class SubastasPage extends StatelessWidget {
                                                 subasta: subastas[index],
                                                 voidCallback: () =>
                                                     _.toSubastaDetail(
-                                                        subastas[index])),
+                                                        subastas[index].id)),
                                         itemCount: subastas.length,
                                       )
                                     : const NoDataWid()),
@@ -369,8 +368,7 @@ class SubastasPage extends StatelessWidget {
                             Container(
                                 width: size.width,
                                 height: 440,
-                                margin: EdgeInsets.only(
-                                    top: web ? 30 : 10),
+                                margin: EdgeInsets.only(top: web ? 30 : 10),
                                 child: subastas.isNotEmpty
                                     ? ListView.builder(
                                         padding: const EdgeInsets.all(0),
@@ -381,7 +379,7 @@ class SubastasPage extends StatelessWidget {
                                                 subasta: subastas[index],
                                                 voidCallback: () =>
                                                     _.toSubastaDetail(
-                                                        subastas[index])),
+                                                        subastas[index].id)),
                                         itemCount: subastas.length,
                                       )
                                     : const NoDataWid()),

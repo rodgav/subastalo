@@ -8,6 +8,7 @@ class ButtonWid extends StatelessWidget {
   final Color color2;
   final String textButt;
   final double fontSize;
+  final double circular;
   final VoidCallback voidCallback;
 
   const ButtonWid(
@@ -18,6 +19,7 @@ class ButtonWid extends StatelessWidget {
       required this.color2,
       required this.textButt,
       this.fontSize = 16,
+        this.circular = 100,
       required this.voidCallback})
       : super(key: key);
 
@@ -39,7 +41,7 @@ class ButtonWid extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [color1, color2]),
-              borderRadius: BorderRadius.circular(100)),
+              borderRadius: BorderRadius.circular(circular)),
           child: Container(
             constraints: BoxConstraints(minWidth: width, minHeight: height),
             //margin: EdgeInsets.symmetric(vertical: 15, horizontal: 35),

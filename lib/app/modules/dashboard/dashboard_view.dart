@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/global_widgets/footer_dashboard.dart';
 import 'package:subastalo/app/global_widgets/txt_field_circ.dart';
 import 'package:subastalo/app/modules/dashboard/widgets_dashboard/drawer_widget.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
@@ -100,7 +101,8 @@ class DashBoardPage extends StatelessWidget {
                       key: Get.nestedKey(Routes.dashboard)),
                 ),
               ]),
-            )
+            ),
+            const FooterDashboard()
           ]));
     });
   }

@@ -40,14 +40,14 @@ class Login extends StatelessWidget {
                   TxtFieldBor(
                       width: 280,
                       hint: 'Número o correo',
-                      iconData: Icons.check,
+                      icon:const Icon(Icons.check),
                       enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
                       focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
                   const SizedBox(height: 20),
                   TxtFieldBor(
                       width: 280,
                       hint: 'Contraseña',
-                      iconData: Icons.remove_red_eye,
+                      icon: const Icon(Icons.remove_red_eye),
                       enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
                       focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
                   const SizedBox(height: 40),

@@ -1,0 +1,120 @@
+import 'package:flutter/material.dart';
+import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
+import 'package:subastalo/utils/colors_utils.dart';
+
+class NewUsuario extends StatelessWidget {
+  const NewUsuario({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  Icon(
+                    Icons.close,
+                    color: ColorsUtils.blue3,
+                  )
+                ],
+              ),
+              const Center(
+                child: ImageIcon(
+                  AssetImage('assets/icons/usuarios.png'),
+                  size: 60,
+                ),
+              ),
+              const Center(
+                child: Text(
+                  'Añadir  usuario',
+                  style: TextStyle(fontSize: 26, color: ColorsUtils.blue3),
+                ),
+              ),
+              const Center(
+                child: Text(
+                  'Aquí podrás gestionar los usuarios.',
+                  style: TextStyle(fontSize: 16, color: ColorsUtils.grey1),
+                ),
+              ),
+              const Divider(),
+              const SizedBox(height: 20),
+              const Text('Nombre de usuario',
+                  style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
+              const SizedBox(height: 5),
+              TxtFieldBor(
+                  width: 400,
+                  hint: 'Ingresar normbre completo y apellidos',
+                  icon: null,
+                  enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
+                  focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+              const SizedBox(height: 15),
+              const Text('DNI / Carnet de identidad',
+                  style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
+              const SizedBox(height: 5),
+              TxtFieldBor(
+                  width: 400,
+                  hint: 'Ingrese número de DNI/Carnet',
+                  icon: null,
+                  enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
+                  focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+              const SizedBox(height: 15),
+              const Text('Número móvil',
+                  style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
+              const SizedBox(height: 5),
+              TxtFieldBor(
+                  width: 400,
+                  hint: 'Ingrese número',
+                  icon: null,
+                  enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
+                  focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+              const SizedBox(height: 15),
+              const Text('Correo electrónico',
+                  style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
+              const SizedBox(height: 5),
+              TxtFieldBor(
+                  width: 400,
+                  hint: 'Ingrese correo',
+                  icon: null,
+                  enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
+                  focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+              const SizedBox(height: 15),
+              const Text('Contraseña',
+                  style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
+              const SizedBox(height: 5),
+              TxtFieldBor(
+                  width: 400,
+                  hint: 'ingresar contraseña',
+                  icon: null,
+                  enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
+                  focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+              const SizedBox(height: 15),
+              const Text('Repetir contraseña',
+                  style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
+              const SizedBox(height: 5),
+              TxtFieldBor(
+                  width: 400,
+                  hint: 'Repetir contraseña',
+                  icon: null,
+                  enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
+                  focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+              const SizedBox(height: 20),
+              ButtonWid(
+                  width: 400,
+                  height: 50,
+                  color1: ColorsUtils.blueButt1,
+                  color2: ColorsUtils.blueButt2,
+                  textButt: 'Crear usuario',
+                  voidCallback: () => null)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

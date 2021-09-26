@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TxtFieldBor extends StatelessWidget {
   final double width;
   final String hint;
-  final IconData iconData;
+  final Icon? icon;
   final Color enabledBorder;
   final Color focusedBorder;
 
@@ -11,7 +11,7 @@ class TxtFieldBor extends StatelessWidget {
       {Key? key,
       required this.width,
       required this.hint,
-      required this.iconData,
+      required this.icon,
       required this.enabledBorder,
       required this.focusedBorder})
       : super(key: key);
@@ -22,7 +22,7 @@ class TxtFieldBor extends StatelessWidget {
         width: width,
         child: TextFormField(
           decoration: InputDecoration(
-            suffixIcon: Icon(iconData),
+            suffixIcon: icon,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20),
             hintText: hint,
             enabledBorder: OutlineInputBorder(

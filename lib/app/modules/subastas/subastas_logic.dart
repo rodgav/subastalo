@@ -20,8 +20,7 @@ class SubastasLogic extends GetxController {
     update(['subastas']);
   }
 
-  void toSubastaDetail(Subasta subasta) {
-    Get.rootDelegate
-        .toNamed(Routes.subastasDetail(subasta.id), arguments: subasta);
+  void toSubastaDetail(String subastaId) {
+    Get.rootDelegate.toNamed(Routes.subastasDetail(subastaId));
   }
 }

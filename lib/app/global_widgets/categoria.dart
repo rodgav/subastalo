@@ -14,10 +14,9 @@ class CategoriaWid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return GetBuilder<HomeLogic>(builder: (_) {
       return SizedBox(
-        width: ((size.width * 0.85) - 40) / 6,
+        //width: ((size.width * 0.85) - 40) / 6,
         height: 35,
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -27,8 +26,7 @@ class CategoriaWid extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            Container(
-                width: 154,
+            Container( width: 170,
                 decoration: BoxDecoration(
                     color: ColorsUtils.white,
                     borderRadius: BorderRadius.circular(20)),
@@ -40,13 +38,15 @@ class CategoriaWid extends StatelessWidget {
                     height: 0,
                     color: Colors.transparent,
                   ),
-                  hint: Text(categoria.name),
+                  hint: Text(categoria.name, overflow: TextOverflow.ellipsis),
                   items: categoria.data
                       .map((Datum datum) => DropdownMenuItem<Datum>(
-                          child: Text(datum.name), value: datum))
+                          child:
+                              Text(datum.name, overflow: TextOverflow.ellipsis),
+                          value: datum))
                       .toList(),
-                  onChanged: (value) => _.datumSelect(
-                      value as Datum, categoria.name),
+                  onChanged: (value) =>
+                      _.datumSelect(value as Datum, categoria.name),
                   value: datumSelect,
                 )),
           ],

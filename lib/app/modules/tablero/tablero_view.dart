@@ -28,8 +28,6 @@ class TableroPage extends StatelessWidget {
             const Divider(height: 20),
             LayoutBuilder(builder: (_, constraints) {
               final width = constraints.maxWidth;
-              debugPrint('${constraints.maxWidth}');
-              debugPrint('${constraints.minWidth}');
               return SizedBox(
                 width: width,
                 child: Wrap(

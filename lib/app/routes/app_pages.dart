@@ -22,6 +22,8 @@ import 'package:subastalo/app/modules/mensajes/mensajes_binding.dart';
 import 'package:subastalo/app/modules/mensajes/mensajes_view.dart';
 import 'package:subastalo/app/modules/mi_subasta/mi_subasta_binding.dart';
 import 'package:subastalo/app/modules/mi_subasta/mi_subasta_view.dart';
+import 'package:subastalo/app/modules/mi_subasta_detail/mi_subasta_detail_binding.dart';
+import 'package:subastalo/app/modules/mi_subasta_detail/mi_subasta_detail_view.dart';
 import 'package:subastalo/app/modules/monetizacion/monetizacion_binding.dart';
 import 'package:subastalo/app/modules/monetizacion/monetizacion_view.dart';
 import 'package:subastalo/app/modules/paginas/paginas_binding.dart';
@@ -42,6 +44,8 @@ import 'package:subastalo/app/modules/tablero/tablero_binding.dart';
 import 'package:subastalo/app/modules/tablero/tablero_view.dart';
 import 'package:subastalo/app/modules/usuarios/usuarios_binding.dart';
 import 'package:subastalo/app/modules/usuarios/usuarios_view.dart';
+import 'package:subastalo/app/modules/usuarios_detail/usuarios_detail_binding.dart';
+import 'package:subastalo/app/modules/usuarios_detail/usuarios_detail_view.dart';
 
 part 'app_routes.dart';
 
@@ -71,7 +75,7 @@ class AppPages {
               children: [
                 GetPage(
                     name: _Paths.subastas,
-                    page: () => SubastasPage(),
+                    page: () => const SubastasPage(),
                     binding: SubastasBinding(),
                     children: [
                       GetPage(
@@ -94,8 +98,14 @@ class AppPages {
                     binding: TableroBinding()),
                 GetPage(
                     name: _Paths.miSubastas,
-                    page: () => MiSubastaPage(),
-                    binding: MiSubastaBinding()),
+                    page: () => const MiSubastaPage(),
+                    binding: MiSubastaBinding(),
+                    children: [
+                      GetPage(
+                          name: _Paths.misubastasDetail,
+                          page: () => const MiSubastaDetailPage(),
+                          binding: MiSubastaDetailBinding())
+                    ]),
                 GetPage(
                     name: _Paths.categorias,
                     page: () => CategoriasPage(),
@@ -119,7 +129,13 @@ class AppPages {
                 GetPage(
                     name: _Paths.usuarios,
                     page: () => UsuariosPage(),
-                    binding: UsuariosBinding()),
+                    binding: UsuariosBinding(),
+                    children: [
+                      GetPage(
+                          name: _Paths.usuariosDetail,
+                          page: () => UsuariosDetailPage(),
+                          binding: UsuariosDetailBinding())
+                    ]),
                 GetPage(
                     name: _Paths.campanas,
                     page: () => CampanasPage(),

@@ -90,7 +90,7 @@ class SubastaEmpresa extends StatelessWidget {
                     AssetImage('assets/icons/ojo.png'),
                     color: ColorsUtils.blue3,
                     size: 15,
-                  ),   SizedBox(width: 3,),
+                  ),   const SizedBox(width: 3,),
                   Text('${subasta.views} visitas',
                       style: const TextStyle(
                           fontSize: 9, color: ColorsUtils.grey1))
