@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
-import 'package:subastalo/app/modules/usuarios/usuarios_logic.dart';
+import 'package:subastalo/app/modules/usuarios_detail/usuarios_detail_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class NewUsuario extends StatelessWidget {
@@ -10,11 +10,10 @@ class NewUsuario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<UsuariosLogic>(builder: (_) {
+    return GetBuilder<UsuariosDetailLogic>(builder: (_) {
       return Form(
         child: SingleChildScrollView(
           child: Container(
-            width: 400,
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +23,7 @@ class NewUsuario extends StatelessWidget {
                   children: [
                     IconButton(
                         onPressed: _.toBack,
-                        icon:const  Icon(
+                        icon: const Icon(
                           Icons.close,
                           color: ColorsUtils.blue3,
                         ))

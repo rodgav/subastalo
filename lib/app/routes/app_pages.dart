@@ -20,12 +20,18 @@ import 'package:subastalo/app/modules/login/login_binding.dart';
 import 'package:subastalo/app/modules/login/login_view.dart';
 import 'package:subastalo/app/modules/mensajes/mensajes_binding.dart';
 import 'package:subastalo/app/modules/mensajes/mensajes_view.dart';
+import 'package:subastalo/app/modules/mi_favoritas/mi_favoritas_binding.dart';
+import 'package:subastalo/app/modules/mi_favoritas/mi_favoritas_view.dart';
+import 'package:subastalo/app/modules/mi_pendientes/mi_pendientes_binding.dart';
+import 'package:subastalo/app/modules/mi_pendientes/mi_pendientes_view.dart';
 import 'package:subastalo/app/modules/mi_subasta/mi_subasta_binding.dart';
 import 'package:subastalo/app/modules/mi_subasta/mi_subasta_view.dart';
 import 'package:subastalo/app/modules/mi_subasta_detail/mi_subasta_detail_binding.dart';
 import 'package:subastalo/app/modules/mi_subasta_detail/mi_subasta_detail_view.dart';
 import 'package:subastalo/app/modules/monetizacion/monetizacion_binding.dart';
 import 'package:subastalo/app/modules/monetizacion/monetizacion_view.dart';
+import 'package:subastalo/app/modules/new_pagina/new_pagina_binding.dart';
+import 'package:subastalo/app/modules/new_pagina/new_pagina_view.dart';
 import 'package:subastalo/app/modules/paginas/paginas_binding.dart';
 import 'package:subastalo/app/modules/paginas/paginas_view.dart';
 import 'package:subastalo/app/modules/pagos/pagos_binding.dart';
@@ -38,8 +44,12 @@ import 'package:subastalo/app/modules/subastas/subastas_binding.dart';
 import 'package:subastalo/app/modules/subastas/subastas_view.dart';
 import 'package:subastalo/app/modules/subastas_detail/subastas_detail_binding.dart';
 import 'package:subastalo/app/modules/subastas_detail/subastas_detail_view.dart';
-import 'package:subastalo/app/modules/t_subastas/t_subastas_binding.dart';
-import 'package:subastalo/app/modules/t_subastas/t_subastas_view.dart';
+import 'package:subastalo/app/modules/t_aprobadas/t_aprobadas_binding.dart';
+import 'package:subastalo/app/modules/t_aprobadas/t_aprobadas_view.dart';
+import 'package:subastalo/app/modules/t_bloqueadas/t_bloqueadas_binding.dart';
+import 'package:subastalo/app/modules/t_bloqueadas/t_bloqueadas_view.dart';
+import 'package:subastalo/app/modules/t_pendientes/t_pendientes_binding.dart';
+import 'package:subastalo/app/modules/t_pendientes/t_pendientes_view.dart';
 import 'package:subastalo/app/modules/tablero/tablero_binding.dart';
 import 'package:subastalo/app/modules/tablero/tablero_view.dart';
 import 'package:subastalo/app/modules/usuarios/usuarios_binding.dart';
@@ -107,17 +117,41 @@ class AppPages {
                           binding: MiSubastaDetailBinding())
                     ]),
                 GetPage(
+                  name: _Paths.miPendientes,
+                  page: () => MiPendientesPage(),
+                  binding: MiPendientesBinding(),
+                ),
+                GetPage(
+                  name: _Paths.miFavoritas,
+                  page: () => MiFavoritasPage(),
+                  binding: MiFavoritasBinding(),
+                ),
+                GetPage(
                     name: _Paths.categorias,
                     page: () => CategoriasPage(),
                     binding: CategoriasBinding()),
                 GetPage(
-                    name: _Paths.tSubastas,
-                    page: () => TSubastasPage(),
-                    binding: TSubastasBinding()),
+                    name: _Paths.tAprobadas,
+                    page: () => TAprobadasPage(),
+                    binding: TAprobadasBinding()),
+                GetPage(
+                    name: _Paths.tPendientes,
+                    page: () => TPendientesPage(),
+                    binding: TPendientesBinding()),
+                GetPage(
+                    name: _Paths.tBloqueadas,
+                    page: () => TBloqueadasPage(),
+                    binding: TBloqueadasBinding()),
                 GetPage(
                     name: _Paths.paginas,
                     page: () => PaginasPage(),
-                    binding: PaginasBinding()),
+                    binding: PaginasBinding(),
+                    children: [
+                      GetPage(
+                          name: _Paths.newPagina,
+                          page: () => NewPaginaPage(),
+                          binding: NewPaginaBinding())
+                    ]),
                 GetPage(
                     name: _Paths.comentarios,
                     page: () => ComentariosPage(),

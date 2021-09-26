@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
-import 'package:subastalo/app/modules/usuarios/usuarios_logic.dart';
+import 'package:subastalo/app/modules/paginas/paginas_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
-class DelUsuario extends StatelessWidget {
-  const DelUsuario({Key? key}) : super(key: key);
+class DelPagina extends StatelessWidget {
+  const DelPagina({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<UsuariosLogic>(builder: (_) {
+    return GetBuilder<PaginasLogic>(builder: (_) {
       return SingleChildScrollView(
           child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -21,7 +21,7 @@ class DelUsuario extends StatelessWidget {
                       children: [
                         IconButton(
                             onPressed: _.toBack,
-                            icon:const  Icon(
+                            icon: const Icon(
                               Icons.close,
                               color: ColorsUtils.blue3,
                             ))
@@ -29,20 +29,20 @@ class DelUsuario extends StatelessWidget {
                     ),
                     const Center(
                       child: ImageIcon(
-                        AssetImage('assets/icons/usuarios.png'),
+                        AssetImage('assets/icons/paginas.png'),
                         size: 60,
                       ),
                     ),
                     const Center(
                       child: Text(
-                        'Eliminar usuario',
+                        'Eliminar página',
                         style:
                             TextStyle(fontSize: 26, color: ColorsUtils.blue3),
                       ),
                     ),
                     const Center(
                       child: Text(
-                        'Aquí podrás gestionar las usuarios creados.',
+                        'Aquí podrás gestionar tus páginas',
                         style:
                             TextStyle(fontSize: 16, color: ColorsUtils.grey1),
                       ),
@@ -51,7 +51,7 @@ class DelUsuario extends StatelessWidget {
                     const SizedBox(height: 20),
                     const Center(
                       child: Text(
-                        '¿Está seguro que desea eliminar este usuario?',
+                        '¿Está seguro que desea eliminar esta página?',
                         style:
                             TextStyle(fontSize: 26, color: ColorsUtils.grey1),
                       ),
@@ -63,7 +63,7 @@ class DelUsuario extends StatelessWidget {
                           height: 50,
                           color1: ColorsUtils.red,
                           color2: ColorsUtils.red,
-                          textButt: 'Eliminar usuario',
+                          textButt: 'Eliminar página',
                           voidCallback: () => null),
                     )
                   ])));

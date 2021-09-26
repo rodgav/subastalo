@@ -43,7 +43,7 @@ class PaginasPage extends StatelessWidget {
                             color1: ColorsUtils.blueButt1,
                             color2: ColorsUtils.blueButt2,
                             textButt: 'Crear nueva página',
-                            voidCallback: () => null)
+                            voidCallback: logic.toNewPage)
                       ],
                     ),
                     const Divider(height: 20),
@@ -97,18 +97,20 @@ class PaginasPage extends StatelessWidget {
                             Icon(Icons.edit, color: ColorsUtils.blue3)
                           ],
                         )),
-                        DataCell(Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Text(
-                              'Eliminar página',
-                              style: TextStyle(color: Colors.red),
+                        DataCell(
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                Text(
+                                  'Eliminar página',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                                SizedBox(width: 5),
+                                Icon(Icons.restore_from_trash_sharp,
+                                    color: Colors.red)
+                              ],
                             ),
-                            SizedBox(width: 5),
-                            Icon(Icons.restore_from_trash_sharp,
-                                color: Colors.red)
-                          ],
-                        )),
+                            onTap: logic.delPagina),
                       ])
                     ])
                   ],

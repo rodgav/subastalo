@@ -24,11 +24,23 @@ class DashboardLogic extends GetxController {
       case 'Mis subastas':
         _goToRoute(Routes.miSubastas);
         break;
+      case 'Pendientes de aprobación':
+        _goToRoute(Routes.miPendientes);
+        break;
+      case 'Subastas favoritas':
+        _goToRoute(Routes.miFavoritas);
+        break;
       case 'Categorías':
         _goToRoute(Routes.categorias);
         break;
-      case 'Subastas':
-        _goToRoute(Routes.tSubastas);
+      case 'Aprobadas':
+        _goToRoute(Routes.tAprobadas);
+        break;
+      case 'tPendientes de aprobación':
+        _goToRoute(Routes.tPendientes);
+        break;
+      case 'Bloqueadas':
+        _goToRoute(Routes.tBloqueadas);
         break;
       case 'Paginas':
         _goToRoute(Routes.paginas);

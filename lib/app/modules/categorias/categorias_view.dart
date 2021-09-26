@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 import 'categorias_logic.dart';
@@ -45,31 +46,15 @@ class CategoriasPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 5),
                             SizedBox(
-                                width: width * 0.25,
                                 height: 35,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
-                                    hintText: 'Ingresar nombre de categoria',
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: ColorsUtils.grey1
-                                              .withOpacity(0.5),
-                                          width: 0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(5.0)),
-                                      borderSide: BorderSide(
-                                          color: ColorsUtils.blue3
-                                              .withOpacity(0.5),
-                                          width: 0),
-                                    ),
-                                  ),
-                                )),
+                                child: TxtFieldBor(
+                                    width: width * 0.25,
+                                    hint: 'Ingresar nombre de categoria',
+                                    icon: null,
+                                    enabledBorder:
+                                        ColorsUtils.grey1.withOpacity(0.5),
+                                    focusedBorder:
+                                        ColorsUtils.blue3.withOpacity(0.5))),
                           ],
                         ),
                         Column(
@@ -81,32 +66,15 @@ class CategoriasPage extends StatelessWidget {
                               style: TextStyle(color: ColorsUtils.grey1),
                             ),
                             const SizedBox(height: 5),
-                            SizedBox(
+                            TxtFieldBor(
                                 width: width * 0.65,
-                                height: 70,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
-                                    hintText: 'Ingresar breve descripción...',
-                                    enabledBorder: OutlineInputBorder(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(5)),
-                                      borderSide: BorderSide(
-                                          color: ColorsUtils.grey1
-                                              .withOpacity(0.5),
-                                          width: 0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(5.0)),
-                                      borderSide: BorderSide(
-                                          color: ColorsUtils.blue3
-                                              .withOpacity(0.5),
-                                          width: 0),
-                                    ),
-                                  ),
-                                )),
+                                hint: 'Ingresar breve descripción...',
+                                maxLines: 2,
+                                icon: null,
+                                enabledBorder:
+                                    ColorsUtils.grey1.withOpacity(0.5),
+                                focusedBorder:
+                                    ColorsUtils.blue3.withOpacity(0.5))
                           ],
                         ),
                       ],
@@ -165,17 +133,19 @@ class CategoriasPage extends StatelessWidget {
                         const DataCell(Text('001')),
                         const DataCell(Text('Autos & Otros Vehículos (0)')),
                         const DataCell(Text('05/12/2020')),
-                        DataCell(Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Text(
-                              'Editar categoría',
-                              style: TextStyle(color: ColorsUtils.blue3),
+                        DataCell(
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                Text(
+                                  'Editar categoría',
+                                  style: TextStyle(color: ColorsUtils.blue3),
+                                ),
+                                SizedBox(width: 5),
+                                Icon(Icons.edit, color: ColorsUtils.blue3)
+                              ],
                             ),
-                            SizedBox(width: 5),
-                            Icon(Icons.edit, color: ColorsUtils.blue3)
-                          ],
-                        )),
+                            onTap: logic.editCateg),
                         DataCell(Row(
                           mainAxisSize: MainAxisSize.min,
                           children: const [

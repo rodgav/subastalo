@@ -6,10 +6,16 @@ import 'package:subastalo/utils/colors_utils.dart';
 
 class SubastaEmpresa extends StatelessWidget {
   final Subasta subasta;
+  final double left;
+  final double right;
   final VoidCallback voidCallback;
 
   const SubastaEmpresa(
-      {Key? key, required this.subasta, required this.voidCallback})
+      {Key? key,
+      required this.subasta,
+      this.left = 40,
+      this.right = 50,
+      required this.voidCallback})
       : super(key: key);
 
   @override
@@ -18,7 +24,8 @@ class SubastaEmpresa extends StatelessWidget {
     final bool web = size.width > 800;
     return Container(
       width: 420,
-      margin: EdgeInsets.only(top: 5, bottom: 5, right: web ? 50 : 10, left: web ? 40 : 10),
+      margin: EdgeInsets.only(
+          top: 5, bottom: 5, right: web ? right : 10, left: web ? left : 10),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: ColorsUtils.white,
@@ -53,7 +60,7 @@ class SubastaEmpresa extends StatelessWidget {
                 image: DecorationImage(
                     image: AssetImage(subasta.imagePrimary),
                     fit: BoxFit.cover)),
-            child: const Like(left: 10,top: 10),
+            child: const Like(left: 10, top: 10),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -65,7 +72,10 @@ class SubastaEmpresa extends StatelessWidget {
                     AssetImage('assets/icons/calendario.png'),
                     color: ColorsUtils.grey1,
                     size: 15,
-                  ),   SizedBox(width: 3,),
+                  ),
+                  SizedBox(
+                    width: 3,
+                  ),
                   Text('CIERRA Martes 03 de Nov.  |  3.00 pm',
                       style: TextStyle(fontSize: 9, color: ColorsUtils.grey1))
                 ],
@@ -78,7 +88,9 @@ class SubastaEmpresa extends StatelessWidget {
                     color: ColorsUtils.blue3,
                     size: 15,
                   ),
-                  SizedBox(width: 3,),
+                  SizedBox(
+                    width: 3,
+                  ),
                   Text('Disponible',
                       style: TextStyle(fontSize: 9, color: ColorsUtils.grey1))
                 ],
@@ -90,7 +102,10 @@ class SubastaEmpresa extends StatelessWidget {
                     AssetImage('assets/icons/ojo.png'),
                     color: ColorsUtils.blue3,
                     size: 15,
-                  ),   const SizedBox(width: 3,),
+                  ),
+                  const SizedBox(
+                    width: 3,
+                  ),
                   Text('${subasta.views} visitas',
                       style: const TextStyle(
                           fontSize: 9, color: ColorsUtils.grey1))

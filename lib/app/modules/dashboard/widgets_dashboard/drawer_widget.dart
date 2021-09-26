@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/modules/dashboard/dashboard_logic.dart';
@@ -30,54 +31,68 @@ class DrawerWid extends StatelessWidget {
                     selectedTileColor: const Color(0xff324047),
                     onTap: () => _.onSelectDrawer('Tablero'),
                   ),
-                     Container(color:  const Color(0xff253238),
-                       child: ExpansionTile(
-                        leading: const ImageIcon(
-                          AssetImage('assets/icons/subasta.png'),
-                          color: ColorsUtils.white,
-                        ),
-                        title: const Text(
-                          'Mi subasta',
-                          style: TextStyle(color: ColorsUtils.white),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_drop_down_outlined,
-                          color: ColorsUtils.white,
-                        ),
-                        children: [
-                          ListTile(
-                            contentPadding:const EdgeInsets.only(left: 68),
-                            title: const Text(
-                              'Mis subastas',
-                              style: TextStyle(color: ColorsUtils.white),
-                            ),
-                            selected: select == 'Mis subastas',
-                            selectedTileColor: const Color(0xff324047),
-                            onTap: () => _.onSelectDrawer('Mis subastas'),
+                  Container(
+                    color: const Color(0xff253238),
+                    child: ExpansionTile(
+                      leading: const ImageIcon(
+                        AssetImage('assets/icons/subasta.png'),
+                        color: ColorsUtils.white,
+                      ),
+                      title: const Text(
+                        'Mi subasta',
+                        style: TextStyle(color: ColorsUtils.white),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_drop_down_outlined,
+                        color: ColorsUtils.white,
+                      ),
+                      children: [
+                        ListTile(
+                          contentPadding: const EdgeInsets.only(left: 68),
+                          title: Text(
+                            'Mis subastas',
+                            style: TextStyle(
+                                color: ColorsUtils.white,
+                                fontWeight: select == 'Mis subastas'
+                                    ? FontWeight.w900
+                                    : FontWeight.normal),
                           ),
-                          ListTile(
-                            contentPadding:const EdgeInsets.only(left: 68),
-                            title: const Text(
-                              'Pendientes de aprobación',
-                              style: TextStyle(color: ColorsUtils.white),
-                            ),
-                            selected: select == 'Pendientes de aprobación',
-                            selectedTileColor: const Color(0xff324047),
-                            onTap: () => _.onSelectDrawer('Pendientes de aprobación'),
+                          selected: select == 'Mis subastas',
+                          selectedTileColor: const Color(0xff324047),
+                          onTap: () => _.onSelectDrawer('Mis subastas'),
+                        ),
+                        ListTile(
+                          contentPadding: const EdgeInsets.only(left: 68),
+                          title: Text(
+                            'Pendientes de aprobación',
+                            style: TextStyle(
+                                color: ColorsUtils.white,
+                                fontWeight: select == 'Pendientes de aprobación'
+                                    ? FontWeight.w900
+                                    : FontWeight.normal),
                           ),
-                          ListTile(
-                            contentPadding:const EdgeInsets.only(left: 68),
-                            title: const Text(
-                              'Subastas favoritas',
-                              style: TextStyle(color: ColorsUtils.white),
-                            ),
-                            selected: select == 'Subastas favoritas',
-                            selectedTileColor: const Color(0xff324047),
-                            onTap: () => _.onSelectDrawer('Subastas favoritas'),
+                          selected: select == 'Pendientes de aprobación',
+                          selectedTileColor: const Color(0xff324047),
+                          onTap: () =>
+                              _.onSelectDrawer('Pendientes de aprobación'),
+                        ),
+                        ListTile(
+                          contentPadding: const EdgeInsets.only(left: 68),
+                          title: Text(
+                            'Subastas favoritas',
+                            style: TextStyle(
+                                color: ColorsUtils.white,
+                                fontWeight: select == 'Subastas favoritas'
+                                    ? FontWeight.w900
+                                    : FontWeight.normal),
                           ),
-                        ],
+                          selected: select == 'Subastas favoritas',
+                          selectedTileColor: const Color(0xff324047),
+                          onTap: () => _.onSelectDrawer('Subastas favoritas'),
+                        ),
+                      ],
                     ),
-                     ),
+                  ),
                   ListTile(
                     tileColor: const Color(0xff253238),
                     leading: const ImageIcon(
@@ -92,22 +107,65 @@ class DrawerWid extends StatelessWidget {
                     selectedTileColor: const Color(0xff324047),
                     onTap: () => _.onSelectDrawer('Categorías'),
                   ),
-                  ListTile(
-                    tileColor: const Color(0xff253238),
-                    leading: const ImageIcon(
-                      AssetImage('assets/icons/subasta.png'),
-                      color: ColorsUtils.white,
-                    ),
-                    title: const Text(
-                      'Subastas',
-                      style: TextStyle(color: ColorsUtils.white),
-                    ),
-                    selected: select == 'Subastas',
-                    selectedTileColor: const Color(0xff324047),
-                    onTap: () => _.onSelectDrawer('Subastas'),
-                    trailing: const Icon(
-                      Icons.arrow_drop_down_outlined,
-                      color: ColorsUtils.white,
+                  Container(
+                    color: const Color(0xff253238),
+                    child: ExpansionTile(
+                      leading: const ImageIcon(
+                        AssetImage('assets/icons/subasta.png'),
+                        color: ColorsUtils.white,
+                      ),
+                      title: const Text(
+                        'Mi subasta',
+                        style: TextStyle(color: ColorsUtils.white),
+                      ),
+                      trailing: const Icon(
+                        Icons.arrow_drop_down_outlined,
+                        color: ColorsUtils.white,
+                      ),
+                      children: [
+                        ListTile(
+                          contentPadding: const EdgeInsets.only(left: 68),
+                          title: Text(
+                            'Aprobadas',
+                            style: TextStyle(color: ColorsUtils.white,
+                                fontWeight: select == 'Aprobadas'
+                                    ? FontWeight.w900
+                                    : FontWeight.normal),
+                          ),
+                          selected: select == 'Aprobadas',
+                          selectedTileColor: const Color(0xff324047),
+                          onTap: () => _.onSelectDrawer('Aprobadas'),
+                        ),
+                        ListTile(
+                          contentPadding: const EdgeInsets.only(left: 68),
+                          title: Text(
+                            'Pendientes de aprobación',
+                            style: TextStyle(
+                                color: ColorsUtils.white,
+                                fontWeight: select == 'tPendientes de aprobación'
+                                    ? FontWeight.w900
+                                    : FontWeight.normal),
+                          ),
+                          selected: select == 'tPendientes de aprobación',
+                          selectedTileColor: const Color(0xff324047),
+                          onTap: () =>
+                              _.onSelectDrawer('tPendientes de aprobación'),
+                        ),
+                        ListTile(
+                          contentPadding: const EdgeInsets.only(left: 68),
+                          title: Text(
+                            'Bloqueadas',
+                            style: TextStyle(
+                                color: ColorsUtils.white,
+                                fontWeight: select == 'Bloqueadas'
+                                    ? FontWeight.w900
+                                    : FontWeight.normal),
+                          ),
+                          selected: select == 'Bloqueadas',
+                          selectedTileColor: const Color(0xff324047),
+                          onTap: () => _.onSelectDrawer('Bloqueadas'),
+                        ),
+                      ],
                     ),
                   ),
                   ListTile(

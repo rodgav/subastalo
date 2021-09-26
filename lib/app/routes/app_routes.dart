@@ -18,9 +18,14 @@ abstract class Routes {
 
   static String misubastasDetail(String subastaId) => '$miSubastas/$subastaId';
 
+  static const miPendientes = _Paths.dashboard + _Paths.miPendientes;
+  static const miFavoritas = _Paths.dashboard + _Paths.miFavoritas;
   static const categorias = _Paths.dashboard + _Paths.categorias;
-  static const tSubastas = _Paths.dashboard + _Paths.tSubastas;
+  static const tAprobadas = _Paths.dashboard + _Paths.tAprobadas;
+  static const tPendientes = _Paths.dashboard + _Paths.tPendientes;
+  static const tBloqueadas = _Paths.dashboard + _Paths.tBloqueadas;
   static const paginas = _Paths.dashboard + _Paths.paginas;
+  static const newPagina = paginas + _Paths.newPagina;
   static const comentarios = _Paths.dashboard + _Paths.comentarios;
   static const infoSubastas = _Paths.dashboard + _Paths.infoSubastas;
   static const usuarios = _Paths.dashboard + _Paths.usuarios;
@@ -44,10 +49,15 @@ abstract class _Paths {
   static const dashboard = '/dashboard';
   static const tablero = '/tablero';
   static const miSubastas = '/misubastas';
+  static const miPendientes = '/mipendientes';
+  static const miFavoritas = '/mifavoritas';
   static const misubastasDetail = '/:subastaId';
   static const categorias = '/categorias';
-  static const tSubastas = '/subastas';
+  static const tAprobadas= '/aprobadas';
+  static const tPendientes = '/pendientes';
+  static const tBloqueadas = '/bloqueadas';
   static const paginas = '/paginas';
+  static const newPagina = '/newpagina';
   static const comentarios = '/comentarios';
   static const infoSubastas = '/infosubastas';
   static const usuarios = '/usuarios';

@@ -90,9 +90,12 @@ class UsuariosPage extends StatelessWidget {
                     ], rows: [
                       DataRow(cells: [
                         DataCell(Checkbox(value: false, onChanged: (value) {})),
-                        const DataCell(Text('001')),
-                        const DataCell(Text('Danilo Boy Vela')),
-                        const DataCell(Text('Danilo@gmail.com')),
+                        DataCell(const Text('001'),
+                            onTap: () => logic.toUsuariosDetail('123')),
+                        DataCell(const Text('Danilo Boy Vela'),
+                            onTap: () => logic.toUsuariosDetail('123')),
+                        DataCell(const Text('Danilo@gmail.com'),
+                            onTap: () => logic.toUsuariosDetail('123')),
                         const DataCell(Text('05/12/2020')),
                         DataCell(Row(
                           mainAxisSize: MainAxisSize.min,

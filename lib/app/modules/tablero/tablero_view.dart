@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
@@ -15,20 +17,21 @@ class TableroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final bool web = size.width > 800;
-    return SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 20, horizontal: web ? 50 : 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('INICIO',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            const Text('Aquí podrás visualizar un resumen de tu tablero',
-                style: TextStyle(fontSize: 12)),
-            const Divider(height: 20),
-            LayoutBuilder(builder: (_, constraints) {
-              final width = constraints.maxWidth;
-              return SizedBox(
+    return LayoutBuilder(builder: (_, constraints) {
+      final width = constraints.maxWidth;
+      return SingleChildScrollView(
+        child: Container(
+          padding:
+              EdgeInsets.symmetric(vertical: 20, horizontal: web ? 50 : 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('INICIO',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              const Text('Aquí podrás visualizar un resumen de tu tablero',
+                  style: TextStyle(fontSize: 12)),
+              const Divider(height: 20),
+              SizedBox(
                 width: width,
                 child: Wrap(
                   alignment: WrapAlignment.spaceBetween,
@@ -36,7 +39,7 @@ class TableroPage extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.start,
                   children: [
                     SizedBox(
-                      width: web ? (width * 0.5) - 10 : width,
+                      width: web ? (width * 0.45) : width,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -277,7 +280,7 @@ class TableroPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                        width: web ? (width * 0.5) - 10 : width,
+                        width: web ? (width * 0.45) : width,
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -363,7 +366,7 @@ class TableroPage extends StatelessWidget {
                                       width: web ? (width * 0.5) - 10 : width,
                                       decoration: const BoxDecoration(
                                           color: Color(0xffF9F9F9)),
-                                      child:const Center(
+                                      child: const Center(
                                         child: Text(
                                           'Ver historial de participación',
                                           style: TextStyle(
@@ -378,11 +381,216 @@ class TableroPage extends StatelessWidget {
                             ]))
                   ],
                 ),
-              );
-            }),
-          ],
+              ),
+              const SizedBox(height: 40),
+              const Text('MENSAJES\nRECIENTES',
+                  style: TextStyle(fontSize: 22, color: ColorsUtils.blue3)),
+              const SizedBox(height: 20),
+              ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (__, index) => SizedBox(
+                        width: width,
+                        child: Wrap(
+                          alignment: WrapAlignment.spaceBetween,
+                          runAlignment: WrapAlignment.spaceBetween,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.email,
+                                  size: 14,
+                                  color: ColorsUtils.red,
+                                ),
+                                const SizedBox(width: 5),
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text('Albert Herrera',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold)),
+                                    Text(
+                                        'Resumen del contenido o mensaje recibido...',
+                                        style: TextStyle(fontSize: 13))
+                                  ],
+                                )
+                              ],
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 15),
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      left: BorderSide(
+                                          color: ColorsUtils.grey1
+                                              .withOpacity(0.5)))),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      IconButton(
+                                          onPressed: () => null,
+                                          icon: const Icon(
+                                            Icons.restore_from_trash_outlined,
+                                            size: 12,
+                                            color: ColorsUtils.grey1,
+                                          )),
+                                      const SizedBox(height: 5),
+                                      const Text(
+                                        '31 Oct',
+                                        style: TextStyle(
+                                            color: ColorsUtils.grey1,
+                                            fontSize: 10),
+                                      )
+                                    ],
+                                  ),
+                                  IconButton(
+                                      onPressed: () => null,
+                                      icon: const Icon(
+                                        Icons.arrow_forward_ios,
+                                        color: ColorsUtils.grey2,
+                                      ))
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                  separatorBuilder: (__, index) => const Divider(),
+                  itemCount: 4),
+              const SizedBox(height: 40),
+              Container(
+                width: width,
+                decoration: BoxDecoration(
+                    color: const Color(0xffEBEFF1),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Column(
+                  children: [
+                    Container(
+                      width: width,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 15),
+                      decoration: const BoxDecoration(
+                          color: ColorsUtils.orange1,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15))),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            '0',
+                            style: TextStyle(
+                                fontSize: 50, color: ColorsUtils.white),
+                          ),
+                          const SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'Lista de',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: ColorsUtils.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                'interes',
+                                style: TextStyle(
+                                    fontSize: 18, color: ColorsUtils.white),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 264,
+                      padding: const EdgeInsets.all(10),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (__, index) => Container(
+                          margin: const EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                              color: ColorsUtils.white,
+                              borderRadius: BorderRadius.circular(15)),
+                          width: 264,
+                          height: 264,
+                          child: const Center(
+                            child: Icon(
+                              Icons.settings,
+                              color: ColorsUtils.grey1,
+                            ),
+                          ),
+                        ),
+                        itemCount: 5,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 40),
+              Container(
+                width: width,
+                decoration: BoxDecoration(
+                    color: const Color(0xffEBEFF1),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Column(
+                  children: [
+                    Container(
+                      width: width,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 15),
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15))),
+                      child: const Text(
+                        'Ofertas vistas:',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: ColorsUtils.blue3,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      height: 101,
+                      padding: const EdgeInsets.all(10),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        itemBuilder: (__, index) => Container(
+                          margin: const EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                              color: ColorsUtils.white,
+                              borderRadius: BorderRadius.circular(15)),
+                          width: 354,
+                          height: 101,
+                          child: const Center(
+                            child: Icon(
+                              Icons.settings,
+                              color: ColorsUtils.grey1,
+                            ),
+                          ),
+                        ),
+                        itemCount: 5,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

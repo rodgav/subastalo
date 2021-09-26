@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:subastalo/app/modules/t_subastas/t_subastas_widget/aprobado.dart';
+import 'package:subastalo/app/modules/t_aprobadas/t_aprobadas_widget/aprobado.dart';
 
-import 't_subastas_logic.dart';
+import 't_aprobadas_logic.dart';
 
-class TSubastasPage extends StatelessWidget {
-  final logic = Get.find<TSubastasLogic>();
+class TAprobadasPage extends StatelessWidget {
+  final logic = Get.find<TAprobadasLogic>();
 
-  TSubastasPage({Key? key}) : super(key: key);
+  TAprobadasPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,13 @@ class TSubastasPage extends StatelessWidget {
       return SingleChildScrollView(
           child: Container(
               padding:
-              EdgeInsets.symmetric(vertical: 20, horizontal: web ? 50 : 20),
+                  EdgeInsets.symmetric(vertical: 20, horizontal: web ? 50 : 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('SUBASTAS APROBADAS',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                   const Text('Aquí podrás gestionar tus subastas',
                       style: TextStyle(fontSize: 12)),
                   const Divider(height: 20),
@@ -34,7 +34,7 @@ class TSubastasPage extends StatelessWidget {
                     itemBuilder: (_, index) => Aprobado(width: width),
                     itemCount: 10,
                     separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
+                        const Divider(),
                   ),
                 ],
               )));

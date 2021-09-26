@@ -88,12 +88,12 @@ class ComentariosPage extends StatelessWidget {
                             style: TextStyle(color: ColorsUtils.blue3),
                           ),
                         ),
-                        const DataCell(
-                          Text(
-                            'Eliminar',
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
+                        DataCell(
+                            const Text(
+                              'Eliminar',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            onTap: logic.delComentario),
                       ])
                     ])
                   ],
