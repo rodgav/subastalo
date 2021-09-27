@@ -11,7 +11,7 @@ class DelComentario extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<ComentariosLogic>(builder: (_) {
       return SingleChildScrollView(
-          child: Container(
+          child: Container(width: 400,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
