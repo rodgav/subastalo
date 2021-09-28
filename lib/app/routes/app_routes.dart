@@ -35,6 +35,8 @@ abstract class Routes {
   static const campanas = _Paths.dashboard + _Paths.campanas;
   static const localizaciones = _Paths.dashboard + _Paths.localizaciones;
   static const mensajes = _Paths.dashboard + _Paths.mensajes;
+
+  static String mensajesDetail(String mensajeId) => '$mensajes/$mensajeId';
   static const monetizacion = _Paths.dashboard + _Paths.monetizacion;
   static const administradores = _Paths.dashboard + _Paths.administradores;
   static const pagos = _Paths.dashboard + _Paths.pagos;
@@ -53,7 +55,7 @@ abstract class _Paths {
   static const miFavoritas = '/mifavoritas';
   static const misubastasDetail = '/:subastaId';
   static const categorias = '/categorias';
-  static const tAprobadas= '/aprobadas';
+  static const tAprobadas = '/aprobadas';
   static const tPendientes = '/pendientes';
   static const tBloqueadas = '/bloqueadas';
   static const paginas = '/paginas';
@@ -65,6 +67,7 @@ abstract class _Paths {
   static const campanas = '/campanas';
   static const localizaciones = '/localizaciones';
   static const mensajes = '/mensajes';
+  static const mensajeDetail = '/:mensajeId';
   static const monetizacion = '/monetizacion';
   static const administradores = '/administradores';
   static const pagos = '/pagos';

@@ -39,7 +39,7 @@ class DrawerWid extends StatelessWidget {
                         color: ColorsUtils.white,
                       ),
                       title: const Text(
-                        'Mi subasta',
+                        'Mi subastas',
                         style: TextStyle(color: ColorsUtils.white),
                       ),
                       trailing: const Icon(
@@ -115,7 +115,7 @@ class DrawerWid extends StatelessWidget {
                         color: ColorsUtils.white,
                       ),
                       title: const Text(
-                        'Mi subasta',
+                        'Subastas',
                         style: TextStyle(color: ColorsUtils.white),
                       ),
                       trailing: const Icon(
@@ -127,7 +127,8 @@ class DrawerWid extends StatelessWidget {
                           contentPadding: const EdgeInsets.only(left: 68),
                           title: Text(
                             'Aprobadas',
-                            style: TextStyle(color: ColorsUtils.white,
+                            style: TextStyle(
+                                color: ColorsUtils.white,
                                 fontWeight: select == 'Aprobadas'
                                     ? FontWeight.w900
                                     : FontWeight.normal),
@@ -142,9 +143,10 @@ class DrawerWid extends StatelessWidget {
                             'Pendientes de aprobación',
                             style: TextStyle(
                                 color: ColorsUtils.white,
-                                fontWeight: select == 'tPendientes de aprobación'
-                                    ? FontWeight.w900
-                                    : FontWeight.normal),
+                                fontWeight:
+                                    select == 'tPendientes de aprobación'
+                                        ? FontWeight.w900
+                                        : FontWeight.normal),
                           ),
                           selected: select == 'tPendientes de aprobación',
                           selectedTileColor: const Color(0xff324047),

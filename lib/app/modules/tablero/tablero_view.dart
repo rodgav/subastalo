@@ -404,7 +404,7 @@ class TableroPage extends StatelessWidget {
                                   size: 14,
                                   color: ColorsUtils.red,
                                 ),
-                                const SizedBox(width: 5),
+                                const SizedBox(width: 10),
                                 Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -16,6 +16,7 @@ class UsuariosLogic extends GetxController {
   void toUsuariosDetail(String usuarioId) {
     Get.rootDelegate.toNamed(Routes.usuariosDetail(usuarioId));
   }
+
   void toBack() {
     Get.rootDelegate.popRoute();
   }

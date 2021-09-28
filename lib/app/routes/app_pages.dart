@@ -18,6 +18,8 @@ import 'package:subastalo/app/modules/localizaciones/localizaciones_binding.dart
 import 'package:subastalo/app/modules/localizaciones/localizaciones_view.dart';
 import 'package:subastalo/app/modules/login/login_binding.dart';
 import 'package:subastalo/app/modules/login/login_view.dart';
+import 'package:subastalo/app/modules/mensaje_detail/mensaje_detail_binding.dart';
+import 'package:subastalo/app/modules/mensaje_detail/mensaje_detail_view.dart';
 import 'package:subastalo/app/modules/mensajes/mensajes_binding.dart';
 import 'package:subastalo/app/modules/mensajes/mensajes_view.dart';
 import 'package:subastalo/app/modules/mi_favoritas/mi_favoritas_binding.dart';
@@ -181,7 +183,13 @@ class AppPages {
                 GetPage(
                     name: _Paths.mensajes,
                     page: () => MensajesPage(),
-                    binding: MensajesBinding()),
+                    binding: MensajesBinding(),
+                    children: [
+                      GetPage(
+                          name: _Paths.mensajeDetail,
+                          page: () => MensajeDetailPage(),
+                          binding: MensajeDetailBinding())
+                    ]),
                 GetPage(
                     name: _Paths.monetizacion,
                     page: () => MonetizacionPage(),
