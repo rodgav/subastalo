@@ -217,62 +217,92 @@ class MiSubastaDetailPage extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       )),
-                    ], rows: const [
+                      DataColumn(
+                          label: Text(
+                        'Acciòn',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      )),
+                    ], rows: [
                       DataRow(cells: [
-                        DataCell(Text(
+                        const DataCell(Text(
                           'Danilo Boy Vela',
                           style: TextStyle(color: ColorsUtils.grey1),
                         )),
-                        DataCell(Text(
+                        const DataCell(Text(
                           '33.000',
                           style: TextStyle(color: ColorsUtils.blue3),
                         )),
-                        DataCell(Text(
+                        const DataCell(Text(
                           '05/12/2020',
                           style: TextStyle(color: ColorsUtils.grey1),
                         )),
+                        DataCell(
+                            const Text(
+                              'Aceptar',
+                              style: TextStyle(color: Colors.green),
+                            ),
+                            onTap: ()=> _.aceptar('123')),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text(
+                        const DataCell(Text(
                           'Fabrisio Vela Checkner',
                           style: TextStyle(color: ColorsUtils.grey1),
                         )),
-                        DataCell(Text(
+                        const DataCell(Text(
                           '32.000',
                           style: TextStyle(color: ColorsUtils.blue3),
                         )),
-                        DataCell(Text(
+                        const DataCell(Text(
                           '04/12/2020',
                           style: TextStyle(color: ColorsUtils.grey1),
                         )),
+                        DataCell(
+                            const Text(
+                              'Aceptar',
+                              style: TextStyle(color: Colors.green),
+                            ),
+                            onTap: ()=> _.aceptar('123')),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text(
+                        const DataCell(Text(
                           'Jennifer ocampo Vela',
                           style: TextStyle(color: ColorsUtils.grey1),
                         )),
-                        DataCell(Text(
+                        const DataCell(Text(
                           '30.000',
                           style: TextStyle(color: ColorsUtils.blue3),
                         )),
-                        DataCell(Text(
+                        const DataCell(Text(
                           '03/12/2020',
                           style: TextStyle(color: ColorsUtils.grey1),
                         )),
+                        DataCell(
+                            const Text(
+                              'Aceptar',
+                              style: TextStyle(color: Colors.green),
+                            ),
+                            onTap: ()=> _.aceptar('123')),
                       ]),
                       DataRow(cells: [
-                        DataCell(Text(
+                        const DataCell(Text(
                           'Rodrigo Temple Villanueva',
                           style: TextStyle(color: ColorsUtils.grey1),
                         )),
-                        DataCell(Text(
+                        const DataCell(Text(
                           '29.000',
                           style: TextStyle(color: ColorsUtils.blue3),
                         )),
-                        DataCell(Text(
+                        const DataCell(Text(
                           '02/12/2020',
                           style: TextStyle(color: ColorsUtils.grey1),
                         )),
+                        DataCell(
+                           const Text(
+                              'Aceptar',
+                              style: TextStyle(color: Colors.green),
+                            ),
+                            onTap: ()=> _.aceptar('123')),
                       ]),
                     ])
                   ],

@@ -97,4 +97,8 @@ class HomeLogic extends GetxController {
   void toLogin() {
     Get.rootDelegate.offNamed(Routes.login);
   }
+
+  void toVender() {
+    Get.rootDelegate.offNamed(Routes.vender);
+  }
 }

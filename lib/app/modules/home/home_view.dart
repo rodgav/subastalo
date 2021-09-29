@@ -59,9 +59,12 @@ class HomePage extends StatelessWidget {
                           style: TextStyle(fontSize: 16)),
                       cursor: SystemMouseCursors.click,
                     ),
-                    const MouseRegion(
-                      child: Text('Empieza a vender',
-                          style: TextStyle(fontSize: 16)),
+                    MouseRegion(
+                      child: GestureDetector(
+                        child: Text('Empieza a vender',
+                            style: TextStyle(fontSize: 16)),
+                        onTap: logic.toVender,
+                      ),
                       cursor: SystemMouseCursors.click,
                     ),
                     TxtFieldCirWid(

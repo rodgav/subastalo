@@ -58,6 +58,8 @@ import 'package:subastalo/app/modules/usuarios/usuarios_binding.dart';
 import 'package:subastalo/app/modules/usuarios/usuarios_view.dart';
 import 'package:subastalo/app/modules/usuarios_detail/usuarios_detail_binding.dart';
 import 'package:subastalo/app/modules/usuarios_detail/usuarios_detail_view.dart';
+import 'package:subastalo/app/modules/vender/vender_binding.dart';
+import 'package:subastalo/app/modules/vender/vender_view.dart';
 
 part 'app_routes.dart';
 
@@ -94,7 +96,11 @@ class AppPages {
                           name: _Paths.subastasDetail,
                           page: () => const SubastasDetailPage(),
                           binding: SubastasDetailBinding())
-                    ])
+                    ]),
+                GetPage(
+                    name: _Paths.vender,
+                    page: () => VenderPage(),
+                    binding: VenderBinding())
               ]),
           GetPage(
               middlewares: [EnsureAuthMiddleware()],
