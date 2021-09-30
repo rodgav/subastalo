@@ -100,20 +100,25 @@ class UltimaSubastaWid extends StatelessWidget {
                             width: 1,
                             color: ColorsUtils.orange2,
                           ),
-                          Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Text('Precio base',
-                                    style: TextStyle(
-                                        color: ColorsUtils.blue3,
-                                        fontSize: 15)),
-                                Text('US\$ 3.500.00',
+                          Expanded(
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  Text('Precio base',
+                                      style: TextStyle(
+                                          color: ColorsUtils.blue3,
+                                          fontSize: 15)),
+                                  Text(
+                                    'US\$ 3.500.00',
                                     style: TextStyle(
                                         color: ColorsUtils.orange2,
                                         fontSize: 24,
-                                        fontWeight: FontWeight.bold)),
-                              ]),
+                                        fontWeight: FontWeight.bold),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ]),
+                          ),
                         ],
                       ),
                     ),

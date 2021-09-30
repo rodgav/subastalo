@@ -109,8 +109,8 @@ class ItemMiSubasta extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
+                Wrap(
+                  runSpacing: 10,
                   children: [
                     ButtonIconWid(
                         width: 153,

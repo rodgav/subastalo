@@ -23,10 +23,13 @@ class CardNameSubDet extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      'Vende - ${subasta.nameVendedor}',
-                      style: const TextStyle(
-                          fontSize: 25, color: ColorsUtils.blue3),
+                    Expanded(
+                      child: Text(
+                        'Vende - ${subasta.nameVendedor}',
+                        style: const TextStyle(
+                            fontSize: 25, color: ColorsUtils.blue3),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     )
                   ],
                 ),

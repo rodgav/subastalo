@@ -98,11 +98,11 @@ class ItemMiPendiente extends StatelessWidget {
             SizedBox(width: web ? 50 : 0),
             Column(
               children: [
-                const SizedBox(
-                  height: 60,
+                SizedBox(
+                  height: web ?60: 20,
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
+                Wrap(
+                  runSpacing: 10,
                   children: [
                     ButtonIconWid(
                         width: 153,

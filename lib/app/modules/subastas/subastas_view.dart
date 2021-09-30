@@ -294,9 +294,10 @@ class SubastasPage extends StatelessWidget {
                                   top: 10,
                                   left: web ? 50 : 20,
                                   right: web ? 50 : 20),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              child: Wrap(
+                                alignment: WrapAlignment.spaceBetween,
+                               runAlignment: WrapAlignment.center,
+                                crossAxisAlignment: WrapCrossAlignment.center,
                                 children: const [
                                   Text(
                                     'Osinergim Perú',
@@ -348,9 +349,10 @@ class SubastasPage extends StatelessWidget {
                                   top: 10,
                                   left: web ? 50 : 20,
                                   right: web ? 50 : 20),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              child:  Wrap(
+                                alignment: WrapAlignment.spaceBetween,
+                                runAlignment: WrapAlignment.center,
+                                crossAxisAlignment: WrapCrossAlignment.center,
                                 children: const [
                                   Text(
                                     'Buenaventura',
@@ -472,20 +474,26 @@ class SubastasPage extends StatelessWidget {
                                     color: ColorsUtils.blue3,
                                   ),
                                   const SizedBox(width: 5),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: const [
-                                      Text('Inicia',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              color: ColorsUtils.blue3)),
-                                      Text('Miercoles 28 de Oct. |  8.00 PM',
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: const [
+                                        Text('Inicia',
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                color: ColorsUtils.blue3)),
+                                        Text(
+                                          'Miercoles 28 de Oct. |  8.00 PM',
                                           style: TextStyle(
                                               fontSize: 20,
                                               color: ColorsUtils.blue3,
-                                              fontWeight: FontWeight.bold)),
-                                    ],
+                                              fontWeight: FontWeight.bold),
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                        ),
+                                      ],
+                                    ),
                                   )
                                 ],
                               ),

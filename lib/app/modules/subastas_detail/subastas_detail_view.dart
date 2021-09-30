@@ -155,7 +155,8 @@ class SubastasDetailPage extends StatelessWidget {
                                               ? 'Deseo participar'
                                               : 'Quiero negociar',
                                           fontSize: 26,
-                                          voidCallback: () => null),
+                                          voidCallback: () => subasta.type == 'Vivo'
+                                              ? _.subasEnVivo('123'):null),
                                       const SizedBox(height: 20),
                                       Row(
                                         mainAxisSize: MainAxisSize.min,

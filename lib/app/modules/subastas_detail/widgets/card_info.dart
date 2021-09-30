@@ -47,18 +47,23 @@ class CardInfoSubDet extends StatelessWidget {
                         const SizedBox(
                           width: 10,
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(subasta.type == 'Vivo' ? 'Inicia' : 'Cierra',
-                                style: const TextStyle(
-                                    color: ColorsUtils.blue3, fontSize: 20)),
-                            Text('${subasta.date}',
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(subasta.type == 'Vivo' ? 'Inicia' : 'Cierra',
+                                  style: const TextStyle(
+                                      color: ColorsUtils.blue3, fontSize: 20)),
+                              Text(
+                                '${subasta.date}',
                                 style: const TextStyle(
                                     color: ColorsUtils.blue3,
                                     fontSize: 20,
-                                    fontWeight: FontWeight.bold)),
-                          ],
+                                    fontWeight: FontWeight.bold),
+                                overflow: TextOverflow.ellipsis,maxLines: 1,
+                              ),
+                            ],
+                          ),
                         )
                       ],
                     ),
