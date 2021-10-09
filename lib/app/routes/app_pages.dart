@@ -60,6 +60,8 @@ import 'package:subastalo/app/modules/usuarios_detail/usuarios_detail_binding.da
 import 'package:subastalo/app/modules/usuarios_detail/usuarios_detail_view.dart';
 import 'package:subastalo/app/modules/vender/vender_binding.dart';
 import 'package:subastalo/app/modules/vender/vender_view.dart';
+import 'package:subastalo/app/modules/vivo/vivo_binding.dart';
+import 'package:subastalo/app/modules/vivo/vivo_view.dart';
 
 part 'app_routes.dart';
 
@@ -212,7 +214,12 @@ class AppPages {
                     name: _Paths.perfil,
                     page: () => PerfilPage(),
                     binding: PerfilBinding()),
-              ])
+              ]),
+          GetPage(
+              middlewares: [EnsureAuthMiddleware()],
+              name: _Paths.vivo,
+              page: () => VivoPage(),
+              binding: VivoBinding())
         ])
   ];
 }

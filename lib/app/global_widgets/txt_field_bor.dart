@@ -31,11 +31,11 @@ class TxtFieldBor extends StatelessWidget {
             hintText: hint,
             enabledBorder: OutlineInputBorder(
               borderRadius: const BorderRadius.all(Radius.circular(5)),
-              borderSide: BorderSide(color: enabledBorder, width: 0),
+              borderSide: BorderSide(color: enabledBorder),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              borderSide: BorderSide(color: focusedBorder, width: 0),
+              borderSide: BorderSide(color: focusedBorder),
             ),
           ),
         ));

@@ -155,8 +155,10 @@ class SubastasDetailPage extends StatelessWidget {
                                               ? 'Deseo participar'
                                               : 'Quiero negociar',
                                           fontSize: 26,
-                                          voidCallback: () => subasta.type == 'Vivo'
-                                              ? _.subasEnVivo('123'):null),
+                                          voidCallback: () =>
+                                              subasta.type == 'Vivo'
+                                                  ? _.subasEnVivo('123')
+                                                  : null),
                                       const SizedBox(height: 20),
                                       Row(
                                         mainAxisSize: MainAxisSize.min,
@@ -227,179 +229,240 @@ class SubastasDetailPage extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   width: web ? size.width * 0.5 : size.width,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width:
-                                            web ? size.width * 0.5 : size.width,
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20),
-                                        color: const Color(0xffF6F6F6),
-                                        height: 169,
-                                        child: Wrap(
-                                          alignment: web
-                                              ? WrapAlignment.spaceBetween
-                                              : WrapAlignment.center,
-                                          runAlignment: WrapAlignment.center,
-                                          crossAxisAlignment:
-                                              WrapCrossAlignment.center,
-                                          spacing: 20,
-                                          runSpacing: 20,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Container(
-                                                  width: 47,
-                                                  height: 47,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                          color: ColorsUtils
-                                                              .orange2,
-                                                          shape:
-                                                              BoxShape.circle),
-                                                  child: const Icon(
-                                                    Icons.settings,
-                                                    color: ColorsUtils.white,
+                                  child: DefaultTabController(
+                                      length: 2,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          TabBar(
+                                              isScrollable: true,
+                                              labelColor: ColorsUtils.blue3,
+                                              labelPadding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10),
+                                              unselectedLabelColor:
+                                                  Theme.of(context).hintColor,
+                                              indicator: const BoxDecoration(
+                                                border: Border(
+                                                  bottom: BorderSide(
+                                                    color: ColorsUtils.orange2,
+                                                    width: 4,
                                                   ),
                                                 ),
-                                                const SizedBox(
-                                                  width: 5,
-                                                ),
+                                              ),
+                                              tabs: [
                                                 Container(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          bottom: 5),
-                                                  decoration: const BoxDecoration(
-                                                      border: Border(
-                                                          bottom: BorderSide(
-                                                              color: ColorsUtils
-                                                                  .orange2,
-                                                              width: 2.5))),
-                                                  child: const Text(
-                                                      'INFORMACIÓN',
-                                                      style: TextStyle(
+                                                  margin: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 20),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Container(
+                                                        width: 47,
+                                                        height: 47,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                                color:
+                                                                    ColorsUtils
+                                                                        .orange2,
+                                                                shape: BoxShape
+                                                                    .circle),
+                                                        child: const Icon(
+                                                          Icons.settings,
                                                           color:
-                                                              ColorsUtils.blue3,
-                                                          fontSize: 20)),
-                                                )
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Container(
-                                                  width: 47,
-                                                  height: 47,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                          color: ColorsUtils
-                                                              .orange2,
-                                                          shape:
-                                                              BoxShape.circle),
-                                                  child: const Icon(
-                                                    Icons.baby_changing_station,
-                                                    color: ColorsUtils.white,
+                                                              ColorsUtils.white,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      const Text('INFORMACIÓN',
+                                                          style: TextStyle(
+                                                              color: ColorsUtils
+                                                                  .blue3,
+                                                              fontSize: 20)),
+                                                    ],
                                                   ),
                                                 ),
-                                                const SizedBox(
-                                                  width: 5,
-                                                ),
                                                 Container(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          bottom: 5),
-                                                  decoration: const BoxDecoration(
-                                                      border: Border(
-                                                          bottom: BorderSide(
-                                                              color: ColorsUtils
-                                                                  .orange2,
-                                                              width: 2.5))),
-                                                  child: const Text('ESTADO',
-                                                      style: TextStyle(
+                                                  margin: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 20),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Container(
+                                                        width: 47,
+                                                        height: 47,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                                color:
+                                                                    ColorsUtils
+                                                                        .orange2,
+                                                                shape: BoxShape
+                                                                    .circle),
+                                                        child: const Icon(
+                                                          Icons.location_pin,
                                                           color:
-                                                              ColorsUtils.blue3,
-                                                          fontSize: 20)),
-                                                )
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Container(
-                                                  width: 47,
-                                                  height: 47,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                          color: ColorsUtils
-                                                              .orange2,
-                                                          shape:
-                                                              BoxShape.circle),
-                                                  child: const Icon(
-                                                    Icons.location_pin,
-                                                    color: ColorsUtils.white,
+                                                              ColorsUtils.white,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      const Text('UBICACIÓN',
+                                                          style: TextStyle(
+                                                              color: ColorsUtils
+                                                                  .blue3,
+                                                              fontSize: 20)),
+                                                    ],
                                                   ),
                                                 ),
-                                                const SizedBox(
-                                                  width: 5,
+                                              ]),
+                                          SizedBox(
+                                            height: 700,
+                                            child: TabBarView(children: [
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(20),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    const Text('Descripción',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20)),
+                                                    const SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    Text(subasta.description,
+                                                        style: const TextStyle(
+                                                          fontSize: 20,
+                                                        )),
+                                                    const SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    const Text('Ficha Técnica',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20)),
+                                                    const SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    Text(subasta.fileTecnique,
+                                                        style: const TextStyle(
+                                                          fontSize: 20,
+                                                        )),
+                                                  ],
                                                 ),
-                                                Container(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          bottom: 5),
-                                                  decoration: const BoxDecoration(
-                                                      border: Border(
-                                                          bottom: BorderSide(
-                                                              color: ColorsUtils
-                                                                  .orange2,
-                                                              width: 2.5))),
-                                                  child: const Text('UBICACIÓN',
-                                                      style: TextStyle(
-                                                          color:
-                                                              ColorsUtils.blue3,
-                                                          fontSize: 20)),
-                                                )
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.all(20),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const Text('Descripción',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20)),
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            Text(subasta.description,
-                                                style: const TextStyle(
-                                                  fontSize: 20,
-                                                )),
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            const Text('Ficha Técnica',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 20)),
-                                            const SizedBox(
-                                              height: 20,
-                                            ),
-                                            Text(subasta.fileTecnique,
-                                                style: const TextStyle(
-                                                  fontSize: 20,
-                                                )),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                              ),
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(20),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    const Text('Ubicación',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20)),
+                                                    const SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    const Text(
+                                                        'Lima/SJM/Av. los incas 333 - Paradero 22',
+                                                        style: TextStyle(
+                                                          fontSize: 20,
+                                                        )),
+                                                    const SizedBox(height: 50),
+                                                    const Text('Visitas',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20)),
+                                                    const SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    const Text(
+                                                        'Disponible para visitas',
+                                                        style: TextStyle(
+                                                          fontSize: 20,
+                                                        )),
+                                                    const SizedBox(height: 50),
+                                                    const Text('Agendar visita',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20)),
+                                                    const SizedBox(
+                                                      height: 20,
+                                                    ),
+                                                    const Text(
+                                                        'Disponible para visitas',
+                                                        style: TextStyle(
+                                                          fontSize: 20,
+                                                        )),
+                                                    const SizedBox(height: 50),
+                                                    const Text('Seleccione una fecha',style:TextStyle(fontSize: 12)),
+                                                    Container(
+                                                      width: web? size.width*0.25:size.width*0.5,
+                                                      padding:const EdgeInsets.symmetric(
+                                                          horizontal: 20),
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                          const BorderRadius.all(Radius.circular(5)),
+                                                          border: Border.all(
+                                                              color: ColorsUtils.grey1.withOpacity(0.5))),
+                                                      child: DropdownButton<String>(
+                                                        underline: Container(
+                                                          height: 0,
+                                                          color: Colors.transparent,
+                                                        ),
+                                                        isExpanded:true,
+                                                        items: const [
+                                                          DropdownMenuItem(child: Text('Lunes 27 de Setiembre')),
+                                                        ],
+                                                        onChanged: (value) => null,
+                                                      ),
+                                                    ), const SizedBox(height: 50),
+                                                    const Text('Seleccione una hora',style:TextStyle(fontSize: 12)),
+                                                    Container(
+                                                      width: web? size.width*0.25:size.width*0.5,
+                                                      padding:const EdgeInsets.symmetric(
+                                                          horizontal: 20),
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                          const BorderRadius.all(Radius.circular(5)),
+                                                          border: Border.all(
+                                                              color: ColorsUtils.grey1.withOpacity(0.5))),
+                                                      child: DropdownButton<String>(
+                                                        underline: Container(
+                                                          height: 0,
+                                                          color: Colors.transparent,
+                                                        ),
+                                                        isExpanded:true,
+                                                        items: const [
+                                                          DropdownMenuItem(child: Text('9:00')),
+                                                        ],
+                                                        onChanged: (value) => null,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ]),
+                                          ),
+                                        ],
+                                      )),
                                 ),
                                 SizedBox(
                                   width: web ? size.width * 0.5 : size.width,

@@ -40,9 +40,31 @@ class Login extends StatelessWidget {
                   TxtFieldBor(
                       width: 280,
                       hint: 'Número o correo',
-                      icon:const Icon(Icons.check),
+                      icon: const Icon(Icons.check),
                       enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
                       focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+                  const SizedBox(height: 20),
+                  Container(
+                    width: 280,
+                    padding:const EdgeInsets.symmetric(
+                        horizontal: 20),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5)),
+                        border: Border.all(
+                            color: ColorsUtils.grey1.withOpacity(0.5))),
+                    child: DropdownButton<String>(
+                      underline: Container(
+                        height: 0,
+                        color: Colors.transparent,
+                      ),
+                      isExpanded:true,
+                      items: const [
+                        DropdownMenuItem(child: Text('usuario')),
+                      ],
+                      onChanged: (value) => null,
+                    ),
+                  ),
                   const SizedBox(height: 20),
                   TxtFieldBor(
                       width: 280,
@@ -68,9 +90,10 @@ class Login extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  TextButton( style: ButtonStyle(
-                      overlayColor:
-                      MaterialStateProperty.all(Colors.transparent)),
+                  TextButton(
+                    style: ButtonStyle(
+                        overlayColor:
+                            MaterialStateProperty.all(Colors.transparent)),
                     onPressed: () => _.changeLoginRegister('register'),
                     child: const Text(
                       'Regístrate',

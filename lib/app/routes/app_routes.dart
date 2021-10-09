@@ -43,6 +43,7 @@ abstract class Routes {
   static const administradores = _Paths.dashboard + _Paths.administradores;
   static const pagos = _Paths.dashboard + _Paths.pagos;
   static const perfil = _Paths.dashboard + _Paths.perfil;
+  static String vivo(String subastaId) => '/vivo/$subastaId';
 }
 
 abstract class _Paths {
@@ -75,4 +76,5 @@ abstract class _Paths {
   static const administradores = '/administradores';
   static const pagos = '/pagos';
   static const perfil = '/perfil';
+  static const vivo = '/vivo/:subastaId';
 }

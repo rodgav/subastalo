@@ -69,25 +69,13 @@ class DashBoardPage extends StatelessWidget {
                             hint: 'Busca productos en SUBASTALO',
                             color: ColorsUtils.grey1.withOpacity(0.2),
                             suffix: true),
-                        const MouseRegion(
-                          child: Text('Unirse hoy'),
-                          cursor: SystemMouseCursors.click,
-                        ),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                primary: ColorsUtils.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                                side:
-                                    const BorderSide(color: ColorsUtils.blue1),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 10),
-                                elevation: 0),
-                            onPressed: () {},
-                            child: const Text(
-                              'Inicia Sesión',
-                              style: TextStyle(color: ColorsUtils.blue3),
-                            )),
+                        const Icon(Icons.message),
+                        const Text('Jhonatan'),
+                        Container(
+                            decoration: const BoxDecoration(
+                                color: ColorsUtils.grey1,
+                                shape: BoxShape.circle),
+                            child: const Icon(Icons.image))
                       ],
                     ),
                   )
