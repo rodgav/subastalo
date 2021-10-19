@@ -17,6 +17,8 @@ abstract class Routes {
   static const dashboard = _Paths.dashboard;
   static const tablero = _Paths.dashboard + _Paths.tablero;
   static const miSubastas = _Paths.dashboard + _Paths.miSubastas;
+  static const newSubastas = miSubastas + _Paths.newSubastas;
+
 
   static String misubastasDetail(String subastaId) => '$miSubastas/$subastaId';
 
@@ -55,6 +57,7 @@ abstract class _Paths {
   static const dashboard = '/dashboard';
   static const tablero = '/tablero';
   static const miSubastas = '/misubastas';
+  static const newSubastas = '/newsubastas';
   static const miPendientes = '/mipendientes';
   static const miFavoritas = '/mifavoritas';
   static const misubastasDetail = '/:subastaId';

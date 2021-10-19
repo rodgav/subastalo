@@ -34,6 +34,8 @@ import 'package:subastalo/app/modules/monetizacion/monetizacion_binding.dart';
 import 'package:subastalo/app/modules/monetizacion/monetizacion_view.dart';
 import 'package:subastalo/app/modules/new_pagina/new_pagina_binding.dart';
 import 'package:subastalo/app/modules/new_pagina/new_pagina_view.dart';
+import 'package:subastalo/app/modules/nueva_subasta/nueva_subasta_binding.dart';
+import 'package:subastalo/app/modules/nueva_subasta/nueva_subasta_view.dart';
 import 'package:subastalo/app/modules/paginas/paginas_binding.dart';
 import 'package:subastalo/app/modules/paginas/paginas_view.dart';
 import 'package:subastalo/app/modules/pagos/pagos_binding.dart';
@@ -121,6 +123,10 @@ class AppPages {
                     page: () => const MiSubastaPage(),
                     binding: MiSubastaBinding(),
                     children: [
+                      GetPage(
+                          name: _Paths.newSubastas,
+                          page: () => NuevaSubastaPage(),
+                          binding: NuevaSubastaBinding()),
                       GetPage(
                           name: _Paths.misubastasDetail,
                           page: () => const MiSubastaDetailPage(),
