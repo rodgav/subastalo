@@ -69,13 +69,25 @@ class DashBoardPage extends StatelessWidget {
                             hint: 'Busca productos en SUBASTALO',
                             color: ColorsUtils.grey1.withOpacity(0.2),
                             suffix: true),
-                        const Icon(Icons.message),
-                        const Text('Jhonatan'),
+                        ImageIcon(
+                           const AssetImage('assets/icons/mensaje.png'),
+                            color: ColorsUtils.grey1.withOpacity(0.5)),
                         Container(
+                          padding: const EdgeInsets.only(bottom: 2),
                             decoration: const BoxDecoration(
-                                color: ColorsUtils.grey1,
+                                border: Border(
+                                    bottom:
+                                        BorderSide(color: ColorsUtils.blue3,width: 5))),
+                            child: const Text('Jhonatan')),
+                        Container(
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: ColorsUtils.grey1.withOpacity(0.5),
                                 shape: BoxShape.circle),
-                            child: const Icon(Icons.image))
+                            child: const ImageIcon(
+                                AssetImage('assets/icons/imagen.png'),
+                                color: ColorsUtils.white,
+                                size: 15))
                       ],
                     ),
                   )

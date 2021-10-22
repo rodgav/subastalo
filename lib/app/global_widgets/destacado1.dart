@@ -81,7 +81,7 @@ class Destacado1 extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     ImageIcon(
-                      const AssetImage('assets/icons/negociar.png'),
+                      const AssetImage('assets/icons/martillo.png'),
                       color: subasta.type == 'Vivo'
                           ? ColorsUtils.orange2
                           : ColorsUtils.blue3,

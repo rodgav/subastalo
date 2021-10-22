@@ -5,14 +5,35 @@ import 'package:get/get.dart';
 class VivoLogic extends GetxController {
   //subasta in live
   Timer? _timer;
-  RxInt _start = 10.obs;
+  final RxInt _end = 1.obs;
+  final RxInt _start = 0.obs;
+  bool chatView = false;
+
+  int get end => _end.value;
 
   int get start => _start.value;
 
   @override
   void onReady() {
-    _startTimer();
+    _endTimer();
     super.onReady();
+  }
+
+  void _endTimer() {
+    const oneSec = Duration(seconds: 1);
+    _timer = Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        if (end == 0) {
+          timer.cancel();
+          chatView = true;
+          update(['chat']);
+          _startTimer();
+        } else {
+          _end.value--;
+        }
+      },
+    );
   }
 
   void _startTimer() {
@@ -20,11 +41,7 @@ class VivoLogic extends GetxController {
     _timer = Timer.periodic(
       oneSec,
       (Timer timer) {
-        if (start == 0) {
-          timer.cancel();
-        } else {
-          _start.value--;
-        }
+        _start.value++;
       },
     );
   }

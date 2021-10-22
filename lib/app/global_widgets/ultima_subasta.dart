@@ -190,7 +190,7 @@ class UltimaSubastaWid extends StatelessWidget {
                             color: ColorsUtils.orange1,
                           ),
                           ImageIcon(
-                            AssetImage('assets/icons/pujas.png'),
+                            AssetImage('assets/icons/mano.png'),
                             color: ColorsUtils.blue3,
                             size: 40,
                           ),

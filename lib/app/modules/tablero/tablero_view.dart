@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/utils/colors_utils.dart';
@@ -311,67 +312,197 @@ class TableroPage extends StatelessWidget {
                                         runSpacing: 20,
                                         children: [
                                           Container(
-                                              width: 160,
-                                              height: 125,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color:
-                                                      const Color(0xff5CB85C))),
+                                            width: 160,
+                                            height: 125,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: const Color(0xff5CB85C)),
+                                            padding: const EdgeInsets.all(10),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: RichText(
+                                                  text:
+                                                      const TextSpan(children: [
+                                                TextSpan(
+                                                    text: '42\n',
+                                                    style: TextStyle(
+                                                        fontSize: 40,
+                                                        color:
+                                                            ColorsUtils.white,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text: 'Subasta aprobada',
+                                                    style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                    )),
+                                              ])),
+                                            ),
+                                          ),
                                           Container(
-                                              width: 160,
-                                              height: 125,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color:
-                                                      const Color(0xffF0F0F0))),
+                                            width: 160,
+                                            height: 125,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: const Color(0xffF0F0F0)),
+                                            padding: const EdgeInsets.all(10),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: RichText(
+                                                  text:
+                                                      const TextSpan(children: [
+                                                TextSpan(
+                                                    text: '12\n',
+                                                    style: TextStyle(
+                                                        fontSize: 40,
+                                                        color:
+                                                            ColorsUtils.black,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text: 'Subasta pendiente',
+                                                    style: TextStyle(
+                                                      color: ColorsUtils.black,
+                                                    )),
+                                              ])),
+                                            ),
+                                          ),
                                           Container(
-                                              width: 160,
-                                              height: 125,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color:
-                                                      const Color(0xffD9534F))),
+                                            width: 160,
+                                            height: 125,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: const Color(0xffD9534F)),
+                                            padding: const EdgeInsets.all(10),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: RichText(
+                                                  text:
+                                                      const TextSpan(children: [
+                                                TextSpan(
+                                                    text: '07\n',
+                                                    style: TextStyle(
+                                                        fontSize: 40,
+                                                        color:
+                                                            ColorsUtils.white,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text: 'Bloqueadas',
+                                                    style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                    )),
+                                              ])),
+                                            ),
+                                          ),
                                           Container(
-                                              width: 160,
-                                              height: 125,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color:
-                                                      const Color(0xffF0AD4E))),
+                                            width: 160,
+                                            height: 125,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: const Color(0xffF0AD4E)),
+                                            padding: const EdgeInsets.all(10),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: RichText(
+                                                  text:
+                                                      const TextSpan(children: [
+                                                TextSpan(
+                                                    text: '33\n',
+                                                    style: TextStyle(
+                                                        fontSize: 40,
+                                                        color:
+                                                            ColorsUtils.white,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text: 'Informes',
+                                                    style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                    )),
+                                              ])),
+                                            ),
+                                          ),
                                           Container(
-                                              width: 160,
-                                              height: 125,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color:
-                                                      const Color(0xff3277B2))),
+                                            width: 160,
+                                            height: 125,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: const Color(0xff3277B2)),
+                                            padding: const EdgeInsets.all(10),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: RichText(
+                                                  text:
+                                                      const TextSpan(children: [
+                                                TextSpan(
+                                                    text: '23\n',
+                                                    style: TextStyle(
+                                                        fontSize: 40,
+                                                        color:
+                                                            ColorsUtils.white,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text: 'Concretados',
+                                                    style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                    )),
+                                              ])),
+                                            ),
+                                          ),
                                           Container(
-                                              width: 160,
-                                              height: 125,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color:
-                                                      const Color(0xffFF6B00))),
+                                            width: 160,
+                                            height: 125,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                color: const Color(0xffFF6B00)),
+                                            padding: const EdgeInsets.all(10),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: RichText(
+                                                  text:
+                                                      const TextSpan(children: [
+                                                TextSpan(
+                                                    text: '00\n',
+                                                    style: TextStyle(
+                                                        fontSize: 40,
+                                                        color:
+                                                            ColorsUtils.white,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                                TextSpan(
+                                                    text: 'Ofertas en proceso',
+                                                    style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                    )),
+                                              ])),
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
                                     const SizedBox(height: 20),
-                                    Container(
-                                      width: web ? (width * 0.5) - 10 : width,
-                                      decoration: const BoxDecoration(
-                                          color: Color(0xffF9F9F9)),
-                                      child: const Center(
-                                        child: Text(
-                                          'Ver historial de participación',
-                                          style: TextStyle(
-                                              color: Color(0xffFF0000),
-                                              fontSize: 15),
+                                    MouseRegion(cursor: SystemMouseCursors.click,
+                                      child: GestureDetector(
+                                        child: Container(
+                                          width: web ? (width * 0.5) - 10 : width,
+                                          decoration: const BoxDecoration(
+                                              color: Color(0xffF9F9F9)),
+                                          child: const Center(
+                                            child: Text(
+                                              'Ver historial de participación',
+                                              style: TextStyle(
+                                                  color: Color(0xffFF0000),
+                                                  fontSize: 15),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -523,12 +654,11 @@ class TableroPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15)),
                           width: 264,
                           height: 264,
-                          child: const Center(
-                            child: Icon(
-                              Icons.settings,
-                              color: ColorsUtils.grey1,
-                            ),
-                          ),
+                          child:  Center(
+                              child: ImageIcon(
+                                const  AssetImage('assets/icons/corazon.png'),
+                            color: ColorsUtils.grey1.withOpacity(0.5),
+                          )),
                         ),
                         itemCount: 5,
                       ),
@@ -573,12 +703,11 @@ class TableroPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15)),
                           width: 354,
                           height: 101,
-                          child: const Center(
-                            child: Icon(
-                              Icons.settings,
-                              color: ColorsUtils.grey1,
-                            ),
-                          ),
+                          child: Center(
+                              child: ImageIcon(
+                                const  AssetImage('assets/icons/carro.png'),
+                                color: ColorsUtils.grey1.withOpacity(0.5),
+                              )),
                         ),
                         itemCount: 5,
                       ),

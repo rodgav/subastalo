@@ -53,7 +53,7 @@ class FooterWid extends StatelessWidget {
                   const SizedBox(height: 30),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
                     ImageIcon(
-                      AssetImage('assets/icons/image.png'),
+                      AssetImage('assets/icons/imagen2.png'),
                       color: ColorsUtils.white,
                       size: 14,
                     ),
@@ -68,7 +68,7 @@ class FooterWid extends StatelessWidget {
                   const SizedBox(height: 20),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
                     ImageIcon(
-                      AssetImage('assets/icons/image.png'),
+                      AssetImage('assets/icons/imagen2.png'),
                       color: ColorsUtils.white,
                       size: 14,
                     ),
@@ -83,7 +83,7 @@ class FooterWid extends StatelessWidget {
                   const SizedBox(height: 20),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
                     ImageIcon(
-                      AssetImage('assets/icons/image.png'),
+                      AssetImage('assets/icons/imagen2.png'),
                       color: ColorsUtils.white,
                       size: 14,
                     ),
@@ -98,7 +98,7 @@ class FooterWid extends StatelessWidget {
                   SizedBox(height: web ? 80 : 40),
                   Row(mainAxisSize: MainAxisSize.min, children: const [
                     ImageIcon(
-                      AssetImage('assets/icons/secure.png'),
+                      AssetImage('assets/icons/calidad.png'),
                       color: ColorsUtils.white,
                       size: 14,
                     ),

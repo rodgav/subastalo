@@ -89,7 +89,7 @@ class Destacado2 extends StatelessWidget {
                         child: Row(
                           children: [
                             const ImageIcon(
-                             AssetImage('assets/icons/calendario.png'),
+                             AssetImage('assets/icons/calendario2.png'),
                               color: ColorsUtils.grey2,
                               size: 17,
                             ),

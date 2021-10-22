@@ -80,7 +80,7 @@ class OfertaNegociableWid extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Image.asset('assets/icons/compra.png',
+                    Image.asset('assets/icons/bolsa.png',
                         width: 180, height: 180),
                     ButtonWid(
                         width: 250,

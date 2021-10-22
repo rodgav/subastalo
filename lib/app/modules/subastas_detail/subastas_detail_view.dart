@@ -158,7 +158,7 @@ class SubastasDetailPage extends StatelessWidget {
                                           voidCallback: () =>
                                               subasta.type == 'Vivo'
                                                   ? _.subasEnVivo('123')
-                                                  : null),
+                                                  : _.subastaNegociar('123')),
                                       const SizedBox(height: 20),
                                       Row(
                                         mainAxisSize: MainAxisSize.min,

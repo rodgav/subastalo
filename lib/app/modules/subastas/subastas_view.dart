@@ -179,7 +179,7 @@ class SubastasPage extends StatelessWidget {
                             iconSize: 65,
                             onPressed: () => null,
                             icon: const ImageIcon(
-                              AssetImage('assets/icons/mensaje.png'),
+                              AssetImage('assets/icons/mensaje3.png'),
                               color: ColorsUtils.white,
                             )),
                       ))

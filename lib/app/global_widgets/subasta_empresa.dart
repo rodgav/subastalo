@@ -84,7 +84,7 @@ class SubastaEmpresa extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: const [
                   ImageIcon(
-                    AssetImage('assets/icons/negociar.png'),
+                    AssetImage('assets/icons/martillo.png'),
                     color: ColorsUtils.blue3,
                     size: 15,
                   ),

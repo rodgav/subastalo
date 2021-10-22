@@ -25,7 +25,7 @@ class Card1Wid extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const ImageIcon(
-              AssetImage('assets/icons/negociar.png'),
+              AssetImage('assets/icons/martillo.png'),
               color: ColorsUtils.orange1,
             ),
             const Text(

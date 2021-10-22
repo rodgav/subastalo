@@ -35,7 +35,7 @@ class DrawerWid extends StatelessWidget {
                     color: const Color(0xff253238),
                     child: ExpansionTile(
                       leading: const ImageIcon(
-                        AssetImage('assets/icons/subasta.png'),
+                        AssetImage('assets/icons/martillo1.png'),
                         color: ColorsUtils.white,
                       ),
                       title: const Text(
@@ -111,7 +111,7 @@ class DrawerWid extends StatelessWidget {
                     color: const Color(0xff253238),
                     child: ExpansionTile(
                       leading: const ImageIcon(
-                        AssetImage('assets/icons/subasta.png'),
+                        AssetImage('assets/icons/martillo1.png'),
                         color: ColorsUtils.white,
                       ),
                       title: const Text(
@@ -201,7 +201,7 @@ class DrawerWid extends StatelessWidget {
                   ListTile(
                     tileColor: const Color(0xff253238),
                     leading: const ImageIcon(
-                      AssetImage('assets/icons/informe.png'),
+                      AssetImage('assets/icons/info.png'),
                       color: ColorsUtils.white,
                     ),
                     title: const Text(
@@ -215,7 +215,7 @@ class DrawerWid extends StatelessWidget {
                   ListTile(
                     tileColor: const Color(0xff253238),
                     leading: const ImageIcon(
-                      AssetImage('assets/icons/usuarios.png'),
+                      AssetImage('assets/icons/personas.png'),
                       color: ColorsUtils.white,
                     ),
                     title: const Text(
@@ -229,7 +229,7 @@ class DrawerWid extends StatelessWidget {
                   ListTile(
                     tileColor: const Color(0xff253238),
                     leading: const ImageIcon(
-                      AssetImage('assets/icons/campanas.png'),
+                      AssetImage('assets/icons/campañas.png'),
                       color: ColorsUtils.white,
                     ),
                     title: const Text(
@@ -285,7 +285,7 @@ class DrawerWid extends StatelessWidget {
                   ListTile(
                     tileColor: const Color(0xff253238),
                     leading: const ImageIcon(
-                      AssetImage('assets/icons/usuarios.png'),
+                      AssetImage('assets/icons/personas.png'),
                       color: ColorsUtils.white,
                     ),
                     title: const Text(
@@ -299,7 +299,7 @@ class DrawerWid extends StatelessWidget {
                   ListTile(
                     tileColor: const Color(0xff253238),
                     leading: const ImageIcon(
-                      AssetImage('assets/icons/pagos.png'),
+                      AssetImage('assets/icons/mano.png'),
                       color: ColorsUtils.white,
                     ),
                     title: const Text(

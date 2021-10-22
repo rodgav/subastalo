@@ -2,7 +2,7 @@
   "categorias": [
     {
       "name": "Vehículos",
-      "asset": "assets/icons/vehiculo.png",
+      "asset": "assets/icons/carro.png",
       "data": [
         {
           "id": "1231",
@@ -12,7 +12,7 @@
     },
     {
       "name": "Propiedades",
-      "asset": "assets/icons/propiedad.png",
+      "asset": "assets/icons/propiedades.png",
       "data": [
         {
           "id": "1233",
@@ -42,7 +42,7 @@
     },
     {
       "name": "Repuestos",
-      "asset": "assets/icons/repuesto.png",
+      "asset": "assets/icons/repuestos.png",
       "data": [
         {
           "id": "1238",
@@ -92,7 +92,7 @@
     },
     {
       "name": "Ubicaciones",
-      "asset": "assets/icons/ubicacion.png",
+      "asset": "assets/icons/ubicaciones.png",
       "data": [
         {
           "id": "1239",

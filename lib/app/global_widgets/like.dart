@@ -25,13 +25,12 @@ class Like extends StatelessWidget {
           right: right,
           left: left,
           child: Container(
-            width: 50,
-            height: 50,
+            padding:const EdgeInsets.all(8),
             decoration: const BoxDecoration(
                 color: ColorsUtils.white, shape: BoxShape.circle),
             child: const ImageIcon(
-              AssetImage('assets/icons/like.png'),
-              size: 21,
+              AssetImage('assets/icons/corazon3.png'),
+              size: 24,
               color: ColorsUtils.orange1,
             ),
           ),
