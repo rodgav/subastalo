@@ -21,7 +21,8 @@ class ItemMiFavorita extends StatelessWidget {
           borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.all(10),
       child: Center(
-        child: Wrap(
+        child: Wrap(    alignment: web?WrapAlignment.start:WrapAlignment.center,
+          runAlignment: web?WrapAlignment.start:WrapAlignment.center,
           spacing: 20,
           runSpacing: 20,
           crossAxisAlignment: WrapCrossAlignment.center,
@@ -95,28 +96,14 @@ class ItemMiFavorita extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(width: web ? 50 : 0),
-            Column(
-              children: [
-                const SizedBox(
-                  height: 60,
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SizedBox(width: 163),
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.blueButt1,
-                        color2: ColorsUtils.blueButt2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Decartar',
-                        voidCallback: () => null),
-                  ],
-                )
-              ],
-            )
+            ButtonIconWid(
+                width: 153,
+                height: 40,
+                color1: ColorsUtils.blueButt1,
+                color2: ColorsUtils.blueButt2,
+                assetIcon: 'assets/icons/buscar.png',
+                textButt: 'Decartar',
+                voidCallback: () => null),
           ],
         ),
       ),

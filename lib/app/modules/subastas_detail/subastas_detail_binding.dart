@@ -5,7 +5,7 @@ import 'subastas_detail_logic.dart';
 class SubastasDetailBinding extends Bindings {
   @override
   void dependencies() {
-    Get.create<SubastasDetailLogic>(
+    Get.lazyPut<SubastasDetailLogic>(
         () => SubastasDetailLogic(Get.parameters['subastaId'] ?? ''));
   }
 }

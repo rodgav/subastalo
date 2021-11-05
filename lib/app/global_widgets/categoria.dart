@@ -6,10 +6,9 @@ import 'package:subastalo/utils/colors_utils.dart';
 
 class CategoriaWid extends StatelessWidget {
   final Categoria categoria;
-  final Datum? datumSelect;
 
   const CategoriaWid(
-      {Key? key, required this.categoria, required this.datumSelect})
+      {Key? key, required this.categoria})
       : super(key: key);
 
   @override
@@ -47,7 +46,6 @@ class CategoriaWid extends StatelessWidget {
                       .toList(),
                   onChanged: (value) =>
                       _.datumSelect(value as Datum, categoria.name),
-                  value: datumSelect,
                 )),
           ],
         ),

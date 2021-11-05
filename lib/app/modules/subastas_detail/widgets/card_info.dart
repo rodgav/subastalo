@@ -30,11 +30,12 @@ class CardInfoSubDet extends StatelessWidget {
             children: [
               SizedBox(
                 width: web ? 420 : double.infinity,
-                child: Column(
-                  crossAxisAlignment: web
-                      ? CrossAxisAlignment.start
-                      : CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                child: Wrap(  runAlignment:
+                web ? WrapAlignment.spaceBetween : WrapAlignment.center,
+                  alignment: web ? WrapAlignment.spaceBetween : WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  runSpacing: 20,
+                  spacing: 20,
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.min,
@@ -67,7 +68,6 @@ class CardInfoSubDet extends StatelessWidget {
                         )
                       ],
                     ),
-                    const SizedBox(height: 20),
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
@@ -75,6 +75,9 @@ class CardInfoSubDet extends StatelessWidget {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(50)),
                       child: Wrap(
+                        alignment:web?WrapAlignment.spaceBetween: WrapAlignment.center,
+                        runAlignment:web?WrapAlignment.spaceBetween: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.min,
@@ -89,18 +92,21 @@ class CardInfoSubDet extends StatelessWidget {
                               const SizedBox(
                                 width: 5,
                               ),
-                              Text(
-                                subasta.type == 'Vivo'
-                                    ? 'Abierto para ofertas'
-                                    : 'Abierto para negociaciones',
-                                style: TextStyle(
-                                    color: subasta.type == 'Vivo'
-                                        ? ColorsUtils.orange2
-                                        : ColorsUtils.blue3),
+                              Expanded(
+                                child: Text(
+                                  subasta.type == 'Vivo'
+                                      ? 'Abierto para ofertas'
+                                      : 'Abierto para negociaciones',
+                                  style: TextStyle(
+                                      color: subasta.type == 'Vivo'
+                                          ? ColorsUtils.orange2
+                                          : ColorsUtils.blue3),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               )
                             ],
                           ),
-                          const SizedBox(width: 20),
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [

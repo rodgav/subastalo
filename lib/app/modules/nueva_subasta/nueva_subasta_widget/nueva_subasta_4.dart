@@ -13,7 +13,7 @@ class NuevaSubasta4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;final bool web = size.width > 800;
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(15),
@@ -24,7 +24,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const Text('ID de vendedor', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: size.width * 0.3,
+                width: web?size.width * 0.3:size.width,
                 hint: 'Nombre',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -33,7 +33,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const Text('Vendedor nombre', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: size.width * 0.3,
+                width: web?size.width * 0.3:size.width,
                 hint: 'Nombre',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -43,7 +43,7 @@ class NuevaSubasta4 extends StatelessWidget {
                 style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: size.width * 0.3,
+                width: web?size.width * 0.3:size.width,
                 hint: 'Nombre',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -52,7 +52,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const Text('Vendedor Email', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: size.width * 0.3,
+                width: web?size.width * 0.3:size.width,
                 hint: 'subasta@subasta.com',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -61,7 +61,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const Text('Vendedor teléfono', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: size.width * 0.3,
+                width: web?size.width * 0.3:size.width,
                 hint: 'Teléfono',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -70,7 +70,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const Text('Dirección', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: size.width * 0.3,
+                width: web?size.width * 0.3:size.width,
                 hint: 'Dirección',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -87,7 +87,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const SizedBox(height: 40),
             Center(
               child: ButtonWid(
-                  width: size.width * 0.15,
+                  width:web? size.width * 0.15: size.width *0.5,
                   height: 50,
                   color1: ColorsUtils.blueButt1,
                   color2: ColorsUtils.blueButt2,

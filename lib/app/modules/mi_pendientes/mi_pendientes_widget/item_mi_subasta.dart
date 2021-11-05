@@ -22,6 +22,8 @@ class ItemMiPendiente extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Center(
         child: Wrap(
+          alignment: web?WrapAlignment.start:WrapAlignment.center,
+          runAlignment: web?WrapAlignment.start:WrapAlignment.center,
           spacing: 20,
           runSpacing: 20,
           crossAxisAlignment: WrapCrossAlignment.center,

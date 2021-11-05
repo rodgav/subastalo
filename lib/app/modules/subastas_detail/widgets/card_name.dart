@@ -51,6 +51,8 @@ class CardNameSubDet extends StatelessWidget {
                       fontSize: 30,
                       color: ColorsUtils.blue3,
                       fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
                 )
               ],
             )));

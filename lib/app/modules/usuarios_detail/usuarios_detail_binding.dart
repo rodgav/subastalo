@@ -5,7 +5,7 @@ import 'usuarios_detail_logic.dart';
 class UsuariosDetailBinding extends Bindings {
   @override
   void dependencies() {
-    Get.create<UsuariosDetailLogic>(
+    Get.lazyPut<UsuariosDetailLogic>(
         () => UsuariosDetailLogic(Get.parameters['usuarioId'] ?? ''));
   }
 }

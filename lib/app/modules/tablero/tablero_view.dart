@@ -489,10 +489,12 @@ class TableroPage extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(height: 20),
-                                    MouseRegion(cursor: SystemMouseCursors.click,
+                                    MouseRegion(
+                                      cursor: SystemMouseCursors.click,
                                       child: GestureDetector(
                                         child: Container(
-                                          width: web ? (width * 0.5) - 10 : width,
+                                          width:
+                                              web ? (width * 0.5) - 10 : width,
                                           decoration: const BoxDecoration(
                                               color: Color(0xffF9F9F9)),
                                           child: const Center(
@@ -536,18 +538,23 @@ class TableroPage extends StatelessWidget {
                                   color: ColorsUtils.red,
                                 ),
                                 const SizedBox(width: 10),
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Text('Albert Herrera',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    Text(
-                                        'Resumen del contenido o mensaje recibido...',
-                                        style: TextStyle(fontSize: 13))
-                                  ],
-                                )
+                                Expanded(
+                                  child: RichText(
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                    text:const TextSpan(children: [
+                                      TextSpan(
+                                          text: 'Albert Herrera\n',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      TextSpan(
+                                        text:
+                                            'Resumen del contenido o mensaje recibido...',
+                                        style: TextStyle(fontSize: 13),
+                                      )
+                                    ]),
+                                  ),
+                                ),
                               ],
                             ),
                             Container(
@@ -654,9 +661,9 @@ class TableroPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15)),
                           width: 264,
                           height: 264,
-                          child:  Center(
+                          child: Center(
                               child: ImageIcon(
-                                const  AssetImage('assets/icons/corazon.png'),
+                            const AssetImage('assets/icons/corazon.png'),
                             color: ColorsUtils.grey1.withOpacity(0.5),
                           )),
                         ),
@@ -705,9 +712,9 @@ class TableroPage extends StatelessWidget {
                           height: 101,
                           child: Center(
                               child: ImageIcon(
-                                const  AssetImage('assets/icons/carro.png'),
-                                color: ColorsUtils.grey1.withOpacity(0.5),
-                              )),
+                            const AssetImage('assets/icons/carro.png'),
+                            color: ColorsUtils.grey1.withOpacity(0.5),
+                          )),
                         ),
                         itemCount: 5,
                       ),

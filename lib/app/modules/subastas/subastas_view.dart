@@ -290,6 +290,7 @@ class SubastasPage extends StatelessWidget {
                       ? Column(
                           children: [
                             Container(
+                              width:size.width,
                               margin: EdgeInsets.only(
                                   top: 10,
                                   left: web ? 50 : 20,
@@ -344,7 +345,7 @@ class SubastasPage extends StatelessWidget {
                   return subastas != null
                       ? Column(
                           children: [
-                            Container(
+                            Container(width:size.width,
                               margin: EdgeInsets.only(
                                   top: 10,
                                   left: web ? 50 : 20,
@@ -397,9 +398,10 @@ class SubastasPage extends StatelessWidget {
               color: const Color(0xfff2f2f2),
               padding: EdgeInsets.all(web ? 50 : 20),
               child: Wrap(
-                alignment: WrapAlignment.spaceBetween,
+                alignment:web?WrapAlignment.spaceBetween: WrapAlignment.center,
                 runAlignment: WrapAlignment.spaceBetween,
                 crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 20,runSpacing: 20,
                 children: [
                   OfertaNegociableWid(voidCallback: () => null),
                   const UltimaSubastaWid()
@@ -410,25 +412,26 @@ class SubastasPage extends StatelessWidget {
               width: size.width,
               padding: EdgeInsets.all(web ? 50 : 20),
               child: Wrap(
-                alignment: WrapAlignment.spaceBetween,
-                runAlignment: WrapAlignment.spaceBetween,
+                alignment:web?WrapAlignment.spaceBetween: WrapAlignment.center,
+                runAlignment: WrapAlignment.spaceBetween ,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   SizedBox(
                     width: web ? size.width * 0.5 : size.width,
                     child: Wrap(
+                      alignment:web?WrapAlignment.spaceBetween: WrapAlignment.center,
                       crossAxisAlignment: WrapCrossAlignment.end,
                       children: [
                         SizedBox(
                           width: web ? size.width * 0.3 : size.width,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: web? CrossAxisAlignment.start:CrossAxisAlignment.center,
                             children: [
                               SizedBox(
                                   width: web ? size.width * 0.3 : size.width,
                                   child: Wrap(
                                       runAlignment: WrapAlignment.spaceBetween,
-                                      alignment: WrapAlignment.spaceBetween,
+                                      alignment:web?WrapAlignment.spaceBetween: WrapAlignment.center,
                                       children: const [
                                         Text(
                                           'Ofertas en vivo',

@@ -18,9 +18,13 @@ class UltimaSubastaWid extends StatelessWidget {
           children: [
             Image.asset('assets/icons/copa.png', width: 78, height: 78),
             const SizedBox(width: 20),
-            const Text(
-              'MIRA LA ÚLTIMA \n SUBASTA',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            const Expanded(
+              child:  Text(
+                'MIRA LA ÚLTIMA \n SUBASTA',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ),
             )
           ],
         ),
@@ -139,11 +143,15 @@ class UltimaSubastaWid extends StatelessWidget {
                             style: TextStyle(
                                 color: ColorsUtils.blue3, fontSize: 12),
                           ),
-                          const Text(
-                            '“No habia participado en subastas en línea,'
-                            ' me guiaron desde el principio y pude participar,'
-                            ' me sentí a gusto”',
-                            style: TextStyle(fontSize: 10),
+                          const   Expanded(
+                            child:  Text(
+                              '“No habia participado en subastas en línea,'
+                              ' me guiaron desde el principio y pude participar,'
+                              ' me sentí a gusto”',
+                              style: TextStyle(fontSize: 10),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.min,

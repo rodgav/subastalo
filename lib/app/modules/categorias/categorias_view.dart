@@ -48,7 +48,7 @@ class CategoriasPage extends StatelessWidget {
                             SizedBox(
                                 height: 35,
                                 child: TxtFieldBor(
-                                    width: width * 0.25,
+                                    width: web ? width * 0.25 : width,
                                     hint: 'Ingresar nombre de categoria',
                                     icon: null,
                                     enabledBorder:
@@ -67,7 +67,7 @@ class CategoriasPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 5),
                             TxtFieldBor(
-                                width: width * 0.65,
+                                width: web ? width * 0.65 : width,
                                 hint: 'Ingresar breve descripción...',
                                 maxLines: 2,
                                 icon: null,
@@ -78,6 +78,9 @@ class CategoriasPage extends StatelessWidget {
                           ],
                         ),
                       ],
+                    ),
+                    const SizedBox(
+                      height: 10,
                     ),
                     Row(
                       mainAxisAlignment: web
@@ -94,72 +97,87 @@ class CategoriasPage extends StatelessWidget {
                       ],
                     ),
                     const Divider(height: 20),
-                    DataTable(columns: [
-                      DataColumn(
-                          label: Checkbox(value: false, onChanged: (value) {})),
-                      const DataColumn(
-                          label: Text(
-                        'ID',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Nombre de categoría',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Creado',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Acciones',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Acciones',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                    ], rows: [
-                      DataRow(cells: [
-                        DataCell(Checkbox(value: false, onChanged: (value) {})),
-                        const DataCell(Text('001')),
-                        const DataCell(Text('Autos & Otros Vehículos (0)')),
-                        const DataCell(Text('05/12/2020')),
-                        DataCell(
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Text(
-                                  'Editar categoría',
-                                  style: TextStyle(color: ColorsUtils.blue3),
-                                ),
-                                SizedBox(width: 5),
-                                Icon(Icons.edit, color: ColorsUtils.blue3)
-                              ],
-                            ),
-                            onTap: logic.editCateg),
-                        DataCell(Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Text(
-                              'Eliminar categoría',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.restore_from_trash_sharp,
-                                color: Colors.red)
-                          ],
-                        )),
-                      ])
-                    ])
+                    web
+                        ? DataTable(columns: [
+                            DataColumn(
+                                label: Checkbox(
+                                    value: false, onChanged: (value) {})),
+                            const DataColumn(
+                                label: Text(
+                              'ID',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            const DataColumn(
+                                label: Text(
+                              'Nombre de categoría',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            const DataColumn(
+                                label: Text(
+                              'Creado',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            const DataColumn(
+                                label: Text(
+                              'Acciones',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            const DataColumn(
+                                label: Text(
+                              'Acciones',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                          ], rows: [
+                            DataRow(cells: [
+                              DataCell(Checkbox(
+                                  value: false, onChanged: (value) {})),
+                              const DataCell(Text('001')),
+                              const DataCell(
+                                  Text('Autos & Otros Vehículos (0)')),
+                              const DataCell(Text('05/12/2020')),
+                              DataCell(
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: const [
+                                      Text(
+                                        'Editar categoría',
+                                        style:
+                                            TextStyle(color: ColorsUtils.blue3),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Icon(Icons.edit, color: ColorsUtils.blue3)
+                                    ],
+                                  ),
+                                  onTap: logic.editCateg),
+                              DataCell(Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: const [
+                                  Text(
+                                    'Eliminar categoría',
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                  SizedBox(width: 5),
+                                  Icon(Icons.restore_from_trash_sharp,
+                                      color: Colors.red)
+                                ],
+                              )),
+                            ])
+                          ])
+                        : ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (__, index) {
+                              return const ListTile(
+                                title: Text('Nombre categoria'),
+                              );
+                            },separatorBuilder: (__,index)=>const Divider(),
+                            itemCount: 2,
+                          ),
                   ],
                 )));
       },

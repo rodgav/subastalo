@@ -1,10 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 
 class DashboardLogic extends GetxController {
+  final GlobalKey<ScaffoldState> scaffoldKeyHome = GlobalKey<ScaffoldState>();
+
   String _select = '';
 
   String get select => _select;
+
+  void toVender() {
+    Get.rootDelegate.toNamed(Routes.vender);
+  }
 
   void toHome(String? location) {
     if (location != '/' &&

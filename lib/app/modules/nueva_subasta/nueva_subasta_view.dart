@@ -26,14 +26,14 @@ class NuevaSubastaPage extends StatelessWidget {
         children: [
           Center(
             child: Container(
-              width: size.width * 0.3,
+              width: size.width ,
               height: size.height * 0.1,
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: Stack(
                 children: [
                   Center(
                     child: Container(
-                        width: size.width * 0.3,
+                        width: size.width,
                         height: 2,
                         color: ColorsUtils.blue3),
                   ),
@@ -188,7 +188,7 @@ class NuevaSubastaPage extends StatelessWidget {
                     final selected = _.selected;
                     return Center(
                       child: Container(
-                        width: size.width * 0.3,
+                        width: size.width,
                         decoration: BoxDecoration(
                             color: ColorsUtils.white,
                             borderRadius: BorderRadius.circular(5)),

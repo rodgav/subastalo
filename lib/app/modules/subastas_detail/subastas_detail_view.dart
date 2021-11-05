@@ -324,46 +324,49 @@ class SubastasDetailPage extends StatelessWidget {
                                                 ),
                                               ]),
                                           SizedBox(
-                                            height: 700,
+                                            height: 600,
                                             child: TabBarView(children: [
-                                              Container(
-                                                padding:
-                                                    const EdgeInsets.all(20),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    const Text('Descripción',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 20)),
-                                                    const SizedBox(
-                                                      height: 20,
-                                                    ),
-                                                    Text(subasta.description,
-                                                        style: const TextStyle(
-                                                          fontSize: 20,
-                                                        )),
-                                                    const SizedBox(
-                                                      height: 20,
-                                                    ),
-                                                    const Text('Ficha Técnica',
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontSize: 20)),
-                                                    const SizedBox(
-                                                      height: 20,
-                                                    ),
-                                                    Text(subasta.fileTecnique,
-                                                        style: const TextStyle(
-                                                          fontSize: 20,
-                                                        )),
-                                                  ],
+                                              SingleChildScrollView(
+                                                child: Container(
+                                                  padding:
+                                                      const EdgeInsets.all(20),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      const Text('Descripción',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight.bold,
+                                                              fontSize: 20)),
+                                                      const SizedBox(
+                                                        height: 20,
+                                                      ),
+                                                      Text(subasta.description,
+                                                          style: const TextStyle(
+                                                            fontSize: 20,
+                                                          )),
+                                                      const SizedBox(
+                                                        height: 20,
+                                                      ),
+                                                      const Text('Ficha Técnica',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight.bold,
+                                                              fontSize: 20)),
+                                                      const SizedBox(
+                                                        height: 20,
+                                                      ),
+                                                      Text(subasta.fileTecnique,
+                                                          style: const TextStyle(
+                                                            fontSize: 20,
+                                                          ),overflow: TextOverflow.ellipsis,),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                              Container(
+                                  SingleChildScrollView(
+                                      child: Container(
                                                 padding:
                                                     const EdgeInsets.all(20),
                                                 child: Column(
@@ -458,7 +461,7 @@ class SubastasDetailPage extends StatelessWidget {
                                                     ),
                                                   ],
                                                 ),
-                                              ),
+                                              ),)
                                             ]),
                                           ),
                                         ],
@@ -515,7 +518,7 @@ class SubastasDetailPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: web ? 100 : 20),
+                            //SizedBox(height: web ? 100 : 20),
                             const FooterWid()
                           ])),
                 )

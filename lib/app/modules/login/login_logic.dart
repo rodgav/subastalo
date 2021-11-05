@@ -17,7 +17,7 @@ class LoginLogic extends GetxController {
   }
 
   void login() async {
-    AuthService.to.login('123456');
+    await AuthService.to.login('123456');
     Get.rootDelegate.offNamed(Routes.dashboard);
   }
 }

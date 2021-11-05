@@ -5,7 +5,7 @@ import 'mensaje_detail_logic.dart';
 class MensajeDetailBinding extends Bindings {
   @override
   void dependencies() {
-    Get.create<MensajeDetailLogic>(
+    Get.lazyPut<MensajeDetailLogic>(
         () => MensajeDetailLogic(Get.parameters['mensajeId'] ?? ''));
   }
 }

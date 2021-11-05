@@ -21,7 +21,7 @@ class Destacado1 extends StatelessWidget {
     return Container(
       width: 300,
       height: 450,
-      margin: EdgeInsets.only(right: web ? 50 : 10, left:  web?40:10, top: 5, bottom: 5),
+      margin: EdgeInsets.only(left:  web?40:10, top: 5, bottom: 5),
       decoration: BoxDecoration(
           color: ColorsUtils.white,
           borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -31,122 +31,115 @@ class Destacado1 extends StatelessWidget {
                 offset: const Offset(0, 2),
                 blurRadius: 5)
           ]),
-      child: Column(
-        children: [
-          Container(
-              width: 300,
-              height: 150,
-              decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      topLeft: Radius.circular(20)),
-                  image: DecorationImage(
-                    image: AssetImage(subasta.imagePrimary),
-                    fit: BoxFit.cover,
-                  )),
-              child: const Like(right: 10, top: 10)),
-          Container(
-            width: 300,
-            height: 300,
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: Container(
+        width: 300,
+
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              subasta.name,
+              style: const TextStyle(
+                  fontSize: 13, fontWeight: FontWeight.w900),
+              textAlign: TextAlign.justify,
+            ),
+            Container(
+                width: 300,
+                height: 150,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(subasta.imagePrimary),
+                      fit: BoxFit.cover,
+                    )),
+                child: const Like(right: 10, top: 10)),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                const Text(
+                  'VENDEDOR',
+                  style: TextStyle(fontSize: 9),
+                ),
                 Text(
-                  subasta.name,
-                  style: const TextStyle(
-                      fontSize: 13, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.justify,
+                  subasta.nameVendedor,
+                  style: const TextStyle(fontSize: 9),
                 ),
-                const SizedBox(
-                  height: 15,
+              ],
+            ),
+            const Divider(
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ImageIcon(
+                  const AssetImage('assets/icons/martillo.png'),
+                  color: subasta.type == 'Vivo'
+                      ? ColorsUtils.orange2
+                      : ColorsUtils.blue3,
+                  size: 20,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'VENDEDOR',
-                      style: TextStyle(fontSize: 9),
-                    ),
-                    Text(
-                      subasta.nameVendedor,
-                      style: const TextStyle(fontSize: 9),
-                    ),
-                  ],
-                ),
-                const Divider(
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ImageIcon(
-                      const AssetImage('assets/icons/martillo.png'),
+                const SizedBox(width: 5),
+                Text(
+                  'Abierto para negociaciones',
+                  style: TextStyle(
                       color: subasta.type == 'Vivo'
                           ? ColorsUtils.orange2
                           : ColorsUtils.blue3,
-                      size: 20,
-                    ),
-                    const SizedBox(width: 5),
-                    Text(
-                      'Abierto para negociaciones',
-                      style: TextStyle(
-                          color: subasta.type == 'Vivo'
-                              ? ColorsUtils.orange2
-                              : ColorsUtils.blue3,
-                          fontSize: 8),
-                    )
-                  ],
-                ),
-                Column(
-                  children: const [
-                    Text('Esta oferta negociable se cierra el',
-                        style: TextStyle(fontSize: 10)),
-                    Text('Miercoles 28 de Oct. | 8:00 PM',
-                        style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold)),
-                  ],
-                ),
-                ButtonWid(
-                    width: 200,
-                    height: 50,
-                    color1: subasta.type == 'Vivo'
-                        ? ColorsUtils.orange1
-                        : ColorsUtils.blueButt1,
-                    color2: subasta.type == 'Vivo'
-                        ? ColorsUtils.orange2
-                        : ColorsUtils.blueButt2,
-                    textButt: subasta.type == 'Vivo'
-                        ? 'Deseo participar'
-                        : 'Quiero negociar',
-                    voidCallback: voidCallback),
-                Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: ColorsUtils.grey1.withOpacity(0.5))),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const ImageIcon(
-                        AssetImage('assets/icons/ojo.png'),
-                        color: ColorsUtils.blue3,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        '${subasta.views} visitantes',
-                        style: const TextStyle(
-                          color: ColorsUtils.blue3,
-                        ),
-                      )
-                    ],
-                  ),
+                      fontSize: 8),
                 )
               ],
             ),
-          )
-        ],
+            Column(
+              children: const [
+                Text('Esta oferta negociable se cierra el',
+                    style: TextStyle(fontSize: 10)),
+                Text('Miercoles 28 de Oct. | 8:00 PM',
+                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold)),
+              ],
+            ),
+            ButtonWid(
+                width: 200,
+                height: 50,
+                color1: subasta.type == 'Vivo'
+                    ? ColorsUtils.orange1
+                    : ColorsUtils.blueButt1,
+                color2: subasta.type == 'Vivo'
+                    ? ColorsUtils.orange2
+                    : ColorsUtils.blueButt2,
+                textButt: subasta.type == 'Vivo'
+                    ? 'Deseo participar'
+                    : 'Quiero negociar',
+                voidCallback: voidCallback),
+            Container(
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: ColorsUtils.grey1.withOpacity(0.5))),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const ImageIcon(
+                    AssetImage('assets/icons/ojo.png'),
+                    color: ColorsUtils.blue3,
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    '${subasta.views} visitantes',
+                    style: const TextStyle(
+                      color: ColorsUtils.blue3,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -12,7 +12,7 @@ class NuevaSubasta2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;final bool web = size.width > 800;
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(15),
@@ -23,12 +23,12 @@ class NuevaSubasta2 extends StatelessWidget {
             const Text('Fotos del producto', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             SizedBox(
-                width: size.width * 0.3,
+                width:web? size.width * 0.3: size.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: size.width * 0.09,
+                      width: web?size.width * 0.09: size.width *0.25,
                       height: 100,
                       decoration: BoxDecoration(
                           border: Border.all(color: ColorsUtils.grey1),
@@ -41,7 +41,7 @@ class NuevaSubasta2 extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: size.width * 0.09,
+                      width: web?size.width * 0.09: size.width *0.25,
                       height: 100,
                       decoration: BoxDecoration(
                           border: Border.all(color: ColorsUtils.grey1),
@@ -54,7 +54,7 @@ class NuevaSubasta2 extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: size.width * 0.09,
+                      width: web?size.width * 0.09: size.width *0.25,
                       height: 100,
                       decoration: BoxDecoration(
                           border: Border.all(color: ColorsUtils.grey1),
@@ -72,7 +72,7 @@ class NuevaSubasta2 extends StatelessWidget {
             const Text('URL del video', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: size.width * 0.3,
+                width:web? size.width * 0.3: size.width,
                 hint: 'URL del video',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -90,7 +90,7 @@ class NuevaSubasta2 extends StatelessWidget {
             const SizedBox(height: 40),
             Center(
               child: ButtonWid(
-                  width: size.width * 0.15,
+                  width:web? size.width * 0.15: size.width *0.5,
                   height: 50,
                   color1: ColorsUtils.blueButt1,
                   color2: ColorsUtils.blueButt2,

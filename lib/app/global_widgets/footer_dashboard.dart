@@ -9,7 +9,6 @@ class FooterDashboard extends StatelessWidget {
     //final bool web = size.width > 800;
     return Container(
       width: size.width,
-      height: size.height * 0.1,
       decoration: const BoxDecoration(color: Color(0xffF5F5F5)),
       child: Wrap(
           alignment: WrapAlignment.center,
