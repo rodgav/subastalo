@@ -26,8 +26,11 @@ class CampanasPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Wrap(
+                  alignment: web?WrapAlignment.spaceBetween:WrapAlignment.center,
+                  runAlignment: web?WrapAlignment.spaceBetween:WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 10,runSpacing: 10,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,10 +62,11 @@ class CampanasPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10)),
                     padding: const EdgeInsets.all(20),
                     width: width,
-                    child: Wrap(
-                      alignment: WrapAlignment.spaceBetween,
-                      runAlignment: WrapAlignment.spaceBetween,
+                    child:     Wrap(
+                      alignment: web?WrapAlignment.spaceBetween:WrapAlignment.center,
+                      runAlignment: web?WrapAlignment.spaceBetween:WrapAlignment.center,
                       crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 20,runSpacing: 20,
                       children: [
                         Image.asset(
                           'assets/icons/buscar.png',

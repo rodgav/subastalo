@@ -48,18 +48,23 @@ class MensajesPage extends StatelessWidget {
                                   color: ColorsUtils.red,
                                 ),
                                 const SizedBox(width: 10),
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Text('Albert Herrera',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                    Text(
+                                Expanded(
+                                  child: RichText(
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                    text:const TextSpan(children: [
+                                      TextSpan(
+                                          text: 'Albert Herrera\n',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)),
+                                      TextSpan(
+                                        text:
                                         'Resumen del contenido o mensaje recibido...',
-                                        style: TextStyle(fontSize: 13))
-                                  ],
-                                )
+                                        style: TextStyle(fontSize: 13),
+                                      )
+                                    ]),
+                                  ),
+                                ),
                               ],
                             ),
                             Container(
@@ -94,7 +99,7 @@ class MensajesPage extends StatelessWidget {
                                     ],
                                   ),
                                   IconButton(
-                                      onPressed:()=> logic.toMensajeDetail('1234'),
+                                      onPressed: () => null,
                                       icon: const Icon(
                                         Icons.arrow_forward_ios,
                                         color: ColorsUtils.grey2,

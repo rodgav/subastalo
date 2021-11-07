@@ -92,57 +92,43 @@ class TBloqueada extends StatelessWidget {
               ),
             ),
             SizedBox(width: web ? 50 : 0),
-            Column(
+            Wrap(spacing: 10,
+              runSpacing: 10,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.blueButt1,
-                        color2: ColorsUtils.blueButt2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Ver detalles',
-                        voidCallback: () => null),
-                    const SizedBox(width: 10),
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.green,
-                        color2: ColorsUtils.green,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Desbloquear',
-                        voidCallback: () => null),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.blueButt1,
-                        color2: ColorsUtils.blueButt2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Editar',
-                        voidCallback: () => null),
-                    const SizedBox(width: 10),
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.blueButt1,
-                        color2: ColorsUtils.blueButt2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Eliminar',
-                        voidCallback: () => null),
-                  ],
-                )
+                ButtonIconWid(
+                    width: 153,
+                    height: 40,
+                    color1: ColorsUtils.blueButt1,
+                    color2: ColorsUtils.blueButt2,
+                    assetIcon: 'assets/icons/buscar.png',
+                    textButt: 'Ver detalles',
+                    voidCallback: () => null),
+                const SizedBox(width: 10),
+                ButtonIconWid(
+                    width: 153,
+                    height: 40,
+                    color1: ColorsUtils.green,
+                    color2: ColorsUtils.green,
+                    assetIcon: 'assets/icons/buscar.png',
+                    textButt: 'Desbloquear',
+                    voidCallback: () => null), ButtonIconWid(
+                    width: 153,
+                    height: 40,
+                    color1: ColorsUtils.blueButt1,
+                    color2: ColorsUtils.blueButt2,
+                    assetIcon: 'assets/icons/buscar.png',
+                    textButt: 'Editar',
+                    voidCallback: () => null),
+                ButtonIconWid(
+                    width: 153,
+                    height: 40,
+                    color1: ColorsUtils.blueButt1,
+                    color2: ColorsUtils.blueButt2,
+                    assetIcon: 'assets/icons/buscar.png',
+                    textButt: 'Eliminar',
+                    voidCallback: () => null),
               ],
-            )
+            ),
           ],
         ),
       ),

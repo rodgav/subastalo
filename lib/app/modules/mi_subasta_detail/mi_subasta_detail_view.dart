@@ -198,7 +198,7 @@ class MiSubastaDetailPage extends StatelessWidget {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 20),
-                    DataTable(columns: const [
+                   web? DataTable(columns: const [
                       DataColumn(
                           label: Text(
                         'Remitente',
@@ -304,7 +304,28 @@ class MiSubastaDetailPage extends StatelessWidget {
                             ),
                             onTap: ()=> _.aceptar('123')),
                       ]),
-                    ])
+                    ]): ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (__, index) {
+                        return ListTile(
+                          title: const Text('Nombre'),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                  icon: const Icon(Icons.edit),
+                                  onPressed: () => null),
+                              IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  onPressed: () => null),
+                            ],
+                          ),
+                        );
+                      },
+                      separatorBuilder: (__, index) => const Divider(),
+                      itemCount: 2,
+                    )
                   ],
                 )));
       });

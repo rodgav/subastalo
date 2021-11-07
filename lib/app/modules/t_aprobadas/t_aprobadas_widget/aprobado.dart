@@ -14,7 +14,7 @@ class Aprobado extends StatelessWidget {
     return Container(
       width: width,
       decoration: BoxDecoration(
-        //color: ColorsUtils.grey1.withOpacity(0.1),
+          //color: ColorsUtils.grey1.withOpacity(0.1),
           borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.all(10),
       child: Center(
@@ -56,7 +56,7 @@ class Aprobado extends StatelessWidget {
                       Text(
                         'Aoa eastern Alister Samoa',
                         style:
-                        TextStyle(fontSize: 12, color: ColorsUtils.grey1),
+                            TextStyle(fontSize: 12, color: ColorsUtils.grey1),
                       )
                     ],
                   ),
@@ -71,7 +71,7 @@ class Aprobado extends StatelessWidget {
                       Text(
                         'Aoa eastern Alister Samoa',
                         style:
-                        TextStyle(fontSize: 12, color: ColorsUtils.grey1),
+                            TextStyle(fontSize: 12, color: ColorsUtils.grey1),
                       )
                     ],
                   ),
@@ -85,7 +85,7 @@ class Aprobado extends StatelessWidget {
                       Text(
                         'Aprobado',
                         style:
-                        TextStyle(fontSize: 12, color: ColorsUtils.green),
+                            TextStyle(fontSize: 12, color: ColorsUtils.green),
                       )
                     ],
                   ),
@@ -93,57 +93,44 @@ class Aprobado extends StatelessWidget {
               ),
             ),
             SizedBox(width: web ? 50 : 0),
-            Column(
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.blueButt1,
-                        color2: ColorsUtils.blueButt2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Ver detalles',
-                        voidCallback: () => null),
-                    const SizedBox(width: 10),
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.red,
-                        color2: ColorsUtils.red,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Bloquear',
-                        voidCallback: () => null),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.blueButt1,
-                        color2: ColorsUtils.blueButt2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Editar',
-                        voidCallback: () => null),
-                    const SizedBox(width: 10),
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.blueButt1,
-                        color2: ColorsUtils.blueButt2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Eliminar',
-                        voidCallback: () => null),
-                  ],
-                )
+                ButtonIconWid(
+                    width: 153,
+                    height: 40,
+                    color1: ColorsUtils.blueButt1,
+                    color2: ColorsUtils.blueButt2,
+                    assetIcon: 'assets/icons/buscar.png',
+                    textButt: 'Ver detalles',
+                    voidCallback: () => null),
+                ButtonIconWid(
+                    width: 153,
+                    height: 40,
+                    color1: ColorsUtils.red,
+                    color2: ColorsUtils.red,
+                    assetIcon: 'assets/icons/buscar.png',
+                    textButt: 'Bloquear',
+                    voidCallback: () => null),
+                ButtonIconWid(
+                    width: 153,
+                    height: 40,
+                    color1: ColorsUtils.blueButt1,
+                    color2: ColorsUtils.blueButt2,
+                    assetIcon: 'assets/icons/buscar.png',
+                    textButt: 'Editar',
+                    voidCallback: () => null),
+                ButtonIconWid(
+                    width: 153,
+                    height: 40,
+                    color1: ColorsUtils.blueButt1,
+                    color2: ColorsUtils.blueButt2,
+                    assetIcon: 'assets/icons/buscar.png',
+                    textButt: 'Eliminar',
+                    voidCallback: () => null),
               ],
-            )
+            ),
           ],
         ),
       ),

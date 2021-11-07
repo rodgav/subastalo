@@ -85,7 +85,7 @@ class InfoSubastasPage extends StatelessWidget {
                       ],
                     ),
                     const Divider(height: 20),
-                    DataTable(columns: [
+                  web?  DataTable(columns: [
                       DataColumn(
                           label: Checkbox(value: false, onChanged: (value) {})),
                       const DataColumn(
@@ -133,7 +133,28 @@ class InfoSubastasPage extends StatelessWidget {
                           ),
                         ),
                       ])
-                    ])
+                    ]): ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemBuilder: (__, index) {
+                        return ListTile(
+                          title: const Text('Nombre'),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              IconButton(
+                                  icon: const Icon(Icons.edit),
+                                  onPressed: () => null),
+                              IconButton(
+                                  icon: const Icon(Icons.delete),
+                                  onPressed: () => null),
+                            ],
+                          ),
+                        );
+                      },
+                      separatorBuilder: (__, index) => const Divider(),
+                      itemCount: 2,
+                    )
                   ],
                 )));
       },

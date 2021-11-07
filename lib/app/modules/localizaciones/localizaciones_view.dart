@@ -126,7 +126,7 @@ class LocalizacionesPage extends StatelessWidget {
                                       textButt: 'Guardar',
                                       voidCallback: () => null),
                                   const Divider(),
-                                  DataTable(columns: const [
+                                 web? DataTable(columns: const [
                                     DataColumn(
                                         label: Text(
                                       'ID',
@@ -151,7 +151,28 @@ class LocalizacionesPage extends StatelessWidget {
                                       DataCell(Text('Afghanistan')),
                                       DataCell(Text('045')),
                                     ])
-                                  ])
+                                  ]): ListView.separated(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (__, index) {
+                                      return ListTile(
+                                        title: const Text('Nombre'),
+                                        trailing: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            IconButton(
+                                                icon: const Icon(Icons.edit),
+                                                onPressed: () => null),
+                                            IconButton(
+                                                icon: const Icon(Icons.delete),
+                                                onPressed: () => null),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    separatorBuilder: (__, index) => const Divider(),
+                                    itemCount: 2,
+                                  )
                                 ],
                               ),
                               Column(
@@ -222,7 +243,7 @@ class LocalizacionesPage extends StatelessWidget {
                                       textButt: 'Guardar',
                                       voidCallback: () => null),
                                   const Divider(),
-                                  DataTable(columns: const [
+                                  web?DataTable(columns: const [
                                     DataColumn(
                                         label: Text(
                                       'ID',
@@ -288,7 +309,28 @@ class LocalizacionesPage extends StatelessWidget {
                                         ],
                                       )),
                                     ])
-                                  ])
+                                  ]): ListView.separated(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (__, index) {
+                                      return ListTile(
+                                        title: const Text('Nombre'),
+                                        trailing: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            IconButton(
+                                                icon: const Icon(Icons.edit),
+                                                onPressed: () => null),
+                                            IconButton(
+                                                icon: const Icon(Icons.delete),
+                                                onPressed: () => null),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    separatorBuilder: (__, index) => const Divider(),
+                                    itemCount: 2,
+                                  )
                                 ],
                               ),
                               Column(
@@ -391,7 +433,7 @@ class LocalizacionesPage extends StatelessWidget {
                                       textButt: 'Guardar',
                                       voidCallback: () => null),
                                   const Divider(),
-                                  DataTable(columns: const [
+                                 web? DataTable(columns: const [
                                     DataColumn(
                                         label: Text(
                                       'ID',
@@ -464,7 +506,28 @@ class LocalizacionesPage extends StatelessWidget {
                                         ],
                                       )),
                                     ])
-                                  ])
+                                  ]): ListView.separated(
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemBuilder: (__, index) {
+                                      return ListTile(
+                                        title: const Text('Nombre'),
+                                        trailing: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            IconButton(
+                                                icon: const Icon(Icons.edit),
+                                                onPressed: () => null),
+                                            IconButton(
+                                                icon: const Icon(Icons.delete),
+                                                onPressed: () => null),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    separatorBuilder: (__, index) => const Divider(),
+                                    itemCount: 2,
+                                  )
                                 ],
                               ),
                             ],

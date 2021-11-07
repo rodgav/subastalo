@@ -290,7 +290,7 @@ class VivoPage extends StatelessWidget {
                                 physics: const BouncingScrollPhysics(),
                                 child: Column(
                                   children: [
-                                    DataTable(columns: const [
+                                   web? DataTable(columns: const [
                                       DataColumn(label: Text('PUESTO')),
                                       DataColumn(label: Text('SEUDÓNIMO')),
                                       DataColumn(label: Text('PROPUESTAS')),
@@ -305,7 +305,28 @@ class VivoPage extends StatelessWidget {
                                         DataCell(Text('Danilo01')),
                                         DataCell(Text('1'))
                                       ]),
-                                    ]),
+                                    ]): ListView.separated(
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemBuilder: (__, index) {
+                                        return ListTile(
+                                          title: const Text('Nombre'),
+                                          trailing: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              IconButton(
+                                                  icon: const Icon(Icons.edit),
+                                                  onPressed: () => null),
+                                              IconButton(
+                                                  icon: const Icon(Icons.delete),
+                                                  onPressed: () => null),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                      separatorBuilder: (__, index) => const Divider(),
+                                      itemCount: 2,
+                                    ),
                                   ],
                                 ),
                               ),

@@ -172,10 +172,22 @@ class CategoriasPage extends StatelessWidget {
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             itemBuilder: (__, index) {
-                              return const ListTile(
-                                title: Text('Nombre categoria'),
+                              return ListTile(
+                                title: const Text('Nombre categoria'),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                        icon: const Icon(Icons.edit),
+                                        onPressed: () => null),
+                                    IconButton(
+                                        icon: const Icon(Icons.delete),
+                                        onPressed: () => null),
+                                  ],
+                                ),
                               );
-                            },separatorBuilder: (__,index)=>const Divider(),
+                            },
+                            separatorBuilder: (__, index) => const Divider(),
                             itemCount: 2,
                           ),
                   ],
