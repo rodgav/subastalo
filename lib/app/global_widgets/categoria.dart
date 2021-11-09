@@ -14,9 +14,8 @@ class CategoriaWid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeLogic>(builder: (_) {
-      return SizedBox(
-        //width: ((size.width * 0.85) - 40) / 6,
-        height: 35,
+      return Container(
+        margin:const EdgeInsets.only(left: 20),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -25,12 +24,13 @@ class CategoriaWid extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            Container( width: 170,
+            Container(
+                width: 150,
                 decoration: BoxDecoration(
                     color: ColorsUtils.white,
                     borderRadius: BorderRadius.circular(20)),
                 padding:
-                    const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
                 child: DropdownButton(
                   isExpanded: true,
                   underline: Container(

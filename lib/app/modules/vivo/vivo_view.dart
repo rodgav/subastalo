@@ -1210,16 +1210,18 @@ class VivoPage extends StatelessWidget {
                                               ],
                                             ),
                                           ),
-                                          ButtonWid(
+                                      SizedBox(
+                                        width: size.width * 0.5,
+                                        child: ButtonWid(
                                               width: size.width * 0.3,
                                               height: size.height * 0.1,
                                               color1: ColorsUtils.orange1,
                                               color2: ColorsUtils.orange2,
                                               textButt: 'US\$ 3,600',fontSize: 30,
-                                              voidCallback: () => null),
+                                              voidCallback: () => null),),
                                           SizedBox(
                                               width: size.width * 0.5,
-                                              child:const Center(
+                                              child: const Center(
                                                   child: Text(
                                                       'Incremento de + \$ 50')))
                                         ],

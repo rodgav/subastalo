@@ -4,10 +4,8 @@ import 'package:get/get.dart';
 import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/global_widgets/categoria.dart';
 import 'package:subastalo/app/global_widgets/loading.dart';
-import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/app/global_widgets/txt_field_circ.dart';
 import 'package:subastalo/app/modules/home/home_logic.dart';
-import 'package:subastalo/app/modules/home/widgets_home/drawer_categorys.dart';
 import 'package:subastalo/app/modules/home/widgets_home/drawer_home.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 import 'package:subastalo/utils/colors_utils.dart';
@@ -19,11 +17,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final bool web = size.width > 1500;
+    final bool web = size.width > 800;
     return GetRouterOutlet.builder(builder: (context, delegate, current) {
       return Scaffold(
           key: logic.scaffoldKeyHome,
-          drawer: web ? null : const DrawerCategorys(),
           endDrawer: web ? null : const DrawerHome(),
           body: Column(
             children: [
@@ -75,7 +72,7 @@ class HomePage extends StatelessWidget {
                             cursor: SystemMouseCursors.click,
                           ),
                           TxtFieldCirWid(
-                              width: 378,
+                              width: 200,
                               hint: 'Busca productos en SUBASTALO',
                               color: ColorsUtils.grey1.withOpacity(0.2),
                               suffix: true),
@@ -122,13 +119,7 @@ class HomePage extends StatelessWidget {
                     )
                   : AppBar(
                       backgroundColor: ColorsUtils.white,
-                      leading: IconButton(
-                          onPressed: () =>
-                              logic.scaffoldKeyHome.currentState!.openDrawer(),
-                          icon: const Icon(
-                            Icons.menu,
-                            color: ColorsUtils.blue3,
-                          )),
+                      automaticallyImplyLeading: false,
                       title: MouseRegion(
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
@@ -151,90 +142,77 @@ class HomePage extends StatelessWidget {
                                 color: ColorsUtils.blue3,
                               ))
                         ]),
-              web
-                  ? Container(
-                      width: size.width,
-                      padding: const EdgeInsets.all(20),
-                      decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [ColorsUtils.blue3, ColorsUtils.blue4])),
-                      child: Wrap(
-                        alignment: WrapAlignment.spaceAround,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        runAlignment: WrapAlignment.spaceAround,
-                        runSpacing: 10,
-                        children: [
-                          Container(
-                            width: (size.width * 0.15),
-                            decoration: const BoxDecoration(
-                                border: Border(
-                                    right:
-                                        BorderSide(color: ColorsUtils.white))),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Text(
-                                  'Subastas Realizadas',
-                                  style: TextStyle(
-                                      fontSize: 16, color: ColorsUtils.white),
+              Container(
+                width: size.width,
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [ColorsUtils.blue3, ColorsUtils.blue4])),
+                child: Row(
+                  children: [
+                    Container(
+                        width: web ? size.width * 0.1 : size.width * 0.3,
+                        height: 100,
+                        decoration: const BoxDecoration(
+                            border: Border(
+                                right: BorderSide(color: ColorsUtils.white))),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: web ? size.width * 0.15 : size.width * 0.3,
+                              height: 40,
+                              padding: const EdgeInsets.all(2.5),
+                              child: const FittedBox(
+                                fit: BoxFit.contain,
+                                child: Text(
+                                  'Subastas Realizadas\n',
+                                  style: TextStyle(color: ColorsUtils.white),
                                 ),
-                                Text(
-                                  '7633',
-                                  style: TextStyle(
-                                      fontSize: 59, color: ColorsUtils.white),
-                                )
-                              ],
+                              ),
                             ),
-                          ),
-                          GetBuilder<HomeLogic>(
-                              id: 'categorias',
-                              builder: (_) {
-                                final categorias =
-                                    _.categoriasModel?.categorias;
-                                return categorias != null
-                                    ? Container(
-                                        width: (size.width * 0.85) - 40,
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20),
-                                        child: Wrap(
-                                          alignment: WrapAlignment.spaceAround,
-                                          crossAxisAlignment:
-                                              WrapCrossAlignment.center,
-                                          runAlignment:
-                                              WrapAlignment.spaceAround,
-                                          spacing: 20,
-                                          runSpacing: 20,
-                                          children: categorias.isNotEmpty
-                                              ? [
-                                                  CategoriaWid(
-                                                      categoria: categorias[0]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[1]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[2]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[3]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[4]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[5]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[6]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[7]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[8]),
-                                                  CategoriaWid(
-                                                      categoria: categorias[9]),
-                                                ]
-                                              : [const NoDataWid()],
-                                        ))
-                                    : const Center(child: LoadingWid());
-                              })
-                        ],
-                      ),
+                            Container(
+                              width: web ? size.width * 0.15 : size.width * 0.3,
+                              height: 60,
+                              padding: const EdgeInsets.all(2.5),
+                              child: const FittedBox(
+                                fit: BoxFit.contain,
+                                child: Text(
+                                  '7633',
+                                  style: TextStyle(color: ColorsUtils.white),
+                                ),
+                              ),
+                            )
+                          ],
+                        )),
+                    Expanded(
+                      child: GetBuilder<HomeLogic>(
+                          id: 'categorias',
+                          builder: (_) {
+                            final categorias = _.categoriasModel?.categorias;
+                            return categorias != null
+                                ? SizedBox(
+                                    height: 37,
+                                    child: ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      physics: const BouncingScrollPhysics(),
+                                      children: [
+                                        CategoriaWid(categoria: categorias[0]),
+                                        CategoriaWid(categoria: categorias[1]),
+                                        CategoriaWid(categoria: categorias[2]),
+                                        CategoriaWid(categoria: categorias[3]),
+                                        CategoriaWid(categoria: categorias[4]),
+                                        CategoriaWid(categoria: categorias[5]),
+                                        CategoriaWid(categoria: categorias[6]),
+                                        CategoriaWid(categoria: categorias[7]),
+                                        CategoriaWid(categoria: categorias[8]),
+                                        CategoriaWid(categoria: categorias[9]),
+                                      ],
+                                    ))
+                                : const Center(child: LoadingWid());
+                          }),
                     )
-                  : Container(),
+                  ],
+                ),
+              ),
               Expanded(
                 child: GetRouterOutlet(
                     initialRoute: Routes.subastas,
