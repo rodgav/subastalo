@@ -331,10 +331,7 @@ class SubastasPage extends StatelessWidget {
                                     top: 10,
                                     left: web ? 50 : 20,
                                     right: web ? 50 : 20),
-                                child: Wrap(
-                                  alignment: WrapAlignment.spaceBetween,
-                                  runAlignment: WrapAlignment.center,
-                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children:  [
                                     Text(
                                       'Osinergim Perú',
@@ -388,10 +385,8 @@ class SubastasPage extends StatelessWidget {
                                     top: 10,
                                     left: web ? 50 : 20,
                                     right: web ? 50 : 20),
-                                child: Wrap(
-                                  alignment: WrapAlignment.spaceBetween,
-                                  runAlignment: WrapAlignment.center,
-                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children:  [
                                     Text(
                                       'Buenaventura',
@@ -403,7 +398,7 @@ class SubastasPage extends StatelessWidget {
                                       'Ver todo',
                                       style: TextStyle(
                                           color: ColorsUtils.grey1,
-                                          fontSize: web?28:218),
+                                          fontSize: web?28:18),
                                     ),
                                   ],
                                 ),
