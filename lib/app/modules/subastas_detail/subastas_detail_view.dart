@@ -140,8 +140,8 @@ class SubastasDetailPage extends StatelessWidget {
                                       ),
                                       const SizedBox(height: 20),
                                       ButtonWid(
-                                          width: 380,
-                                          height: 100,
+                                          width: size.width*0.3,
+                                          height: web?80:50,
                                           color1: subasta.type == 'Vivo'
                                               ? ColorsUtils.orange1
                                               : ColorsUtils.blueButt1,
@@ -276,11 +276,11 @@ class SubastasDetailPage extends StatelessWidget {
                                                       const SizedBox(
                                                         width: 5,
                                                       ),
-                                                      const Text('INFORMACIÓN',
+                                                      Text('INFORMACIÓN',
                                                           style: TextStyle(
                                                               color: ColorsUtils
                                                                   .blue3,
-                                                              fontSize: 20)),
+                                                              fontSize:web? 16:12)),
                                                     ],
                                                   ),
                                                 ),
@@ -311,11 +311,11 @@ class SubastasDetailPage extends StatelessWidget {
                                                       const SizedBox(
                                                         width: 5,
                                                       ),
-                                                      const Text('UBICACIÓN',
+                                                      Text('UBICACIÓN',
                                                           style: TextStyle(
                                                               color: ColorsUtils
                                                                   .blue3,
-                                                              fontSize: 20)),
+                                                              fontSize: web? 16:12)),
                                                     ],
                                                   ),
                                                 ),
@@ -468,18 +468,20 @@ class SubastasDetailPage extends StatelessWidget {
                                   width: web ? size.width * 0.5 : size.width,
                                   child: Column(
                                     children: [
-                                      Container(
+                                      Container(width: web ? size.width * 0.5 : size.width,
                                         color: const Color(0xffF6F6F6),
-                                        height: 169,
+                                        height: 67,
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 20),
-                                        child: Center(
-                                            child: Text(
+                                        child: FittedBox(fit:BoxFit.scaleDown,
+
+                                              child: Text(
                                           subasta.name,
-                                          style: const TextStyle(
-                                              color: ColorsUtils.grey1,
-                                              fontSize: 30),
-                                        )),
+                                          style: TextStyle(
+                                                color: ColorsUtils.grey1,
+                                                fontSize: web?24:12),
+                                        ),
+                                            ),
                                       ),
                                       Container(
                                         padding: const EdgeInsets.all(20),

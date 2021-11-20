@@ -14,70 +14,65 @@ class CardInfoSubDet extends StatelessWidget {
     final bool web = size.width > 800;
     return Container(
         width: web ? size.width * 0.5 : size.width,
+        height: 120,
         color: subasta.type == 'Vivo' ? ColorsUtils.orange2 : ColorsUtils.blue3,
-        padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 30),
+        padding: EdgeInsets.all(web ? 10 : 5),
         child: Container(
-          padding: const EdgeInsets.all(30),
+          padding:  EdgeInsets.all(web?10:5),
           decoration: BoxDecoration(
               color: ColorsUtils.white,
               borderRadius: BorderRadius.circular(15)),
-          child: Wrap(
-            runAlignment:
-                web ? WrapAlignment.spaceBetween : WrapAlignment.center,
-            alignment: web ? WrapAlignment.spaceBetween : WrapAlignment.center,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            runSpacing: 20,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: web ? 420 : double.infinity,
-                child: Wrap(  runAlignment:
-                web ? WrapAlignment.spaceBetween : WrapAlignment.center,
-                  alignment: web ? WrapAlignment.spaceBetween : WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  runSpacing: 20,
-                  spacing: 20,
+                width: web ? size.width * 0.31 : size.width * 0.82,
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.calendar_today,
                           color: ColorsUtils.blue3,
-                          size: 36,
+                          size: size.width * 0.03,
                         ),
                         const SizedBox(
                           width: 10,
                         ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(subasta.type == 'Vivo' ? 'Inicia' : 'Cierra',
+                        SizedBox( width: web ? size.width * 0.15 : size.width * 0.72,
+                          child: FittedBox(fit: BoxFit.scaleDown,
+                            child: RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                    text: subasta.type == 'Vivo'
+                                        ? 'Inician\n'
+                                        : 'Cierra\n',
+                                    style: const TextStyle(
+                                        color: ColorsUtils.blue3, fontSize: 20)),
+                                TextSpan(
+                                  text: '${subasta.date}',
                                   style: const TextStyle(
-                                      color: ColorsUtils.blue3, fontSize: 20)),
-                              Text(
-                                '${subasta.date}',
-                                style: const TextStyle(
-                                    color: ColorsUtils.blue3,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                                overflow: TextOverflow.ellipsis,maxLines: 1,
-                              ),
-                            ],
+                                      color: ColorsUtils.blue3,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ]),
+                            ),
                           ),
                         )
                       ],
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
+                      width: web ? size.width * 0.3 : size.width * 0.8,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: web?10:5, vertical: web?5:2.5),
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(50)),
-                      child: Wrap(
-                        alignment:web?WrapAlignment.spaceBetween: WrapAlignment.center,
-                        runAlignment:web?WrapAlignment.spaceBetween: WrapAlignment.center,
-                        crossAxisAlignment: WrapCrossAlignment.center,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.min,
@@ -87,22 +82,31 @@ class CardInfoSubDet extends StatelessWidget {
                                 color: subasta.type == 'Vivo'
                                     ? ColorsUtils.orange2
                                     : ColorsUtils.blue3,
-                                size: 33,
+                                size:  size.width*0.02 ,
                               ),
                               const SizedBox(
                                 width: 5,
                               ),
-                              Expanded(
-                                child: Text(
-                                  subasta.type == 'Vivo'
-                                      ? 'Abierto para ofertas'
-                                      : 'Abierto para negociaciones',
-                                  style: TextStyle(
-                                      color: subasta.type == 'Vivo'
-                                          ? ColorsUtils.orange2
-                                          : ColorsUtils.blue3),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
+                              SizedBox(
+                                width:
+                                    web ? size.width * 0.1 : size.width * 0.3,
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      subasta.type == 'Vivo'
+                                          ? 'Abierto para ofertas'
+                                          : 'Abierto para negociaciones',
+                                      style: TextStyle(
+                                          color: subasta.type == 'Vivo'
+                                              ? ColorsUtils.orange2
+                                              : ColorsUtils.blue3,
+                                          fontSize: 14),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
                                 ),
                               )
                             ],
@@ -115,17 +119,27 @@ class CardInfoSubDet extends StatelessWidget {
                                 color: subasta.type == 'Vivo'
                                     ? ColorsUtils.orange2
                                     : ColorsUtils.blue3,
-                                size: 33,
+                                size:  size.width*0.02 ,
                               ),
                               const SizedBox(
                                 width: 5,
                               ),
-                              Text(
-                                '${subasta.views} Visitas',
-                                style: TextStyle(
-                                    color: subasta.type == 'Vivo'
-                                        ? ColorsUtils.orange2
-                                        : ColorsUtils.blue3),
+                              SizedBox(
+                                width:
+                                    web ? size.width * 0.1 : size.width * 0.3,
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      '${subasta.views} Visitas',
+                                      style: TextStyle(
+                                          color: subasta.type == 'Vivo'
+                                              ? ColorsUtils.orange2
+                                              : ColorsUtils.blue3),
+                                    ),
+                                  ),
+                                ),
                               )
                             ],
                           ),
@@ -136,16 +150,18 @@ class CardInfoSubDet extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 114,
-                height: 114,
+                width:  size.width * 0.08,
                 decoration: const BoxDecoration(
                     color: ColorsUtils.white,
                     shape: BoxShape.circle,
                     boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 7)]),
-                child: const Icon(
-                  Icons.home,
-                  color: ColorsUtils.orange2,
-                  size: 46,
+                child: Container(
+                  margin: EdgeInsets.all(web ? 10 : 5),
+                  child: Icon(
+                    Icons.home,
+                    color: ColorsUtils.orange2,
+                    size: size.width * 0.05,
+                  ),
                 ),
               )
             ],

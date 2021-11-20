@@ -252,11 +252,11 @@ class SubastasPage extends StatelessWidget {
                                             top: 10,
                                             left: web ? 50 : 20,
                                             right: web ? 50 : 20),
-                                        child: const Text(
+                                        child:  Text(
                                           'OPORTUNIDADES DESTACADAS',
                                           style: TextStyle(
                                               color: ColorsUtils.blue3,
-                                              fontSize: 35),
+                                              fontSize: web?35:25),
                                         ),
                                       ),
                                       Container(
@@ -335,18 +335,18 @@ class SubastasPage extends StatelessWidget {
                                   alignment: WrapAlignment.spaceBetween,
                                   runAlignment: WrapAlignment.center,
                                   crossAxisAlignment: WrapCrossAlignment.center,
-                                  children: const [
+                                  children:  [
                                     Text(
                                       'Osinergim Perú',
                                       style: TextStyle(
                                           color: ColorsUtils.blue3,
-                                          fontSize: 35),
+                                          fontSize: web?35:25),
                                     ),
                                     Text(
                                       'Ver todo',
                                       style: TextStyle(
                                           color: ColorsUtils.grey1,
-                                          fontSize: 28),
+                                          fontSize: web?28:18),
                                     ),
                                   ],
                                 ),
@@ -392,18 +392,18 @@ class SubastasPage extends StatelessWidget {
                                   alignment: WrapAlignment.spaceBetween,
                                   runAlignment: WrapAlignment.center,
                                   crossAxisAlignment: WrapCrossAlignment.center,
-                                  children: const [
+                                  children:  [
                                     Text(
                                       'Buenaventura',
                                       style: TextStyle(
                                           color: ColorsUtils.blue3,
-                                          fontSize: 35),
+                                          fontSize: web?35:25),
                                     ),
                                     Text(
                                       'Ver todo',
                                       style: TextStyle(
                                           color: ColorsUtils.grey1,
-                                          fontSize: 28),
+                                          fontSize: web?28:218),
                                     ),
                                   ],
                                 ),
@@ -475,12 +475,12 @@ class SubastasPage extends StatelessWidget {
                                       width: web
                                           ? size.width * 0.15
                                           : size.width * 0.45,
-                                      child: const FittedBox(
+                                      child:  FittedBox(
                                         fit: BoxFit.scaleDown,
                                         child: Text(
                                           'Ofertas en vivo',
                                           style: TextStyle(
-                                              fontSize: 35,
+                                              fontSize: web?35:25,
                                               color: ColorsUtils.grey2,
                                               fontWeight: FontWeight.bold),
                                         ),

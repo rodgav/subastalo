@@ -13,30 +13,28 @@ class CardNameSubDet extends StatelessWidget {
     final bool web = size.width > 800;
     return Container(
         width: web ? size.width * 0.5 : size.width,
-        padding: const EdgeInsets.symmetric( horizontal: 27),
-        child: SizedBox(
-            height: 187,
-            child: Column(
+        height: 120,
+        padding: const EdgeInsets.symmetric(horizontal: 27),
+        child: Column(
               crossAxisAlignment:
                   web ? CrossAxisAlignment.start : CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
+                SizedBox(width: web ? size.width * 0.5 : size.width,
+                  child: Align(alignment: Alignment.centerLeft,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,child: Text(
                         'Vende - ${subasta.nameVendedor}',
-                        style: const TextStyle(
-                            fontSize: 25, color: ColorsUtils.blue3),
-                        overflow: TextOverflow.ellipsis,
+                        style:
+                            const TextStyle(fontSize: 20, color: ColorsUtils.blue3),
                       ),
-                    )
-                  ],
+                    ),
+                  ),
                 ),
                 Row(
                   children: [
                     const Icon(Icons.home,
-                        color: ColorsUtils.orange2, size: 14),
+                        color: ColorsUtils.orange2, size: 24),
                     const SizedBox(width: 5),
                     Text(
                       'Vendedor ${subasta.stateVendedor}',
@@ -45,16 +43,17 @@ class CardNameSubDet extends StatelessWidget {
                     )
                   ],
                 ),
-                Text(
-                  subasta.name,
-                  style: const TextStyle(
-                      fontSize: 30,
-                      color: ColorsUtils.blue3,
-                      fontWeight: FontWeight.bold),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                )
+            SizedBox(width: web ? size.width * 0.5 : size.width,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,child: Text(
+                    subasta.name,
+                    style: const TextStyle(
+                        fontSize: 25,
+                        color: ColorsUtils.blue3,
+                        fontWeight: FontWeight.bold),
+                  )),
+            )
               ],
-            )));
+            ));
   }
 }
