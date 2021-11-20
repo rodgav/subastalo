@@ -12,7 +12,6 @@ class DrawerHome extends StatelessWidget {
     return GetBuilder<DashboardLogic>(builder: (_) {
       return Drawer(
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               DrawerHeader(

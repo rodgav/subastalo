@@ -13,7 +13,7 @@ class DrawerHome extends StatelessWidget {
     return GetBuilder<HomeLogic>(builder: (_) {
       return Drawer(
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
+
           child: Column(
             children: [
               AuthService.to.isLoggedIn

@@ -33,7 +33,6 @@ class Destacado1 extends StatelessWidget {
           ]),
       child: Container(
         width: 300,
-
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -42,7 +41,7 @@ class Destacado1 extends StatelessWidget {
             Text(
               subasta.name,
               style: const TextStyle(
-                  fontSize: 13, fontWeight: FontWeight.w900),
+                  fontSize: 15, fontWeight: FontWeight.w900),
               textAlign: TextAlign.justify,
             ),
             Container(

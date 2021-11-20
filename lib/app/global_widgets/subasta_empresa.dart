@@ -23,10 +23,9 @@ class SubastaEmpresa extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final bool web = size.width > 800;
     return Container(
-      width: 420,
-      margin: EdgeInsets.only(
-          top: 5, bottom: 5, left: web ? left : 10),
-      padding: const EdgeInsets.all(20),
+      width: web ? size.width * 0.27 : size.width * 0.98,
+      margin: EdgeInsets.only(top: 5, bottom: 5, left: web ? left : 10),
+      padding: EdgeInsets.all(web ? 20 : 10),
       decoration: BoxDecoration(
           color: ColorsUtils.white,
           borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -39,20 +38,38 @@ class SubastaEmpresa extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text(
-            subasta.name,
-            style: const TextStyle(
-                color: ColorsUtils.blue3,
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
+          SizedBox(
+            width: web ? size.width * 0.27 : size.width * 0.98,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  subasta.name,
+                  style: const TextStyle(
+                      color: ColorsUtils.blue3,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
           ),
           const Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [const Text('VENDEDOR'), Text(subasta.nameVendedor)],
+          SizedBox(
+            width: web ? size.width * 0.27 : size.width * 0.98,
+            child: Align(alignment: Alignment.centerLeft,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: RichText(
+                    text: TextSpan(children: [
+                      const TextSpan(text: 'VENDEDOR '),
+                  TextSpan(text: subasta.nameVendedor)
+                ])),
+              ),
+            ),
           ),
           Container(
-            width: 346,
+            width: web ? size.width * 0.20 : size.width * 0.90,
             height: 170,
             decoration: BoxDecoration(
                 color: ColorsUtils.grey1,
@@ -67,32 +84,46 @@ class SubastaEmpresa extends StatelessWidget {
             children: [
               Row(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
-                  ImageIcon(
+                children: [
+                  const ImageIcon(
                     AssetImage('assets/icons/calendario.png'),
                     color: ColorsUtils.grey1,
                     size: 15,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 3,
                   ),
-                  Text('CIERRA Martes 03 de Nov.  |  3.00 pm',
-                      style: TextStyle(fontSize: 9, color: ColorsUtils.grey1))
+                  SizedBox(
+                    width: web ? size.width * 0.05 : size.width * 0.4,
+                    child: const FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text('CIERRA Martes 03 de Nov.  |  3.00 pm',
+                          style:
+                              TextStyle(fontSize: 9, color: ColorsUtils.grey1)),
+                    ),
+                  )
                 ],
               ),
               Row(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
-                  ImageIcon(
+                children: [
+                  const ImageIcon(
                     AssetImage('assets/icons/martillo.png'),
                     color: ColorsUtils.blue3,
                     size: 15,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 3,
                   ),
-                  Text('Disponible',
-                      style: TextStyle(fontSize: 9, color: ColorsUtils.grey1))
+                  SizedBox(
+                    width: web ? size.width * 0.02 : size.width * 0.2,
+                    child: const FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text('Disponible',
+                          style:
+                              TextStyle(fontSize: 9, color: ColorsUtils.grey1)),
+                    ),
+                  )
                 ],
               ),
               Row(
@@ -106,9 +137,15 @@ class SubastaEmpresa extends StatelessWidget {
                   const SizedBox(
                     width: 3,
                   ),
-                  Text('${subasta.views} visitas',
-                      style: const TextStyle(
-                          fontSize: 9, color: ColorsUtils.grey1))
+                  SizedBox(
+                    width: web ? size.width * 0.02 : size.width * 0.2,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text('${subasta.views} visitas',
+                          style: const TextStyle(
+                              fontSize: 9, color: ColorsUtils.grey1)),
+                    ),
+                  )
                 ],
               ),
             ],

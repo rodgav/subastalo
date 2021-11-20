@@ -27,7 +27,6 @@ class SubastasDetailPage extends StatelessWidget {
           return subasta != null
               ? Scaffold(
                   body: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
                       child: Column(
                           crossAxisAlignment: web
                               ? CrossAxisAlignment.start
@@ -73,8 +72,6 @@ class SubastasDetailPage extends StatelessWidget {
                                                             padding:
                                                                 const EdgeInsets
                                                                     .all(0),
-                                                            physics:
-                                                                const BouncingScrollPhysics(),
                                                             itemBuilder:
                                                                 (__, index) {
                                                               if (index ==

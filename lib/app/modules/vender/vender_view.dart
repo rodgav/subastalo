@@ -25,7 +25,6 @@ class VenderPage extends StatelessWidget {
     final bool web = size.width > 800;
     return Scaffold(
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

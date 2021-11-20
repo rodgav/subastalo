@@ -250,7 +250,6 @@ class VivoPage extends StatelessWidget {
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
                                       padding: const EdgeInsets.all(0),
-                                      physics: const BouncingScrollPhysics(),
                                       itemBuilder: (__, index) {
                                         if (index == 0) {
                                           return Container(
@@ -287,7 +286,6 @@ class VivoPage extends StatelessWidget {
                             SizedBox(
                               height: size.height * 0.2,
                               child: SingleChildScrollView(
-                                physics: const BouncingScrollPhysics(),
                                 child: Column(
                                   children: [
                                    web? DataTable(columns: const [
@@ -687,8 +685,6 @@ class VivoPage extends StatelessWidget {
                                           child: ListView(
                                           reverse: true,
                                           padding: const EdgeInsets.all(10),
-                                          physics:
-                                              const BouncingScrollPhysics(),
                                           children: [
                                             Container(
                                               margin: const EdgeInsets.only(

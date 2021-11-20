@@ -267,8 +267,6 @@ class UsuariosDetailPage extends StatelessWidget {
                                         0),
                                     scrollDirection:
                                     Axis.horizontal,
-                                    physics:
-                                    const BouncingScrollPhysics(),
                                     itemBuilder: (__,
                                         index) =>
                                         SubastaEmpresa(

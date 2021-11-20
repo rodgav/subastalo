@@ -653,7 +653,6 @@ class TableroPage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        physics: const BouncingScrollPhysics(),
                         itemBuilder: (__, index) => Container(
                           margin: const EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
@@ -702,7 +701,6 @@ class TableroPage extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        physics: const BouncingScrollPhysics(),
                         itemBuilder: (__, index) => Container(
                           margin: const EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(

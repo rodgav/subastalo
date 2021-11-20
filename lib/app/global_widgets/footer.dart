@@ -228,7 +228,7 @@ class FooterWid extends StatelessWidget {
                     web ? CrossAxisAlignment.start : CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    'ASP SUBASTAS PERÚ',
+                    'SUBASTALO PERÚ',
                     style: TextStyle(
                         color: ColorsUtils.white,
                         fontSize: 16,

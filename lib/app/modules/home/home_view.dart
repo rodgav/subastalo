@@ -38,81 +38,130 @@ class HomePage extends StatelessWidget {
                             cursor: SystemMouseCursors.click,
                             child: GestureDetector(
                               child: SizedBox(
-                                width: 216,
+                                width: size.width * 0.2,
                                 height: 48.33,
                                 child: Image.asset('assets/images/logo.png'),
                               ),
                               onTap: () => logic.toHome(current?.location),
                             ),
                           ),
-                          DropdownButton<String>(
-                            underline: Container(
-                              height: 0,
-                              color: Colors.transparent,
+                          SizedBox(
+                              width: size.width * 0.1,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: DropdownButton<String>(
+                                  underline: Container(
+                                    height: 0,
+                                    color: Colors.transparent,
+                                  ),
+                                  hint: const Text(
+                                    'Nosotros',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                  items: const [
+                                    DropdownMenuItem<String>(
+                                        child: Text(
+                                      'Nosotros',
+                                      style: TextStyle(fontSize: 16),
+                                    ))
+                                  ],
+                                  onChanged: (value) => null,
+                                ),
+                              )),
+                          SizedBox(
+                            width: size.width * 0.1,
+                            child: const FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: MouseRegion(
+                                child: Text(
+                                  '¿Cómo comprar?',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                cursor: SystemMouseCursors.click,
+                              ),
                             ),
-                            hint: const Text('Nosotros'),
-                            items: const [
-                              DropdownMenuItem<String>(
-                                  child: Text('Nosotros',
-                                      style: TextStyle(fontSize: 16)))
-                            ],
-                            onChanged: (value) => null,
                           ),
-                          const MouseRegion(
-                            child: Text('¿Cómo comprar?',
-                                style: TextStyle(fontSize: 16)),
-                            cursor: SystemMouseCursors.click,
-                          ),
-                          MouseRegion(
-                            child: GestureDetector(
-                              child: const Text('Empieza a vender',
-                                  style: TextStyle(fontSize: 16)),
-                              onTap: logic.toVender,
-                            ),
-                            cursor: SystemMouseCursors.click,
-                          ),
+                          SizedBox(
+                              width: size.width * 0.1,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: MouseRegion(
+                                  child: GestureDetector(
+                                    child: const Text(
+                                      'Empieza a vender',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    onTap: logic.toVender,
+                                  ),
+                                  cursor: SystemMouseCursors.click,
+                                ),
+                              )),
                           TxtFieldCirWid(
-                              width: 200,
+                              width: size.width * 0.25,
                               hint: 'Busca productos en SUBASTALO',
                               color: ColorsUtils.grey1.withOpacity(0.2),
                               suffix: true),
                           AuthService.to.isLoggedIn
                               ? const Icon(Icons.message)
-                              : const MouseRegion(
-                                  child: Text('Unirse hoy'),
-                                  cursor: SystemMouseCursors.click,
-                                ),
-                          AuthService.to.isLoggedIn
-                              ? const Text('Jhonatan')
-                              : ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      primary: ColorsUtils.white,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      side: const BorderSide(
-                                          color: ColorsUtils.blue1),
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 10),
-                                      elevation: 0),
-                                  onPressed: logic.toLogin,
-                                  child: const Text(
-                                    'Inicia Sesión',
-                                    style: TextStyle(color: ColorsUtils.blue3),
+                              : SizedBox(
+                                  width: size.width * 0.1,
+                                  child: const FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: MouseRegion(
+                                      child: Text(
+                                        'Unirse hoy',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      cursor: SystemMouseCursors.click,
+                                    ),
                                   )),
                           AuthService.to.isLoggedIn
-                              ? MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: GestureDetector(
-                                    child: Container(
-                                        decoration: BoxDecoration(
-                                            color: ColorsUtils.grey1
-                                                .withOpacity(0.2),
-                                            shape: BoxShape.circle),
-                                        child: const Icon(Icons.image)),
-                                    onTap: logic.toDashboard,
-                                  ),
+                              ? const Text(
+                                  'Jhonatan',
+                                  style: TextStyle(fontSize: 16),
                                 )
+                              : SizedBox(
+                                  width: size.width * 0.1,
+                                  child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              primary: ColorsUtils.white,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              side: const BorderSide(
+                                                  color: ColorsUtils.blue1),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20,
+                                                      vertical: 10),
+                                              elevation: 0),
+                                          onPressed: logic.toLogin,
+                                          child: const Text(
+                                            'Inicia Sesión',
+                                            style: TextStyle(
+                                                color: ColorsUtils.blue3,
+                                                fontSize: 16),
+                                          )))),
+                          AuthService.to.isLoggedIn
+                              ? SizedBox(
+                                  width: size.width * 0.1,
+                                  child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: MouseRegion(
+                                        cursor: SystemMouseCursors.click,
+                                        child: GestureDetector(
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: ColorsUtils.grey1
+                                                      .withOpacity(0.2),
+                                                  shape: BoxShape.circle),
+                                              child: const Icon(Icons.image)),
+                                          onTap: logic.toDashboard,
+                                        ),
+                                      )))
                               : const SizedBox()
                         ],
                       ),
@@ -150,38 +199,28 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                        width: web ? size.width * 0.1 : size.width * 0.3,
-                        height: 100,
+                        width: size.width * 0.1,
+                        padding: const EdgeInsets.all(10),
                         decoration: const BoxDecoration(
                             border: Border(
                                 right: BorderSide(color: ColorsUtils.white))),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: web ? size.width * 0.15 : size.width * 0.3,
-                              height: 40,
-                              padding: const EdgeInsets.all(2.5),
-                              child: const FittedBox(
-                                fit: BoxFit.contain,
-                                child: Text(
-                                  'Subastas Realizadas\n',
-                                  style: TextStyle(color: ColorsUtils.white),
-                                ),
+                        child: FittedBox(fit: BoxFit.scaleDown,
+                          child: RichText(
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            text: const TextSpan(children: [
+                              TextSpan(
+                                text: 'Subastas Realizadas\n',
+                                style: TextStyle(
+                                    color: ColorsUtils.white, fontSize: 14),
                               ),
-                            ),
-                            Container(
-                              width: web ? size.width * 0.15 : size.width * 0.3,
-                              height: 60,
-                              padding: const EdgeInsets.all(2.5),
-                              child: const FittedBox(
-                                fit: BoxFit.contain,
-                                child: Text(
-                                  '7633',
-                                  style: TextStyle(color: ColorsUtils.white),
-                                ),
+                              TextSpan(
+                                text: '7633',
+                                style: TextStyle(
+                                    color: ColorsUtils.white, fontSize: 40),
                               ),
-                            )
-                          ],
+                            ]),
+                          ),
                         )),
                     Expanded(
                       child: GetBuilder<HomeLogic>(
@@ -190,10 +229,10 @@ class HomePage extends StatelessWidget {
                             final categorias = _.categoriasModel?.categorias;
                             return categorias != null
                                 ? SizedBox(
-                                    height: 37,
+                                    height: 50,
                                     child: ListView(
+                                      padding: EdgeInsets.all(10),
                                       scrollDirection: Axis.horizontal,
-                                      physics: const BouncingScrollPhysics(),
                                       children: [
                                         CategoriaWid(categoria: categorias[0]),
                                         CategoriaWid(categoria: categorias[1]),

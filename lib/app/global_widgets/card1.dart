@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class Card1Wid extends StatelessWidget {
+  final double width;
   final int views;
 
-  const Card1Wid({Key? key, required this.views}) : super(key: key);
+  const Card1Wid({Key? key, required this.width, required this.views})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 174.09,
-      height: 172.14,
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      width: width,
+      padding: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
           color: ColorsUtils.white,
           borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -34,6 +35,8 @@ class Card1Wid extends StatelessWidget {
                   fontSize: 10,
                   fontWeight: FontWeight.bold,
                   color: ColorsUtils.orange2),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
             const Divider(
               color: ColorsUtils.orange1,
@@ -48,6 +51,8 @@ class Card1Wid extends StatelessWidget {
                   fontSize: 10,
                   fontWeight: FontWeight.bold,
                   color: ColorsUtils.orange2),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

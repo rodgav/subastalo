@@ -46,11 +46,11 @@ class ButtonWid extends StatelessWidget {
             constraints: BoxConstraints(minWidth: width, minHeight: height),
             //margin: EdgeInsets.symmetric(vertical: 15, horizontal: 35),
             alignment: Alignment.center,
-            child: Text(
-              textButt,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: fontSize,fontWeight: FontWeight.bold),
-            ),
+            child:  Text(
+                textButt,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: fontSize,fontWeight: FontWeight.bold),
+              ),
           ),
         ),
       ),

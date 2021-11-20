@@ -19,7 +19,7 @@ class Login extends StatelessWidget {
         decoration: const BoxDecoration(),
         child: Center(
           child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+
             child: Container(
               padding: const EdgeInsets.all(20),
               child: Column(
