@@ -13,7 +13,7 @@ class CardNameSubDet extends StatelessWidget {
     final bool web = size.width > 800;
     return Container(
         width: web ? size.width * 0.5 : size.width,
-        height: 120,
+        height: 140,
         padding: const EdgeInsets.symmetric(horizontal: 27),
         child: Column(
               crossAxisAlignment:

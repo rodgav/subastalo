@@ -14,11 +14,11 @@ class CardInfoSubDet extends StatelessWidget {
     final bool web = size.width > 800;
     return Container(
         width: web ? size.width * 0.5 : size.width,
-        height: 120,
+        height: 140,
         color: subasta.type == 'Vivo' ? ColorsUtils.orange2 : ColorsUtils.blue3,
-        padding: EdgeInsets.all(web ? 10 : 5),
+        padding:const EdgeInsets.all( 10),
         child: Container(
-          padding:  EdgeInsets.all(web?10:5),
+          padding:const  EdgeInsets.all(10),
           decoration: BoxDecoration(
               color: ColorsUtils.white,
               borderRadius: BorderRadius.circular(15)),
@@ -38,27 +38,29 @@ class CardInfoSubDet extends StatelessWidget {
                           color: ColorsUtils.blue3,
                           size: size.width * 0.03,
                         ),
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: web?10:5,
                         ),
                         SizedBox( width: web ? size.width * 0.15 : size.width * 0.72,
-                          child: FittedBox(fit: BoxFit.scaleDown,
-                            child: RichText(
-                              text: TextSpan(children: [
-                                TextSpan(
-                                    text: subasta.type == 'Vivo'
-                                        ? 'Inician\n'
-                                        : 'Cierra\n',
-                                    style: const TextStyle(
-                                        color: ColorsUtils.blue3, fontSize: 20)),
-                                TextSpan(
-                                  text: '${subasta.date}',
-                                  style: const TextStyle(
-                                      color: ColorsUtils.blue3,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
+                          child: Align(alignment: Alignment.centerLeft,
+                            child: FittedBox(fit: BoxFit.scaleDown,
+                              child:  RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                        text: subasta.type == 'Vivo'
+                                            ? 'Inician\n'
+                                            : 'Cierra\n',
+                                        style: const TextStyle(
+                                            color: ColorsUtils.blue3, fontSize: 20)),
+                                    TextSpan(
+                                      text: '${subasta.date}',
+                                      style: const TextStyle(
+                                          color: ColorsUtils.blue3,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ]),
                                 ),
-                              ]),
                             ),
                           ),
                         )

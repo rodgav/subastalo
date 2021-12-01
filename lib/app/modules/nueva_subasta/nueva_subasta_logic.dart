@@ -12,10 +12,11 @@ class NuevaSubastaLogic extends GetxController {
 
   void selectDate() async {
     final picked = await showDatePicker(
+        locale: const Locale('es', 'es_ES'),
         context: Get.context!,
         initialDate: selectedDate,
         firstDate: DateTime.now(),
-        lastDate: DateTime(selectedDate.year + 5));
+        lastDate: DateTime(selectedDate.year + 1));
     if (picked != null) {
       selectedDate = picked;
       update(['date']);

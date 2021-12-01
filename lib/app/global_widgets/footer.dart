@@ -279,14 +279,15 @@ class FooterWid extends StatelessWidget {
                 ],
               ),
               web
-                  ? const SizedBox(
-                      width: 0,
-                      height: 0,
-                    )
+                  ? Container(
+                height: 256,
+                width: 1,
+                color: ColorsUtils.white,
+              )
                   : const Divider(
-                      color: ColorsUtils.white,
-                      height: 2,
-                    ),
+                color: ColorsUtils.white,
+                height: 2,
+              ),
               Column(
                 crossAxisAlignment:
                     web ? CrossAxisAlignment.start : CrossAxisAlignment.center,
