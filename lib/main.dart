@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('Version 1 --- 01-12-2021');
     return GetMaterialApp.router(
       initialBinding: BindingsBuilder(() {
         Get.put(AuthService());

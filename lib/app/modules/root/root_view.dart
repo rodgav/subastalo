@@ -12,7 +12,7 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetRouterOutlet.builder(builder: (context, delegate, current) {
-      debugPrint('title ${current?.location}');
+      //debugPrint('title ${current?.location}');
       return Scaffold(
           body: GetRouterOutlet(initialRoute: Routes.home));
     });
