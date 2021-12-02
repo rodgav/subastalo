@@ -173,14 +173,14 @@ class HomePage extends StatelessWidget {
                         cursor: SystemMouseCursors.click,
                         child: GestureDetector(
                           child: SizedBox(
-                            width: 216,
-                            height: 48.33,
+                            width: 200,
+                            height: 45,
                             child: Image.asset('assets/images/logo.png'),
                           ),
                           onTap: () => logic.toHome(current?.location),
                         ),
                       ),
-                      centerTitle: true,
+                      centerTitle: false,
                       actions: [
                           IconButton(
                               onPressed: () => logic
@@ -199,7 +199,7 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                        width: size.width * 0.1,
+                        width: web? size.width * 0.1:size.width * 0.3,
                         padding: const EdgeInsets.all(10),
                         decoration: const BoxDecoration(
                             border: Border(
@@ -231,7 +231,7 @@ class HomePage extends StatelessWidget {
                                 ? SizedBox(
                                     height: 50,
                                     child: ListView(
-                                      padding: EdgeInsets.all(10),
+                                      padding: const EdgeInsets.all(10),
                                       scrollDirection: Axis.horizontal,
                                       children: [
                                         CategoriaWid(categoria: categorias[0]),

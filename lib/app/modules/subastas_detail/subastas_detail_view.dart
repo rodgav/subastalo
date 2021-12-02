@@ -63,7 +63,7 @@ class SubastasDetailPage extends StatelessWidget {
                                               builder: (_) {
                                                 final images = _.imagesSubasta;
                                                 return SizedBox(
-                                                  height: 100,
+                                                  height: web? 100:50,
                                                   child: ListView.builder(
                                                     scrollDirection:
                                                         Axis.horizontal,
@@ -73,8 +73,8 @@ class SubastasDetailPage extends StatelessWidget {
                                                       if (index ==
                                                           images.length) {
                                                         return Container(
-                                                          width: 100,
-                                                          height: 100,
+                                                          width: web? 100:50,
+                                                          height: web? 100:50,
                                                           decoration: BoxDecoration(
                                                               color: Colors.red,
                                                               borderRadius:
@@ -84,8 +84,8 @@ class SubastasDetailPage extends StatelessWidget {
                                                         );
                                                       }
                                                       return Container(
-                                                        width: 100,
-                                                        height: 100,
+                                                        width: web? 100:50,
+                                                        height: web? 100:50,
                                                         margin: const EdgeInsets
                                                             .only(right: 20),
                                                         decoration: BoxDecoration(
@@ -111,118 +111,122 @@ class SubastasDetailPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: web ? size.width * 0.5 : size.width,
-                              height: 651,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CountdownTimer(
-                                    endTime:
-                                        DateTime.now().millisecondsSinceEpoch +
-                                            100000 * 3000,
-                                    widgetBuilder: (_, time) {
-                                      if (time == null) {
-                                        return const Text('Formato incorrecto');
-                                      }
-                                      return Text(
-                                        'Dias:  ${time.days}, horas:  ${time.hours}, minutos: ${time.min}, segundos:  ${time.sec} ',
-                                        style: const TextStyle(
-                                            fontSize: 20, fontWeight: FontWeight.bold),
-                                      );
-                                    },
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Icon(
-                                    Icons.live_tv,
-                                    color: ColorsUtils.grey1.withOpacity(0.2),
-                                    size: 94,
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    subasta.type == 'Vivo'
-                                        ? 'OFERTA EN VIVO'
-                                        : 'OFERTA NEGOCIABLE',
-                                    style: TextStyle(
-                                        color:
-                                            ColorsUtils.grey1.withOpacity(0.2),
-                                        fontSize: 14),
-                                  ),
-                                  const SizedBox(height: 20),
-                                  ButtonWid(
-                                      width: size.width * 0.3,
-                                      height: web ? 80 : 50,
-                                      color1: subasta.type == 'Vivo'
-                                          ? ColorsUtils.orange1
-                                          : ColorsUtils.blueButt1,
-                                      color2: subasta.type == 'Vivo'
-                                          ? ColorsUtils.orange2
-                                          : ColorsUtils.blueButt2,
-                                      textButt: subasta.type == 'Vivo'
-                                          ? 'Deseo participar'
-                                          : 'Quiero negociar',
-                                      fontSize: 26,
-                                      voidCallback: () => subasta.type == 'Vivo'
-                                          ? _.subasEnVivo('123')
-                                          : _.subastaNegociar('123')),
-                                  const SizedBox(height: 20),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Icon(
-                                        Icons.home,
-                                        size: 20,
-                                        color: subasta.type == 'Vivo'
-                                            ? ColorsUtils.blue3
-                                            : ColorsUtils.grey1,
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        subasta.type == 'Vivo'
-                                            ? 'Mínimo 2 participantes'
-                                            : 'Comisión del 05% del valor final',
-                                        style: const TextStyle(
-                                            color: ColorsUtils.blue3,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                  const SizedBox(height: 20),
-                                  subasta.type == 'Vivo'
-                                      ? Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 10, horizontal: 30),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                              border: Border.all(
-                                                  color: ColorsUtils.orange2)),
-                                          child: Column(
-                                            children: const [
-                                              Text('0.5% DE COMISIÓN',
-                                                  style: TextStyle(
-                                                      fontSize: 8,
-                                                      color:
-                                                          ColorsUtils.grey1)),
-                                              Text('US\$ 32400.00',
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      color:
-                                                          ColorsUtils.orange2)),
-                                            ],
-                                          ),
-                                        )
-                                      : const SizedBox(),
-                                  const SizedBox(height: 20),
-                                  subasta.type == 'Vivo'
-                                      ? const Text('PRECIO DE RESERVA',
+                              height: web ? 651 : size.height * 0.5,
+                              child:  Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    CountdownTimer(
+                                      endTime:
+                                          DateTime.now().millisecondsSinceEpoch +
+                                              100000 * 3000,
+                                      widgetBuilder: (_, time) {
+                                        if (time == null) {
+                                          return const Text('Formato incorrecto');
+                                        }
+                                        return SizedBox(width: web?size.width*0.3:size.width*0.7,
+                                          child: FittedBox(fit: BoxFit.scaleDown,
+                                        child:Text(
+                                            'Dias:  ${time.days}, horas:  ${time.hours}, minutos: ${time.min}, segundos:  ${time.sec} ',
+                                            style: const TextStyle(
+                                                fontSize: 20, fontWeight: FontWeight.bold),
+                                          ),)
+                                        );
+                                      },
+                                    ),
+                                    Column(mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          Icons.live_tv,
+                                          color: ColorsUtils.grey1.withOpacity(0.2),
+                                          size: web? 94:24,
+                                        ),
+
+                                        SizedBox(width: web?size.width*0.3:size.width*0.7,
+                                          child: FittedBox(fit: BoxFit.scaleDown,
+                                            child: Text(
+                                          subasta.type == 'Vivo'
+                                              ? 'OFERTA EN VIVO'
+                                              : 'OFERTA NEGOCIABLE',
                                           style: TextStyle(
-                                              fontSize: 18,
-                                              color: ColorsUtils.grey1))
-                                      : const SizedBox(),
-                                ],
-                              ),
+                                              color:
+                                                  ColorsUtils.grey1.withOpacity(0.2),
+                                              fontSize: 14),
+                                        ),)),
+                                      ],
+                                    ),
+                                    ButtonWid(
+                                        width: size.width * 0.3,
+                                        height: web ? 70 : 40,
+                                        color1: subasta.type == 'Vivo'
+                                            ? ColorsUtils.orange1
+                                            : ColorsUtils.blueButt1,
+                                        color2: subasta.type == 'Vivo'
+                                            ? ColorsUtils.orange2
+                                            : ColorsUtils.blueButt2,
+                                        textButt: subasta.type == 'Vivo'
+                                            ? 'Deseo participar'
+                                            : 'Quiero negociar',
+                                        fontSize: 26,
+                                        voidCallback: () => subasta.type == 'Vivo'
+                                            ? _.subasEnVivo('123')
+                                            : _.subastaNegociar('123')),
+                                    SizedBox(width: web?size.width*0.3:size.width*0.7,
+                                      child: FittedBox(fit: BoxFit.scaleDown,
+                                        child:RichText(text: TextSpan(children: [
+                                          WidgetSpan(child: Icon(
+                                            Icons.home,
+                                            size: 20,
+                                            color: subasta.type == 'Vivo'
+                                                ? ColorsUtils.blue3
+                                                : ColorsUtils.grey1,
+                                          ),),
+                                          TextSpan(text:subasta.type == 'Vivo'
+                                              ? 'Mínimo 2 participantes'
+                                              : 'Comisión del 05% del valor final',
+                                            style: const TextStyle(
+                                                color: ColorsUtils.blue3,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.bold),)
+                                        ]),))),
+                                    subasta.type == 'Vivo'
+                                        ? Container(width: web?size.width*0.3:size.width*0.7,
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 10, horizontal: 30),
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                border: Border.all(
+                                                    color: ColorsUtils.orange2)),
+                                            child: FittedBox(fit: BoxFit.scaleDown,
+                                              child: RichText(
+                                                text: const TextSpan(
+                                                  children:  [
+                                                    TextSpan(text:'0.5% DE COMISIÓN\n',
+                                                        style: TextStyle(
+                                                            fontSize: 8,
+                                                            color:
+                                                                ColorsUtils.grey1)),
+                                                    TextSpan(text:'US\$ 32400.00',
+                                                        style: TextStyle(
+                                                            fontSize: 20,
+                                                            color:
+                                                                ColorsUtils.orange2)),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        : const SizedBox(),
+                                    subasta.type == 'Vivo'
+                                        ?  SizedBox(width: web?size.width*0.3:size.width*0.7,
+                                      child: const FittedBox(fit: BoxFit.scaleDown,
+                                          child:Text('PRECIO DE RESERVA',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: ColorsUtils.grey1))))
+                                        : const SizedBox(),
+                                  ],
+                                ),
                             ),
                           ],
                         ),

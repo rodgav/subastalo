@@ -26,7 +26,7 @@ class CardInfoSubDet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: web ? size.width * 0.31 : size.width * 0.82,
+                width: web ? size.width * 0.31 : size.width * 0.7,
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -41,9 +41,10 @@ class CardInfoSubDet extends StatelessWidget {
                         SizedBox(
                           width: web?10:5,
                         ),
-                        SizedBox( width: web ? size.width * 0.15 : size.width * 0.72,
+                        SizedBox( width: web ? size.width * 0.15 : size.width * 0.55,
                           child: Align(alignment: Alignment.centerLeft,
-                            child: FittedBox(fit: BoxFit.scaleDown,
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
                               child:  RichText(
                                   text: TextSpan(children: [
                                     TextSpan(
@@ -67,7 +68,7 @@ class CardInfoSubDet extends StatelessWidget {
                       ],
                     ),
                     Container(
-                      width: web ? size.width * 0.3 : size.width * 0.8,
+                      width: web ? size.width * 0.3 : size.width * 0.7,
                       padding: EdgeInsets.symmetric(
                           horizontal: web?10:5, vertical: web?5:2.5),
                       decoration: BoxDecoration(
@@ -80,7 +81,7 @@ class CardInfoSubDet extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Icon(
-                                Icons.home,
+                                 Icons.home,
                                 color: subasta.type == 'Vivo'
                                     ? ColorsUtils.orange2
                                     : ColorsUtils.blue3,
@@ -91,7 +92,7 @@ class CardInfoSubDet extends StatelessWidget {
                               ),
                               SizedBox(
                                 width:
-                                    web ? size.width * 0.1 : size.width * 0.3,
+                                    web ? size.width * 0.1 : size.width * 0.25,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: FittedBox(
@@ -128,14 +129,14 @@ class CardInfoSubDet extends StatelessWidget {
                               ),
                               SizedBox(
                                 width:
-                                    web ? size.width * 0.1 : size.width * 0.3,
+                                    web ? size.width * 0.1 : size.width * 0.25,
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: FittedBox(
                                     fit: BoxFit.scaleDown,
                                     child: Text(
                                       '${subasta.views} Visitas',
-                                      style: TextStyle(
+                                      style: TextStyle( fontSize: 14,
                                           color: subasta.type == 'Vivo'
                                               ? ColorsUtils.orange2
                                               : ColorsUtils.blue3),
@@ -152,17 +153,16 @@ class CardInfoSubDet extends StatelessWidget {
                 ),
               ),
               Container(
-                width:  size.width * 0.08,
+                width:  size.width * 0.1,
                 decoration: const BoxDecoration(
                     color: ColorsUtils.white,
                     shape: BoxShape.circle,
                     boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 7)]),
                 child: Container(
-                  margin: EdgeInsets.all(web ? 10 : 5),
+                  margin: EdgeInsets.all (web?10:5),
                   child: Icon(
-                    Icons.home,
+                    subasta.type == 'Vivo' ? Icons.favorite:Icons.home,
                     color: ColorsUtils.orange2,
-                    size: size.width * 0.05,
                   ),
                 ),
               )

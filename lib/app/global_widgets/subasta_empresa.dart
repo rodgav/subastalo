@@ -23,7 +23,7 @@ class SubastaEmpresa extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final bool web = size.width > 800;
     return Container(
-      width: web ? size.width * 0.27 : size.width * 0.98,
+      width: web ? size.width * 0.27 : size.width * 0.95,
       margin: EdgeInsets.only(top: 5, bottom: 5, left: web ? left : 10),
       padding: EdgeInsets.all(web ? 20 : 10),
       decoration: BoxDecoration(

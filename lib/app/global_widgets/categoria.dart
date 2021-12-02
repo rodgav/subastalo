@@ -15,7 +15,7 @@ class CategoriaWid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeLogic>(builder: (_) {
       return Container(
-        margin:const EdgeInsets.only(left: 20),
+        margin:const EdgeInsets.only(left: 10),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

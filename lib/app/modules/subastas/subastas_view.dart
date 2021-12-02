@@ -102,8 +102,7 @@ class SubastasPage extends StatelessWidget {
                               child: Row(
                                 children: [
                                   SizedBox(
-                                      width: web?80:40,
-                                      height: size.height * 0.1,
+                                      width:  web?120:60,
                                       child:const Align(
                                         alignment: Alignment.centerLeft,
                                         child: FittedBox(
@@ -116,8 +115,7 @@ class SubastasPage extends StatelessWidget {
                                         ),
                                       )),
                                   SizedBox(
-                                    width: size.width * 0.1,
-                                    height: size.height * 0.1,
+                                    width: size.width * 0.2,
                                     child: Align(
                                       alignment: Alignment.centerLeft,
                                       child: FittedBox(
@@ -140,51 +138,17 @@ class SubastasPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  web
-                                      ? Container(
-                                          width: 3,
-                                          height: size.height * 0.1,
-                                          color: ColorsUtils.white)
-                                      : const Divider(
-                                          color: ColorsUtils.white,
-                                        ),
-                                  SizedBox(
-                                      width: size.width * 0.1,
-                                      height: size.height * 0.1,
-                                      child: Align(
-                                        alignment: Alignment.centerRight,
-                                        child: FittedBox(
-                                          fit: BoxFit.scaleDown,
-                                          child: RichText(
-                                            textAlign: TextAlign.start,
-                                            text: const TextSpan(children: [
-                                              TextSpan(
-                                                  text: '3:30 pm \n',
-                                                  style: TextStyle(
-                                                      color: ColorsUtils.white,
-                                                      fontSize: 26)),
-                                              TextSpan(
-                                                  text: 'Lima - Perú',
-                                                  style: TextStyle(
-                                                      color: ColorsUtils.white,
-                                                      fontSize: 26)),
-                                            ]),
-                                          ),
-                                        ),
-                                      ))
                                 ],
                               ),
                             ),
                             SizedBox(height: web ? 30 : 5),
-                            Center(
-                              child: ButtonWid(
-                                  width:size.width * 0.3,
+                             ButtonWid(
+                                  width: web? size.width * 0.15 :size.width * 0.4,
                                   height: web ? size.height * 0.08 : size.height * 0.05,
                                   color1: ColorsUtils.orange1,
                                   color2: ColorsUtils.orange2,
                                   textButt: 'Deseo participar',
                                   voidCallback: () => null),
-                            )
                           ],
                         ),
                       ),
@@ -293,7 +257,7 @@ class SubastasPage extends StatelessWidget {
                             return subastas != null
                                 ? Container(
                                     width: size.width,
-                                    height: 433,
+                                    height: 440,
                                     margin: EdgeInsets.only(top: web ? 30 : 10),
                                     child: subastas.isNotEmpty
                                         ? ListView.builder(
@@ -581,17 +545,13 @@ class SubastasPage extends StatelessWidget {
                                         ],
                                       ),
                                       const SizedBox(height: 10),
-                                      Center(
-                                        child: ButtonWid(
-                                            width: web
-                                                ? size.width * 0.2
-                                                : size.width * 0.3,
+                                       ButtonWid(
+                                            width:web?size.width * 0.3:size.width * 0.5,
                                             height: 54,
                                             color1: ColorsUtils.orange1,
                                             color2: ColorsUtils.orange2,
                                             textButt: 'Deseo participar',
                                             voidCallback: () => null),
-                                      ),
                                       const SizedBox(height: 10),
                                       Row(
                                         children: const [

@@ -91,6 +91,20 @@ class DrawerWid extends StatelessWidget {
                             selectedTileColor: const Color(0xff324047),
                             onTap: () => _.onSelectDrawer('Subastas favoritas'),
                           ),
+                          ListTile(
+                            contentPadding: const EdgeInsets.only(left: 68),
+                            title: Text(
+                              'Mi historial',
+                              style: TextStyle(
+                                  color: ColorsUtils.white,
+                                  fontWeight: select == 'Mi historial'
+                                      ? FontWeight.w900
+                                      : FontWeight.normal),
+                            ),
+                            selected: select == 'Mi historial',
+                            selectedTileColor: const Color(0xff324047),
+                            onTap: () => _.onSelectDrawer('Mi historial'),
+                          ),
                         ],
                       ),
                     ),
@@ -324,6 +338,20 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Perfil',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Perfil'),
+                    ),
+                    ListTile(
+                      tileColor: const Color(0xff253238),
+                      leading: const Icon(
+                        Icons.person_outline,
+                        color: ColorsUtils.white,
+                      ),
+                      title: const Text(
+                        'Salir',
+                        style: TextStyle(color: ColorsUtils.white),
+                      ),
+                      selected: select == 'Salir',
+                      selectedTileColor: const Color(0xff324047),
+                      onTap:  _.closeSession,
                     )
                   ],
                 ),

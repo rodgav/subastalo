@@ -19,7 +19,7 @@ class Destacado2 extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final bool web = size.width > 800;
     return Container(
-      width: web ? size.width * 0.35 : size.width * 0.97,
+      width: web ? size.width * 0.35 : size.width * 0.95,
       margin: EdgeInsets.only(top: 5, bottom: 5, left: web ? 40 : 10),
       padding: EdgeInsets.all(web ? 20 : 10),
       decoration: const BoxDecoration(
@@ -31,6 +31,7 @@ class Destacado2 extends StatelessWidget {
           ]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SizedBox(
             width: web ? size.width * 0.35 : size.width,
@@ -45,9 +46,7 @@ class Destacado2 extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
+
           SizedBox(
             width: web ? size.width * 0.22 : size.width * 0.6,
             child: Align(alignment: Alignment.centerLeft,
@@ -67,9 +66,7 @@ class Destacado2 extends StatelessWidget {
                   ])),
                 )),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+
           SizedBox(
               width: web ? size.width * 0.35 : size.width,
               child: Row(
@@ -138,9 +135,6 @@ class Destacado2 extends StatelessWidget {
                             color2: ColorsUtils.orange2,
                             textButt: 'Deseo participar',
                             voidCallback: voidCallback),
-                        const SizedBox(
-                          height: 20,
-                        ),
                       ],
                     ),
                   ),
@@ -162,14 +156,11 @@ class Destacado2 extends StatelessWidget {
                                   color: ColorsUtils.grey2, fontSize: 13)),
                         ])),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         PriceWid(
                             price: subasta.price,
                             width: web ? size.width * 0.07 : size.width * 0.2),
-                        const SizedBox(
-                          height: 20,
-                        ),
                       ],
                     ),
                   )

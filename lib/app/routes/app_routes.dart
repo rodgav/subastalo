@@ -24,6 +24,7 @@ abstract class Routes {
 
   static const miPendientes = _Paths.dashboard + _Paths.miPendientes;
   static const miFavoritas = _Paths.dashboard + _Paths.miFavoritas;
+  static const miHistorial = _Paths.dashboard + _Paths.miHistorial;
   static const categorias = _Paths.dashboard + _Paths.categorias;
   static const tAprobadas = _Paths.dashboard + _Paths.tAprobadas;
   static const tPendientes = _Paths.dashboard + _Paths.tPendientes;
@@ -60,6 +61,7 @@ abstract class _Paths {
   static const newSubastas = '/newsubastas';
   static const miPendientes = '/mipendientes';
   static const miFavoritas = '/mifavoritas';
+  static const miHistorial = '/mihistorial';
   static const misubastasDetail = '/:subastaId';
   static const categorias = '/categorias';
   static const tAprobadas = '/aprobadas';

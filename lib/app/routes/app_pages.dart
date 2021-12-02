@@ -24,6 +24,8 @@ import 'package:subastalo/app/modules/mensajes/mensajes_binding.dart';
 import 'package:subastalo/app/modules/mensajes/mensajes_view.dart';
 import 'package:subastalo/app/modules/mi_favoritas/mi_favoritas_binding.dart';
 import 'package:subastalo/app/modules/mi_favoritas/mi_favoritas_view.dart';
+import 'package:subastalo/app/modules/mi_historial/mi_historial_binding.dart';
+import 'package:subastalo/app/modules/mi_historial/mi_historial_view.dart';
 import 'package:subastalo/app/modules/mi_pendientes/mi_pendientes_binding.dart';
 import 'package:subastalo/app/modules/mi_pendientes/mi_pendientes_view.dart';
 import 'package:subastalo/app/modules/mi_subasta/mi_subasta_binding.dart';
@@ -141,6 +143,11 @@ class AppPages {
                   name: _Paths.miFavoritas,
                   page: () => MiFavoritasPage(),
                   binding: MiFavoritasBinding(),
+                ),
+                GetPage(
+                  name: _Paths.miHistorial,
+                  page: () => MiHistorialPage(),
+                  binding: MiHistorialBinding(),
                 ),
                 GetPage(
                     name: _Paths.categorias,

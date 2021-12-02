@@ -216,8 +216,8 @@ class VivoPage extends StatelessWidget {
                     children: [
                       Container(
                         width: size.width * 0.5,
-                        height: size.height * 0.1,
-                        padding: const EdgeInsets.all(20),
+                        height: web?size.height*0.1:size.height*0.05,
+                        padding: EdgeInsets.symmetric(horizontal:web?10:5),
                         child: const FittedBox(
                           fit: BoxFit.scaleDown,
                           child: Text(
@@ -231,120 +231,121 @@ class VivoPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        width: size.width * 0.5,
-                        height: size.height * 0.6,
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Container(
-                                  width: size.width * 0.5,
-                                  height: size.height * 0.4,
-                                  decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/volquete.png'),
-                                          fit: BoxFit.cover)),
-                                ),
-                                Positioned(
-                                  right: 0,
-                                  left: 0,
-                                  bottom: 10,
-                                  child: SizedBox(
-                                    height: size.height * 0.1,
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.horizontal,
-                                      padding: const EdgeInsets.all(0),
-                                      itemBuilder: (__, index) {
-                                        if (index == 0) {
+                      Expanded(
+                        child: SizedBox(
+                          width: size.width * 0.5,
+                          child: Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Container(
+                                    width: size.width * 0.5,
+                                    height: size.height * 0.4,
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/volquete.png'),
+                                            fit: BoxFit.cover)),
+                                  ),
+                                  Positioned(
+                                    right: 0,
+                                    left: 0,
+                                    bottom: 10,
+                                    child: SizedBox(
+                                      height: size.height * 0.1,
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        padding: const EdgeInsets.all(0),
+                                        itemBuilder: (__, index) {
+                                          if (index == 0) {
+                                            return Container(
+                                              margin:
+                                                  const EdgeInsets.only(left: 20),
+                                              width: size.height * 0.1,
+                                              height: size.height * 0.1,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.red,
+                                                  borderRadius:
+                                                      BorderRadius.circular(10)),
+                                            );
+                                          }
                                           return Container(
-                                            margin:
-                                                const EdgeInsets.only(left: 20),
                                             width: size.height * 0.1,
                                             height: size.height * 0.1,
+                                            margin:
+                                                const EdgeInsets.only(left: 20),
                                             decoration: BoxDecoration(
-                                                color: Colors.red,
                                                 borderRadius:
-                                                    BorderRadius.circular(10)),
+                                                    BorderRadius.circular(10),
+                                                image: const DecorationImage(
+                                                    image: AssetImage(
+                                                        'assets/images/volquete0.png'),
+                                                    fit: BoxFit.cover)),
                                           );
-                                        }
-                                        return Container(
-                                          width: size.height * 0.1,
-                                          height: size.height * 0.1,
-                                          margin:
-                                              const EdgeInsets.only(left: 20),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              image: const DecorationImage(
-                                                  image: AssetImage(
-                                                      'assets/images/volquete0.png'),
-                                                  fit: BoxFit.cover)),
-                                        );
-                                      },
-                                      itemCount: 10 + 1,
+                                        },
+                                        itemCount: 10 + 1,
+                                      ),
                                     ),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: size.height * 0.2,
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      web
+                                          ? DataTable(columns: const [
+                                              DataColumn(label: Text('PUESTO')),
+                                              DataColumn(
+                                                  label: Text('SEUDÓNIMO')),
+                                              DataColumn(
+                                                  label: Text('PROPUESTAS')),
+                                            ], rows: const [
+                                              DataRow(cells: [
+                                                DataCell(Text('1°')),
+                                                DataCell(Text('Danilo01')),
+                                                DataCell(Text('1'))
+                                              ]),
+                                              DataRow(cells: [
+                                                DataCell(Text('1°')),
+                                                DataCell(Text('Danilo01')),
+                                                DataCell(Text('1'))
+                                              ]),
+                                            ])
+                                          : ListView.separated(
+                                              physics:
+                                                  const NeverScrollableScrollPhysics(),
+                                              shrinkWrap: true,
+                                              itemBuilder: (__, index) {
+                                                return ListTile(
+                                                  title: const Text('Nombre'),
+                                                  trailing: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      IconButton(
+                                                          icon: const Icon(
+                                                              Icons.edit),
+                                                          onPressed: () => null),
+                                                      IconButton(
+                                                          icon: const Icon(
+                                                              Icons.delete),
+                                                          onPressed: () => null),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
+                                              separatorBuilder: (__, index) =>
+                                                  const Divider(),
+                                              itemCount: 2,
+                                            ),
+                                    ],
                                   ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: size.height * 0.2,
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    web
-                                        ? DataTable(columns: const [
-                                            DataColumn(label: Text('PUESTO')),
-                                            DataColumn(
-                                                label: Text('SEUDÓNIMO')),
-                                            DataColumn(
-                                                label: Text('PROPUESTAS')),
-                                          ], rows: const [
-                                            DataRow(cells: [
-                                              DataCell(Text('1°')),
-                                              DataCell(Text('Danilo01')),
-                                              DataCell(Text('1'))
-                                            ]),
-                                            DataRow(cells: [
-                                              DataCell(Text('1°')),
-                                              DataCell(Text('Danilo01')),
-                                              DataCell(Text('1'))
-                                            ]),
-                                          ])
-                                        : ListView.separated(
-                                            physics:
-                                                const NeverScrollableScrollPhysics(),
-                                            shrinkWrap: true,
-                                            itemBuilder: (__, index) {
-                                              return ListTile(
-                                                title: const Text('Nombre'),
-                                                trailing: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    IconButton(
-                                                        icon: const Icon(
-                                                            Icons.edit),
-                                                        onPressed: () => null),
-                                                    IconButton(
-                                                        icon: const Icon(
-                                                            Icons.delete),
-                                                        onPressed: () => null),
-                                                  ],
-                                                ),
-                                              );
-                                            },
-                                            separatorBuilder: (__, index) =>
-                                                const Divider(),
-                                            itemCount: 2,
-                                          ),
-                                  ],
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(
@@ -511,62 +512,40 @@ class VivoPage extends StatelessWidget {
                           children: [
                             Container(
                               width: size.width * 0.5,
-                              height: size.height * 0.1,
-                              padding: const EdgeInsets.all(20),
+                              height: web?size.height*0.1:size.height*0.05,
+                              padding: EdgeInsets.symmetric(horizontal:web?10:5),
                               color: ColorsUtils.orange2,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  SizedBox(
-                                    width: size.width * 0.20,
-                                    height: size.height * 0.1,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
+                              child:  SizedBox(
+                                width: size.width * 0.4,
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: RichText(
+                                      text: const TextSpan(children: [
+                                        WidgetSpan(child: Icon(
                                           Icons.person,
                                           color: ColorsUtils.white,
-                                          size: size.height * 0.035,
+                                          size: 48,
+                                        ),),
+                                        TextSpan(text:' Propuesta actual: ',
+                                            style: TextStyle(
+                                                fontSize: 30,
+                                                color: ColorsUtils.white)),
+                                        TextSpan(text:
+                                        ' US\$ 3,550',
+                                          style: TextStyle(
+                                              color: ColorsUtils.white,
+                                              fontSize: 55,
+                                              fontWeight: FontWeight.bold),
                                         ),
-                                        const SizedBox(width: 10),
-                                        SizedBox(
-                                          width: size.width * 0.08,
-                                          height: size.height * 0.05,
-                                          child: const FittedBox(
-                                            fit: BoxFit.scaleDown,
-                                            child: Text('Propuesta actual:',
-                                                style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: ColorsUtils.white),
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ])
                                   ),
-                                  SizedBox(
-                                    width: size.width * 0.08,
-                                    height: size.height * 0.1,
-                                    child: const FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      child: Text(
-                                        'US\$ 3,550',
-                                        style: TextStyle(
-                                            color: ColorsUtils.white,
-                                            fontSize: 55,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  )
-                                ],
+                                ),
                               ),
                             ),
                             Container(
                               width: size.width * 0.5,
                               color: ColorsUtils.blue3,
-                              height: size.height * 0.55,
+                              height: size.height * 0.4,
                               child: Column(
                                 children: [
                                   !logic.chatView
@@ -574,6 +553,7 @@ class VivoPage extends StatelessWidget {
                                       : Container(
                                           width: size.width * 0.5,
                                           color: ColorsUtils.white,
+                                          padding:const EdgeInsets.symmetric(horizontal: 5),
                                           child: Obx(() => FittedBox(
                                             fit: BoxFit.scaleDown,
                                             child: RichText(
@@ -907,12 +887,10 @@ class VivoPage extends StatelessWidget {
                                           ],
                                         )),
                                   Container(
-                                    height: size.height * 0.1,
+                                    height: web? size.height * 0.1:size.height * 0.05,
                                     color: !logic.chatView
                                         ? const Color(0xff2B2D2F)
                                         : ColorsUtils.orange2,
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
                                     child: Stack(
                                       children: [
                                         Center(
@@ -921,85 +899,88 @@ class VivoPage extends StatelessWidget {
                                               height: 1,
                                               color: ColorsUtils.white),
                                         ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Container(
-                                              width: (size.height * 0.06),
-                                              height: (size.height * 0.06),
-                                              padding: const EdgeInsets.all(2),
-                                              decoration: BoxDecoration(
-                                                  color: !logic.chatView
-                                                      ? const Color(0xff2B2D2F)
-                                                      : ColorsUtils.orange2,
-                                                  border: Border.all(
-                                                      color: ColorsUtils.white),
-                                                  shape: BoxShape.circle),
-                                              child: const Center(
-                                                child: FittedBox(
-                                                  fit: BoxFit.scaleDown,
-                                                  child: Text(
-                                                    '1',
-                                                    style: TextStyle(
-                                                        fontSize: 40,
-                                                        color:
-                                                            ColorsUtils.white),
+                                        Positioned(top: 0,bottom: 0,right: 0,left: 0,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: (size.height * 0.06),
+                                                height: (size.height * 0.06),
+                                                padding: const EdgeInsets.all(2.5),
+                                                decoration: BoxDecoration(
+                                                    color: !logic.chatView
+                                                        ? const Color(0xff2B2D2F)
+                                                        : ColorsUtils.orange2,
+                                                    border: Border.all(
+                                                        color: ColorsUtils.white),
+                                                    shape: BoxShape.circle),
+                                                child: const Center(
+                                                  child: FittedBox(
+                                                    fit: BoxFit.scaleDown,
+                                                    child: Text(
+                                                      '1',
+                                                      style: TextStyle(
+                                                          fontSize: 40,
+                                                          color:
+                                                              ColorsUtils.white),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              width: (size.height * 0.06),
-                                              height: (size.height * 0.06),
-                                              padding:
-                                                  const EdgeInsets.all(2.5),
-                                              decoration: BoxDecoration(
-                                                  color: !logic.chatView
-                                                      ? const Color(0xff2B2D2F)
-                                                      : ColorsUtils.orange2,
-                                                  border: Border.all(
-                                                      color: ColorsUtils.white),
-                                                  shape: BoxShape.circle),
-                                              child: const Center(
-                                                child: FittedBox(
-                                                  fit: BoxFit.scaleDown,
-                                                  child: Text(
-                                                    '2',
-                                                    style: TextStyle(
-                                                        fontSize: 40,
-                                                        color:
-                                                            ColorsUtils.white),
+                                              Container(
+                                                width: (size.height * 0.06),
+                                                height: (size.height * 0.06),
+                                                padding:
+                                                    const EdgeInsets.all(2.5),
+                                                decoration: BoxDecoration(
+                                                    color: !logic.chatView
+                                                        ? const Color(0xff2B2D2F)
+                                                        : ColorsUtils.orange2,
+                                                    border: Border.all(
+                                                        color: ColorsUtils.white),
+                                                    shape: BoxShape.circle),
+                                                child: const Center(
+                                                  child: FittedBox(
+                                                    fit: BoxFit.scaleDown,
+                                                    child: Text(
+                                                      '2',
+                                                      style: TextStyle(
+                                                          fontSize: 40,
+                                                          color:
+                                                              ColorsUtils.white),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                            Container(
-                                              width: (size.height * 0.06),
-                                              height: (size.height * 0.06),
-                                              padding:
-                                                  const EdgeInsets.all(2.5),
-                                              decoration: BoxDecoration(
-                                                  color: !logic.chatView
-                                                      ? const Color(0xff2B2D2F)
-                                                      : ColorsUtils.orange2,
-                                                  border: Border.all(
-                                                      color: ColorsUtils.white),
-                                                  shape: BoxShape.circle),
-                                              child: const Center(
-                                                child: FittedBox(
-                                                  fit: BoxFit.scaleDown,
-                                                  child: Text(
-                                                    '3',
-                                                    style: TextStyle(
-                                                        fontSize: 40,
-                                                        color:
-                                                            ColorsUtils.white),
+                                              Container(
+                                                width: (size.height * 0.06),
+                                                height: (size.height * 0.06),
+                                                padding:
+                                                    const EdgeInsets.all(2.5),
+                                                decoration: BoxDecoration(
+                                                    color: !logic.chatView
+                                                        ? const Color(0xff2B2D2F)
+                                                        : ColorsUtils.orange2,
+                                                    border: Border.all(
+                                                        color: ColorsUtils.white),
+                                                    shape: BoxShape.circle),
+                                                child: const Center(
+                                                  child: FittedBox(
+                                                    fit: BoxFit.scaleDown,
+                                                    child: Text(
+                                                      '3',
+                                                      style: TextStyle(
+                                                          fontSize: 40,
+                                                          color:
+                                                              ColorsUtils.white),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),
@@ -1140,155 +1121,149 @@ class VivoPage extends StatelessWidget {
                                       ],
                                     ),
                                   )
-                                : SizedBox(
-                                    width: size.width * 0.5,
-                                    height: size.height * 0.2,
-                                    child: Wrap(
-                                      alignment: WrapAlignment.center,
-                                      runAlignment: WrapAlignment.center,
-                                      spacing: 10,
-                                      runSpacing: 10,
-                                      children: [
-                                        SizedBox(
-                                          width: size.width * 0.5,
-                                          child: Center(
-                                            child: Container(
-                                              decoration: const BoxDecoration(
-                                                  border: Border(
-                                                      bottom: BorderSide(
-                                                          color: ColorsUtils
-                                                              .grey2))),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  const Text('INCREMENTO',
-                                                      style: TextStyle(
-                                                          fontSize: 12)),
-                                                  const SizedBox(width: 5),
-                                                  SizedBox(
-                                                    width: 15,
-                                                    height: 15,
-                                                    child: Image.asset(
-                                                      'assets/icons/dado.png',
-                                                      fit: BoxFit.contain,
-                                                    ),
-                                                  )
-                                                ],
+                                : Expanded(
+                                  child: SizedBox(
+                                      width: size.width * 0.5,
+                                      child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          SizedBox(
+                                            width: size.width * 0.5,
+                                            child: Center(
+                                              child: Container(
+                                                decoration: const BoxDecoration(
+                                                    border: Border(
+                                                        bottom: BorderSide(
+                                                            color: ColorsUtils
+                                                                .grey2))),
+                                                child: Row(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    const Text('INCREMENTO',
+                                                        style: TextStyle(
+                                                            fontSize: 12)),
+                                                    const SizedBox(width: 5),
+                                                    SizedBox(
+                                                      width: 15,
+                                                      height: 15,
+                                                      child: Image.asset(
+                                                        'assets/icons/dado.png',
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(2.5),
-                                          decoration: BoxDecoration(
-                                              color: ColorsUtils.white,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey.shade400,
-                                                    blurRadius: 5)
-                                              ]),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              SizedBox(
-                                                width: 15,
-                                                height: 15,
-                                                child: Image.asset(
-                                                  'assets/icons/espada.png',
-                                                  fit: BoxFit.contain,
+                                          Container(
+                                            padding: const EdgeInsets.all(2.5),
+                                            decoration: BoxDecoration(
+                                                color: ColorsUtils.white,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: Colors.grey.shade400,
+                                                      blurRadius: 5)
+                                                ]),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                SizedBox(
+                                                  width: 15,
+                                                  height: 15,
+                                                  child: Image.asset(
+                                                    'assets/icons/espada.png',
+                                                    fit: BoxFit.contain,
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(width: 5),
-                                              const Text('+\$ 50'),
-                                              const SizedBox(width: 5),
-                                              Checkbox(
-                                                  activeColor:
-                                                      ColorsUtils.orange2,
-                                                  shape: const CircleBorder(),
-                                                  value: true,
-                                                  onChanged: (value) {})
-                                            ],
+                                                const SizedBox(width: 5),
+                                                const Text('+\$ 50'),
+                                                const SizedBox(width: 5),
+                                                Checkbox(
+                                                    activeColor:
+                                                        ColorsUtils.orange2,
+                                                    shape: const CircleBorder(),
+                                                    value: true,
+                                                    onChanged: (value) {})
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(2.5),
-                                          decoration: BoxDecoration(
-                                              color: ColorsUtils.white,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey.shade400,
-                                                    blurRadius: 5)
-                                              ]),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              SizedBox(
-                                                width: 15,
-                                                height: 15,
-                                                child: Image.asset(
-                                                  'assets/icons/torre.png',
-                                                  fit: BoxFit.contain,
+                                          Container(
+                                            padding: const EdgeInsets.all(2.5),
+                                            decoration: BoxDecoration(
+                                                color: ColorsUtils.white,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: Colors.grey.shade400,
+                                                      blurRadius: 5)
+                                                ]),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                SizedBox(
+                                                  width: 15,
+                                                  height: 15,
+                                                  child: Image.asset(
+                                                    'assets/icons/torre.png',
+                                                    fit: BoxFit.contain,
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(width: 5),
-                                              const Text('+\$ 70'),
-                                              const SizedBox(width: 5),
-                                              Checkbox(
-                                                  shape: const CircleBorder(),
-                                                  value: false,
-                                                  onChanged: (value) {})
-                                            ],
+                                                const SizedBox(width: 5),
+                                                const Text('+\$ 70'),
+                                                const SizedBox(width: 5),
+                                                Checkbox(
+                                                    shape: const CircleBorder(),
+                                                    value: false,
+                                                    onChanged: (value) {})
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.all(2.5),
-                                          decoration: BoxDecoration(
-                                              color: ColorsUtils.white,
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: Colors.grey.shade400,
-                                                    blurRadius: 5)
-                                              ]),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              SizedBox(
-                                                width: 15,
-                                                height: 15,
-                                                child: Image.asset(
-                                                  'assets/icons/corazon.png',
-                                                  fit: BoxFit.contain,
+                                          Container(
+                                            padding: const EdgeInsets.all(2.5),
+                                            decoration: BoxDecoration(
+                                                color: ColorsUtils.white,
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                      color: Colors.grey.shade400,
+                                                      blurRadius: 5)
+                                                ]),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                SizedBox(
+                                                  width: 15,
+                                                  height: 15,
+                                                  child: Image.asset(
+                                                    'assets/icons/corazon.png',
+                                                    fit: BoxFit.contain,
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(width: 5),
-                                              const Text('+\$ 90'),
-                                              const SizedBox(width: 5),
-                                              Checkbox(
-                                                  shape: const CircleBorder(),
-                                                  value: false,
-                                                  onChanged: (value) {})
-                                            ],
+                                                const SizedBox(width: 5),
+                                                const Text('+\$ 90'),
+                                                const SizedBox(width: 5),
+                                                Checkbox(
+                                                    shape: const CircleBorder(),
+                                                    value: false,
+                                                    onChanged: (value) {})
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          width: size.width * 0.3,
-                                          child: ButtonWid(
-                                              width: size.width * 0.3,
-                                              height: size.height * 0.1,
-                                              color1: ColorsUtils.orange1,
-                                              color2: ColorsUtils.orange2,
-                                              textButt: 'US\$ 3,600',
-                                              fontSize: 30,
-                                              voidCallback: () => null),
-                                        ),
-                                        SizedBox(
-                                            width: size.width * 0.5,
-                                            child: const Center(
-                                                child: Text(
-                                                    'Incremento de + \$ 50')))
-                                      ],
+                                          ButtonWid(
+                                                  width: web? size.width * 0.15:size.width * 0.3,
+                                                  height: 45,
+                                                  color1: ColorsUtils.orange1,
+                                                  color2: ColorsUtils.orange2,
+                                                  textButt: 'US\$ 3,600',
+                                                  fontSize: 30,
+                                                  voidCallback: () => null),
+                                          SizedBox(
+                                              width: size.width * 0.5,
+                                              child: const Center(
+                                                  child: Text(
+                                                      'Incremento de + \$ 50')))
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                ),
                           ],
                         ),
                       );

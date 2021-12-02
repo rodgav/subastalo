@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 
 class DashboardLogic extends GetxController {
@@ -82,10 +83,18 @@ class DashboardLogic extends GetxController {
       case 'Perfil':
         _goToRoute(Routes.perfil);
         break;
+      case 'Mi historial':
+        _goToRoute(Routes.miHistorial);
+        break;
     }
   }
 
   void _goToRoute(String route) {
     Get.rootDelegate.toNamed(route);
+  }
+
+  void closeSession() {
+    AuthService.to.logout;
+    Get.rootDelegate.toNamed(Routes.home);
   }
 }
