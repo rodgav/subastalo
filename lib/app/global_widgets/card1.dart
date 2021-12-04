@@ -26,22 +26,6 @@ class Card1Wid extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             const ImageIcon(
-              AssetImage('assets/icons/martillo.png'),
-              color: ColorsUtils.orange1,
-            ),
-            const Text(
-              'Abierto para ofertas',
-              style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  color: ColorsUtils.orange2),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const Divider(
-              color: ColorsUtils.orange1,
-            ),
-            const ImageIcon(
               AssetImage('assets/icons/ojo.png'),
               color: ColorsUtils.orange1,
             ),

@@ -71,27 +71,6 @@ class Destacado1 extends StatelessWidget {
             ),
             const Divider(
             ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ImageIcon(
-                  const AssetImage('assets/icons/martillo.png'),
-                  color: subasta.type == 'Vivo'
-                      ? ColorsUtils.orange2
-                      : ColorsUtils.blue3,
-                  size: 20,
-                ),
-                const SizedBox(width: 5),
-                Text(
-                  'Abierto para negociaciones',
-                  style: TextStyle(
-                      color: subasta.type == 'Vivo'
-                          ? ColorsUtils.orange2
-                          : ColorsUtils.blue3,
-                      fontSize: 8),
-                )
-              ],
-            ),
             Column(
               children: const [
                 Text('Esta oferta negociable se cierra el',

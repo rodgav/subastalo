@@ -55,19 +55,6 @@ class SubastaEmpresa extends StatelessWidget {
             ),
           ),
           const Divider(),
-          SizedBox(
-            width: web ? size.width * 0.27 : size.width * 0.98,
-            child: Align(alignment: Alignment.centerLeft,
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: RichText(
-                    text: TextSpan(children: [
-                      const TextSpan(text: 'VENDEDOR '),
-                  TextSpan(text: subasta.nameVendedor)
-                ])),
-              ),
-            ),
-          ),
           Container(
             width: web ? size.width * 0.20 : size.width * 0.90,
             height: 170,
@@ -79,77 +66,38 @@ class SubastaEmpresa extends StatelessWidget {
                     fit: BoxFit.cover)),
             child: const Like(left: 10, top: 10),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ImageIcon(
-                    AssetImage('assets/icons/calendario.png'),
-                    color: ColorsUtils.grey1,
-                    size: 15,
-                  ),
-                  const SizedBox(
-                    width: 3,
-                  ),
-                  SizedBox(
-                    width: web ? size.width * 0.05 : size.width * 0.4,
-                    child: const FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text('CIERRA Martes 03 de Nov.  |  3.00 pm',
+
+              SizedBox(
+                  width: web ? size.width * 0.27 : size.width * 0.95,
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: RichText(
+                        text:  TextSpan(children: [
+                          const  WidgetSpan(
+                          child: ImageIcon(
+                        AssetImage('assets/icons/calendario.png'),
+                        color: ColorsUtils.grey1,
+                        size: 14,
+                      )),
+                          const TextSpan(
+                          text: ' CIERRA Martes 03 de Nov.  |  3.00 pm ',
                           style:
-                              TextStyle(fontSize: 9, color: ColorsUtils.grey1)),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ImageIcon(
-                    AssetImage('assets/icons/martillo.png'),
-                    color: ColorsUtils.blue3,
-                    size: 15,
-                  ),
-                  const SizedBox(
-                    width: 3,
-                  ),
-                  SizedBox(
-                    width: web ? size.width * 0.02 : size.width * 0.2,
-                    child: const FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text('Disponible',
+                              TextStyle(fontSize: 14, color: ColorsUtils.grey1)),
+                          const    WidgetSpan(
+                          child: ImageIcon(
+                        AssetImage('assets/icons/ojo.png'),
+                        color: ColorsUtils.grey1,
+                        size: 14,
+                      )),
+                      TextSpan(
+                          text: ' ${subasta.views} visitas',
                           style:
-                              TextStyle(fontSize: 9, color: ColorsUtils.grey1)),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const ImageIcon(
-                    AssetImage('assets/icons/ojo.png'),
-                    color: ColorsUtils.blue3,
-                    size: 15,
-                  ),
-                  const SizedBox(
-                    width: 3,
-                  ),
-                  SizedBox(
-                    width: web ? size.width * 0.02 : size.width * 0.2,
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text('${subasta.views} visitas',
-                          style: const TextStyle(
-                              fontSize: 9, color: ColorsUtils.grey1)),
-                    ),
-                  )
-                ],
-              ),
-            ],
-          ),
+                          const  TextStyle(fontSize: 14, color: ColorsUtils.grey1)),
+
+                    ])),
+                  )),
+
+
           ButtonWid(
               width: 346,
               height: 55,

@@ -33,6 +33,7 @@ class UltimaSubastaWid extends StatelessWidget {
           const SizedBox(height: 20),
           Container(
             width: web ? size.width * 0.4 : size.width,
+            height: 360,
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
                 color: ColorsUtils.white,

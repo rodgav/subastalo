@@ -46,7 +46,6 @@ class Destacado2 extends StatelessWidget {
               ),
             ),
           ),
-
           SizedBox(
             width: web ? size.width * 0.22 : size.width * 0.6,
             child: Align(alignment: Alignment.centerLeft,
@@ -66,11 +65,11 @@ class Destacado2 extends StatelessWidget {
                   ])),
                 )),
           ),
-
           SizedBox(
               width: web ? size.width * 0.35 : size.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     width: web ? size.width * 0.23 : size.width * 0.6,
@@ -93,71 +92,40 @@ class Destacado2 extends StatelessWidget {
                         ),
                         SizedBox(
                           width: web ? size.width * 0.23 : size.width * 0.6,
-                          child: Row(
-                            children: [
-                              const ImageIcon(
-                                AssetImage('assets/icons/calendario2.png'),
-                                color: ColorsUtils.grey2,
-                                size: 17,
-                              ),
-                              const SizedBox(width: 5),
-                              SizedBox(
-                                width: web
-                                    ? (size.width * 0.10)
-                                    : (size.width * 0.50),
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: RichText(
-                                      text: const TextSpan(children: [
-                                    TextSpan(
-                                        text: 'INICIA',
-                                        style: TextStyle(
-                                            color: ColorsUtils.grey2,
-                                            fontSize: 13)),
-                                    TextSpan(
-                                        text: ' Martes 03 de Nov. | 3:00 pm',
-                                        style: TextStyle(
-                                            color: ColorsUtils.grey1,
-                                            fontSize: 13))
-                                  ])),
-                                ),
-                              )
-                            ],
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: RichText(
+                                text: const TextSpan(children: [
+                                  WidgetSpan(child: ImageIcon(
+                                    AssetImage('assets/icons/calendario2.png'),
+                                    color: ColorsUtils.grey2,
+                                    size: 14,
+                                  ),),
+                                  TextSpan(
+                                      text: ' INICIA',
+                                      style: TextStyle(
+                                          color: ColorsUtils.grey2,
+                                          fontSize: 14)),
+                                  TextSpan(
+                                      text: ' Martes 03 de Nov. | 3:00 pm',
+                                      style: TextStyle(
+                                          color: ColorsUtils.grey1,
+                                          fontSize: 14))
+                                ])),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        ButtonWid(
-                            width: web ? size.width * 0.23 : size.width * 0.6,
-                            height: 50,
-                            color1: ColorsUtils.orange1,
-                            color2: ColorsUtils.orange2,
-                            textButt: 'Deseo participar',
-                            voidCallback: voidCallback),
+                        )
                       ],
                     ),
                   ),
                   SizedBox(
                     width: web ? size.width * 0.07 : size.width * 0.2,
+                    height: 200,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Card1Wid(
                             views: subasta.views,
                             width: web ? size.width * 0.07 : size.width * 0.2),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        RichText(
-                            text: const TextSpan(children: [
-                          TextSpan(
-                              text: '',
-                              style: TextStyle(
-                                  color: ColorsUtils.grey2, fontSize: 13)),
-                        ])),
-                        const SizedBox(
-                          height: 10,
-                        ),
                         PriceWid(
                             price: subasta.price,
                             width: web ? size.width * 0.07 : size.width * 0.2),
@@ -166,6 +134,15 @@ class Destacado2 extends StatelessWidget {
                   )
                 ],
               )),
+          Center(
+            child: ButtonWid(
+                width: web ? size.width * 0.23 : size.width * 0.6,
+                height: 50,
+                color1: ColorsUtils.orange1,
+                color2: ColorsUtils.orange2,
+                textButt: 'Deseo participar',
+                voidCallback: voidCallback),
+          ),
         ],
       ),
     );

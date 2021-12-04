@@ -34,6 +34,7 @@ class OfertaNegociableWid extends StatelessWidget {
           ),
           Container(
             width: web ? size.width * 0.45 : size.width,
+            height: 360,
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
                 color: ColorsUtils.white,

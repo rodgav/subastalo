@@ -225,7 +225,7 @@ class SubastasPage extends StatelessWidget {
                                       ),
                                       Container(
                                         width: size.width,
-                                        height: 460,
+                                        height: 380,
                                         margin:
                                             EdgeInsets.only(top: web ? 30 : 10),
                                         child: subastas.isNotEmpty
@@ -257,7 +257,7 @@ class SubastasPage extends StatelessWidget {
                             return subastas != null
                                 ? Container(
                                     width: size.width,
-                                    height: 440,
+                                    height: 350,
                                     margin: EdgeInsets.only(top: web ? 30 : 10),
                                     child: subastas.isNotEmpty
                                         ? ListView.builder(
@@ -314,7 +314,7 @@ class SubastasPage extends StatelessWidget {
                               ),
                               Container(
                                   width: size.width,
-                                  height: 440,
+                                  height: 350,
                                   margin: EdgeInsets.only(top: web ? 30 : 10),
                                   child: subastas.isNotEmpty
                                       ? ListView.builder(
@@ -369,7 +369,7 @@ class SubastasPage extends StatelessWidget {
                               ),
                               Container(
                                   width: size.width,
-                                  height: 440,
+                                  height: 350,
                                   margin: EdgeInsets.only(top: web ? 30 : 10),
                                   child: subastas.isNotEmpty
                                       ? ListView.builder(
@@ -452,23 +452,6 @@ class SubastasPage extends StatelessWidget {
                                         price: 300.00)
                                   ])),
                           const SizedBox(height: 10),
-                          SizedBox(
-                            width: web ? size.width * 0.4 : size.width,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text('VENDEDOR',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        color: ColorsUtils.grey2)),
-                                Text('HNOS. ASOCIADOS',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        color: ColorsUtils.grey2,
-                                        fontWeight: FontWeight.bold)),
-                              ],
-                            ),
-                          ),
                           const SizedBox(height: 10),
                           SizedBox(
                             width: web ? size.width * 0.4 : size.width,
@@ -487,6 +470,7 @@ class SubastasPage extends StatelessWidget {
                             width: web ? size.width * 0.4 : size.width,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
                                   width: web
@@ -544,32 +528,7 @@ class SubastasPage extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 10),
-                                       ButtonWid(
-                                            width:web?size.width * 0.3:size.width * 0.5,
-                                            height: 54,
-                                            color1: ColorsUtils.orange1,
-                                            color2: ColorsUtils.orange2,
-                                            textButt: 'Deseo participar',
-                                            voidCallback: () => null),
-                                      const SizedBox(height: 10),
-                                      Row(
-                                        children: const [
-                                          ImageIcon(
-                                            AssetImage(
-                                                'assets/icons/personas.png'),
-                                            color: ColorsUtils.blue3,
-                                            size: 15,
-                                          ),
-                                          SizedBox(width: 10),
-                                          Text(
-                                            'Mínimo 2 participantes',
-                                            style: TextStyle(
-                                                fontSize: 13,
-                                                color: ColorsUtils.blue3),
-                                          )
-                                        ],
-                                      )
+
                                     ],
                                   ),
                                 ),
@@ -580,6 +539,33 @@ class SubastasPage extends StatelessWidget {
                                         : size.width * 0.2)
                               ],
                             ),
+                          ), const SizedBox(height: 10),
+                          Center(
+                            child: ButtonWid(
+                                width:web?size.width * 0.3:size.width * 0.5,
+                                height: 54,
+                                color1: ColorsUtils.orange1,
+                                color2: ColorsUtils.orange2,
+                                textButt: 'Deseo participar',
+                                voidCallback: () => null),
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: const [
+                              ImageIcon(
+                                AssetImage(
+                                    'assets/icons/personas.png'),
+                                color: ColorsUtils.blue3,
+                                size: 15,
+                              ),
+                              SizedBox(width: 10),
+                              Text(
+                                'Mínimo 2 participantes',
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    color: ColorsUtils.blue3),
+                              )
+                            ],
                           )
                         ],
                       ),
