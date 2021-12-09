@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class VivoLogic extends GetxController {
   //subasta in live
   Timer? _timer;
-  final RxInt _end = 1.obs;
+  final RxInt _end = 5.obs;
   final RxInt _start = 0.obs;
   bool chatView = false;
 

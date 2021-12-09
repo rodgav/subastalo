@@ -19,6 +19,7 @@ class PriceWid extends StatelessWidget {
             border: Border.all(color: ColorsUtils.orange1, width: 2.0)),
         padding: const EdgeInsets.symmetric(horizontal: 5),
         child: FittedBox(
+          fit: BoxFit.scaleDown,
           child: RichText(
             textAlign: TextAlign.center,
             text: TextSpan(children: [

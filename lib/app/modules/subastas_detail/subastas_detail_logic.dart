@@ -497,7 +497,7 @@ class SubastasDetailLogic extends GetxController {
               ),
               const Center(
                   child: Text(
-                'COMISIÓN ASP: 25\$',
+                'COMISIÓN SUBASTALO: 25\$',
                 style: TextStyle(fontSize: 12),
               )),
               const SizedBox(height: 20),

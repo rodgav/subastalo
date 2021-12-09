@@ -181,7 +181,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       centerTitle: false,
-                      actions: [
+                      /*actions: [
                           IconButton(
                               onPressed: () => logic
                                   .scaffoldKeyHome.currentState!
@@ -190,7 +190,7 @@ class HomePage extends StatelessWidget {
                                 Icons.menu,
                                 color: ColorsUtils.blue3,
                               ))
-                        ]),
+                        ]*/),
               Container(
                 width: size.width,
                 decoration: const BoxDecoration(

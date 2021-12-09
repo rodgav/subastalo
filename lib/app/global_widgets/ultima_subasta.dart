@@ -102,7 +102,7 @@ class UltimaSubastaWid extends StatelessWidget {
                                     ]),
                                   )),),
                               Container(
-                                height: 50,
+                                height: web?50:25,
                                 width: 1,
                                 color: ColorsUtils.orange2,
                               ),
