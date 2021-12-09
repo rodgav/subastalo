@@ -194,7 +194,7 @@ class VivoPage extends StatelessWidget {
                     children: [
                       Container(
                         width: size.width * 0.5,
-                        height: web ? size.height * 0.1 : size.height * 0.05,
+                        height: size.height * 0.05,
                         padding: EdgeInsets.symmetric(horizontal: web ? 10 : 5),
                         child: const FittedBox(
                           fit: BoxFit.scaleDown,
@@ -209,16 +209,14 @@ class VivoPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: SizedBox(
+                       SizedBox(
                           width: size.width * 0.5,
-                          child: Column(
-                            children: [
+                          height: size.height*0.65,
+                          child:
                               Stack(
                                 children: [
                                   Container(
-                                    width: size.width * 0.5,
-                                    height: size.height * 0.55,
+                                    width: size.width * 0.5,height: size.height*0.65,
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -268,61 +266,19 @@ class VivoPage extends StatelessWidget {
                                   )
                                 ],
                               ),
-                              Expanded(
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      web
-                                          ? DataTable(columns: const [
-                                              DataColumn(label: Text('PUESTO')),
-                                              DataColumn(
-                                                  label: Text('SEUDÓNIMO')),
-                                              DataColumn(
-                                                  label: Text('PROPUESTAS')),
-                                            ], rows: const [
-                                              DataRow(cells: [
-                                                DataCell(Text('1°')),
-                                                DataCell(Text('Danilo01')),
-                                                DataCell(Text('1'))
-                                              ]),
-                                              DataRow(cells: [
-                                                DataCell(Text('1°')),
-                                                DataCell(Text('Danilo01')),
-                                                DataCell(Text('1'))
-                                              ]),
-                                            ])
-                                          : ListView.separated(
-                                              padding: const EdgeInsets.all(0),
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              shrinkWrap: true,
-                                              itemBuilder: (__, index) {
-                                                return const ListTile(
-                                                    title: Text('Nombre'));
-                                              },
-                                              separatorBuilder: (__, index) =>
-                                                  const Divider(),
-                                              itemCount: 2,
-                                            ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+
                         ),
-                      ),
                       Container(
                         decoration:
                             const BoxDecoration(color: Color(0xffF2F2F2)),
                         padding: const EdgeInsets.all(5),
                         width: size.width * 0.5,
-                        height: size.height * 0.1,
+                        height: size.height * 0.1-4.75,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             SizedBox(
-                              width: size.width * 0.22,
+                              width: size.width * 0.2,
                               child: Column(
                                 children: [
                                   SizedBox(
@@ -340,32 +296,20 @@ class VivoPage extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     width: size.width * 0.22,
-                                    height: size.height * 0.06,
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Icon(
-                                            Icons.person_outline,
-                                            color: ColorsUtils.blue3,
-                                            size: size.height * 0.04,
-                                          ),
-                                          SizedBox(
-                                              height: size.height * 0.05,
-                                              child: const FittedBox(
-                                                  fit: BoxFit.scaleDown,
-                                                  child: Text(
-                                                    '6',
-                                                    style: TextStyle(
-                                                        fontSize: 40,
-                                                        color:
-                                                            ColorsUtils.blue3,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ))),
-                                        ],
-                                      ),
-                                    ),
+                                    child:  RichText(textAlign: TextAlign.center,text:const TextSpan(children: [
+                                        WidgetSpan(child:  Icon(
+                                          Icons.person_outline,
+                                          color: ColorsUtils.blue3,
+                                          size: 40,
+                                        )),
+                                        TextSpan(text:  '6',
+                                          style: TextStyle(
+                                              fontSize: 40,
+                                              color:
+                                              ColorsUtils.blue3,
+                                              fontWeight:
+                                              FontWeight.bold))
+                                      ])),
                                   )
                                 ],
                               ),
@@ -390,30 +334,22 @@ class VivoPage extends StatelessWidget {
                                   SizedBox(
                                     width: size.width * 0.22,
                                     height: size.height * 0.06,
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Icon(
-                                            Icons.person_outline,
-                                            color: ColorsUtils.blue3,
-                                            size: size.height * 0.04,
-                                          ),
-                                          SizedBox(
-                                              height: size.height * 0.05,
-                                              child: const FittedBox(
-                                                  fit: BoxFit.scaleDown,
-                                                  child: Text(
-                                                    '1',
-                                                    style: TextStyle(
-                                                        fontSize: 40,
-                                                        color:
-                                                            ColorsUtils.blue3,
-                                                        fontWeight:
-                                                            FontWeight.bold),
-                                                  ))),
-                                        ],
-                                      ),
+                                    child: SizedBox(
+                                      width: size.width * 0.22,
+                                      child:  RichText(textAlign: TextAlign.center,text:const TextSpan(children: [
+                                        WidgetSpan(child:  Icon(
+                                          Icons.person_outline,
+                                          color: ColorsUtils.blue3,
+                                          size: 40,
+                                        )),
+                                        TextSpan(text:  '1',
+                                            style: TextStyle(
+                                                fontSize: 40,
+                                                color:
+                                                ColorsUtils.blue3,
+                                                fontWeight:
+                                                FontWeight.bold))
+                                      ])),
                                     ),
                                   )
                                 ],
@@ -426,8 +362,7 @@ class VivoPage extends StatelessWidget {
                         decoration:
                             const BoxDecoration(color: Color(0xff2B2D2F)),
                         padding: const EdgeInsets.all(5),
-                        width: size.width * 0.5,
-                        height: size.height * 0.1,
+                        width: size.width * 0.5,height: size.height * 0.1-4.75,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -476,8 +411,7 @@ class VivoPage extends StatelessWidget {
                           children: [
                             Container(
                               width: size.width * 0.5,
-                              height:
-                                  web ? size.height * 0.1 : size.height * 0.05,
+                              height: size.height * 0.05,
                               padding: EdgeInsets.symmetric(
                                   horizontal: web ? 10 : 5),
                               color: ColorsUtils.orange2,
@@ -513,7 +447,7 @@ class VivoPage extends StatelessWidget {
                             Container(
                               width: size.width * 0.5,
                               color: ColorsUtils.blue3,
-                              height: size.height * 0.7,
+                              height: size.height * 0.65,
                               child: Column(
                                 children: [
                                   !logic.chatView
@@ -975,7 +909,7 @@ class VivoPage extends StatelessWidget {
                             ),
                             !logic.chatView
                                 ? SizedBox(
-                                    height: size.height * 0.2,
+                                    height: size.height * 0.2-9.5,
                                     child: Column(
                                       children: [
                                         const SizedBox(height: 5),
@@ -1106,9 +1040,9 @@ class VivoPage extends StatelessWidget {
                                       ],
                                     ),
                                   )
-                                : Expanded(
-                                    child: SizedBox(
+                                :  SizedBox(
                                       width: size.width * 0.5,
+                                      height: size.height * 0.2-9.5,
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
@@ -1161,7 +1095,7 @@ class VivoPage extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                  ),
+
                           ],
                         ),
                       );
