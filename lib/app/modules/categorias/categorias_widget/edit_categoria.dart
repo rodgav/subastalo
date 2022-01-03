@@ -4,6 +4,7 @@ import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/app/modules/categorias/categorias_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 class EditCategoria extends StatelessWidget {
   const EditCategoria({Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class EditCategoria extends StatelessWidget {
                 const Text('Nombre de categoría',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.nameCtrl, validator: isNotEmpty,
                     width: 400,
                     hint: 'Autos & Otros Vehículos',
                     icon: null,
@@ -63,7 +64,7 @@ class EditCategoria extends StatelessWidget {
                 const Text('Ingrese una descripción',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.descrCtrl, validator: isNotEmpty,
                     width: 400,
                     maxLines: 4,
                     hint: 'Ingrese nombre de departamento',

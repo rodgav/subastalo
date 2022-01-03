@@ -710,7 +710,7 @@ class TableroPage extends StatelessWidget {
                           height: 101,
                           child: Center(
                               child: ImageIcon(
-                            const AssetImage('assets/icons/carro.png'),
+                            const AssetImage('assets/icons/vehiculos.png'),
                             color: ColorsUtils.grey1.withOpacity(0.5),
                           )),
                         ),

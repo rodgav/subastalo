@@ -1,45 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:subastalo/app/data/models/categorias.dart';
-import 'package:subastalo/app/data/repositorys/local_repositorys/local_data_repository.dart';
+import 'package:subastalo/app/data/models/categorys.dart';
+import 'package:subastalo/app/data/repositorys/local_repositorys/remote_data_repository.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 
 class HomeLogic extends GetxController {
   final GlobalKey<ScaffoldState> scaffoldKeyHome = GlobalKey<ScaffoldState>();
-  final _localDataRepository = Get.find<LocalDataRepository>();
-  CategoriasModel? _categoriasModel;
-  Datum? _vehiculo;
-  Datum? _propiedades;
-  Datum? _tecnologia;
-  Datum? _mobiliaria;
-  Datum? _repuestos;
-  Datum? _chatarra;
-  Datum? _maquinaria;
-  Datum? _electronica;
-  Datum? _empresas;
-  Datum? _ubicaciones;
+  final _remoteDataRepository = Get.find<RemoteDataRepository>();
+  CategorysModel? _categoriasModel;
+  SubCategory? _selected;
 
-  CategoriasModel? get categoriasModel => _categoriasModel;
+  CategorysModel? get categoriasModel => _categoriasModel;
 
-  Datum? get vehiculo => _vehiculo;
+  SubCategory? get selected => _selected;
 
-  Datum? get propiedades => _propiedades;
 
-  Datum? get tecnologia => _tecnologia;
-
-  Datum? get mobiliaria => _mobiliaria;
-
-  Datum? get repuestos => _repuestos;
-
-  Datum? get chatarra => _chatarra;
-
-  Datum? get maquinaria => _maquinaria;
-
-  Datum? get electronica => _electronica;
-
-  Datum? get empresas => _empresas;
-
-  Datum? get ubicaciones => _ubicaciones;
 
   @override
   void onReady() {
@@ -56,43 +31,12 @@ class HomeLogic extends GetxController {
   }
 
   void _getCategorias() async {
-    _categoriasModel = await _localDataRepository.getCategorias();
+    _categoriasModel = await _remoteDataRepository.categorys();
     update(['categorias']);
   }
 
-  void datumSelect(Datum value, String name) {
-    switch (name) {
-      case 'Vehículos':
-        _vehiculo = value;
-        break;
-      case 'Propiedades':
-        _propiedades = value;
-        break;
-      case 'Tecnología':
-        _tecnologia = value;
-        break;
-      case 'Mobiliaria':
-        _mobiliaria = value;
-        break;
-      case 'Repuestos':
-        _repuestos = value;
-        break;
-      case 'Chatarra':
-        _chatarra = value;
-        break;
-      case 'Maquinaria':
-        _maquinaria = value;
-        break;
-      case 'Electrónica':
-        _electronica = value;
-        break;
-      case 'Empresas':
-        _empresas = value;
-        break;
-      case 'Ubicaciones':
-        _ubicaciones = value;
-        break;
-    }
+  void subCategorySelect(SubCategory value, String name) {
+    _selected = value;
     update(['categorias']);
   }
 

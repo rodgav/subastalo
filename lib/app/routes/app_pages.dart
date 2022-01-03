@@ -14,8 +14,6 @@ import 'package:subastalo/app/modules/home/home_binding.dart';
 import 'package:subastalo/app/modules/home/home_view.dart';
 import 'package:subastalo/app/modules/info_subastas/info_subastas_binding.dart';
 import 'package:subastalo/app/modules/info_subastas/info_subastas_view.dart';
-import 'package:subastalo/app/modules/localizaciones/localizaciones_binding.dart';
-import 'package:subastalo/app/modules/localizaciones/localizaciones_view.dart';
 import 'package:subastalo/app/modules/login/login_binding.dart';
 import 'package:subastalo/app/modules/login/login_view.dart';
 import 'package:subastalo/app/modules/mensaje_detail/mensaje_detail_binding.dart';
@@ -197,10 +195,6 @@ class AppPages {
                     name: _Paths.campanas,
                     page: () => CampanasPage(),
                     binding: CampanasBinding()),
-                GetPage(
-                    name: _Paths.localizaciones,
-                    page: () => LocalizacionesPage(),
-                    binding: LocalizacionesBinding()),
                 GetPage(
                     name: _Paths.mensajes,
                     page: () => MensajesPage(),

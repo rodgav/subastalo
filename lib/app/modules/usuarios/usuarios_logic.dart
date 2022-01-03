@@ -5,6 +5,13 @@ import 'package:subastalo/app/modules/usuarios/usuarios_widget/new_usuario.dart'
 import 'package:subastalo/app/routes/app_pages.dart';
 
 class UsuariosLogic extends GetxController {
+
+  final fullNameCtrl = TextEditingController();
+  final dniCtrl = TextEditingController();
+  final phoneCtrl = TextEditingController();
+  final emailCtrl = TextEditingController();
+  final password1Ctrl = TextEditingController();
+  final password2Ctrl = TextEditingController();
   void newUser() {
     Get.dialog(const AlertDialog(content: NewUsuario()));
   }

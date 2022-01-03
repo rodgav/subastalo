@@ -4,6 +4,7 @@ import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/app/modules/pagos/pagos_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 class NewPago extends StatelessWidget {
   const NewPago({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class NewPago extends StatelessWidget {
                 const Text('Nombre de tipo de pago',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.nameCtrl, validator: isNotEmpty,
                     width: 400,
                     hint: 'Introducir nombre',
                     icon: null,
@@ -65,9 +66,9 @@ class NewPago extends StatelessWidget {
                 const Text('Descripción',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.descripCtrl, validator: isNotEmpty,
                     width: 400,
-                    hint: 'Introducir desscripcción de pago',
+                    hint: 'Introducir descripcción de pago',
                     maxLines: 3,
                     icon: null,
                     enabledBorder: ColorsUtils.grey1.withOpacity(0.5),

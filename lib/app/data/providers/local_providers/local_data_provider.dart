@@ -1,15 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:subastalo/app/data/models/categorias.dart';
 import 'package:subastalo/app/data/models/images_subastas.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 
 class LocalDataProvider {
-  Future<CategoriasModel?> getCategorias() async {
-    String response = await rootBundle.loadString('assets/jsons/categorias.json');
-    return CategoriasModel.fromJson(jsonDecode(response));
-  }
 
   Future<SubastasModel> getSubastas() async {
     String response = await rootBundle.loadString('assets/jsons/subastas.json');

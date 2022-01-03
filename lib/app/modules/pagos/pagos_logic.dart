@@ -4,6 +4,8 @@ import 'package:subastalo/app/modules/pagos/pagos_widget/del_pago.dart';
 import 'package:subastalo/app/modules/pagos/pagos_widget/new_pago.dart';
 
 class PagosLogic extends GetxController {
+  final nameCtrl = TextEditingController();
+  final descripCtrl = TextEditingController();
   void toBack() {
     Get.rootDelegate.popRoute();
   }

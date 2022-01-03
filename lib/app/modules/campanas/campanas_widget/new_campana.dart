@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/app/modules/campanas/campanas_logic.dart';
-import 'package:subastalo/app/modules/usuarios/usuarios_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 class NewlCampana extends StatelessWidget {
   const NewlCampana({Key? key}) : super(key: key);
@@ -54,7 +54,8 @@ class NewlCampana extends StatelessWidget {
                 const Text('Nombre de la compañia',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor( validator: isNotEmpty,
+                    controller: _.nameCompanCtrl,
                     width: 400,
                     hint: '',
                     icon: null,
@@ -64,7 +65,8 @@ class NewlCampana extends StatelessWidget {
                 const Text('Código de promoción',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor( validator: isNotEmpty,
+                    controller: _.codePromCtrl,
                     width: 400,
                     hint: '',
                     icon: null,
@@ -74,7 +76,8 @@ class NewlCampana extends StatelessWidget {
                 const Text('Monto de descuento',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor( validator: isNotEmpty,
+                    controller: _.ammountDescCtrl,
                     width: 400,
                     hint: '',
                     icon: null,
@@ -84,7 +87,8 @@ class NewlCampana extends StatelessWidget {
                 const Text('Fecha de inicio',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor( validator: isNotEmpty,
+                    controller: _.startDateCtrl,
                     width: 400,
                     hint: '',
                     icon: null,
@@ -94,7 +98,8 @@ class NewlCampana extends StatelessWidget {
                 const Text('Fecha de fin',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor( validator: isNotEmpty,
+                    controller: _.endDateCtrl,
                     width: 400,
                     hint: '',
                     icon: null,

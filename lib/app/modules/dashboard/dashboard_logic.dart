@@ -94,7 +94,7 @@ class DashboardLogic extends GetxController {
   }
 
   void closeSession() {
-    AuthService.to.logout;
+    AuthService.to.logout();
     Get.rootDelegate.toNamed(Routes.home);
   }
 }

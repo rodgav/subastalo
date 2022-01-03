@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 import 'perfil_logic.dart';
 
@@ -557,13 +558,15 @@ class PerfilPage extends StatelessWidget {
                                                 ),
                                                 const SizedBox(height: 5),
                                                 TxtFieldBor(
+                                                    controller: logic.emailCtrl, validator: isEmail,
                                                     width: width / 3,
-                                                    hint: 'dboyvela33@gmail.com',
+                                                    hint:
+                                                        'dboyvela33@gmail.com',
                                                     icon: null,
                                                     enabledBorder:
-                                                    ColorsUtils.grey1,
+                                                        ColorsUtils.grey1,
                                                     focusedBorder:
-                                                    ColorsUtils.blue3),
+                                                        ColorsUtils.blue3),
                                                 const SizedBox(height: 20),
                                                 const Text(
                                                   'Contraseña',
@@ -572,13 +575,15 @@ class PerfilPage extends StatelessWidget {
                                                 ),
                                                 const SizedBox(height: 5),
                                                 TxtFieldBor(
+                                                    controller:
+                                                        logic.passwordCtrl, validator: isPassword,
                                                     width: width / 3,
                                                     hint: '*****************',
                                                     icon: null,
                                                     enabledBorder:
-                                                    ColorsUtils.grey1,
+                                                        ColorsUtils.grey1,
                                                     focusedBorder:
-                                                    ColorsUtils.blue3),
+                                                        ColorsUtils.blue3),
                                               ],
                                             )),
                                       ],

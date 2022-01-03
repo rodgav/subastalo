@@ -4,6 +4,7 @@ import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/app/modules/nueva_subasta/nueva_subasta_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 class NuevaSubasta2 extends StatelessWidget {
   final logic = Get.find<NuevaSubastaLogic>();
@@ -71,7 +72,7 @@ class NuevaSubasta2 extends StatelessWidget {
             const SizedBox(height: 10),
             const Text('URL del video', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
-            TxtFieldBor(
+            TxtFieldBor(controller: logic.urlVideoCtrl, validator: isNotEmpty,
                 width:web? size.width * 0.3: size.width,
                 hint: 'URL del video',
                 icon: null,

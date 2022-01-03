@@ -5,6 +5,7 @@ import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/app/modules/nueva_subasta/nueva_subasta_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 class NuevaSubasta4 extends StatelessWidget {
   final logic = Get.find<NuevaSubastaLogic>();
@@ -23,7 +24,7 @@ class NuevaSubasta4 extends StatelessWidget {
           children: [
             const Text('ID de vendedor', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
-            TxtFieldBor(
+            TxtFieldBor(controller: logic.idVendCtrl, validator: isNotEmpty,
                 width: web?size.width * 0.3:size.width,
                 hint: 'Nombre',
                 icon: null,
@@ -32,7 +33,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const SizedBox(height: 10),
             const Text('Vendedor nombre', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
-            TxtFieldBor(
+            TxtFieldBor(controller: logic.nameVendCtrl, validator: isNotEmpty,
                 width: web?size.width * 0.3:size.width,
                 hint: 'Nombre',
                 icon: null,
@@ -42,7 +43,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const Text('Empresa origen del vendedor',
                 style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
-            TxtFieldBor(
+            TxtFieldBor(controller: logic.nameBussnCtrl, validator: isNotEmpty,
                 width: web?size.width * 0.3:size.width,
                 hint: 'Nombre',
                 icon: null,
@@ -51,7 +52,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const SizedBox(height: 10),
             const Text('Vendedor Email', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
-            TxtFieldBor(
+            TxtFieldBor(controller: logic.emailBussnCtrl, validator: isEmail,
                 width: web?size.width * 0.3:size.width,
                 hint: 'subasta@subasta.com',
                 icon: null,
@@ -60,7 +61,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const SizedBox(height: 10),
             const Text('Vendedor teléfono', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
-            TxtFieldBor(
+            TxtFieldBor(controller: logic.phoneBussnCtrl, validator: isNotEmpty,
                 width: web?size.width * 0.3:size.width,
                 hint: 'Teléfono',
                 icon: null,
@@ -69,7 +70,7 @@ class NuevaSubasta4 extends StatelessWidget {
             const SizedBox(height: 10),
             const Text('Dirección', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
-            TxtFieldBor(
+            TxtFieldBor(controller: logic.addreBussnCtrl, validator: isNotEmpty,
                 width: web?size.width * 0.3:size.width,
                 hint: 'Dirección',
                 icon: null,

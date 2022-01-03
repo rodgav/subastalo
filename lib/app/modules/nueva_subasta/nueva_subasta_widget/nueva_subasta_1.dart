@@ -6,6 +6,7 @@ import 'package:subastalo/app/modules/nueva_subasta/nueva_subasta_logic.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 class NuevaSubasta1 extends StatelessWidget {
   final logic = Get.find<NuevaSubastaLogic>();
@@ -46,7 +47,8 @@ class NuevaSubasta1 extends StatelessWidget {
             const Text('Subasta Titulo', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: web?size.width * 0.3:size.width,
+                controller: logic.titleCtrl, validator: isNotEmpty,
+                width: web ? size.width * 0.3 : size.width,
                 hint: 'Título de la subasta',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -55,7 +57,8 @@ class NuevaSubasta1 extends StatelessWidget {
             const Text('Precio', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: web?size.width * 0.3:size.width,
+                controller: logic.priceCtrl, validator: isNotEmpty,
+                width: web ? size.width * 0.3 : size.width,
                 hint: 'Ej. 1500',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -64,7 +67,8 @@ class NuevaSubasta1 extends StatelessWidget {
             const Text('Fecha de la subasta', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
             TxtFieldBor(
-                width: web?size.width * 0.3:size.width,
+                controller: logic.dateCtrl, validator: isNotEmpty,
+                width: web ? size.width * 0.3 : size.width,
                 hint: 'Fecha de la subasta',
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
@@ -72,57 +76,64 @@ class NuevaSubasta1 extends StatelessWidget {
             const SizedBox(height: 40),
             const Text('Descripción', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 10),
-            const CupertinoTextField(
-              prefix:
-                  Text('Marca', style: TextStyle(fontWeight: FontWeight.bold)),
+            CupertinoTextField(
+              controller: logic.brandCtrl,
+              prefix: const Text('Marca',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               placeholder: 'Toyota',
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: ColorsUtils.grey1)),
               ),
             ),
-            const CupertinoTextField(
-              prefix:
-                  Text('Modelo', style: TextStyle(fontWeight: FontWeight.bold)),
+            CupertinoTextField(
+              controller: logic.modelCtrl,
+              prefix: const Text('Modelo',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               placeholder: 'Modelo',
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: ColorsUtils.grey1)),
               ),
             ),
-            const CupertinoTextField(
-              prefix: Text('Año', style: TextStyle(fontWeight: FontWeight.bold)),
+            CupertinoTextField(
+              controller: logic.yearCtrl,
+              prefix: const Text('Año',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               placeholder: 'Año',
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: ColorsUtils.grey1)),
               ),
             ),
-            const CupertinoTextField(
-              prefix: Text('Kilometraje',
+            CupertinoTextField(
+              controller: logic.mileageCtrl,
+              prefix: const Text('Kilometraje',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               placeholder: 'Kilometraje',
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: ColorsUtils.grey1)),
               ),
             ),
-            const CupertinoTextField(
-              prefix: Text('Combustible',
+            CupertinoTextField(
+              controller: logic.fuelCtrl,
+              prefix: const Text('Combustible',
                   style: TextStyle(fontWeight: FontWeight.bold)),
               placeholder: 'Combustible',
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: ColorsUtils.grey1)),
               ),
             ),
-            const CupertinoTextField(
-              prefix:
-                  Text('Detalles', style: TextStyle(fontWeight: FontWeight.bold)),
+            CupertinoTextField(
+              controller: logic.detailsCtrl,
+              prefix: const Text('Detalles',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               placeholder: 'Detalles',
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: ColorsUtils.grey1)),
               ),
             ),
             const SizedBox(height: 40),
             Center(
               child: ButtonWid(
-                  width:web? size.width * 0.15: size.width *0.5,
+                  width: web ? size.width * 0.15 : size.width * 0.5,
                   height: 50,
                   color1: ColorsUtils.blueButt1,
                   color2: ColorsUtils.blueButt2,

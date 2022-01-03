@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 import 'info_subastas_logic.dart';
 
-class InfoSubastasPage extends StatelessWidget {
+class InfoSubastasPage extends GetView<InfoSubastasLogic> {
   final logic = Get.find<InfoSubastasLogic>();
 
   InfoSubastasPage({Key? key}) : super(key: key);
@@ -69,6 +70,7 @@ class InfoSubastasPage extends StatelessWidget {
                           ],
                         ),
                         TxtFieldBor(
+                            controller: controller.nameOrId, validator: isNotEmpty,
                             width: 236,
                             hint: 'Buscar nombre o ID',
                             icon: null,
@@ -85,76 +87,80 @@ class InfoSubastasPage extends StatelessWidget {
                       ],
                     ),
                     const Divider(height: 20),
-                  web?  DataTable(columns: [
-                      DataColumn(
-                          label: Checkbox(value: false, onChanged: (value) {})),
-                      const DataColumn(
-                          label: Text(
-                        'ID',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Subasta',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Dueño',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Creado',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Acciones',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ))
-                    ], rows: [
-                      DataRow(cells: [
-                        DataCell(Checkbox(value: false, onChanged: (value) {})),
-                        const DataCell(Text('001')),
-                        const DataCell(
-                            Text('VOLQUETE SCHACMAN F3000 DEL 2020 NUEVO')),
-                        const DataCell(Text('Danilo Boy Vela')),
-                        const DataCell(Text('05/12/2020')),
-                        const DataCell(
-                          Text(
-                            'Descargar ficha',
-                            style: TextStyle(color: ColorsUtils.blue3),
-                          ),
-                        ),
-                      ])
-                    ]): ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (__, index) {
-                        return ListTile(
-                          title: const Text('Nombre'),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                  icon: const Icon(Icons.edit),
-                                  onPressed: () => null),
-                              IconButton(
-                                  icon: const Icon(Icons.delete),
-                                  onPressed: () => null),
-                            ],
-                          ),
-                        );
-                      },
-                      separatorBuilder: (__, index) => const Divider(),
-                      itemCount: 2,
-                    )
+                    web
+                        ? DataTable(columns: [
+                            DataColumn(
+                                label: Checkbox(
+                                    value: false, onChanged: (value) {})),
+                            const DataColumn(
+                                label: Text(
+                              'ID',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            const DataColumn(
+                                label: Text(
+                              'Subasta',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            const DataColumn(
+                                label: Text(
+                              'Dueño',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            const DataColumn(
+                                label: Text(
+                              'Creado',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            const DataColumn(
+                                label: Text(
+                              'Acciones',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ))
+                          ], rows: [
+                            DataRow(cells: [
+                              DataCell(Checkbox(
+                                  value: false, onChanged: (value) {})),
+                              const DataCell(Text('001')),
+                              const DataCell(Text(
+                                  'VOLQUETE SCHACMAN F3000 DEL 2020 NUEVO')),
+                              const DataCell(Text('Danilo Boy Vela')),
+                              const DataCell(Text('05/12/2020')),
+                              const DataCell(
+                                Text(
+                                  'Descargar ficha',
+                                  style: TextStyle(color: ColorsUtils.blue3),
+                                ),
+                              ),
+                            ])
+                          ])
+                        : ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (__, index) {
+                              return ListTile(
+                                title: const Text('Nombre'),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                        icon: const Icon(Icons.edit),
+                                        onPressed: () => null),
+                                    IconButton(
+                                        icon: const Icon(Icons.delete),
+                                        onPressed: () => null),
+                                  ],
+                                ),
+                              );
+                            },
+                            separatorBuilder: (__, index) => const Divider(),
+                            itemCount: 2,
+                          )
                   ],
                 )));
       },

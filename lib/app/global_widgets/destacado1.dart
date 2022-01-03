@@ -42,7 +42,6 @@ class Destacado1 extends StatelessWidget {
               subasta.name,
               style: const TextStyle(
                   fontSize: 15, fontWeight: FontWeight.w900),
-              textAlign: TextAlign.justify,
             ),
             Container(
                 width: 300,
@@ -53,32 +52,11 @@ class Destacado1 extends StatelessWidget {
                       fit: BoxFit.cover,
                     )),
                 child: const Like(right: 10, top: 10)),
-            const SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'VENDEDOR',
-                  style: TextStyle(fontSize: 9),
-                ),
-                Text(
-                  subasta.nameVendedor,
-                  style: const TextStyle(fontSize: 9),
-                ),
-              ],
-            ),
-            const Divider(
-            ),
-            Column(
-              children: const [
-                Text('Esta oferta negociable se cierra el',
-                    style: TextStyle(fontSize: 10)),
-                Text('Miercoles 28 de Oct. | 8:00 PM',
+
+
+                const Text('Miercoles 28 de Oct. | 8:00 PM',
                     style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold)),
-              ],
-            ),
+
             ButtonWid(
                 width: 200,
                 height: 50,
@@ -94,9 +72,6 @@ class Destacado1 extends StatelessWidget {
                 voidCallback: voidCallback),
             Container(
               padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(color: ColorsUtils.grey1.withOpacity(0.5))),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

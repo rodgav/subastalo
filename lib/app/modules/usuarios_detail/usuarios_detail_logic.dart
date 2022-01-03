@@ -5,6 +5,13 @@ import 'package:subastalo/app/data/repositorys/local_repositorys/local_data_repo
 import 'package:subastalo/app/modules/usuarios/usuarios_widget/new_usuario.dart';
 
 class UsuariosDetailLogic extends GetxController {
+  final fullNameCtrl = TextEditingController();
+  final dniCtrl = TextEditingController();
+  final phoneCtrl = TextEditingController();
+  final emailCtrl = TextEditingController();
+  final password1Ctrl = TextEditingController();
+  final password2Ctrl = TextEditingController();
+
   final String usuarioId;
 
   UsuariosDetailLogic(this.usuarioId);

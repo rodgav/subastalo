@@ -44,7 +44,7 @@ class SubastasDetailPage extends StatelessWidget {
                             Container(
                               width: web ? size.width * 0.5 : size.width,
                               //height: web? 651:size.height*0.5,
-                              height: web ? 651 : size.height * 0.5,
+                              height: size.height * 0.5,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(subasta.imagePrimary),
@@ -111,7 +111,8 @@ class SubastasDetailPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width: web ? size.width * 0.5 : size.width,
-                              height: web ? 651 : size.height * 0.5,
+                              //height: web? 651:size.height*0.5,
+                              height: size.height * 0.5,
                               child:  Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [

@@ -35,35 +35,17 @@ class Destacado2 extends StatelessWidget {
         children: [
           SizedBox(
             width: web ? size.width * 0.35 : size.width,
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                subasta.name,
-                style: const TextStyle(
-                    color: ColorsUtils.blue3,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+            child: Align(
+             alignment: Alignment.centerLeft, child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  subasta.name,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900),
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            width: web ? size.width * 0.22 : size.width * 0.6,
-            child: Align(alignment: Alignment.centerLeft,
-                child:FittedBox(
-                fit: BoxFit.scaleDown,
-                child:  RichText(
-                      text: TextSpan(children: [
-                    const TextSpan(
-                      text: 'Vendedor ',
-                      style: TextStyle(color: ColorsUtils.grey1, fontSize: 13),
-                    ),
-                    TextSpan(
-                      text: subasta.nameVendedor,
-                      style:
-                          const TextStyle(color: ColorsUtils.grey1, fontSize: 13),
-                    ),
-                  ])),
-                )),
           ),
           SizedBox(
               width: web ? size.width * 0.35 : size.width,

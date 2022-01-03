@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 import 'categorias_logic.dart';
 
@@ -47,7 +48,7 @@ class CategoriasPage extends StatelessWidget {
                             const SizedBox(height: 5),
                             SizedBox(
                                 height: 35,
-                                child: TxtFieldBor(
+                                child: TxtFieldBor(controller: logic.nameCtrl, validator: isNotEmpty,
                                     width: web ? width * 0.25 : width,
                                     hint: 'Ingresar nombre de categoria',
                                     icon: null,
@@ -66,7 +67,7 @@ class CategoriasPage extends StatelessWidget {
                               style: TextStyle(color: ColorsUtils.grey1),
                             ),
                             const SizedBox(height: 5),
-                            TxtFieldBor(
+                            TxtFieldBor(controller: logic.descrCtrl, validator: isNotEmpty,
                                 width: web ? width * 0.65 : width,
                                 hint: 'Ingresar breve descripción...',
                                 maxLines: 2,

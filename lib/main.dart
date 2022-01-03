@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:subastalo/app/data/services/auth_service.dart';
+import 'package:subastalo/app/data/services/dialog_service.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 import 'package:subastalo/utils/dependency_injection.dart';
 
@@ -19,10 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('Version 1.3 --- 01-12-2021');
+    debugPrint('Version 1.5 --- 02-01-2022');
     return GetMaterialApp.router(
       initialBinding: BindingsBuilder(() {
         Get.put(AuthService());
+        Get.put(DialogService());
       }),
       scrollBehavior: MyCustomScrollBehavior(),
       title: 'Subastalo',

@@ -4,6 +4,7 @@ import 'package:subastalo/app/global_widgets/button_icon_rigth_widget.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 import 'monetizacion_logic.dart';
 
@@ -96,7 +97,7 @@ class MonetizacionPage extends StatelessWidget {
                       const Text('Pegar código',
                           style: TextStyle(fontSize: 12)),
                       const SizedBox(height: 5),
-                      TxtFieldBor(
+                      TxtFieldBor(controller: logic.pageCtrl, validator: isNotEmpty,
                           width: width,
                           hint:
                               '''<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

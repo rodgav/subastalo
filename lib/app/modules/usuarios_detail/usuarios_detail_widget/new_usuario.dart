@@ -4,6 +4,7 @@ import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/app/modules/usuarios_detail/usuarios_detail_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 class NewUsuario extends StatelessWidget {
   const NewUsuario({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class NewUsuario extends StatelessWidget {
                 const Text('Nombre de usuario',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.fullNameCtrl, validator: isNotEmpty,
                     width: 400,
                     hint: 'Ingresar normbre completo y apellidos',
                     icon: null,
@@ -62,7 +63,7 @@ class NewUsuario extends StatelessWidget {
                 const Text('DNI / Carnet de identidad',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.dniCtrl, validator: isNotEmpty,
                     width: 400,
                     hint: 'Ingrese número de DNI/Carnet',
                     icon: null,
@@ -72,7 +73,7 @@ class NewUsuario extends StatelessWidget {
                 const Text('Número móvil',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.phoneCtrl, validator: isNotEmpty,
                     width: 400,
                     hint: 'Ingrese número',
                     icon: null,
@@ -82,7 +83,7 @@ class NewUsuario extends StatelessWidget {
                 const Text('Correo electrónico',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.emailCtrl, validator: isEmail,
                     width: 400,
                     hint: 'Ingrese correo',
                     icon: null,
@@ -92,9 +93,9 @@ class NewUsuario extends StatelessWidget {
                 const Text('Contraseña',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.password1Ctrl, validator: isPassword,
                     width: 400,
-                    hint: 'ingresar contraseña',
+                    hint: 'Ingresar contraseña',
                     icon: null,
                     enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
                     focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
@@ -102,7 +103,7 @@ class NewUsuario extends StatelessWidget {
                 const Text('Repetir contraseña',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(
+                TxtFieldBor(controller: _.password2Ctrl, validator: isPassword,
                     width: 400,
                     hint: 'Repetir contraseña',
                     icon: null,

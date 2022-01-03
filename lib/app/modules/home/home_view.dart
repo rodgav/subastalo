@@ -181,16 +181,43 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       centerTitle: false,
-                      /*actions: [
-                          IconButton(
-                              onPressed: () => logic
-                                  .scaffoldKeyHome.currentState!
-                                  .openEndDrawer(),
-                              icon: const Icon(
-                                Icons.menu,
-                                color: ColorsUtils.blue3,
-                              ))
-                        ]*/),
+                      actions: [
+                          AuthService.to.isLoggedIn
+                              ? IconButton(
+                                  onPressed: () => logic
+                                      .scaffoldKeyHome.currentState!
+                                      .openEndDrawer(),
+                                  icon: const Icon(
+                                    Icons.menu,
+                                    color: ColorsUtils.blue3,
+                                  ))
+                              : SizedBox(
+                                  width: size.width * 0.2,
+                                  child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                              primary: ColorsUtils.white,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              side: const BorderSide(
+                                                  color: ColorsUtils.blue1),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 5,
+                                                      vertical: 2),
+                                              elevation: 0),
+                                          onPressed: logic.toLogin,
+                                          child: const Text(
+                                            'Inicia Sesión',
+                                            style: TextStyle(
+                                                color: ColorsUtils.blue3,
+                                                fontSize: 16),
+                                          )))),
+                          const SizedBox(width: 2)
+                        ]),
               Container(
                 width: size.width,
                 decoration: const BoxDecoration(
@@ -199,12 +226,13 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                        width: web? size.width * 0.1:size.width * 0.3,
+                        width: web ? size.width * 0.1 : size.width * 0.3,
                         padding: const EdgeInsets.all(10),
                         decoration: const BoxDecoration(
                             border: Border(
                                 right: BorderSide(color: ColorsUtils.white))),
-                        child: FittedBox(fit: BoxFit.scaleDown,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
                           child: RichText(
                             textAlign: TextAlign.center,
                             maxLines: 2,
@@ -226,26 +254,19 @@ class HomePage extends StatelessWidget {
                       child: GetBuilder<HomeLogic>(
                           id: 'categorias',
                           builder: (_) {
-                            final categorias = _.categoriasModel?.categorias;
+                            final categorias = _.categoriasModel?.categorys;
                             return categorias != null
                                 ? SizedBox(
                                     height: 50,
                                     child: ListView(
-                                      padding: const EdgeInsets.all(10),
-                                      scrollDirection: Axis.horizontal,
-                                      children: [
-                                        CategoriaWid(categoria: categorias[0]),
-                                        CategoriaWid(categoria: categorias[1]),
-                                        CategoriaWid(categoria: categorias[2]),
-                                        CategoriaWid(categoria: categorias[3]),
-                                        CategoriaWid(categoria: categorias[4]),
-                                        CategoriaWid(categoria: categorias[5]),
-                                        CategoriaWid(categoria: categorias[6]),
-                                        CategoriaWid(categoria: categorias[7]),
-                                        CategoriaWid(categoria: categorias[8]),
-                                        CategoriaWid(categoria: categorias[9]),
-                                      ],
-                                    ))
+                                        padding: const EdgeInsets.all(10),
+                                        scrollDirection: Axis.horizontal,
+                                        children: categorias
+                                            .map(
+                                              (categoria) => CategoriaWid(
+                                                  categoria: categoria),
+                                            )
+                                            .toList()))
                                 : const Center(child: LoadingWid());
                           }),
                     )

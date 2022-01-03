@@ -1,25 +1,20 @@
-import 'dart:async';
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/data/models/images_subastas.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/data/repositorys/local_repositorys/local_data_repository.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
-import 'package:subastalo/app/global_widgets/txt_field_circ.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 class SubastasDetailLogic extends GetxController {
   final String subastaId;
 
   SubastasDetailLogic(this.subastaId);
+  final amountCtrl = TextEditingController();
+  final propuestaCtrl = TextEditingController();
 
   final _localDataRepository = Get.find<LocalDataRepository>();
   Subasta? _subasta;
@@ -189,7 +184,7 @@ class SubastasDetailLogic extends GetxController {
                 style: TextStyle(color: ColorsUtils.blue3),
               ),
               const SizedBox(height: 5),
-              const TxtFieldBor(
+              TxtFieldBor(controller: amountCtrl, validator: isNotEmpty,
                   width: double.infinity,
                   hint: '10 \$',
                   icon: null,
@@ -402,7 +397,7 @@ class SubastasDetailLogic extends GetxController {
                 ),
               ),
               const SizedBox(height: 5),
-              const TxtFieldBor(
+  TxtFieldBor(controller: propuestaCtrl, validator: isNotEmpty,
                   width: double.infinity,
                   hint: '10 \$',
                   icon: null,

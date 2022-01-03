@@ -1,20 +1,14 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/footer.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 import 'vender_logic.dart';
 
-class VenderPage extends StatelessWidget {
+class VenderPage extends GetView<VenderLogic> {
   final logic = Get.find<VenderLogic>();
 
   VenderPage({Key? key}) : super(key: key);
@@ -217,6 +211,7 @@ class VenderPage extends StatelessWidget {
                                   SizedBox(
                                       height: 38,
                                       child: TxtFieldBor(
+                                          controller: controller.valorCtrl, validator: isNotEmpty,
                                           width: web
                                               ? (size.width * 0.7) / 2.3
                                               : (size.width) / 2.3,
@@ -273,6 +268,7 @@ class VenderPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 5),
                       TxtFieldBor(
+                          controller: controller.descriptionCtrl, validator: isNotEmpty,
                           width: web ? size.width * 0.7 : size.width,
                           hint: '',
                           icon: null,
@@ -393,31 +389,7 @@ class VenderPage extends StatelessWidget {
                                   SizedBox(
                                       height: 38,
                                       child: TxtFieldBor(
-                                          width: web
-                                              ? (size.width * 0.7) / 3.4
-                                              : (size.width) / 3.4,
-                                          hint: '',
-                                          icon: null,
-                                          enabledBorder: ColorsUtils.grey1,
-                                          focusedBorder: ColorsUtils.blue3)),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: web
-                                  ? (size.width * 0.7) / 3.4
-                                  : (size.width) / 3.4,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    'Apellidos',
-                                    style: TextStyle(fontSize: 17),
-                                  ),
-                                  const SizedBox(height: 5),
-                                  SizedBox(
-                                      height: 38,
-                                      child: TxtFieldBor(
+                                          controller: controller.nameCtrl, validator: isNotEmpty,
                                           width: web
                                               ? (size.width * 0.7) / 3.4
                                               : (size.width) / 3.4,
@@ -481,6 +453,7 @@ class VenderPage extends StatelessWidget {
                             SizedBox(
                                 height: 38,
                                 child: TxtFieldBor(
+                                    controller: controller.numeroDocCtrl, validator: isNotEmpty,
                                     width: web
                                         ? (size.width * 0.7) / 2
                                         : (size.width) / 2,
@@ -633,6 +606,7 @@ class VenderPage extends StatelessWidget {
                                   SizedBox(
                                       height: 38,
                                       child: TxtFieldBor(
+                                          controller: controller.correoCtrl, validator: isEmail,
                                           width: web
                                               ? (size.width * 0.7) / 2.3
                                               : (size.width) / 2.3,
@@ -658,6 +632,7 @@ class VenderPage extends StatelessWidget {
                                   SizedBox(
                                       height: 38,
                                       child: TxtFieldBor(
+                                          controller: controller.phoneCtrl, validator: isNotEmpty,
                                           width: web
                                               ? (size.width * 0.7) / 2.3
                                               : (size.width) / 2.3,

@@ -47,9 +47,8 @@ class SubastaEmpresa extends StatelessWidget {
                 child: Text(
                   subasta.name,
                   style: const TextStyle(
-                      color: ColorsUtils.blue3,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                      fontWeight: FontWeight.w900),
                 ),
               ),
             ),

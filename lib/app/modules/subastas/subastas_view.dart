@@ -539,10 +539,10 @@ class SubastasPage extends StatelessWidget {
                                         : size.width * 0.2)
                               ],
                             ),
-                          ), const SizedBox(height: 10),
+                          ), const SizedBox(height: 20),
                           Center(
                             child: ButtonWid(
-                                width:web?size.width * 0.3:size.width * 0.5,
+                                width:size.width * 0.5,
                                 height: 54,
                                 color1: ColorsUtils.orange1,
                                 color2: ColorsUtils.orange2,
@@ -550,24 +550,8 @@ class SubastasPage extends StatelessWidget {
                                 voidCallback: () => null),
                           ),
                           const SizedBox(height: 10),
-                          Row(
-                            children: const [
-                              ImageIcon(
-                                AssetImage(
-                                    'assets/icons/personas.png'),
-                                color: ColorsUtils.blue3,
-                                size: 15,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                'Mínimo 2 participantes',
-                                style: TextStyle(
-                                    fontSize: 13,
-                                    color: ColorsUtils.blue3),
-                              )
                             ],
-                          )
-                        ],
+
                       ),
                     ),
                     Container(

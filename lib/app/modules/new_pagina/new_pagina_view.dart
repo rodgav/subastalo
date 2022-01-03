@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/functions.dart';
 
 import 'new_pagina_logic.dart';
 
@@ -50,14 +51,14 @@ class NewPaginaPage extends StatelessWidget {
                     const Text('Crear nueva página',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18)),
-                    const TxtFieldBor(
+                     TxtFieldBor(controller: logic.titleCtrl, validator: isNotEmpty,
                         width: 215,
                         hint: 'Título',
                         icon: null,
                         enabledBorder: ColorsUtils.grey1,
                         focusedBorder: ColorsUtils.blue3),
                     const SizedBox(height: 10),
-                    TxtFieldBor(
+                    TxtFieldBor(controller: logic.pageCtrl, validator: isNotEmpty,
                         width: width,
                         hint: 'HTML',
                         maxLines: 10,
