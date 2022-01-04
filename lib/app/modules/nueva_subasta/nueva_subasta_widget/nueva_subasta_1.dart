@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/modules/nueva_subasta/nueva_subasta_logic.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
@@ -20,7 +19,7 @@ class NuevaSubasta1 extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(15),
-        child: Form(
+        child: Form(key: logic.formKey1,
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -64,15 +63,31 @@ class NuevaSubasta1 extends StatelessWidget {
                 enabledBorder: ColorsUtils.grey1,
                 focusedBorder: ColorsUtils.blue3),
             const SizedBox(height: 10),
+            const SizedBox(height: 10),
             const Text('Fecha de la subasta', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 5),
-            TxtFieldBor(
-                controller: logic.dateCtrl, validator: isNotEmpty,
-                width: web ? size.width * 0.3 : size.width,
-                hint: 'Fecha de la subasta',
-                icon: null,
-                enabledBorder: ColorsUtils.grey1,
-                focusedBorder: ColorsUtils.blue3),
+            GetBuilder<NuevaSubastaLogic>(
+                id: 'date',
+                builder: (_) {
+                  final date = _.selectedDate;
+                  return MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: logic.selectDate,
+                      child: Container(
+                          width: size.width * 0.3,
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              border: Border.all(color: ColorsUtils.grey1)),
+                          height: 50,
+                          child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                  '${date.year}/${date.month}/${date.day}'))),
+                    ),
+                  );
+                }),
             const SizedBox(height: 40),
             const Text('Descripción', style: TextStyle(fontSize: 16)),
             const SizedBox(height: 10),

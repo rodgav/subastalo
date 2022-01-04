@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/footer_dashboard.dart';
 import 'package:subastalo/app/modules/login/widgets_login/login.dart';

@@ -31,8 +31,13 @@ class LoginLogic extends GetxController {
       final tokenModel = await _dataRepository.login(
           usernameCtrl.text.trim(), passwordCtrl.text.trim());
       if (tokenModel != null) {
-        await AuthService.to.saveSession(tokenModel);
-        Get.rootDelegate.offNamed(Routes.dashboard);
+        if(tokenModel.jwt!='') {
+          await AuthService.to.saveSession(tokenModel);
+          Get.rootDelegate.offNamed(Routes.dashboard);
+        }else{
+          DialogService.to.snackBar(
+              Colors.red, 'ERROR', 'Usuario y/o contraseñas incorrectas');
+        }
       } else {
         DialogService.to.snackBar(
             Colors.red, 'ERROR', 'Ocurrio un error, vuelva a intentarlo luego');
@@ -44,14 +49,16 @@ class LoginLogic extends GetxController {
 
   void register() async {
     if (formKey.currentState!.validate()) {
-      final tokenModel = await _dataRepository.create(dniCtrl.text,
+      final tokenModel = await _dataRepository.register(dniCtrl.text,
           nameCtrl.text, usernameCtrl.text.trim(), passwordCtrl.text.trim());
       if (tokenModel != null) {
         await AuthService.to.saveSession(tokenModel);
         Get.rootDelegate.offNamed(Routes.dashboard);
       } else {
-        DialogService.to.snackBar(Colors.red, 'ERROR', 'Rellene el formulario');
+        DialogService.to.snackBar(Colors.red, 'ERROR', 'Ocurrio un error, vuelva a intentarlo luego');
       }
+    } else {
+      DialogService.to.snackBar(Colors.red, 'ERROR', 'Rellene el formulario');
     }
   }
 }

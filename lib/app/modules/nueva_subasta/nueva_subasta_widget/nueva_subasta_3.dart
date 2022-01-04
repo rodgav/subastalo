@@ -15,7 +15,7 @@ class NuevaSubasta3 extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(15),
-        child: Form(
+        child: Form(key: logic.formKey3,
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -98,31 +98,6 @@ class NuevaSubasta3 extends StatelessWidget {
                 onChanged: (value) {},
               ),
             ),
-            const SizedBox(height: 40),
-            const Text('Distrito', style: TextStyle(fontSize: 16)),
-            const SizedBox(height: 5),
-            GetBuilder<NuevaSubastaLogic>(
-                id: 'date',
-                builder: (_) {
-                  final date = _.selectedDate;
-                  return MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      onTap: logic.selectDate,
-                      child: Container(
-                          width: size.width * 0.3,
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(color: ColorsUtils.grey1)),
-                          height: 50,
-                          child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                  '${date.year}/${date.month}/${date.day}'))),
-                    ),
-                  );
-                }),
             const SizedBox(height: 40),
             Center(
               child: ButtonWid(

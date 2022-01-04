@@ -34,9 +34,28 @@ class AuthService extends GetxService {
     }
   }
 
+  Future<void> saveLanguage() async {
+    final locale = getLocale();
+    if (locale.languageCode == 'en' && locale.countryCode == 'US') {
+      await _getStorage.write('languageCode', 'es');
+      await _getStorage.write('countryCode', 'PE');
+    } else {
+      await _getStorage.write('languageCode', 'en');
+      await _getStorage.write('countryCode', 'US');
+    }
+  }
+
+  Locale getLocale() {
+    final languageCode = _getStorage.read('languageCode') ?? 'en';
+    final countryCode = _getStorage.read('countryCode') ?? 'US';
+    final locale = Locale(languageCode, countryCode);
+    print('getLocale ${locale.languageCode} ${locale.countryCode}');
+    return locale;
+  }
+
   Future<String?> getToken() async {
     try {
-      final token = await _getStorage.read('token') ?? '';
+      final token = _encryptHelper.decrypt(await _getStorage.read('token')) ?? '';
       if (token != '') {
         final expires =
             _encryptHelper.decrypt(await _getStorage.read('exp')) ?? '0';

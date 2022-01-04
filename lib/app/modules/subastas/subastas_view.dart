@@ -1,10 +1,5 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/card1.dart';
@@ -34,157 +29,314 @@ class SubastasPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                width: size.width,
-                height: size.height * 0.6,
-                child: Stack(
-                  children: [
-                    Container(
-                      height: size.height * 0.6,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                'assets/images/bgSlider.png',
-                              ),
-                              fit: BoxFit.cover)),
-                    ),
-                    Positioned(
-                        right: 0,
-                        left: web ? null : 0,
-                        child: Image.asset('assets/images/autos.png',
-                            width: web ? size.width * 0.5 : size.width,
-                            height:
-                                web ? size.height * 0.6 : size.height * 0.3)),
-                    Positioned(
-                      bottom: web ? null : 20,
-                      child: Container(
-                        height: web ? size.height * 0.6 : size.height * 0.3,
-                        width: size.width * 0.4,
-                        margin: EdgeInsets.only(left: web ? 50 : 20),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: size.width * 0.4,
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: RichText(
-                                      textAlign: TextAlign.start,
-                                      text: const TextSpan(children: [
-                                        TextSpan(
-                                            text: 'PROXIMA SUBASTA\n\n',
-                                            style: TextStyle(
-                                                color: ColorsUtils.white,
-                                                fontSize: 26)),
-                                        TextSpan(
-                                            text: 'LOTES DE AUTOS \n',
-                                            style: TextStyle(
-                                                color: ColorsUtils.white,
-                                                fontSize: 50,
-                                                fontWeight: FontWeight.bold)),
-                                        TextSpan(
-                                            text: 'Siniestrados y usados',
-                                            style: TextStyle(
-                                                color: ColorsUtils.white,
-                                                fontSize: 50,
-                                                fontWeight: FontWeight.bold)),
-                                      ])),
+              CarouselSlider(items: [
+                SizedBox(
+                  width: size.width,
+                  height: size.height * 0.6,
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: size.height * 0.6,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/images/bgSlider.png',
+                                ),
+                                fit: BoxFit.cover)),
+                      ),
+                      Positioned(
+                          right: 0,
+                          left: web ? null : 0,
+                          child: Image.asset('assets/images/autos.png',
+                              width: web ? size.width * 0.5 : size.width,
+                              height:
+                              web ? size.height * 0.6 : size.height * 0.3)),
+                      Positioned(
+                        bottom: web ? null : 20,
+                        child: Container(
+                          height: web ? size.height * 0.6 : size.height * 0.3,
+                          width: size.width * 0.4,
+                          margin: EdgeInsets.only(left: web ? 50 : 20),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: size.width * 0.4,
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: RichText(
+                                        textAlign: TextAlign.start,
+                                        text: const TextSpan(children: [
+                                          TextSpan(
+                                              text: 'PROXIMA SUBASTA\n\n',
+                                              style: TextStyle(
+                                                  color: ColorsUtils.white,
+                                                  fontSize: 26)),
+                                          TextSpan(
+                                              text: 'LOTES DE AUTOS \n',
+                                              style: TextStyle(
+                                                  color: ColorsUtils.white,
+                                                  fontSize: 50,
+                                                  fontWeight: FontWeight.bold)),
+                                          TextSpan(
+                                              text: 'Siniestrados y usados',
+                                              style: TextStyle(
+                                                  color: ColorsUtils.white,
+                                                  fontSize: 50,
+                                                  fontWeight: FontWeight.bold)),
+                                        ])),
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(height: web ? 30 : 5),
-                            SizedBox(
-                              width: size.width * 0.4,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                      width:  web?120:60,
-                                      child:const Align(
+                              SizedBox(height: web ? 30 : 5),
+                              SizedBox(
+                                width: size.width * 0.4,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                        width:  web?120:60,
+                                        child:const Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: Text('28',
+                                                style: TextStyle(
+                                                    color: ColorsUtils.white,
+                                                    fontSize: 80,
+                                                    fontWeight: FontWeight.bold)),
+                                          ),
+                                        )),
+                                    SizedBox(
+                                      width: size.width * 0.2,
+                                      child: Align(
                                         alignment: Alignment.centerLeft,
                                         child: FittedBox(
                                           fit: BoxFit.scaleDown,
-                                          child: Text('28',
-                                              style: TextStyle(
-                                                  color: ColorsUtils.white,
-                                                  fontSize: 80,
-                                                  fontWeight: FontWeight.bold)),
-                                        ),
-                                      )),
-                                  SizedBox(
-                                    width: size.width * 0.2,
-                                    child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: FittedBox(
-                                        fit: BoxFit.scaleDown,
-                                        child: RichText(
-                                          textAlign: TextAlign.start,
-                                          text: const TextSpan(children: [
-                                            TextSpan(
-                                                text: 'de \n',
-                                                style: TextStyle(
-                                                    color: ColorsUtils.white,
-                                                    fontSize: 26)),
-                                            TextSpan(
-                                                text: 'OCTUBRE',
-                                                style: TextStyle(
-                                                    color: ColorsUtils.white,
-                                                    fontSize: 26)),
-                                          ]),
+                                          child: RichText(
+                                            textAlign: TextAlign.start,
+                                            text: const TextSpan(children: [
+                                              TextSpan(
+                                                  text: 'de \n',
+                                                  style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                      fontSize: 26)),
+                                              TextSpan(
+                                                  text: 'OCTUBRE',
+                                                  style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                      fontSize: 26)),
+                                            ]),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            SizedBox(height: web ? 30 : 5),
-                             ButtonWid(
+                              SizedBox(height: web ? 30 : 5),
+                              ButtonWid(
                                   width: web? size.width * 0.15 :size.width * 0.4,
                                   height: web ? size.height * 0.08 : size.height * 0.05,
                                   color1: ColorsUtils.orange1,
                                   color2: ColorsUtils.orange2,
                                   textButt: 'Deseo participar',
                                   voidCallback: () => null),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      right: 20,
-                      bottom: 20,
-                      child: Container(
-                          width: size.width * 0.3,
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                              color: ColorsUtils.orange1.withOpacity(0.8),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: RichText(
-                              textAlign: TextAlign.start,
-                              text: const TextSpan(children: [
-                                TextSpan(
-                                    text: 'US \$15,000\n',
-                                    style: TextStyle(
-                                        color: ColorsUtils.white,
-                                        fontSize: 38,
-                                        fontWeight: FontWeight.w900)),
-                                TextSpan(
-                                    text: 'precio base',
-                                    style: TextStyle(
-                                        color: ColorsUtils.white,
-                                        fontSize: 34)),
-                              ]),
-                            ),
-                          )),
-                    ),
-                  ],
+                      Positioned(
+                        right: 20,
+                        bottom: 20,
+                        child: Container(
+                            width: size.width * 0.3,
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                                color: ColorsUtils.orange1.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: RichText(
+                                textAlign: TextAlign.start,
+                                text: const TextSpan(children: [
+                                  TextSpan(
+                                      text: 'US \$15,000\n',
+                                      style: TextStyle(
+                                          color: ColorsUtils.white,
+                                          fontSize: 38,
+                                          fontWeight: FontWeight.w900)),
+                                  TextSpan(
+                                      text: 'precio base',
+                                      style: TextStyle(
+                                          color: ColorsUtils.white,
+                                          fontSize: 34)),
+                                ]),
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: size.width,
+                  height: size.height * 0.6,
+                  child: Stack(
+                    children: [
+                      Container(
+                        height: size.height * 0.6,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/images/bgSlider.png',
+                                ),
+                                fit: BoxFit.cover)),
+                      ),
+                      Positioned(
+                          right: 0,
+                          left: web ? null : 0,
+                          child: Image.asset('assets/images/autos.png',
+                              width: web ? size.width * 0.5 : size.width,
+                              height:
+                              web ? size.height * 0.6 : size.height * 0.3)),
+                      Positioned(
+                        bottom: web ? null : 20,
+                        child: Container(
+                          height: web ? size.height * 0.6 : size.height * 0.3,
+                          width: size.width * 0.4,
+                          margin: EdgeInsets.only(left: web ? 50 : 20),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: size.width * 0.4,
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: RichText(
+                                        textAlign: TextAlign.start,
+                                        text: const TextSpan(children: [
+                                          TextSpan(
+                                              text: 'PROXIMA SUBASTA\n\n',
+                                              style: TextStyle(
+                                                  color: ColorsUtils.white,
+                                                  fontSize: 26)),
+                                          TextSpan(
+                                              text: 'LOTES DE AUTOS \n',
+                                              style: TextStyle(
+                                                  color: ColorsUtils.white,
+                                                  fontSize: 50,
+                                                  fontWeight: FontWeight.bold)),
+                                          TextSpan(
+                                              text: 'Siniestrados y usados',
+                                              style: TextStyle(
+                                                  color: ColorsUtils.white,
+                                                  fontSize: 50,
+                                                  fontWeight: FontWeight.bold)),
+                                        ])),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: web ? 30 : 5),
+                              SizedBox(
+                                width: size.width * 0.4,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                        width:  web?120:60,
+                                        child:const Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: Text('28',
+                                                style: TextStyle(
+                                                    color: ColorsUtils.white,
+                                                    fontSize: 80,
+                                                    fontWeight: FontWeight.bold)),
+                                          ),
+                                        )),
+                                    SizedBox(
+                                      width: size.width * 0.2,
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: RichText(
+                                            textAlign: TextAlign.start,
+                                            text: const TextSpan(children: [
+                                              TextSpan(
+                                                  text: 'de \n',
+                                                  style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                      fontSize: 26)),
+                                              TextSpan(
+                                                  text: 'OCTUBRE',
+                                                  style: TextStyle(
+                                                      color: ColorsUtils.white,
+                                                      fontSize: 26)),
+                                            ]),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: web ? 30 : 5),
+                              ButtonWid(
+                                  width: web? size.width * 0.15 :size.width * 0.4,
+                                  height: web ? size.height * 0.08 : size.height * 0.05,
+                                  color1: ColorsUtils.orange1,
+                                  color2: ColorsUtils.orange2,
+                                  textButt: 'Deseo participar',
+                                  voidCallback: () => null),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 20,
+                        bottom: 20,
+                        child: Container(
+                            width: size.width * 0.3,
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                                color: ColorsUtils.orange1.withOpacity(0.8),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: RichText(
+                                textAlign: TextAlign.start,
+                                text: const TextSpan(children: [
+                                  TextSpan(
+                                      text: 'US \$15,000\n',
+                                      style: TextStyle(
+                                          color: ColorsUtils.white,
+                                          fontSize: 38,
+                                          fontWeight: FontWeight.w900)),
+                                  TextSpan(
+                                      text: 'precio base',
+                                      style: TextStyle(
+                                          color: ColorsUtils.white,
+                                          fontSize: 34)),
+                                ]),
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ], options: CarouselOptions(viewportFraction: 1,
+                  height: size.height * 0.6,
+                  autoPlay: true,
+                  enableInfiniteScroll: true)),
+
               Stack(
                 children: [
                   Positioned(

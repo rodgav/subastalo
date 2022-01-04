@@ -37,6 +37,10 @@ dependencies:
   flutter_countdown_timer: ^4.1.0
   dio: ^4.0.4
   jwt_decode: ^0.3.1
+  flutter_phoenix: ^1.0.0
+  carousel_slider: ^4.0.0
+  file_picker: ^4.3.0
+
 
 dev_dependencies:
   flutter_test:
@@ -77,3 +81,6 @@ flutter:
         - asset: fonts/Mulish-Regular.ttf
         - asset: fonts/Mulish-SemiBold.ttf
         - asset: fonts/Mulish-SemiBoldItalic.ttf
+flutter_intl:
+  main_locale: en_US
+  enabled: true

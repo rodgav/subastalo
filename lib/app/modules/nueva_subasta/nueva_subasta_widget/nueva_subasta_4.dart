@@ -18,7 +18,7 @@ class NuevaSubasta4 extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(15),
-        child: Form(
+        child: Form(key: logic.formKey4,
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -93,7 +93,7 @@ class NuevaSubasta4 extends StatelessWidget {
                   color1: ColorsUtils.blueButt1,
                   color2: ColorsUtils.blueButt2,
                   textButt: 'Finalizar',
-                  voidCallback: () => null),
+                  voidCallback: logic.createNewSubasta),
             ),
           ],
         )),

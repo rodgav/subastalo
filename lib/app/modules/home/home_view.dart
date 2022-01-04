@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/global_widgets/categoria.dart';
@@ -9,21 +10,33 @@ import 'package:subastalo/app/modules/home/home_logic.dart';
 import 'package:subastalo/app/modules/home/widgets_home/drawer_home.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/generated/l10n.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final logic = Get.find<HomeLogic>();
 
+  //late Locale _userLocale;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final bool web = size.width > 800;
+    //final newLocale = Localizations.localeOf(context);
+    //if (newLocale != _userLocale) _userLocale = newLocale;
     return GetRouterOutlet.builder(builder: (context, delegate, current) {
       return Scaffold(
           key: logic.scaffoldKeyHome,
           endDrawer: web ? null : const DrawerHome(),
           body: Column(
             children: [
+              Text(S.of(context).title),
+              ElevatedButton(
+                  onPressed: () async {
+                    await AuthService.to.saveLanguage();
+                    Phoenix.rebirth(context);
+                  },
+                  child: Text(S.of(context).language)),
               web
                   ? Container(
                       padding: const EdgeInsets.all(10),
