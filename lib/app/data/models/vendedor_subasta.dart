@@ -29,9 +29,9 @@ class VendedorSubastaModel {
             ? List<VendedorSubasta>.from(
                 json["vendedorSubasta"].map((x) => VendedorSubasta.fromJson(x)))
             : [],
-        status: json["status"] ?? '',
-        message: json["message"] ?? '',
-        code: json["code"] ?? 0,
+        status: json["status"].toString(),
+        message: json["message"].toString(),
+        code: int.tryParse(json["code"].toString()) ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -66,12 +66,12 @@ class VendedorSubasta {
 
   factory VendedorSubasta.fromJson(Map<String, dynamic> json) =>
       VendedorSubasta(
-        id: json["id"] ?? 0,
-        idSubasta: json["idSubasta"] ?? 0,
-        nameVendedor: json["nameVendedor"] ?? '',
-        companyVendedor: json["companyVendedor"] ?? '',
-        emailVendedor: json["emailVendedor"] ?? '',
-        address: json["address"] ?? '',
+        id: int.tryParse(json["id"].toString()) ?? 0,
+        idSubasta: int.tryParse(json["idSubasta"].toString()) ?? 0,
+        nameVendedor: json["nameVendedor"].toString(),
+        companyVendedor: json["companyVendedor"].toString(),
+        emailVendedor: json["emailVendedor"].toString(),
+        address: json["address"].toString(),
         createdAt: json["created_at"] != null
             ? DateTime.parse(json["created_at"])
             : DateTime.now(),

@@ -4,6 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 import 'mi_subasta_detail_logic.dart';
@@ -164,23 +165,15 @@ class MiSubastaDetailPage extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(50),
                                         border: Border.all(
                                             color: ColorsUtils.orange2)),
+                                    padding: const EdgeInsets.all(5),
                                     child: Center(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: const [
-                                          Text('0.5 % DE COMISIÓN',
-                                              style: TextStyle(
-                                                fontSize: 8,
-                                              )),
-                                          Text(
-                                            'US\$ 32,400',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                                color: ColorsUtils.orange2),
-                                          )
-                                        ],
-                                      ),
+                                      child: Text(
+                                          NumberFormat.currency()
+                                              .format(123456),
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: ColorsUtils.orange2)),
                                     ),
                                   )
                                 ],
@@ -198,134 +191,136 @@ class MiSubastaDetailPage extends StatelessWidget {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 20),
-                   web? DataTable(columns: const [
-                      DataColumn(
-                          label: Text(
-                        'Remitente',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      DataColumn(
-                          label: Text(
-                        'Cantidad',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      DataColumn(
-                          label: Text(
-                        'Fecha',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      DataColumn(
-                          label: Text(
-                        'Acciòn',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                    ], rows: [
-                      DataRow(cells: [
-                        const DataCell(Text(
-                          'Danilo Boy Vela',
-                          style: TextStyle(color: ColorsUtils.grey1),
-                        )),
-                        const DataCell(Text(
-                          '33.000',
-                          style: TextStyle(color: ColorsUtils.blue3),
-                        )),
-                        const DataCell(Text(
-                          '05/12/2020',
-                          style: TextStyle(color: ColorsUtils.grey1),
-                        )),
-                        DataCell(
-                            const Text(
-                              'Aceptar',
-                              style: TextStyle(color: Colors.green),
-                            ),
-                            onTap: ()=> _.aceptar('123')),
-                      ]),
-                      DataRow(cells: [
-                        const DataCell(Text(
-                          'Fabrisio Vela Checkner',
-                          style: TextStyle(color: ColorsUtils.grey1),
-                        )),
-                        const DataCell(Text(
-                          '32.000',
-                          style: TextStyle(color: ColorsUtils.blue3),
-                        )),
-                        const DataCell(Text(
-                          '04/12/2020',
-                          style: TextStyle(color: ColorsUtils.grey1),
-                        )),
-                        DataCell(
-                            const Text(
-                              'Aceptar',
-                              style: TextStyle(color: Colors.green),
-                            ),
-                            onTap: ()=> _.aceptar('123')),
-                      ]),
-                      DataRow(cells: [
-                        const DataCell(Text(
-                          'Jennifer ocampo Vela',
-                          style: TextStyle(color: ColorsUtils.grey1),
-                        )),
-                        const DataCell(Text(
-                          '30.000',
-                          style: TextStyle(color: ColorsUtils.blue3),
-                        )),
-                        const DataCell(Text(
-                          '03/12/2020',
-                          style: TextStyle(color: ColorsUtils.grey1),
-                        )),
-                        DataCell(
-                            const Text(
-                              'Aceptar',
-                              style: TextStyle(color: Colors.green),
-                            ),
-                            onTap: ()=> _.aceptar('123')),
-                      ]),
-                      DataRow(cells: [
-                        const DataCell(Text(
-                          'Rodrigo Temple Villanueva',
-                          style: TextStyle(color: ColorsUtils.grey1),
-                        )),
-                        const DataCell(Text(
-                          '29.000',
-                          style: TextStyle(color: ColorsUtils.blue3),
-                        )),
-                        const DataCell(Text(
-                          '02/12/2020',
-                          style: TextStyle(color: ColorsUtils.grey1),
-                        )),
-                        DataCell(
-                           const Text(
-                              'Aceptar',
-                              style: TextStyle(color: Colors.green),
-                            ),
-                            onTap: ()=> _.aceptar('123')),
-                      ]),
-                    ]): ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (__, index) {
-                        return ListTile(
-                          title: const Text('Nombre'),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              IconButton(
-                                  icon: const Icon(Icons.edit),
-                                  onPressed: () => null),
-                              IconButton(
-                                  icon: const Icon(Icons.delete),
-                                  onPressed: () => null),
-                            ],
-                          ),
-                        );
-                      },
-                      separatorBuilder: (__, index) => const Divider(),
-                      itemCount: 2,
-                    )
+                    web
+                        ? DataTable(columns: const [
+                            DataColumn(
+                                label: Text(
+                              'Remitente',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Cantidad',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Fecha',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Acciòn',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            )),
+                          ], rows: [
+                            DataRow(cells: [
+                              const DataCell(Text(
+                                'Danilo Boy Vela',
+                                style: TextStyle(color: ColorsUtils.grey1),
+                              )),
+                              const DataCell(Text(
+                                '33.000',
+                                style: TextStyle(color: ColorsUtils.blue3),
+                              )),
+                              const DataCell(Text(
+                                '05/12/2020',
+                                style: TextStyle(color: ColorsUtils.grey1),
+                              )),
+                              DataCell(
+                                  const Text(
+                                    'Aceptar',
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                  onTap: () => _.aceptar('123')),
+                            ]),
+                            DataRow(cells: [
+                              const DataCell(Text(
+                                'Fabrisio Vela Checkner',
+                                style: TextStyle(color: ColorsUtils.grey1),
+                              )),
+                              const DataCell(Text(
+                                '32.000',
+                                style: TextStyle(color: ColorsUtils.blue3),
+                              )),
+                              const DataCell(Text(
+                                '04/12/2020',
+                                style: TextStyle(color: ColorsUtils.grey1),
+                              )),
+                              DataCell(
+                                  const Text(
+                                    'Aceptar',
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                  onTap: () => _.aceptar('123')),
+                            ]),
+                            DataRow(cells: [
+                              const DataCell(Text(
+                                'Jennifer ocampo Vela',
+                                style: TextStyle(color: ColorsUtils.grey1),
+                              )),
+                              const DataCell(Text(
+                                '30.000',
+                                style: TextStyle(color: ColorsUtils.blue3),
+                              )),
+                              const DataCell(Text(
+                                '03/12/2020',
+                                style: TextStyle(color: ColorsUtils.grey1),
+                              )),
+                              DataCell(
+                                  const Text(
+                                    'Aceptar',
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                  onTap: () => _.aceptar('123')),
+                            ]),
+                            DataRow(cells: [
+                              const DataCell(Text(
+                                'Rodrigo Temple Villanueva',
+                                style: TextStyle(color: ColorsUtils.grey1),
+                              )),
+                              const DataCell(Text(
+                                '29.000',
+                                style: TextStyle(color: ColorsUtils.blue3),
+                              )),
+                              const DataCell(Text(
+                                '02/12/2020',
+                                style: TextStyle(color: ColorsUtils.grey1),
+                              )),
+                              DataCell(
+                                  const Text(
+                                    'Aceptar',
+                                    style: TextStyle(color: Colors.green),
+                                  ),
+                                  onTap: () => _.aceptar('123')),
+                            ]),
+                          ])
+                        : ListView.separated(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (__, index) {
+                              return ListTile(
+                                title: const Text('Nombre'),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                        icon: const Icon(Icons.edit),
+                                        onPressed: () => null),
+                                    IconButton(
+                                        icon: const Icon(Icons.delete),
+                                        onPressed: () => null),
+                                  ],
+                                ),
+                              );
+                            },
+                            separatorBuilder: (__, index) => const Divider(),
+                            itemCount: 2,
+                          )
                   ],
                 )));
       });

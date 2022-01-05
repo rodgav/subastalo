@@ -95,7 +95,17 @@ class RemoteDataProvider {
           data: {'json': jsonEncode(json)});
       return Subasta.fromJson(response.data['subasta']);
     } catch (e) {
-      print('createSubasta error $e');
+      print('createSubasta error ${e.runtimeType}');
+      return null;
+    }
+  }
+
+  Future<SubastaModel?> misSubastas(String token) async {
+    try {
+      final response = await _dio.get('/misubasta',
+          options: Options(headers: {'Authorization': token}));
+      return SubastaModel.fromJson(response.data);
+    } catch (e) {print('misSubastas error $e');
       return null;
     }
   }
@@ -115,22 +125,23 @@ class RemoteDataProvider {
       int idSubasta,
       String token) async {
     try {
-      var formData = FormData.fromMap({
+      final json = {
         'videoUrl': videoUrl,
         'idSubasta': idSubasta,
-        'image1': MultipartFile.fromBytes(List.from(filePath1.bytes ?? [0])),
-        'image2': MultipartFile.fromBytes(List.from(filePath2.bytes ?? [0])),
-        'image3': MultipartFile.fromBytes(List.from(filePath3.bytes ?? [0])),
-        'image4': MultipartFile.fromBytes(List.from(filePath4.bytes ?? [0])),
-        'image5': MultipartFile.fromBytes(List.from(filePath5.bytes ?? [0])),
-        'image6': MultipartFile.fromBytes(List.from(filePath6.bytes ?? [0])),
-        'image7': MultipartFile.fromBytes(List.from(filePath7.bytes ?? [0])),
-        'image8': MultipartFile.fromBytes(List.from(filePath8.bytes ?? [0])),
-        'image9': MultipartFile.fromBytes(List.from(filePath9.bytes ?? [0])),
-        'image10': MultipartFile.fromBytes(List.from(filePath10.bytes ?? [0])),
-      });
+        'image1': base64Encode(filePath1.bytes ?? [0]),
+        'image2': base64Encode(filePath2.bytes ?? [0]),
+        'image3': base64Encode(filePath3.bytes ?? [0]),
+        'image4': base64Encode(filePath4.bytes ?? [0]),
+        'image5': base64Encode(filePath5.bytes ?? [0]),
+        'image6': base64Encode(filePath6.bytes ?? [0]),
+        'image7': base64Encode(filePath7.bytes ?? [0]),
+        'image8': base64Encode(filePath8.bytes ?? [0]),
+        'image9': base64Encode(filePath9.bytes ?? [0]),
+        'image10': base64Encode(filePath10.bytes ?? [0]),
+      };
       final response = await _dio.post('/mediaSubasta',
-          options: Options(headers: {'Authorization': token}), data: formData);
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
       return MediaSubasta.fromJson(response.data['mediaSubasta']);
     } catch (e) {
       print('createMediaSubasta error $e');

@@ -22,10 +22,10 @@ class TokenModel {
   String jwt;
 
   factory TokenModel.fromJson(Map<String, dynamic> json) => TokenModel(
-    status: json["status"]??'',
-    message: json["message"]??'',
-    code: json["code"]??0,
-    jwt: json["jwt"]??'',
+    status: json["status"].toString(),
+    message: json["message"].toString(),
+    code: int.tryParse(json["code"].toString())??0,
+    jwt: json["jwt"].toString(),
   );
 
   Map<String, dynamic> toJson() => {

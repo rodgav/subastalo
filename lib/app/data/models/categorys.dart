@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-CategorysModel CategorysModelFromJson(String str) =>
+CategorysModel categorysModelFromJson(String str) =>
     CategorysModel.fromJson(json.decode(str));
 
-String CategorysModelToJson(CategorysModel data) => json.encode(data.toJson());
+String categorysModelToJson(CategorysModel data) => json.encode(data.toJson());
 
 class CategorysModel {
   CategorysModel({
@@ -27,9 +27,9 @@ class CategorysModel {
             ? List<Category>.from(
                 json["categorys"].map((x) => Category.fromJson(x)))
             : [],
-        status: json["status"] ?? '',
-        message: json["message"] ?? '',
-        code: json["code"] ?? 0,
+        status: json["status"].toString(),
+        message: json["message"].toString(),
+        code: int.tryParse(json["code"].toString()) ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -57,9 +57,9 @@ class Category {
   List<SubCategory> subCategorys;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-        id: json["id"] ?? 0,
-        name: json["name"] ?? '',
-        asset: json["asset"] ?? '',
+        id: int.tryParse(json["id"].toString()) ?? 0,
+        name: json["name"].toString(),
+        asset: json["asset"].toString(),
         createdAt: json["created_at"] != null
             ? DateTime.parse(json["created_at"])
             : DateTime.now(),
@@ -99,15 +99,15 @@ class SubCategory {
   DateTime updatedAt;
 
   factory SubCategory.fromJson(Map<String, dynamic> json) => SubCategory(
-        id: json["id"] ?? 0,
-        name: json["name"] ?? '',
+        id: int.tryParse(["id"].toString()) ?? 0,
+        name: json["name"].toString(),
         createdAt: json["created_at"] != null
             ? DateTime.parse(json["created_at"])
             : DateTime.now(),
         updatedAt: json["updated_at"] != null
             ? DateTime.parse(json["updated_at"])
             : DateTime.now(),
-        idCategory: json["idCategory"] ?? 0,
+        idCategory: int.tryParse(json["idCategory"].toString()) ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

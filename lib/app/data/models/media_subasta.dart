@@ -29,9 +29,9 @@ class MediaSubastaModel {
             ? List<MediaSubasta>.from(
                 json["mediaSubasta"].map((x) => MediaSubasta.fromJson(x)))
             : [],
-        status: json["status"]??'',
-        message: json["message"]??'',
-        code: json["code"]??0,
+        status: json["status"].toString(),
+        message: json["message"].toString(),
+        code: int.tryParse(json["code"].toString()) ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -76,20 +76,24 @@ class MediaSubasta {
   DateTime updatedAt;
 
   factory MediaSubasta.fromJson(Map<String, dynamic> json) => MediaSubasta(
-        idSubasta: json["idSubasta"]??'',
-        imageUrl1: json["imageUrl1"]??'',
-        imageUrl2: json["imageUrl2"]??'',
-        imageUrl3: json["imageUrl3"]??'',
-        imageUrl4: json["imageUrl4"]??'',
-        imageUrl5: json["imageUrl5"]??'',
-        imageUrl6: json["imageUrl6"]??'',
-        imageUrl7: json["imageUrl7"]??'',
-        imageUrl8: json["imageUrl8"]??'',
-        imageUrl9: json["imageUrl9"]??'',
-        imageUrl10: json["imageUrl10"]??'',
-        videoUrl: json["videoUrl"]??'',
-        createdAt: json["created_at"]!=null?DateTime.parse(json["created_at"]):DateTime.now(),
-        updatedAt: json["updated_at"]!=null?DateTime.parse(json["updated_at"]):DateTime.now(),
+        idSubasta: int.tryParse(json["idSubasta"].toString()) ?? 0,
+        imageUrl1: json["imageUrl1"].toString(),
+        imageUrl2: json["imageUrl2"].toString(),
+        imageUrl3: json["imageUrl3"].toString(),
+        imageUrl4: json["imageUrl4"].toString(),
+        imageUrl5: json["imageUrl5"].toString(),
+        imageUrl6: json["imageUrl6"].toString(),
+        imageUrl7: json["imageUrl7"].toString(),
+        imageUrl8: json["imageUrl8"].toString(),
+        imageUrl9: json["imageUrl9"].toString(),
+        imageUrl10: json["imageUrl10"].toString(),
+        videoUrl: json["videoUrl"].toString(),
+        createdAt: json["created_at"] != null
+            ? DateTime.parse(json["created_at"])
+            : DateTime.now(),
+        updatedAt: json["updated_at"] != null
+            ? DateTime.parse(json["updated_at"])
+            : DateTime.now(),
       );
 
   Map<String, dynamic> toJson() => {

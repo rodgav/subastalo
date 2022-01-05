@@ -135,8 +135,6 @@ class NuevaSubastaLogic extends GetxController {
         DialogService.to
             .snackBar(Colors.red, 'ERROR', 'Todos los campos son requeridos');
       }
-    }else{
-
     }
   }
 }

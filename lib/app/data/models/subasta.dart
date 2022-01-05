@@ -27,9 +27,9 @@ class SubastaModel {
             ? List<Subasta>.from(
                 json["subasta"].map((x) => Subasta.fromJson(x)))
             : [],
-        status: json["status"] ?? '',
-        message: json["message"] ?? '',
-        code: json["code"] ?? 0,
+        status: json["status"].toString(),
+        message: json["message"].toString(),
+        code: int.parse(json["code"].toString()),
       );
 
   Map<String, dynamic> toJson() => {
@@ -43,6 +43,7 @@ class SubastaModel {
 class Subasta {
   Subasta({
     required this.id,
+    required this.idUser,
     required this.idCategory,
     required this.idSubCategory,
     required this.idTypeSubasta,
@@ -57,11 +58,15 @@ class Subasta {
     required this.mileage,
     required this.fuel,
     required this.details,
+    required this.viewsReal,
+    required this.views,
+    required this.love,
     required this.createdAt,
     required this.updatedAt,
   });
 
   int id;
+  int idUser;
   int idCategory;
   int idSubCategory;
   int idTypeSubasta;
@@ -69,34 +74,39 @@ class Subasta {
   int idStateSubasta;
   String title;
   String price;
-  DateTime date;
+  String date;
   String brand;
   String model;
   String year;
-  String mileage;
+  int mileage;
   String fuel;
   String details;
+  int viewsReal;
+  int views;
+  int love;
   DateTime createdAt;
   DateTime updatedAt;
 
   factory Subasta.fromJson(Map<String, dynamic> json) => Subasta(
-        id: json["id"] ?? 0,
-        idCategory: json["idCategory"] ?? 0,
-        idSubCategory: json["idSubCategory"] ?? 0,
-        idTypeSubasta: json["idTypeSubasta"] ?? 0,
-        idHoraSubasta: json["idHoraSubasta"] ?? 0,
-        idStateSubasta: json["idStateSubasta"] ?? 0,
-        title: json["title"] ?? '',
-        price: json["price"] ?? '',
-        date: json["date"] != null
-            ? DateTime.parse(json["date"])
-            : DateTime.now(),
-        brand: json["brand"] ?? '',
-        model: json["model"] ?? '',
-        year: json["year"] ?? '',
-        mileage: json["mileage"] ?? '',
-        fuel: json["fuel"] ?? '',
-        details: json["details"] ?? '',
+        id: int.tryParse(json["id"].toString())??0,
+        idUser: int.tryParse(json["idUser"].toString())??0,
+        idCategory: int.tryParse(json["idCategory"].toString())??0,
+        idSubCategory: int.tryParse(json["idSubCategory"].toString())??0,
+        idTypeSubasta: int.tryParse(json["idTypeSubasta"].toString())??0,
+        idHoraSubasta: int.tryParse(json["idHoraSubasta"].toString())??0,
+        idStateSubasta: int.tryParse(json["idStateSubasta"].toString())??0,
+        title: json["title"].toString(),
+        price: json["price"].toString(),
+        date: json["date"].toString(),
+        brand: json["brand"].toString(),
+        model: json["model"].toString(),
+        year: json["year"].toString(),
+        mileage: int.tryParse(json["mileage"].toString())??0,
+        fuel: json["fuel"].toString(),
+        details: json["details"].toString(),
+        viewsReal: int.tryParse(json["viewsReal"].toString())??0,
+        views: int.tryParse(json["views"].toString())??0,
+        love: int.tryParse(json["love"].toString())??0,
         createdAt: json["created_at"] != null
             ? DateTime.parse(json["created_at"])
             : DateTime.now(),
@@ -107,6 +117,7 @@ class Subasta {
 
   Map<String, dynamic> toJson() => {
         "id": id,
+        "idUser": idUser,
         "idCategory": idCategory,
         "idSubCategory": idSubCategory,
         "idTypeSubasta": idTypeSubasta,
@@ -114,14 +125,16 @@ class Subasta {
         "idStateSubasta": idStateSubasta,
         "title": title,
         "price": price,
-        "date":
-            "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
+        "date": date,
         "brand": brand,
         "model": model,
         "year": year,
         "mileage": mileage,
         "fuel": fuel,
         "details": details,
+        "viewsReal": viewsReal,
+        "views": views,
+        "love": love,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
       };

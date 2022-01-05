@@ -26,9 +26,17 @@ class AuthService extends GetxService {
       await _getStorage.write(
           'role', _encryptHelper.encrypt(_payload['name'].toString()));
       await _getStorage.write(
-          'iat', _encryptHelper.encrypt(_payload['iat'].toString()));
+          'iat',
+          _encryptHelper.encrypt(DateTime.fromMillisecondsSinceEpoch(
+                  _payload['iat']  * 1000,
+                  isUtc: true)
+              .toString()));
       await _getStorage.write(
-          'exp', _encryptHelper.encrypt(_payload['exp'].toString()));
+          'exp',
+          _encryptHelper.encrypt(DateTime.fromMillisecondsSinceEpoch(
+                  _payload['exp'] * 1000,
+                  isUtc: true)
+              .toString()));
     } catch (e) {
       debugPrint('ocurrio un error $e');
     }
@@ -55,19 +63,18 @@ class AuthService extends GetxService {
 
   Future<String?> getToken() async {
     try {
-      final token = _encryptHelper.decrypt(await _getStorage.read('token')) ?? '';
+      final token =
+          _encryptHelper.decrypt(await _getStorage.read('token')) ?? '';
       if (token != '') {
         final expires =
             _encryptHelper.decrypt(await _getStorage.read('exp')) ?? '0';
-        final exp = int.parse(expires);
+        final exp = DateTime.parse(expires);
         print('exp $exp');
-        final currenDate = DateTime.now();
         final iat = DateTime.parse(
             _encryptHelper.decrypt(await (_getStorage.read('iat') ?? '0')) ??
                 '0');
         print('iat $iat');
-        final diff = currenDate.difference(iat).inSeconds;
-        if (exp - diff >= 60) {
+        if (iat.isBefore(exp)) {
           return token;
         }
         final tokenModel = await _dataRepository.refresh(token);
@@ -81,6 +88,7 @@ class AuthService extends GetxService {
       }
       return null;
     } catch (e) {
+      print('catch getotke $e');
       return null;
     }
   }

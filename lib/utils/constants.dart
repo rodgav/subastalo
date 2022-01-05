@@ -1,0 +1,1 @@
+const String urlImageConst = 'http://192.168.0.107/api-subastalo/public/uploads/';

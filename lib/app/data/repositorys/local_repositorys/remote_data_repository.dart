@@ -90,4 +90,6 @@ class RemoteDataRepository {
           videoUrl,
           idSubasta,
           token);
+
+  Future<SubastaModel?> misSubastas(String token) => _dataProvider.misSubastas(token);
 }
