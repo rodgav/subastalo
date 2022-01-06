@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -5,7 +7,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:subastalo/app/global_widgets/loading.dart';
+import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/utils/colors_utils.dart';
+import 'package:subastalo/utils/constants.dart';
 
 import 'mi_subasta_detail_logic.dart';
 
@@ -18,6 +23,7 @@ class MiSubastaDetailPage extends StatelessWidget {
     final bool web = size.width > 800;
     return GetBuilder<MiSubastaDetailLogic>(builder: (_) {
       return LayoutBuilder(builder: (__, constraints) {
+        int random = Random().nextInt(10);
         final width = constraints.maxWidth;
         return SingleChildScrollView(
             child: Container(
@@ -49,140 +55,166 @@ class MiSubastaDetailPage extends StatelessWidget {
                       ),
                     ),
                     const Divider(height: 20),
-                    Container(
-                      width: width,
-                      decoration: BoxDecoration(
-                          //color: ColorsUtils.grey1.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(10),
-                      child: Center(
-                        child: Wrap(
-                          spacing: 20,
-                          runSpacing: 20,
-                          crossAxisAlignment: WrapCrossAlignment.start,
-                          children: [
-                            Column(
-                              children: [
-                                const Text('Imagen del producto'),
-                                SizedBox(
-                                  height: web ? 40 : 20,
-                                ),
-                                Container(
-                                  width: 258,
-                                  height: 124,
+                    GetBuilder<MiSubastaDetailLogic>(
+                        id: 'subasta',
+                        builder: (_) {
+                          final subasta = _.subasta;
+                          return subasta != null
+                              ? Container(
+                                  width: width,
                                   decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/chevrolet.png'),
-                                          fit: BoxFit.cover),
+                                      //color: ColorsUtils.grey1.withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(10)),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              width: 258,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text('Información'),
-                                  SizedBox(
-                                    height: web ? 40 : 20,
-                                  ),
-                                  const Text(
-                                    '2008 CHEVROLET SILVERADO K2500 HEAVY DUTY',
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: ColorsUtils.blue3),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: const [
-                                      Icon(Icons.location_pin,
-                                          size: 18, color: ColorsUtils.grey1),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        'Aoa eastern Alister Samoa',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: ColorsUtils.grey1),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: const [
-                                      Icon(Icons.location_pin,
-                                          size: 18, color: ColorsUtils.grey1),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        'Aoa eastern Alister Samoa',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: ColorsUtils.grey1),
-                                      )
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: const [
-                                      Icon(Icons.check,
-                                          size: 18, color: ColorsUtils.green),
-                                      SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        'Aprobado',
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: ColorsUtils.green),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: web ? 50 : 0),
-                            SizedBox(
-                              width: 258,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text('Precio sugerido'),
-                                  SizedBox(
-                                    height: web ? 40 : 20,
-                                  ),
-                                  Container(
-                                    width: 174,
-                                    height: 52,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        border: Border.all(
-                                            color: ColorsUtils.orange2)),
-                                    padding: const EdgeInsets.all(5),
-                                    child: Center(
-                                      child: Text(
-                                          NumberFormat.currency()
-                                              .format(123456),
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold,
-                                              color: ColorsUtils.orange2)),
+                                  padding: const EdgeInsets.all(10),
+                                  child: Center(
+                                    child: Wrap(
+                                      spacing: 20,
+                                      runSpacing: 20,
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.start,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            const Text('Imagen del producto'),
+                                            SizedBox(
+                                              height: web ? 40 : 20,
+                                            ),
+                                            SizedBox(
+                                              width: 258,
+                                              height: 124,
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(10),
+                                                child: Image.network(
+                                                  '${urlImageConst}image$random-${subasta.id}.png',
+                                                  fit: BoxFit.cover,
+                                                  loadingBuilder: (_, child, loading) => loading == null
+                                                      ? child
+                                                      : const Center(
+                                                    child:  SizedBox(
+                                                        width: 50, height: 50, child: LoadingWid()),
+                                                  ),
+                                                  errorBuilder: (_, __, ___) =>const Center(child:  NoDataWid()),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: 258,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Text('Información'),
+                                              SizedBox(
+                                                height: web ? 40 : 20,
+                                              ),
+                                              Text(
+                                                subasta.title,
+                                                style: const TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: ColorsUtils.blue3),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Icon(
+                                                      subasta.idStateSubasta ==
+                                                              1
+                                                          ? Icons.check
+                                                          : subasta.idStateSubasta ==
+                                                                  2
+                                                              ? Icons.error
+                                                              : Icons.close,
+                                                      size: 18,
+                                                      color: subasta
+                                                                  .idStateSubasta ==
+                                                              1
+                                                          ? ColorsUtils.orange1
+                                                          : subasta.idStateSubasta ==
+                                                                  2
+                                                              ? ColorsUtils
+                                                                  .green
+                                                              : ColorsUtils
+                                                                  .red),
+                                                  const SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    subasta.idStateSubasta == 1
+                                                        ? 'Pendiente'
+                                                        : subasta.idStateSubasta ==
+                                                                2
+                                                            ? 'Aprobada'
+                                                            : 'Bloqueada',
+                                                    style: TextStyle(
+                                                        fontSize: 12,
+                                                        color: subasta
+                                                                    .idStateSubasta ==
+                                                                1
+                                                            ? ColorsUtils
+                                                                .orange1
+                                                            : subasta.idStateSubasta ==
+                                                                    2
+                                                                ? ColorsUtils
+                                                                    .green
+                                                                : ColorsUtils
+                                                                    .red),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(width: web ? 50 : 0),
+                                        SizedBox(
+                                          width: 258,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Text('Precio sugerido'),
+                                              SizedBox(
+                                                height: web ? 40 : 20,
+                                              ),
+                                              Container(
+                                                width: 174,
+                                                height: 52,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            50),
+                                                    border: Border.all(
+                                                        color: ColorsUtils
+                                                            .orange2)),
+                                                padding:
+                                                    const EdgeInsets.all(5),
+                                                child: Center(
+                                                  child: Text(
+                                                      NumberFormat.currency()
+                                                          .format(123456),
+                                                      style: const TextStyle(
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: ColorsUtils
+                                                              .orange2)),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                                  ),
+                                )
+                              : const NoDataWid();
+                        }),
                     const Divider(height: 20),
                     const SizedBox(height: 20),
                     const Text(

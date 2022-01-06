@@ -1,6 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
 import 'package:subastalo/app/global_widgets/button_icon_widget.dart';
+import 'package:subastalo/app/global_widgets/loading.dart';
+import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 import 'package:subastalo/utils/constants.dart';
 
@@ -20,6 +24,7 @@ class ItemMiSubasta extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final bool web = size.width > 800;
+    int random = Random().nextInt(10);
     return Container(
       width: width,
       decoration: BoxDecoration(
@@ -37,8 +42,17 @@ class ItemMiSubasta extends StatelessWidget {
                 height: 124,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network('${urlImageConst}image6-1.png',
-                      fit: BoxFit.cover),
+                  child: Image.network(
+                    '${urlImageConst}image$random-${subasta.id}.png',
+                    fit: BoxFit.cover,
+                    loadingBuilder: (_, child, loading) => loading == null
+                        ? child
+                        : const Center(
+                          child:  SizedBox(
+                              width: 50, height: 50, child: LoadingWid()),
+                        ),
+                    errorBuilder: (_, __, ___) =>const Center(child:  NoDataWid()),
+                  ),
                 )),
             SizedBox(
               width: 258,
@@ -77,12 +91,13 @@ class ItemMiSubasta extends StatelessWidget {
                             : subasta.idStateSubasta == 2
                                 ? 'Aprobada'
                                 : 'Bloqueada',
-                        style:  TextStyle(
-                            fontSize: 12, color: subasta.idStateSubasta == 1
-                            ? ColorsUtils.orange1
-                            : subasta.idStateSubasta == 2
-                            ? ColorsUtils.green
-                            : ColorsUtils.red),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: subasta.idStateSubasta == 1
+                                ? ColorsUtils.orange1
+                                : subasta.idStateSubasta == 2
+                                    ? ColorsUtils.green
+                                    : ColorsUtils.red),
                       )
                     ],
                   ),

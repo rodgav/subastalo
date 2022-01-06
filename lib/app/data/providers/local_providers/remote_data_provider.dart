@@ -4,8 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart' as getx;
 import 'package:subastalo/app/data/models/categorys.dart';
+import 'package:subastalo/app/data/models/departamentos.dart';
+import 'package:subastalo/app/data/models/distritos.dart';
+import 'package:subastalo/app/data/models/horas_subasta.dart';
 import 'package:subastalo/app/data/models/media_subasta.dart';
+import 'package:subastalo/app/data/models/provincias.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
+import 'package:subastalo/app/data/models/tipos_subasta.dart';
 import 'package:subastalo/app/data/models/token.dart';
 import 'package:subastalo/app/data/models/vendedor_subasta.dart';
 
@@ -61,9 +66,9 @@ class RemoteDataProvider {
 
   Future<Subasta?> createSubasta(
       int idCategory,
+      int idSubCategory,
       int idTypeSubasta,
       int idHoraSubasta,
-      int idStateSubasta,
       String title,
       String price,
       String date,
@@ -77,9 +82,9 @@ class RemoteDataProvider {
     try {
       final json = {
         "idCategory": idCategory,
+        "idSubCategory": idSubCategory,
         "idTypeSubasta": idTypeSubasta,
         "idHoraSubasta": idHoraSubasta,
-        "idStateSubasta": idStateSubasta,
         "title": title,
         "price": price,
         "date": date,
@@ -105,7 +110,20 @@ class RemoteDataProvider {
       final response = await _dio.get('/misubasta',
           options: Options(headers: {'Authorization': token}));
       return SubastaModel.fromJson(response.data);
-    } catch (e) {print('misSubastas error $e');
+    } catch (e) {
+      print('misSubastas error $e');
+      return null;
+    }
+  }
+
+  Future<SubastaModel?> subastaId(String idSubasta, String token) async {
+    try {
+      final response = await _dio.get('/miSubastaId',
+          queryParameters: {'idSubasta': idSubasta},
+          options: Options(headers: {'Authorization': token}));
+      return SubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('misSubastas error $e');
       return null;
     }
   }
@@ -170,6 +188,64 @@ class RemoteDataProvider {
       return VendedorSubasta.fromJson(response.data['vendedorSubasta']);
     } catch (e) {
       print('createVendedorSubasta error $e');
+      return null;
+    }
+  }
+
+  Future<HorasSubastaModel?> horasSubasta(String token) async {
+    try {
+      final response = await _dio.get('/hoursSubasta',
+          options: Options(headers: {'Authorization': token}));
+      return HorasSubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('horasSubasta error $e');
+      return null;
+    }
+  }
+
+  Future<TiposSubastaModel?> tiposSubasta(String token) async {
+    try {
+      final response = await _dio.get('/typeSubasta',
+          options: Options(headers: {'Authorization': token}));
+      return TiposSubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('tiposSubasta error $e');
+      return null;
+    }
+  }
+
+  Future<DepartamentosModel?> departamentos(String token) async {
+    try {
+      final response = await _dio.get('/departamentos',
+          options: Options(headers: {'Authorization': token}));
+      return DepartamentosModel.fromJson(response.data);
+    } catch (e) {
+      print('departamentos error $e');
+      return null;
+    }
+  }
+
+  Future<ProvinciasModel?> provincias(
+      String token, String idDepartamento) async {
+    try {
+      final response = await _dio.get('/provincias',
+          queryParameters: {'idDepartamento': idDepartamento},
+          options: Options(headers: {'Authorization': token}));
+      return ProvinciasModel.fromJson(response.data);
+    } catch (e) {
+      print('provincias error $e');
+      return null;
+    }
+  }
+
+  Future<DistritosModel?> distritos(String token, String idProvincia) async {
+    try {
+      final response = await _dio.get('/distritos',
+          queryParameters: {'idProvincia': idProvincia},
+          options: Options(headers: {'Authorization': token}));
+      return DistritosModel.fromJson(response.data);
+    } catch (e) {
+      print('tiposSubasta error $e');
       return null;
     }
   }

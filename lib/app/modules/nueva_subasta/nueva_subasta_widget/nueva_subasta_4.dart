@@ -76,15 +76,6 @@ class NuevaSubasta4 extends StatelessWidget {
                 icon: null,
                 enabledBorder: ColorsUtils.grey1,
                 focusedBorder: ColorsUtils.blue3),
-            const SizedBox(height: 10),
-            CheckboxListTile(
-              value: true,
-              onChanged: (value) {},
-              title: const Text(
-                'Negociable',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
             const SizedBox(height: 40),
             Center(
               child: ButtonWid(

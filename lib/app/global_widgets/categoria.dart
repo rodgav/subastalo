@@ -45,7 +45,7 @@ class CategoriaWid extends StatelessWidget {
                               value: subCategory))
                       .toList(),
                   onChanged: (value) =>
-                      _.subCategorySelect(value as SubCategory, categoria.name),
+                      _.subCategorySelect(value as SubCategory),
                 )),
           ],
         ),

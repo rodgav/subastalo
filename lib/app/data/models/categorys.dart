@@ -99,7 +99,7 @@ class SubCategory {
   DateTime updatedAt;
 
   factory SubCategory.fromJson(Map<String, dynamic> json) => SubCategory(
-        id: int.tryParse(["id"].toString()) ?? 0,
+        id: int.tryParse(json["id"].toString()) ?? 0,
         name: json["name"].toString(),
         createdAt: json["created_at"] != null
             ? DateTime.parse(json["created_at"])

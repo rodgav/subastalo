@@ -1,8 +1,13 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/data/models/categorys.dart';
+import 'package:subastalo/app/data/models/departamentos.dart';
+import 'package:subastalo/app/data/models/distritos.dart';
+import 'package:subastalo/app/data/models/horas_subasta.dart';
 import 'package:subastalo/app/data/models/media_subasta.dart';
+import 'package:subastalo/app/data/models/provincias.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
+import 'package:subastalo/app/data/models/tipos_subasta.dart';
 import 'package:subastalo/app/data/models/token.dart';
 import 'package:subastalo/app/data/models/vendedor_subasta.dart';
 import 'package:subastalo/app/data/providers/local_providers/remote_data_provider.dart';
@@ -33,9 +38,9 @@ class RemoteDataRepository {
 
   Future<Subasta?> createSubasta(
           int idCategory,
+          int idSubCategory,
           int idTypeSubasta,
           int idHoraSubasta,
-          int idStateSubasta,
           String title,
           String price,
           String date,
@@ -48,9 +53,9 @@ class RemoteDataRepository {
           String token) =>
       _dataProvider.createSubasta(
           idCategory,
+          idSubCategory,
           idTypeSubasta,
           idHoraSubasta,
-          idStateSubasta,
           title,
           price,
           date,
@@ -91,5 +96,24 @@ class RemoteDataRepository {
           idSubasta,
           token);
 
-  Future<SubastaModel?> misSubastas(String token) => _dataProvider.misSubastas(token);
+  Future<SubastaModel?> misSubastas(String token) =>
+      _dataProvider.misSubastas(token);
+
+  Future<SubastaModel?> subastaId(String idSubasta, String token) =>
+      _dataProvider.subastaId(idSubasta, token);
+
+  Future<HorasSubastaModel?> horasSubasta(String token) =>
+      _dataProvider.horasSubasta(token);
+
+  Future<TiposSubastaModel?> tiposSubasta(String token) =>
+      _dataProvider.tiposSubasta(token);
+
+  Future<DepartamentosModel?> departamentos(String token) =>
+      _dataProvider.departamentos(token);
+
+  Future<ProvinciasModel?> provincias(String token, String idDepartamento) =>
+      _dataProvider.provincias(token, idDepartamento);
+
+  Future<DistritosModel?> distritos(String token, String idProvincia) =>
+      _dataProvider.distritos(token, idProvincia);
 }

@@ -35,7 +35,7 @@ class HomeLogic extends GetxController {
     update(['categorias']);
   }
 
-  void subCategorySelect(SubCategory value, String name) {
+  void subCategorySelect(SubCategory value) {
     _selected = value;
     update(['categorias']);
   }

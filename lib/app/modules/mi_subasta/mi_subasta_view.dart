@@ -72,7 +72,7 @@ class MiSubastaPage extends StatelessWidget {
                                         subasta: subastas[index],
                                         width: width,
                                         voidCallback: () =>
-                                            _.toMiSubastaDetail('sub1'),
+                                            _.toMiSubastaDetail(subastas[index].id.toString()),
                                       ),
                                       itemCount: subastas.length,
                                       separatorBuilder:
