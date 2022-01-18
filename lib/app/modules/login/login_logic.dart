@@ -16,6 +16,12 @@ class LoginLogic extends GetxController {
   bool _loginRegister = true;
 
   bool get loginRegister => _loginRegister;
+  @override
+  void onReady() {
+    usernameCtrl.text='prueba1@gmail.com';
+    passwordCtrl.text='123456789';
+    super.onReady();
+  }
 
   void changeLoginRegister(String loginRegister) {
     if (loginRegister == 'login') {
