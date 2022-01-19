@@ -60,17 +60,6 @@ class EditCategoria extends StatelessWidget {
                     icon: null,
                     enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
                     focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
-                const SizedBox(height: 15),
-                const Text('Ingrese una descripción',
-                    style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
-                const SizedBox(height: 5),
-                TxtFieldBor(controller: _.descrCtrl, validator: isNotEmpty,
-                    width: 400,
-                    maxLines: 4,
-                    hint: 'Ingrese nombre de departamento',
-                    icon: null,
-                    enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
-                    focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
                 const SizedBox(height: 30),
                 const Text(
                   'Al cambiar una categoría que contenga 1 o mas productos, '

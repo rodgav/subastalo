@@ -55,6 +55,19 @@ class RemoteDataProvider {
     }
   }
 
+  Future<Category?> createCategory(String name, String token) async {
+    try {
+      final json = {"name": name};
+      final response = await _dio.post('/category',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return Category.fromJson(response.data['category']);
+    } catch (e) {
+      print('createCategory error $e');
+      return null;
+    }
+  }
+
   Future<CategorysModel?> categorys() async {
     try {
       final response = await _dio.get('/category');
@@ -244,6 +257,34 @@ class RemoteDataProvider {
           queryParameters: {'idProvincia': idProvincia},
           options: Options(headers: {'Authorization': token}));
       return DistritosModel.fromJson(response.data);
+    } catch (e) {
+      print('tiposSubasta error $e');
+      return null;
+    }
+  }
+
+  Future<SubCategory?> createSubCategory(
+      String idCategory, String name, String token) async {
+    try {
+      final json = {"idCategory": idCategory, "name": name};
+      final response = await _dio.post('/subCategory',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return SubCategory.fromJson(response.data['sub_category']);
+    } catch (e) {
+      print('createSubCategory error $e');
+      return null;
+    }
+  }
+
+  Future<List<SubCategory>?> subCategorys(
+      String token, String idCategory) async {
+    try {
+      final response = await _dio.get('/subCategory',
+          queryParameters: {'idCategory': idCategory},
+          options: Options(headers: {'Authorization': token}));
+      return List<SubCategory>.from(
+          response.data["sub_categorys"].map((x) => SubCategory.fromJson(x)));
     } catch (e) {
       print('tiposSubasta error $e');
       return null;

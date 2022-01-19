@@ -44,6 +44,8 @@ import 'package:subastalo/app/modules/perfil/perfil_binding.dart';
 import 'package:subastalo/app/modules/perfil/perfil_view.dart';
 import 'package:subastalo/app/modules/root/root_binding.dart';
 import 'package:subastalo/app/modules/root/root_view.dart';
+import 'package:subastalo/app/modules/sub_categorias/sub_categorias_binding.dart';
+import 'package:subastalo/app/modules/sub_categorias/sub_categorias_view.dart';
 import 'package:subastalo/app/modules/subastas/subastas_binding.dart';
 import 'package:subastalo/app/modules/subastas/subastas_view.dart';
 import 'package:subastalo/app/modules/subastas_detail/subastas_detail_binding.dart';
@@ -150,7 +152,13 @@ class AppPages {
                 GetPage(
                     name: _Paths.categorias,
                     page: () => CategoriasPage(),
-                    binding: CategoriasBinding()),
+                    binding: CategoriasBinding(),
+                    children: [
+                      GetPage(
+                          name: _Paths.subCategorias,
+                          page: () => SubCategoriasPage(),
+                          binding: SubCategoriasBinding())
+                    ]),
                 GetPage(
                     name: _Paths.tAprobadas,
                     page: () => TAprobadasPage(),

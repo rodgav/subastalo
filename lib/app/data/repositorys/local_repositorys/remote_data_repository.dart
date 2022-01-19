@@ -24,6 +24,9 @@ class RemoteDataRepository {
 
   Future<TokenModel?> refresh(String token) => _dataProvider.refresh(token);
 
+  Future<Category?> createCategory(String name, String token) =>
+      _dataProvider.createCategory(name, token);
+
   Future<CategorysModel?> categorys() => _dataProvider.categorys();
 
   Future<VendedorSubasta?> createVendedorSubasta(
@@ -116,4 +119,11 @@ class RemoteDataRepository {
 
   Future<DistritosModel?> distritos(String token, String idProvincia) =>
       _dataProvider.distritos(token, idProvincia);
+
+  Future<SubCategory?> createSubCategory(
+          String idCategory, String name, String token) =>
+      _dataProvider.createSubCategory(idCategory, name, token);
+
+  Future<List<SubCategory>?> subCategorys(String token, String idCategory) =>
+      _dataProvider.subCategorys(token, idCategory);
 }

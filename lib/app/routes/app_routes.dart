@@ -19,13 +19,15 @@ abstract class Routes {
   static const miSubastas = _Paths.dashboard + _Paths.miSubastas;
   static const newSubastas = miSubastas + _Paths.newSubastas;
 
-
   static String misubastasDetail(String subastaId) => '$miSubastas/$subastaId';
 
   static const miPendientes = _Paths.dashboard + _Paths.miPendientes;
   static const miFavoritas = _Paths.dashboard + _Paths.miFavoritas;
   static const miHistorial = _Paths.dashboard + _Paths.miHistorial;
   static const categorias = _Paths.dashboard + _Paths.categorias;
+
+  static String subCategorias(String categoriaId) =>
+      '$categorias/$categoriaId';
   static const tAprobadas = _Paths.dashboard + _Paths.tAprobadas;
   static const tPendientes = _Paths.dashboard + _Paths.tPendientes;
   static const tBloqueadas = _Paths.dashboard + _Paths.tBloqueadas;
@@ -46,6 +48,7 @@ abstract class Routes {
   static const administradores = _Paths.dashboard + _Paths.administradores;
   static const pagos = _Paths.dashboard + _Paths.pagos;
   static const perfil = _Paths.dashboard + _Paths.perfil;
+
   static String vivo(String subastaId) => '/vivo/$subastaId';
 }
 
@@ -64,6 +67,7 @@ abstract class _Paths {
   static const miHistorial = '/mihistorial';
   static const misubastasDetail = '/:subastaId';
   static const categorias = '/categorias';
+  static const subCategorias = '/:categoriaId';
   static const tAprobadas = '/aprobadas';
   static const tPendientes = '/pendientes';
   static const tBloqueadas = '/bloqueadas';
