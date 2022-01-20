@@ -39,8 +39,8 @@ class SubCategoriasLogic extends GetxController {
   void delSubCateg(int id) {}
 
   void saveSubCategory() async {
-    final token = await AuthService.to.getToken();
     if (nameCtrl.text.isNotEmpty) {
+      final token = await AuthService.to.getToken();
       if (token != null) {
         final subCategory = await _dataRepository.createSubCategory(
             categoriaId, nameCtrl.text.trim(), token);
@@ -52,8 +52,6 @@ class SubCategoriasLogic extends GetxController {
           DialogService.to.snackBar(
               ColorsUtils.red, 'ERROR', 'No se creo la sub-categoria');
         }
-      } else {
-        print('token error');
       }
     } else {
       DialogService.to

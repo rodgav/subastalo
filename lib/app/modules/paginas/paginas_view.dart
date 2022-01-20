@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/loading.dart';
+import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 import 'paginas_logic.dart';
@@ -25,10 +27,15 @@ class PaginasPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Wrap(
-                      alignment: web?WrapAlignment.spaceBetween:WrapAlignment.center,
-                      runAlignment: web?WrapAlignment.spaceBetween:WrapAlignment.center,
+                      alignment: web
+                          ? WrapAlignment.spaceBetween
+                          : WrapAlignment.center,
+                      runAlignment: web
+                          ? WrapAlignment.spaceBetween
+                          : WrapAlignment.center,
                       crossAxisAlignment: WrapCrossAlignment.center,
-                      spacing: 10,runSpacing: 10,
+                      spacing: 10,
+                      runSpacing: 10,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,51 +57,56 @@ class PaginasPage extends StatelessWidget {
                       ],
                     ),
                     const Divider(height: 20),
-                  web?  DataTable(columns: [
-                      DataColumn(
-                          label: Checkbox(value: false, onChanged: (value) {})),
-                      const DataColumn(
-                          label: Text(
-                        'ID',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Título',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Creado',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Acciones',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                      const DataColumn(
-                          label: Text(
-                        'Acciones',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      )),
-                    ], rows: [
-                      DataRow(cells: [
-                        DataCell(Checkbox(value: false, onChanged: (value) {})),
-                        const DataCell(Text('001')),
-                        const DataCell(Text('Quienes somos')),
-                        const DataCell(Text('05/12/2020')),
+                    GetBuilder<PaginasLogic>(id:'paginas',builder: (_) {
+                      final paginas = _.paginasModel?.paginas;
+                      return paginas!=null? paginas.isNotEmpty?  web
+                          ? DataTable(columns: [
+                              DataColumn(
+                                  label: Checkbox(
+                                      value: false, onChanged: (value) {})),
+                              const DataColumn(
+                                  label: Text(
+                                'ID',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              )),
+                              const DataColumn(
+                                  label: Text(
+                                'Título',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              )),
+                              const DataColumn(
+                                  label: Text(
+                                'Creado',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              )),
+                              const DataColumn(
+                                  label: Text(
+                                'Acciones',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              )),
+                              const DataColumn(
+                                  label: Text(
+                                'Acciones',
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              )),
+                            ], rows: paginas.map((e) => DataRow(cells: [
+                        DataCell(Checkbox(
+                            value: false, onChanged: (value) {})),
+                        DataCell(Text(e.id.toString())),
+                         DataCell(Text(e.title)),
+                         DataCell(Text(e.createdAt.toString().substring(0,10))),
                         DataCell(Row(
                           mainAxisSize: MainAxisSize.min,
                           children: const [
                             Text(
                               'Editar página',
-                              style: TextStyle(color: ColorsUtils.blue3),
+                              style:
+                              TextStyle(color: ColorsUtils.blue3),
                             ),
                             SizedBox(width: 5),
                             Icon(Icons.edit, color: ColorsUtils.blue3)
@@ -114,29 +126,33 @@ class PaginasPage extends StatelessWidget {
                               ],
                             ),
                             onTap: logic.delPagina),
-                      ])
-                    ]): ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (__, index) {
-                      return ListTile(
-                        title: const Text('Nombre'),
-                        trailing: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            IconButton(
-                                icon: const Icon(Icons.edit),
-                                onPressed: () => null),
-                            IconButton(
-                                icon: const Icon(Icons.delete),
-                                onPressed: () => null),
-                          ],
-                        ),
-                      );
-                    },
-                    separatorBuilder: (__, index) => const Divider(),
-                    itemCount: 2,
-                  )
+                      ])).toList())
+                          : ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemBuilder: (__, index) {
+                                final pagina = paginas[index];
+                                return ListTile(
+                                  title: Text(pagina.title),
+                                  trailing: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      IconButton(
+                                          icon: const Icon(Icons.edit),
+                                          onPressed: () => null),
+                                      IconButton(
+                                          icon: const Icon(Icons.delete),
+                                          onPressed: () => null),
+                                    ],
+                                  ),
+                                );
+                              },
+                              separatorBuilder: (__, index) => const Divider(),
+                              itemCount: paginas.length,
+                            )
+                          : const NoDataWid()
+                          : const LoadingWid();
+                    })
                   ],
                 )));
       },

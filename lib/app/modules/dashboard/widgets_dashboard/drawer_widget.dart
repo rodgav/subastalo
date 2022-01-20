@@ -258,20 +258,6 @@ class DrawerWid extends StatelessWidget {
                     ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
-                        AssetImage('assets/icons/localizaciones.png'),
-                        color: ColorsUtils.white,
-                      ),
-                      title: const Text(
-                        'Localizaciones',
-                        style: TextStyle(color: ColorsUtils.white),
-                      ),
-                      selected: select == 'Localizaciones',
-                      selectedTileColor: const Color(0xff324047),
-                      onTap: () => _.onSelectDrawer('Localizaciones'),
-                    ),
-                    ListTile(
-                      tileColor: const Color(0xff253238),
-                      leading: const ImageIcon(
                         AssetImage('assets/icons/mensajes.png'),
                         color: ColorsUtils.white,
                       ),

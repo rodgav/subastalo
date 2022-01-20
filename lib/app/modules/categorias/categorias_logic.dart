@@ -43,8 +43,7 @@ class CategoriasLogic extends GetxController {
   }
 
   void saveCategory() async {
-    final token = await AuthService.to.getToken();
-    if (nameCtrl.text.isNotEmpty) {
+    if (nameCtrl.text.isNotEmpty) { final token = await AuthService.to.getToken();
       if (token != null) {
         final category =
             await _dataRepository.createCategory(nameCtrl.text.trim(), token);
@@ -56,8 +55,6 @@ class CategoriasLogic extends GetxController {
           DialogService.to.snackBar(
               ColorsUtils.red, 'ERROR', 'No se creo la categoria');
         }
-      } else {
-        print('token error');
       }
     } else {
       DialogService.to

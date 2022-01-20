@@ -31,119 +31,89 @@ class ItemMiSubasta extends StatelessWidget {
           //color: ColorsUtils.grey1.withOpacity(0.1),
           borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.all(10),
-      child: Center(
-        child: Wrap(
-          spacing: 20,
-          runSpacing: 20,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            SizedBox(
-                width: 258,
-                height: 124,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    '${urlImageConst}image$random-${subasta.id}.png',
-                    fit: BoxFit.cover,
-                    loadingBuilder: (_, child, loading) => loading == null
-                        ? child
-                        : const Center(
-                          child:  SizedBox(
+      child: Wrap(
+        spacing: 20,
+        runSpacing: 20,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          SizedBox(
+              width: 258,
+              height: 124,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  '${urlImageConst}image$random-${subasta.id}.png',
+                  fit: BoxFit.cover,
+                  loadingBuilder: (_, child, loading) => loading == null
+                      ? child
+                      : const Center(
+                          child: SizedBox(
                               width: 50, height: 50, child: LoadingWid()),
                         ),
-                    errorBuilder: (_, __, ___) =>const Center(child:  NoDataWid()),
-                  ),
-                )),
-            SizedBox(
-              width: 258,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    subasta.title,
-                    style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: ColorsUtils.blue3),
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                          subasta.idStateSubasta == 1
-                              ? Icons.check
-                              : subasta.idStateSubasta == 2
-                                  ? Icons.error
-                                  : Icons.close,
-                          size: 18,
+                  errorBuilder: (_, __, ___) =>
+                      const Center(child: NoDataWid()),
+                ),
+              )),
+          SizedBox(
+            width: 258,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  subasta.title,
+                  style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: ColorsUtils.blue3),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                        subasta.idStateSubasta == 1
+                            ? Icons.check
+                            : subasta.idStateSubasta == 2
+                                ? Icons.error
+                                : Icons.close,
+                        size: 18,
+                        color: subasta.idStateSubasta == 1
+                            ? ColorsUtils.orange1
+                            : subasta.idStateSubasta == 2
+                                ? ColorsUtils.green
+                                : ColorsUtils.red),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      subasta.idStateSubasta == 1
+                          ? 'Pendiente'
+                          : subasta.idStateSubasta == 2
+                              ? 'Aprobada'
+                              : 'Bloqueada',
+                      style: TextStyle(
+                          fontSize: 12,
                           color: subasta.idStateSubasta == 1
                               ? ColorsUtils.orange1
                               : subasta.idStateSubasta == 2
                                   ? ColorsUtils.green
                                   : ColorsUtils.red),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        subasta.idStateSubasta == 1
-                            ? 'Pendiente'
-                            : subasta.idStateSubasta == 2
-                                ? 'Aprobada'
-                                : 'Bloqueada',
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: subasta.idStateSubasta == 1
-                                ? ColorsUtils.orange1
-                                : subasta.idStateSubasta == 2
-                                    ? ColorsUtils.green
-                                    : ColorsUtils.red),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(width: web ? 50 : 0),
-            Column(
-              children: [
-                ButtonIconWid(
-                    width: 315,
-                    height: 40,
-                    color1: ColorsUtils.orange1,
-                    color2: ColorsUtils.orange2,
-                    assetIcon: 'assets/icons/buscar.png',
-                    textButt: 'Ver detalles y ofertas',
-                    voidCallback: voidCallback),
-                const SizedBox(
-                  height: 20,
-                ),
-                Wrap(
-                  runSpacing: 10,
-                  children: [
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.orange1,
-                        color2: ColorsUtils.orange2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Editar',
-                        voidCallback: () => null),
-                    const SizedBox(width: 10),
-                    ButtonIconWid(
-                        width: 153,
-                        height: 40,
-                        color1: ColorsUtils.blueButt1,
-                        color2: ColorsUtils.blueButt2,
-                        assetIcon: 'assets/icons/buscar.png',
-                        textButt: 'Eliminar',
-                        voidCallback: () => null),
+                    )
                   ],
-                )
+                ),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+          SizedBox(width: web ? 50 : 0),
+          ButtonIconWid(
+              width: 315,
+              height: 40,
+              color1: ColorsUtils.orange1,
+              color2: ColorsUtils.orange2,
+              assetIcon: 'assets/icons/buscar.png',
+              textButt: 'Ver detalles y ofertas',
+              voidCallback: voidCallback),
+        ],
       ),
     );
   }

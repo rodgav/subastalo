@@ -26,13 +26,10 @@ class MiSubastaLogic extends GetxController {
     Get.rootDelegate.toNamed(Routes.newSubastas);
   }
   void _misSubastas ()async{
-    print('execute misSubastas');
     final token = await AuthService.to.getToken();
     if (token != null) {
       _subastaModel = await _dataRepository.misSubastas(token);
       update(['misSubastas']);
-    }else{
-      print('token error');
     }
   }
 }

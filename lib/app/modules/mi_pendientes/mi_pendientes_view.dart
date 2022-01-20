@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/global_widgets/loading.dart';
+import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/app/modules/mi_pendientes/mi_pendientes_widget/item_mi_subasta.dart';
 
 import 'mi_pendientes_logic.dart';
@@ -28,17 +30,30 @@ class MiPendientesPage extends StatelessWidget {
                   const Text('Aquí podrás gestionar tus subastas',
                       style: TextStyle(fontSize: 12)),
                   const Divider(height: 20),
-                  ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (___, index) => ItemMiPendiente(
-                      width: width,
-                      voidCallback: () => null,
-                    ),
-                    itemCount: 10,
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const Divider(),
-                  ),
+                  GetBuilder<MiPendientesLogic>(
+                      id: 'misSubastas',
+                      builder: (_) {
+                        final subastas = _.subastaModel?.subasta;
+                        return subastas != null
+                            ? subastas.isNotEmpty
+                                ? ListView.separated(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (___, index) =>
+                                        ItemMiPendiente(
+                                          subasta:subastas[index],
+                                      width: width,
+                                      voidCallback: () => null,
+                                    ),
+                                    itemCount: subastas.length,
+                                    separatorBuilder:
+                                        (BuildContext context, int index) =>
+                                            const Divider(),
+                                  )
+                                : const NoDataWid()
+                            : const LoadingWid();
+                      }),
                 ],
               )));
     });

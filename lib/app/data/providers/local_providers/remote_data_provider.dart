@@ -4,10 +4,13 @@ import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart' as getx;
 import 'package:subastalo/app/data/models/categorys.dart';
+import 'package:subastalo/app/data/models/comment.dart';
 import 'package:subastalo/app/data/models/departamentos.dart';
 import 'package:subastalo/app/data/models/distritos.dart';
+import 'package:subastalo/app/data/models/favoritas.dart';
 import 'package:subastalo/app/data/models/horas_subasta.dart';
 import 'package:subastalo/app/data/models/media_subasta.dart';
+import 'package:subastalo/app/data/models/page.dart';
 import 'package:subastalo/app/data/models/provincias.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
 import 'package:subastalo/app/data/models/tipos_subasta.dart';
@@ -118,6 +121,50 @@ class RemoteDataProvider {
     }
   }
 
+  Future<SubastaModel?> subastas(String token) async {
+    try {
+      final response = await _dio.get('/subasta',
+          options: Options(headers: {'Authorization': token}));
+      return SubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('subastas error $e');
+      return null;
+    }
+  }
+
+  Future<SubastaModel?> pendientes(String token) async {
+    try {
+      final response = await _dio.get('/subastaPendiente',
+          options: Options(headers: {'Authorization': token}));
+      return SubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('pendientes error $e');
+      return null;
+    }
+  }
+
+  Future<SubastaModel?> bloqueadas(String token) async {
+    try {
+      final response = await _dio.get('/subastaBloqueada',
+          options: Options(headers: {'Authorization': token}));
+      return SubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('bloqueadas error $e');
+      return null;
+    }
+  }
+
+  Future<SubastaModel?> aprobadas(String token) async {
+    try {
+      final response = await _dio.get('/subastaAprobada',
+          options: Options(headers: {'Authorization': token}));
+      return SubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('aprobadas error $e');
+      return null;
+    }
+  }
+
   Future<SubastaModel?> misSubastas(String token) async {
     try {
       final response = await _dio.get('/misubasta',
@@ -125,6 +172,39 @@ class RemoteDataProvider {
       return SubastaModel.fromJson(response.data);
     } catch (e) {
       print('misSubastas error $e');
+      return null;
+    }
+  }
+
+  Future<SubastaModel?> misubastaPendiente(String token) async {
+    try {
+      final response = await _dio.get('/misubastaPendiente',
+          options: Options(headers: {'Authorization': token}));
+      return SubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('misubastaPendiente error $e');
+      return null;
+    }
+  }
+
+  Future<FavoritaModel?> favoritas(String token) async {
+    try {
+      final response = await _dio.get('/favoritaSubasta',
+          options: Options(headers: {'Authorization': token}));
+      return FavoritaModel.fromJson(response.data);
+    } catch (e) {
+      print('favoritas error $e');
+      return null;
+    }
+  }
+
+  Future<FavoritaModel?> historial(String token) async {
+    try {
+      final response = await _dio.get('/historialSubasta',
+          options: Options(headers: {'Authorization': token}));
+      return FavoritaModel.fromJson(response.data);
+    } catch (e) {
+      print('favoritas error $e');
       return null;
     }
   }
@@ -287,6 +367,59 @@ class RemoteDataProvider {
           response.data["sub_categorys"].map((x) => SubCategory.fromJson(x)));
     } catch (e) {
       print('tiposSubasta error $e');
+      return null;
+    }
+  }
+
+  Future<Pagina?> createPage(String title, String html, String token) async {
+    try {
+      final json = {"title": title, "html": html};
+      final response = await _dio.post('/page',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return Pagina.fromJson(response.data['paginas']);
+    } catch (e) {
+      print('createPage error $e');
+      return null;
+    }
+  }
+
+  Future<PaginasModel?> pages(String token) async {
+    try {
+      final response = await _dio.get('/page',
+          options: Options(headers: {'Authorization': token}));
+      return PaginasModel.fromJson(response.data);
+    } catch (e) {
+      print('pages error $e');
+      return null;
+    }
+  }
+
+  Future<Comment?> createComment(
+      int idUser, int idSubasta, String comment, String token) async {
+    try {
+      final json = {
+        "idUser": idUser,
+        "idSubasta": idSubasta,
+        "comment": comment
+      };
+      final response = await _dio.post('/comment',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return Comment.fromJson(response.data['comment']);
+    } catch (e) {
+      print('createPage error $e');
+      return null;
+    }
+  }
+
+  Future<CommentModel?> comment(String token) async {
+    try {
+      final response = await _dio.get('/comment',
+          options: Options(headers: {'Authorization': token}));
+      return CommentModel.fromJson(response.data);
+    } catch (e) {
+      print('pages error $e');
       return null;
     }
   }

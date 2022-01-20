@@ -1,10 +1,13 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/data/models/categorys.dart';
+import 'package:subastalo/app/data/models/comment.dart';
 import 'package:subastalo/app/data/models/departamentos.dart';
 import 'package:subastalo/app/data/models/distritos.dart';
+import 'package:subastalo/app/data/models/favoritas.dart';
 import 'package:subastalo/app/data/models/horas_subasta.dart';
 import 'package:subastalo/app/data/models/media_subasta.dart';
+import 'package:subastalo/app/data/models/page.dart';
 import 'package:subastalo/app/data/models/provincias.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
 import 'package:subastalo/app/data/models/tipos_subasta.dart';
@@ -99,8 +102,28 @@ class RemoteDataRepository {
           idSubasta,
           token);
 
+  Future<SubastaModel?> subastas(String token) => _dataProvider.subastas(token);
+
+  Future<SubastaModel?> pendientes(String token) =>
+      _dataProvider.pendientes(token);
+
+  Future<SubastaModel?> bloqueadas(String token) =>
+      _dataProvider.bloqueadas(token);
+
+  Future<SubastaModel?> aprobadas(String token) =>
+      _dataProvider.aprobadas(token);
+
   Future<SubastaModel?> misSubastas(String token) =>
       _dataProvider.misSubastas(token);
+
+  Future<SubastaModel?> misubastaPendiente(String token) =>
+      _dataProvider.misubastaPendiente(token);
+
+  Future<FavoritaModel?> favoritas(String token) =>
+      _dataProvider.favoritas(token);
+
+  Future<FavoritaModel?> historial(String token) =>
+      _dataProvider.historial(token);
 
   Future<SubastaModel?> subastaId(String idSubasta, String token) =>
       _dataProvider.subastaId(idSubasta, token);
@@ -126,4 +149,15 @@ class RemoteDataRepository {
 
   Future<List<SubCategory>?> subCategorys(String token, String idCategory) =>
       _dataProvider.subCategorys(token, idCategory);
+
+  Future<Pagina?> createPage(String title, String html, String token) =>
+      _dataProvider.createPage(title, html, token);
+
+  Future<PaginasModel?> pages(String token) => _dataProvider.pages(token);
+
+  Future<Comment?> createComment(
+          int idUser, int idSubasta, String comment, String token) =>
+      _dataProvider.createComment(idUser, idSubasta, comment, token);
+
+  Future<CommentModel?> comment(String token) => _dataProvider.comment(token);
 }

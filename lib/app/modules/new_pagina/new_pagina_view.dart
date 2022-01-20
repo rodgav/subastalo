@@ -72,7 +72,7 @@ class NewPaginaPage extends StatelessWidget {
                         color1: ColorsUtils.red,
                         color2: ColorsUtils.red,
                         textButt: 'Guardar página',
-                        voidCallback: ()=>null)
+                        voidCallback: logic.savePage)
                   ],
                 )));
       },
