@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart' as getx;
+import 'package:subastalo/app/data/models/campaign.dart';
 import 'package:subastalo/app/data/models/categorys.dart';
 import 'package:subastalo/app/data/models/comment.dart';
 import 'package:subastalo/app/data/models/departamentos.dart';
@@ -10,11 +11,14 @@ import 'package:subastalo/app/data/models/distritos.dart';
 import 'package:subastalo/app/data/models/favoritas.dart';
 import 'package:subastalo/app/data/models/horas_subasta.dart';
 import 'package:subastalo/app/data/models/media_subasta.dart';
+import 'package:subastalo/app/data/models/message.dart';
 import 'package:subastalo/app/data/models/page.dart';
+import 'package:subastalo/app/data/models/pago.dart';
 import 'package:subastalo/app/data/models/provincias.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
 import 'package:subastalo/app/data/models/tipos_subasta.dart';
 import 'package:subastalo/app/data/models/token.dart';
+import 'package:subastalo/app/data/models/user.dart';
 import 'package:subastalo/app/data/models/vendedor_subasta.dart';
 
 class RemoteDataProvider {
@@ -31,13 +35,14 @@ class RemoteDataProvider {
     }
   }
 
-  Future<TokenModel?> register(
-      String dni, String name, String email, String password) async {
+  Future<TokenModel?> register(String dni, String name, String email,
+      String password, String idRole) async {
     final json = {
       'dni': dni,
       'name': name,
       'email': email,
-      'password': password
+      'password': password,
+      'idRole': idRole
     };
     try {
       final response =
@@ -408,7 +413,7 @@ class RemoteDataProvider {
           data: {'json': jsonEncode(json)});
       return Comment.fromJson(response.data['comment']);
     } catch (e) {
-      print('createPage error $e');
+      print('createComment error $e');
       return null;
     }
   }
@@ -419,7 +424,166 @@ class RemoteDataProvider {
           options: Options(headers: {'Authorization': token}));
       return CommentModel.fromJson(response.data);
     } catch (e) {
-      print('pages error $e');
+      print('comment error $e');
+      return null;
+    }
+  }
+
+  Future<UserModel?> user(String token) async {
+    try {
+      final response = await _dio.get('/user',
+          options: Options(headers: {'Authorization': token}));
+      return UserModel.fromJson(response.data);
+    } catch (e) {
+      print('user error $e');
+      return null;
+    }
+  }
+
+  Future<UserModel?> userAdmin(String token) async {
+    try {
+      final response = await _dio.get('/userAdmin',
+          options: Options(headers: {'Authorization': token}));
+      return UserModel.fromJson(response.data);
+    } catch (e) {
+      print('userAdmin error $e');
+      return null;
+    }
+  }
+
+  Future<User?> userId(String token, String idUser) async {
+    try {
+      final response = await _dio.get('/userId',
+          queryParameters: {'idUser': idUser},
+          options: Options(headers: {'Authorization': token}));
+      final users = response.data['user'] as List<dynamic>?;
+      if (users != null && users.isNotEmpty) {
+        return User.fromJson(users[0]);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('userId error $e');
+      return null;
+    }
+  }
+
+  Future<SubastaModel?> subastasUser(String token, String idUser) async {
+    try {
+      final response = await _dio.get('/subastaUser',
+          queryParameters: {'idUser': idUser},
+          options: Options(headers: {'Authorization': token}));
+      return SubastaModel.fromJson(response.data);
+    } catch (e) {
+      print('subastasUser error $e');
+      return null;
+    }
+  }
+
+  Future<Campaign?> createCampaign(String name, String code, String amount,
+      String dateStart, String dateFinish, String token) async {
+    try {
+      final json = {
+        "name": name,
+        "code": code,
+        "amount": amount,
+        "dateStart": dateStart,
+        "dateFinish": dateFinish,
+      };
+      final response = await _dio.post('/campaign',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return Campaign.fromJson(response.data['campaign']);
+    } catch (e) {
+      print('createCampaign error $e');
+      return null;
+    }
+  }
+
+  Future<CampaignModel?> campaign(String token) async {
+    try {
+      final response = await _dio.get('/campaign',
+          options: Options(headers: {'Authorization': token}));
+      return CampaignModel.fromJson(response.data);
+    } catch (e) {
+      print('campaign error $e');
+      return null;
+    }
+  }
+
+  Future<Message?> createMessage(int idSender, int idReceiver, String title,
+      String message, int state, String token) async {
+    try {
+      final json = {
+        "idSender": idSender,
+        "idReceiver": idReceiver,
+        "title": title,
+        "message": message,
+        "state": state,
+      };
+      final response = await _dio.post('/message',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return Message.fromJson(response.data['messages']);
+    } catch (e) {
+      print('createMessage error $e');
+      return null;
+    }
+  }
+
+  Future<MessageModel?> message(String token) async {
+    try {
+      final response = await _dio.get('/message',
+          options: Options(headers: {'Authorization': token}));
+      return MessageModel.fromJson(response.data);
+    } catch (e) {
+      print('message error $e');
+      return null;
+    }
+  }
+
+  Future<bool> createPay(PlatformFile filePath, int idUser, int idTypePay,
+      String name, String description, String dateFinish, String token) async {
+    try {
+      final json = {
+        "image": base64Encode(filePath.bytes ?? [0]),
+        "idUser": idUser,
+        "idTypePay": idTypePay,
+        "name": name,
+        "description": description,
+        "dateFinish": dateFinish,
+      };
+      final response = await _dio.post('/pay',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      final status = response.data['status'];
+      if (status == 'success') {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      print('createPay error $e');
+      return false;
+    }
+  }
+
+  Future<PagoModel?> pays(String token) async {
+    try {
+      final response = await _dio.get('/pay',
+          options: Options(headers: {'Authorization': token}));
+      return PagoModel.fromJson(response.data);
+    } catch (e) {
+      print('pays error $e');
+      return null;
+    }
+  } Future<PagoModel?> miPay(String token) async {
+    try {
+      final response = await _dio.get('/miPay',
+          options: Options(headers: {'Authorization': token}));
+      return PagoModel.fromJson(response.data);
+    } catch (e) {
+      print('miPay error $e');
       return null;
     }
   }

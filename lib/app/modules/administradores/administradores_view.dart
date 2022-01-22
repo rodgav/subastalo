@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_icon_rigth_widget.dart';
+import 'package:subastalo/app/global_widgets/loading.dart';
+import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 import 'administradores_logic.dart';
@@ -50,7 +52,10 @@ class AdministradoresPage extends StatelessWidget {
                   ],
                 ),
                 const Divider(height: 20),
-               web? DataTable(columns: [
+    GetBuilder<AdministradoresLogic>(id:'usuarios',builder: (_) {
+    final usuarios = _.userModel?.users;
+    return usuarios!=null? usuarios.isNotEmpty?  web
+    ? DataTable(columns: [
                   DataColumn(
                       label: Checkbox(value: false, onChanged: (value) {})),
                   const DataColumn(
@@ -70,11 +75,6 @@ class AdministradoresPage extends StatelessWidget {
                   )),
                   const DataColumn(
                       label: Text(
-                    'Último acceso',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  )),
-                  const DataColumn(
-                      label: Text(
                     'Acciones',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   )),
@@ -83,49 +83,48 @@ class AdministradoresPage extends StatelessWidget {
                     'Acciones',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   )),
-                ], rows: [
-                  DataRow(cells: [
-                    DataCell(Checkbox(value: false, onChanged: (value) {})),
-                    DataCell(const Text('001'), onTap: () => null),
-                    DataCell(const Text('Danilo Boy Vela'), onTap: () => null),
-                    DataCell(const Text('Danilo@gmail.com'), onTap: () => null),
-                    const DataCell(Text('05/12/2020  | 9:22 am')),
-                    DataCell(Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Text(
-                          'Editar administrador',
-                          style: TextStyle(color: ColorsUtils.blue3),
-                        ),
-                        SizedBox(width: 5),
-                        Icon(Icons.edit, color: ColorsUtils.blue3)
-                      ],
-                    )),
-                    DataCell(MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Text(
-                              'Eliminar administrador',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.restore_from_trash_sharp,
-                                color: Colors.red)
-                          ],
-                        ),
-                        onTap: logic.delAdmin,
-                      ),
-                    )),
-                  ])
-                ]): ListView.separated(
+                ], rows: usuarios.map((e) => DataRow(cells: [
+      DataCell(Checkbox(value: false, onChanged: (value) {})),
+      DataCell( Text(e.id.toString()), onTap: () => null),
+      DataCell( Text(e.name), onTap: () => null),
+      DataCell( Text(e.email), onTap: () => null),
+      DataCell(Row(
+        mainAxisSize: MainAxisSize.min,
+        children: const [
+          Text(
+            'Editar administrador',
+            style: TextStyle(color: ColorsUtils.blue3),
+          ),
+          SizedBox(width: 5),
+          Icon(Icons.edit, color: ColorsUtils.blue3)
+        ],
+      )),
+      DataCell(MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Text(
+                'Eliminar administrador',
+                style: TextStyle(color: Colors.red),
+              ),
+              SizedBox(width: 5),
+              Icon(Icons.restore_from_trash_sharp,
+                  color: Colors.red)
+            ],
+          ),
+          onTap: logic.delAdmin,
+        ),
+      )),
+    ])).toList()):
+               ListView.separated(
                  physics: const NeverScrollableScrollPhysics(),
                  shrinkWrap: true,
                  itemBuilder: (__, index) {
+                   final usuario = usuarios[index];
                    return ListTile(
-                     title: const Text('Nombre'),
+                     title: Text(usuario.name),
                      trailing: Row(
                        mainAxisSize: MainAxisSize.min,
                        children: [
@@ -140,8 +139,9 @@ class AdministradoresPage extends StatelessWidget {
                    );
                  },
                  separatorBuilder: (__, index) => const Divider(),
-                 itemCount: 2,
-               )
+                 itemCount: usuarios.length,
+               ): const NoDataWid()
+        : const LoadingWid();})
               ],
             ),
           ),

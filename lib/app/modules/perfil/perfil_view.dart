@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/data/models/departamentos.dart';
+import 'package:subastalo/app/data/models/distritos.dart';
+import 'package:subastalo/app/data/models/provincias.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/loading.dart';
+import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/app/global_widgets/txt_field_bor.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 import 'package:subastalo/utils/functions.dart';
@@ -93,7 +98,7 @@ class PerfilPage extends StatelessWidget {
                                           WrapCrossAlignment.center,
                                       children: [
                                         SizedBox(
-                                          width: width / 5,
+                                          width: width / 4,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -105,97 +110,47 @@ class PerfilPage extends StatelessWidget {
                                                     color: ColorsUtils.grey1),
                                               ),
                                               const SizedBox(height: 5),
-                                              Container(
-                                                width: width / 5,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: const Text(
-                                                  'Ariadne',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              )
+                                              SizedBox(height: 40,
+                                                child: TxtFieldBor(
+                                                    controller: logic.nameCtrl,
+                                                    validator: isNotEmpty,
+                                                    width: width / 4,
+                                                    hint: 'Nombre',
+                                                    icon: null,
+                                                    enabledBorder: ColorsUtils.grey1,
+                                                    focusedBorder: ColorsUtils.blue1),
+                                              ),
                                             ],
                                           ),
                                         ),
                                         SizedBox(
-                                          width: width / 5,
+                                          width: width / 4,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
                                               const Text(
-                                                'Apellido',
+                                                'Número de contacto',
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     color: ColorsUtils.grey1),
                                               ),
                                               const SizedBox(height: 5),
-                                              Container(
-                                                width: width / 5,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: const Text(
-                                                  'Boy Paredes',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: width / 5,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                'Nombre de contacto',
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    color: ColorsUtils.grey1),
+                                              SizedBox(height: 40,
+                                                child: TxtFieldBor(
+                                                    controller: logic.phoneCtrl,
+                                                    validator: isNotEmpty,
+                                                    width: width / 4,
+                                                    hint: 'Número de contacto',
+                                                    icon: null,
+                                                    enabledBorder: ColorsUtils.grey1,
+                                                    focusedBorder: ColorsUtils.blue1),
                                               ),
-                                              const SizedBox(height: 5),
-                                              Container(
-                                                width: width / 5,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: const Text(
-                                                  '+51 925497389',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              )
                                             ],
                                           ),
                                         ),
                                         SizedBox(
-                                          width: width / 5,
+                                          width: width /4,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -207,32 +162,23 @@ class PerfilPage extends StatelessWidget {
                                                     color: ColorsUtils.grey1),
                                               ),
                                               const SizedBox(height: 5),
-                                              Container(
-                                                width: width / 5,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: const Text(
-                                                  'Av. Javier Prado Este 1166',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              )
+                                              SizedBox(height: 40,
+                                                child: TxtFieldBor(
+                                                    controller: logic.addressCtrl,
+                                                    validator: isNotEmpty,
+                                                    width: width / 4,
+                                                    hint: 'Dirección',
+                                                    icon: null,
+                                                    enabledBorder: ColorsUtils.grey1,
+                                                    focusedBorder: ColorsUtils.blue1),
+                                              ),
                                             ],
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  const SizedBox(height: 40),
-                                  SizedBox(
+                                  const SizedBox(height: 40),SizedBox(
                                     width: width,
                                     child: Wrap(
                                       alignment: WrapAlignment.spaceBetween,
@@ -241,200 +187,150 @@ class PerfilPage extends StatelessWidget {
                                           WrapCrossAlignment.center,
                                       children: [
                                         SizedBox(
-                                          width: width / 6,
+                                          width: width / 4,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
                                               const Text(
-                                                'Sexo',
+                                                'Departamento',
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     color: ColorsUtils.grey1),
                                               ),
                                               const SizedBox(height: 5),
-                                              Container(
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: DropdownButton(
-                                                  isExpanded: true,
-                                                  underline: Container(
-                                                    height: 0,
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  hint: const Text('Sexo'),
-                                                  items: const [
-                                                    DropdownMenuItem<String>(
-                                                        child: Text('Mujer'))
-                                                  ],
-                                                  onChanged: (value) {},
-                                                ),
-                                              )
+                                              GetBuilder<PerfilLogic>(
+                                                  id: 'departamentos',
+                                                  builder: (_) {
+                                                    final departamentos = _.departamentosModel?.departamentos;
+                                                    return departamentos != null
+                                                        ? departamentos.isNotEmpty
+                                                        ? Container(
+                                                      padding: const EdgeInsets.all(5),
+                                                      decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(5),
+                                                          border:
+                                                          Border.all(color: ColorsUtils.grey1)),
+                                                      height: 50,
+                                                      child: DropdownButton<Departamento>(
+                                                        underline: Container(
+                                                          height: 0,
+                                                          color: Colors.transparent,
+                                                        ),
+                                                        hint: const Text(
+                                                            'Seleccione un departamento'),
+                                                        isExpanded: true,
+                                                        value: _.selectDepart,
+                                                        items: departamentos
+                                                            .map((e) =>
+                                                            DropdownMenuItem<Departamento>(
+                                                                value: e,
+                                                                child: Text(e.nombre)))
+                                                            .toList(),
+                                                        onChanged: (value) =>
+                                                            _.departSelect(value as Departamento),
+                                                      ),
+                                                    )
+                                                        : const NoDataWid()
+                                                        : const LoadingWid();
+                                                  }),
                                             ],
                                           ),
                                         ),
                                         SizedBox(
-                                          width: width / 6,
+                                          width: width / 4,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
                                               const Text(
-                                                'Fecha de Nacimiento',
+                                                'Provincia',
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     color: ColorsUtils.grey1),
                                               ),
                                               const SizedBox(height: 5),
-                                              Container(
-                                                width: width / 6,
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: const Text(
-                                                  '14-06-1999',
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              )
+                                              GetBuilder<PerfilLogic>(
+                                                  id: 'provincias',
+                                                  builder: (_) {
+                                                    final provincias = _.provinciasModel?.provincias;
+                                                    return provincias != null
+                                                        ? provincias.isNotEmpty
+                                                        ? Container(
+                                                      padding: const EdgeInsets.all(5),
+                                                      decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(5),
+                                                          border:
+                                                          Border.all(color: ColorsUtils.grey1)),
+                                                      height: 50,
+                                                      child: DropdownButton<Provincia>(
+                                                        underline: Container(
+                                                          height: 0,
+                                                          color: Colors.transparent,
+                                                        ),
+                                                        hint:
+                                                        const Text('Seleccione una provincia'),
+                                                        isExpanded: true,
+                                                        value: _.selectProv,
+                                                        items: provincias
+                                                            .map((e) => DropdownMenuItem<Provincia>(
+                                                            value: e, child: Text(e.nombre)))
+                                                            .toList(),
+                                                        onChanged: (value) =>
+                                                            _.provSelect(value as Provincia),
+                                                      ),
+                                                    )
+                                                        : const NoDataWid()
+                                                        : const LoadingWid();
+                                                  }),
                                             ],
                                           ),
                                         ),
                                         SizedBox(
-                                          width: width / 6,
+                                          width: width / 4,
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
                                               const Text(
-                                                'País',
+                                                'Distrito',
                                                 style: TextStyle(
                                                     fontSize: 12,
                                                     color: ColorsUtils.grey1),
                                               ),
                                               const SizedBox(height: 5),
-                                              Container(
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: DropdownButton(
-                                                  isExpanded: true,
-                                                  underline: Container(
-                                                    height: 0,
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  hint: const Text('País'),
-                                                  items: const [
-                                                    DropdownMenuItem<String>(
-                                                        child: Text('Perú'))
-                                                  ],
-                                                  onChanged: (value) {},
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: width / 6,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                'Ciudad',
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    color: ColorsUtils.grey1),
-                                              ),
-                                              const SizedBox(height: 5),
-                                              Container(
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: DropdownButton(
-                                                  isExpanded: true,
-                                                  underline: Container(
-                                                    height: 0,
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  hint: const Text('Ciudad'),
-                                                  items: const [
-                                                    DropdownMenuItem<String>(
-                                                        child: Text('Lima'))
-                                                  ],
-                                                  onChanged: (value) {},
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: width / 6,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                'Otro dato',
-                                                style: TextStyle(
-                                                    fontSize: 12,
-                                                    color: ColorsUtils.grey1),
-                                              ),
-                                              const SizedBox(height: 5),
-                                              Container(
-                                                height: 40,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        color:
-                                                            ColorsUtils.grey1),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                padding:
-                                                    const EdgeInsets.all(10),
-                                                child: DropdownButton(
-                                                  isExpanded: true,
-                                                  underline: Container(
-                                                    height: 0,
-                                                    color: Colors.transparent,
-                                                  ),
-                                                  hint: const Text('Opciones'),
-                                                  items: const [
-                                                    DropdownMenuItem<String>(
-                                                        child: Text('Opciones'))
-                                                  ],
-                                                  onChanged: (value) {},
-                                                ),
-                                              )
+                                              GetBuilder<PerfilLogic>(
+                                                  id: 'distritos',
+                                                  builder: (_) {
+                                                    final distritos = _.distritosModel?.distritos;
+                                                    return distritos != null
+                                                        ? distritos.isNotEmpty
+                                                        ? Container(
+                                                      padding: const EdgeInsets.all(5),
+                                                      decoration: BoxDecoration(
+                                                          borderRadius: BorderRadius.circular(5),
+                                                          border:
+                                                          Border.all(color: ColorsUtils.grey1)),
+                                                      height: 50,
+                                                      child: DropdownButton<Distrito>(
+                                                        underline: Container(
+                                                          height: 0,
+                                                          color: Colors.transparent,
+                                                        ),
+                                                        hint: const Text('Seleccione un distrito'),
+                                                        isExpanded: true,
+                                                        value: _.selectDistr,
+                                                        items: distritos
+                                                            .map((e) => DropdownMenuItem<Distrito>(
+                                                            value: e, child: Text(e.nombre)))
+                                                            .toList(),
+                                                        onChanged: (value) =>
+                                                            _.distriSelect(value as Distrito),
+                                                      ),
+                                                    )
+                                                        : const NoDataWid()
+                                                        : const LoadingWid();
+                                                  }),
                                             ],
                                           ),
                                         ),
@@ -456,139 +352,54 @@ class PerfilPage extends StatelessWidget {
                                 children: [
                                   const SizedBox(height: 40),
                                   SizedBox(
-                                    width: width,
-                                    child: Wrap(
-                                      spacing: 40,
-                                      runSpacing: 40,
-                                      children: [
-                                        SizedBox(
-                                            width: width / 3,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                const Text(
-                                                  'Metodos de pago',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 16),
-                                                ),
-                                                const SizedBox(height: 20),
-                                                const Text(
-                                                  'Tarjeta',
-                                                  style:
-                                                      TextStyle(fontSize: 12),
-                                                ),
-                                                const SizedBox(height: 5),
-                                                Container(
-                                                  width: width / 3,
-                                                  padding:
-                                                      const EdgeInsets.all(5),
-                                                  decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                          color: ColorsUtils
-                                                              .grey1)),
-                                                  child: Row(
-                                                    children: [
-                                                      const ImageIcon(
-                                                        AssetImage(
-                                                            'assets/icons/buscar.png'),
-                                                        size: 15,
-                                                        color:
-                                                            ColorsUtils.blue2,
-                                                      ),
-                                                      const SizedBox(width: 5),
-                                                      const Text('xxxxx-3333',
-                                                          style: TextStyle(
-                                                              fontSize: 16)),
-                                                      Expanded(
-                                                          child: Container()),
-                                                      const ImageIcon(
-                                                        AssetImage(
-                                                            'assets/icons/buscar.png'),
-                                                        size: 15,
-                                                        color:
-                                                            ColorsUtils.grey1,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                const SizedBox(height: 20),
-                                                TextButton(
-                                                    onPressed: () => null,
-                                                    child: Row(
-                                                      children: const [
-                                                        ImageIcon(
-                                                          AssetImage(
-                                                              'assets/icons/buscar.png'),
-                                                          size: 15,
-                                                          color:
-                                                              ColorsUtils.blue2,
-                                                        ),
-                                                        SizedBox(width: 5),
-                                                        Text('xxxxx-3333',
-                                                            style: TextStyle(
-                                                                color:
-                                                                    ColorsUtils
-                                                                        .blue2,
-                                                                fontSize: 16))
-                                                      ],
-                                                    ))
-                                              ],
-                                            )),
-                                        SizedBox(
-                                            width: width / 3,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                const Text(
-                                                  'Información de la cuenta',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 16),
-                                                ),
-                                                const SizedBox(height: 20),
-                                                const Text(
-                                                  'Correo',
-                                                  style:
-                                                      TextStyle(fontSize: 12),
-                                                ),
-                                                const SizedBox(height: 5),
-                                                TxtFieldBor(
-                                                    controller: logic.emailCtrl, validator: isEmail,
-                                                    width: width / 3,
-                                                    hint:
-                                                        'dboyvela33@gmail.com',
-                                                    icon: null,
-                                                    enabledBorder:
-                                                        ColorsUtils.grey1,
-                                                    focusedBorder:
-                                                        ColorsUtils.blue3),
-                                                const SizedBox(height: 20),
-                                                const Text(
-                                                  'Contraseña',
-                                                  style:
-                                                      TextStyle(fontSize: 12),
-                                                ),
-                                                const SizedBox(height: 5),
-                                                TxtFieldBor(
-                                                    controller:
-                                                        logic.passwordCtrl, validator: isPassword,
-                                                    width: width / 3,
-                                                    hint: '*****************',
-                                                    icon: null,
-                                                    enabledBorder:
-                                                        ColorsUtils.grey1,
-                                                    focusedBorder:
-                                                        ColorsUtils.blue3),
-                                              ],
-                                            )),
-                                      ],
-                                    ),
-                                  ),
+                                      width: width / 3,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            'Información de la cuenta',
+                                            style: TextStyle(
+                                                fontWeight:
+                                                FontWeight.bold,
+                                                fontSize: 16),
+                                          ),
+                                          const SizedBox(height: 20),
+                                          const Text(
+                                            'Correo',
+                                            style:
+                                            TextStyle(fontSize: 12),
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TxtFieldBor(
+                                              controller: logic.emailCtrl, validator: isEmail,
+                                              width: width / 3,
+                                              hint:
+                                              'dboyvela33@gmail.com',
+                                              icon: null,
+                                              enabledBorder:
+                                              ColorsUtils.grey1,
+                                              focusedBorder:
+                                              ColorsUtils.blue3),
+                                          const SizedBox(height: 20),
+                                          const Text(
+                                            'Contraseña',
+                                            style:
+                                            TextStyle(fontSize: 12),
+                                          ),
+                                          const SizedBox(height: 5),
+                                          TxtFieldBor(
+                                              controller:
+                                              logic.passwordCtrl, validator: isPassword,
+                                              width: width / 3,
+                                              hint: '*****************',
+                                              icon: null,
+                                              enabledBorder:
+                                              ColorsUtils.grey1,
+                                              focusedBorder:
+                                              ColorsUtils.blue3),
+                                        ],
+                                      )),
                                   const SizedBox(height: 40),
                                   ButtonWid(
                                       width: 200,

@@ -269,7 +269,7 @@ class DrawerWid extends StatelessWidget {
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Mensajes'),
                     ),
-                    ListTile(
+                   /* ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/monetizacion.png'),
@@ -282,7 +282,7 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Monetización',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Monetización'),
-                    ),
+                    ),*/
                     ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
@@ -310,6 +310,19 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Pagos',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Pagos'),
+                    ),ListTile(
+                      tileColor: const Color(0xff253238),
+                      leading: const ImageIcon(
+                        AssetImage('assets/icons/mano.png'),
+                        color: ColorsUtils.white,
+                      ),
+                      title: const Text(
+                        'Mis Pagos',
+                        style: TextStyle(color: ColorsUtils.white),
+                      ),
+                      selected: select == 'Mis Pagos',
+                      selectedTileColor: const Color(0xff324047),
+                      onTap: () => _.onSelectDrawer('Mis Pagos'),
                     ),
                     ListTile(
                       tileColor: const Color(0xff253238),

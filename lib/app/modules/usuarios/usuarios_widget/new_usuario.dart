@@ -13,6 +13,7 @@ class NewUsuario extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<UsuariosLogic>(builder: (_) {
       return Form(
+        key: _.formKey,
         child: SingleChildScrollView(
           child: Container(
             width: 400,
@@ -71,16 +72,6 @@ class NewUsuario extends StatelessWidget {
                     enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
                     focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
                 const SizedBox(height: 15),
-                const Text('Número móvil',
-                    style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
-                const SizedBox(height: 5),
-                TxtFieldBor(controller: _.phoneCtrl, validator: isNotEmpty,
-                    width: 400,
-                    hint: 'Ingrese número',
-                    icon: null,
-                    enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
-                    focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
-                const SizedBox(height: 15),
                 const Text('Correo electrónico',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
@@ -117,7 +108,7 @@ class NewUsuario extends StatelessWidget {
                     color1: ColorsUtils.blueButt1,
                     color2: ColorsUtils.blueButt2,
                     textButt: 'Crear usuario',
-                    voidCallback: () => null)
+                    voidCallback: _.register)
               ],
             ),
           ),

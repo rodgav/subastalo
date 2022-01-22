@@ -13,9 +13,10 @@ class NewUsuario extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<UsuariosDetailLogic>(builder: (_) {
       return Form(
+        key: _.formKey,
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -53,7 +54,9 @@ class NewUsuario extends StatelessWidget {
                 const Text('Nombre de usuario',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(controller: _.fullNameCtrl, validator: isNotEmpty,
+                TxtFieldBor(
+                    controller: _.fullNameCtrl,
+                    validator: isNotEmpty,
                     width: 400,
                     hint: 'Ingresar normbre completo y apellidos',
                     icon: null,
@@ -63,7 +66,9 @@ class NewUsuario extends StatelessWidget {
                 const Text('DNI / Carnet de identidad',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(controller: _.dniCtrl, validator: isNotEmpty,
+                TxtFieldBor(
+                    controller: _.dniCtrl,
+                    validator: isNotEmpty,
                     width: 400,
                     hint: 'Ingrese número de DNI/Carnet',
                     icon: null,
@@ -73,7 +78,9 @@ class NewUsuario extends StatelessWidget {
                 const Text('Número móvil',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(controller: _.phoneCtrl, validator: isNotEmpty,
+                TxtFieldBor(
+                    controller: _.phoneCtrl,
+                    validator: isNotEmpty,
                     width: 400,
                     hint: 'Ingrese número',
                     icon: null,
@@ -83,7 +90,9 @@ class NewUsuario extends StatelessWidget {
                 const Text('Correo electrónico',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(controller: _.emailCtrl, validator: isEmail,
+                TxtFieldBor(
+                    controller: _.emailCtrl,
+                    validator: isEmail,
                     width: 400,
                     hint: 'Ingrese correo',
                     icon: null,
@@ -93,7 +102,9 @@ class NewUsuario extends StatelessWidget {
                 const Text('Contraseña',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(controller: _.password1Ctrl, validator: isPassword,
+                TxtFieldBor(
+                    controller: _.password1Ctrl,
+                    validator: isPassword,
                     width: 400,
                     hint: 'Ingresar contraseña',
                     icon: null,
@@ -103,7 +114,9 @@ class NewUsuario extends StatelessWidget {
                 const Text('Repetir contraseña',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(controller: _.password2Ctrl, validator: isPassword,
+                TxtFieldBor(
+                    controller: _.password2Ctrl,
+                    validator: isPassword,
                     width: 400,
                     hint: 'Repetir contraseña',
                     icon: null,
@@ -116,7 +129,7 @@ class NewUsuario extends StatelessWidget {
                     color1: ColorsUtils.blueButt1,
                     color2: ColorsUtils.blueButt2,
                     textButt: 'Crear usuario',
-                    voidCallback: () => null)
+                    voidCallback: _.register)
               ],
             ),
           ),

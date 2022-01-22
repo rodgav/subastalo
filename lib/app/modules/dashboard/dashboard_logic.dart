@@ -80,6 +80,9 @@ class DashboardLogic extends GetxController {
       case 'Pagos':
         _goToRoute(Routes.pagos);
         break;
+      case 'Mis Pagos':
+        _goToRoute(Routes.miPagos);
+        break;
       case 'Perfil':
         _goToRoute(Routes.perfil);
         break;
@@ -93,7 +96,7 @@ class DashboardLogic extends GetxController {
     Get.rootDelegate.toNamed(route);
   }
 
-  void closeSession()async {
+  void closeSession() async {
     await AuthService.to.logout();
     Get.rootDelegate.toNamed(Routes.home);
   }

@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/data/models/campaign.dart';
 import 'package:subastalo/app/data/models/categorys.dart';
 import 'package:subastalo/app/data/models/comment.dart';
 import 'package:subastalo/app/data/models/departamentos.dart';
@@ -7,11 +8,14 @@ import 'package:subastalo/app/data/models/distritos.dart';
 import 'package:subastalo/app/data/models/favoritas.dart';
 import 'package:subastalo/app/data/models/horas_subasta.dart';
 import 'package:subastalo/app/data/models/media_subasta.dart';
+import 'package:subastalo/app/data/models/message.dart';
 import 'package:subastalo/app/data/models/page.dart';
+import 'package:subastalo/app/data/models/pago.dart';
 import 'package:subastalo/app/data/models/provincias.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
 import 'package:subastalo/app/data/models/tipos_subasta.dart';
 import 'package:subastalo/app/data/models/token.dart';
+import 'package:subastalo/app/data/models/user.dart';
 import 'package:subastalo/app/data/models/vendedor_subasta.dart';
 import 'package:subastalo/app/data/providers/local_providers/remote_data_provider.dart';
 
@@ -21,9 +25,9 @@ class RemoteDataRepository {
   Future<TokenModel?> login(String email, String password) =>
       _dataProvider.login(email, password);
 
-  Future<TokenModel?> register(
-          String dni, String name, String email, String password) =>
-      _dataProvider.register(dni, name, email, password);
+  Future<TokenModel?> register(String dni, String name, String email,
+          String password, String idRole) =>
+      _dataProvider.register(dni, name, email, password, idRole);
 
   Future<TokenModel?> refresh(String token) => _dataProvider.refresh(token);
 
@@ -160,4 +164,38 @@ class RemoteDataRepository {
       _dataProvider.createComment(idUser, idSubasta, comment, token);
 
   Future<CommentModel?> comment(String token) => _dataProvider.comment(token);
+
+  Future<UserModel?> user(String token) => _dataProvider.user(token);
+
+  Future<UserModel?> userAdmin(String token) => _dataProvider.userAdmin(token);
+
+  Future<User?> userId(String token, String idUser) =>
+      _dataProvider.userId(token, idUser);
+
+  Future<SubastaModel?> subastasUser(String token, String idUser) =>
+      _dataProvider.subastasUser(token, idUser);
+
+  Future<Campaign?> createCampaign(String name, String code, String amount,
+          String dateStart, String dateFinish, String token) =>
+      _dataProvider.createCampaign(
+          name, code, amount, dateStart, dateFinish, token);
+
+  Future<CampaignModel?> campaign(String token) =>
+      _dataProvider.campaign(token);
+
+  Future<Message?> createMessage(int idSender, int idReceiver, String title,
+          String message, int state, String token) =>
+      _dataProvider.createMessage(
+          idSender, idReceiver, title, message, state, token);
+
+  Future<MessageModel?> message(String token) => _dataProvider.message(token);
+
+  Future<bool> createPay(PlatformFile filePath, int idUser, int idTypePay,
+          String name, String description, String dateFinish, String token) =>
+      _dataProvider.createPay(
+          filePath, idUser, idTypePay, name, description, dateFinish, token);
+
+  Future<PagoModel?> pays(String token) => _dataProvider.pays(token);
+
+  Future<PagoModel?> miPay(String token) => _dataProvider.miPay(token);
 }

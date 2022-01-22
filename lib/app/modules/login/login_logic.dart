@@ -56,7 +56,7 @@ class LoginLogic extends GetxController {
   void register() async {
     if (formKey.currentState!.validate()) {
       final tokenModel = await _dataRepository.register(dniCtrl.text,
-          nameCtrl.text, usernameCtrl.text.trim(), passwordCtrl.text.trim());
+          nameCtrl.text, usernameCtrl.text.trim(), passwordCtrl.text.trim(),'1');
       if (tokenModel != null) {
         await AuthService.to.saveSession(tokenModel);
         Get.rootDelegate.offNamed(Routes.dashboard);

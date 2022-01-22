@@ -13,7 +13,7 @@ class NewAdmin extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AdministradoresLogic>(builder: (_) {
       return GetBuilder<AdministradoresLogic>(builder: (logic) {
-        return Form(
+        return Form(key: _.formKey,
           child: SingleChildScrollView(
             child: Container(
               width: 400,
@@ -65,6 +65,16 @@ class NewAdmin extends StatelessWidget {
                       enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
                       focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
                   const SizedBox(height: 15),
+                  const Text('DNI / Carnet de identidad',
+                      style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
+                  const SizedBox(height: 5),
+                  TxtFieldBor(controller: _.dniCtrl, validator: isNotEmpty,
+                      width: 400,
+                      hint: 'Ingrese número de DNI/Carnet',
+                      icon: null,
+                      enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
+                      focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+                  const SizedBox(height: 15),
                   const Text('Correo electrónico',
                       style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                   const SizedBox(height: 5),
@@ -76,65 +86,6 @@ class NewAdmin extends StatelessWidget {
                       icon: null,
                       enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
                       focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
-                  const SizedBox(height: 15),
-                  const Text('Número',
-                      style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
-                  const SizedBox(height: 5),
-                  TxtFieldBor(
-                      controller: logic.phoneCtrl, validator: isNotEmpty,
-                      width: 400,
-                      hint: 'Introducir número',
-                      icon: null,
-                      enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
-                      focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
-                  const SizedBox(height: 15),
-                  const Text('Genero',
-                      style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
-                  const SizedBox(height: 5),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(
-                            color: ColorsUtils.grey1.withOpacity(0.5))),
-                    width: 400,
-                    child: DropdownButton<String>(
-                      underline: Container(
-                        height: 0,
-                        color: Colors.transparent,
-                      ),
-                      hint: const Text('Seleccionar genero'),
-                      isExpanded: true,
-                      items: const [
-                        DropdownMenuItem<String>(child: Text('Varon'))
-                      ],
-                      onChanged: (value) {},
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  const Text('País',
-                      style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
-                  const SizedBox(height: 5),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(
-                            color: ColorsUtils.grey1.withOpacity(0.5))),
-                    width: 400,
-                    child: DropdownButton<String>(
-                      underline: Container(
-                        height: 0,
-                        color: Colors.transparent,
-                      ),
-                      hint: const Text('Seleccionar país'),
-                      isExpanded: true,
-                      items: const [
-                        DropdownMenuItem<String>(child: Text('Perú'))
-                      ],
-                      onChanged: (value) {},
-                    ),
-                  ),
                   const SizedBox(height: 15),
                   const Text('Contraseña',
                       style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
@@ -164,7 +115,7 @@ class NewAdmin extends StatelessWidget {
                       color1: ColorsUtils.blueButt1,
                       color2: ColorsUtils.blueButt2,
                       textButt: 'Crear usuario',
-                      voidCallback: () => null)
+                      voidCallback: _.register)
                 ],
               ),
             ),

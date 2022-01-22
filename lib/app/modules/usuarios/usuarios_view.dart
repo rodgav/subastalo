@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
+import 'package:subastalo/app/global_widgets/loading.dart';
+import 'package:subastalo/app/global_widgets/no_data.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 import 'usuarios_logic.dart';
@@ -51,7 +53,11 @@ class UsuariosPage extends StatelessWidget {
                   ],
                 ),
                 const Divider(height: 20),
-               web? DataTable(columns: [
+    GetBuilder<UsuariosLogic>(id:'usuarios',builder: (_) {
+    final usuarios = _.userModel?.users;
+    return usuarios!=null? usuarios.isNotEmpty?  web
+    ?
+               DataTable(columns: [
                   DataColumn(
                       label: Checkbox(value: false, onChanged: (value) {})),
                   const DataColumn(
@@ -84,52 +90,52 @@ class UsuariosPage extends StatelessWidget {
                     'Acciones',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   )),
-                ], rows: [
-                  DataRow(cells: [
-                    DataCell(Checkbox(value: false, onChanged: (value) {})),
-                    DataCell(const Text('001'),
-                        onTap: () => logic.toUsuariosDetail('123')),
-                    DataCell(const Text('Danilo Boy Vela'),
-                        onTap: () => logic.toUsuariosDetail('123')),
-                    DataCell(const Text('Danilo@gmail.com'),
-                        onTap: () => logic.toUsuariosDetail('123')),
-                    const DataCell(Text('05/12/2020')),
-                    DataCell(Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Text(
-                          'Editar usuario',
-                          style: TextStyle(color: ColorsUtils.blue3),
-                        ),
-                        SizedBox(width: 5),
-                        Icon(Icons.edit, color: ColorsUtils.blue3)
-                      ],
-                    )),
-                    DataCell(MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Text(
-                              'Eliminar usuario',
-                              style: TextStyle(color: Colors.red),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.restore_from_trash_sharp,
-                                color: Colors.red)
-                          ],
-                        ),
-                        onTap: logic.delUser,
-                      ),
-                    )),
-                  ])
-                ]): ListView.separated(
+                ], rows: usuarios.map((e) =>    DataRow(cells: [
+                 DataCell(Checkbox(value: false, onChanged: (value) {})),
+                 DataCell( Text(e.id.toString()),
+                     onTap: () => logic.toUsuariosDetail(e.id.toString())),
+                 DataCell( Text(e.name),
+                     onTap: () => logic.toUsuariosDetail(e.id.toString())),
+                 DataCell( Text(e.email),
+                     onTap: () => logic.toUsuariosDetail(e.id.toString())),
+                 DataCell(Text(e.createdAt.toString().substring(0,10))),
+                 DataCell(Row(
+                   mainAxisSize: MainAxisSize.min,
+                   children: const [
+                     Text(
+                       'Editar usuario',
+                       style: TextStyle(color: ColorsUtils.blue3),
+                     ),
+                     SizedBox(width: 5),
+                     Icon(Icons.edit, color: ColorsUtils.blue3)
+                   ],
+                 )),
+                 DataCell(MouseRegion(
+                   cursor: SystemMouseCursors.click,
+                   child: GestureDetector(
+                     child: Row(
+                       mainAxisSize: MainAxisSize.min,
+                       children: const [
+                         Text(
+                           'Eliminar usuario',
+                           style: TextStyle(color: Colors.red),
+                         ),
+                         SizedBox(width: 5),
+                         Icon(Icons.restore_from_trash_sharp,
+                             color: Colors.red)
+                       ],
+                     ),
+                     onTap: ()=>logic.delUser(e.id),
+                   ),
+                 )),
+               ])).toList()):
+               ListView.separated(
                  physics: const NeverScrollableScrollPhysics(),
                  shrinkWrap: true,
                  itemBuilder: (__, index) {
+                   final usuario = usuarios[index];
                    return ListTile(
-                     title: const Text('Nombre'),
+                     title: Text(usuario.name),
                      trailing: Row(
                        mainAxisSize: MainAxisSize.min,
                        children: [
@@ -144,8 +150,9 @@ class UsuariosPage extends StatelessWidget {
                    );
                  },
                  separatorBuilder: (__, index) => const Divider(),
-                 itemCount: 2,
-               )
+                 itemCount: usuarios.length,
+               ): const NoDataWid()
+        : const LoadingWid();})
               ],
             ),
           ),

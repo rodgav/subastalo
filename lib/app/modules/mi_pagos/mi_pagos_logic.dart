@@ -1,13 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:subastalo/app/data/models/pago.dart';
 import 'package:subastalo/app/data/repositorys/local_repositorys/remote_data_repository.dart';
 import 'package:subastalo/app/data/services/auth_service.dart';
-import 'package:subastalo/app/modules/pagos/pagos_widget/new_pago.dart';
 
-class PagosLogic extends GetxController {
-  final nameCtrl = TextEditingController();
-  final descripCtrl = TextEditingController();
+class MiPagosLogic extends GetxController {
   PagoModel? _pagoModel;
 
   PagoModel? get pagoModel => _pagoModel;
@@ -27,11 +23,4 @@ class PagosLogic extends GetxController {
     }
   }
 
-  void toBack() {
-    Get.rootDelegate.popRoute();
-  }
-
-  void newPago() {
-    Get.dialog(const AlertDialog(content: NewPago()));
-  }
 }

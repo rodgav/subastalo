@@ -13,6 +13,7 @@ class NewlCampana extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<CampanasLogic>(builder: (_) {
       return Form(
+        key: _.formKey,
         child: SingleChildScrollView(
           child: Container(
             width: 400,
@@ -87,24 +88,54 @@ class NewlCampana extends StatelessWidget {
                 const Text('Fecha de inicio',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor( validator: isNotEmpty,
-                    controller: _.startDateCtrl,
-                    width: 400,
-                    hint: '',
-                    icon: null,
-                    enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
-                    focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+                GetBuilder<CampanasLogic>(
+                    id: 'dateStart',
+                    builder: (_) {
+                      final date = _.selectedStartDate;
+                      return MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: _.selectDateStart,
+                          child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(color: ColorsUtils.grey1)),
+                              height: 50,
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                      '${date.year}/${date.month}/${date.day}'))),
+                        ),
+                      );
+                    }),
                 const SizedBox(height: 15),
                 const Text('Fecha de fin',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor( validator: isNotEmpty,
-                    controller: _.endDateCtrl,
-                    width: 400,
-                    hint: '',
-                    icon: null,
-                    enabledBorder: ColorsUtils.grey1.withOpacity(0.5),
-                    focusedBorder: ColorsUtils.blue3.withOpacity(0.5)),
+                GetBuilder<CampanasLogic>(
+                    id: 'dateEnd',
+                    builder: (_) {
+                      final date = _.selectedEndDate;
+                      return MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: _.selectDateEnd,
+                          child: Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(color: ColorsUtils.grey1)),
+                              height: 50,
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                      '${date.year}/${date.month}/${date.day}'))),
+                        ),
+                      );
+                    }),
                 const SizedBox(height: 20),
                 ButtonWid(
                     width: 400,
@@ -112,7 +143,7 @@ class NewlCampana extends StatelessWidget {
                     color1: ColorsUtils.blueButt1,
                     color2: ColorsUtils.blueButt2,
                     textButt: 'Crear campaña',
-                    voidCallback: () => null)
+                    voidCallback: _.saveCampaign)
               ],
             ),
           ),

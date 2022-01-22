@@ -13,7 +13,7 @@ class AuthService extends GetxService {
   final _getStorage = GetStorage();
 
   bool get isLoggedIn => _getStorage.read('isLoggedIn') ?? false;
-
+  String get idUser => _encryptHelper.decrypt(_getStorage.read('id')) ?? '';
   Future<void> saveSession(TokenModel tokenModel) async {
     try {
       final _payload = Jwt.parseJwt(tokenModel.jwt);
@@ -28,7 +28,7 @@ class AuthService extends GetxService {
       await _getStorage.write(
           'iat',
           _encryptHelper.encrypt(DateTime.fromMillisecondsSinceEpoch(
-                  _payload['iat']  * 1000,
+                  _payload['iat'] * 1000,
                   isUtc: true)
               .toString()));
       await _getStorage.write(
@@ -92,6 +92,8 @@ class AuthService extends GetxService {
       return null;
     }
   }
+
+
 
   Future<void> logout() async {
     await _getStorage.erase();
