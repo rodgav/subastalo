@@ -1,0 +1,68 @@
+{
+  "images_subastas": [
+    {
+      "subastaId": "sub1",
+      "image_url": "assets/images/chevrolet1.png"
+    },
+    {
+      "subastaId": "sub1",
+      "image_url": "assets/images/chevrolet2.png"
+    },
+    {
+      "subastaId": "sub1",
+      "image_url": "assets/images/chevrolet3.png"
+    },
+    {
+      "subastaId": "sub1",
+      "image_url": "assets/images/chevrolet4.png"
+    },
+    {
+      "subastaId": "sub2",
+      "image_url": "assets/images/volquete1.png"
+    },
+    {
+      "subastaId": "sub2",
+      "image_url": "assets/images/volquete2.png"
+    },
+    {
+      "subastaId": "sub2",
+      "image_url": "assets/images/volquete3.png"
+    },
+    {
+      "subastaId": "sub2",
+      "image_url": "assets/images/volquete4.png"
+    },
+    {
+      "subastaId": "sub1",
+      "image_url": "assets/images/chevrolet1.png"
+    },
+    {
+      "subastaId": "sub1",
+      "image_url": "assets/images/chevrolet2.png"
+    },
+    {
+      "subastaId": "sub1",
+      "image_url": "assets/images/chevrolet3.png"
+    },
+    {
+      "subastaId": "sub1",
+      "image_url": "assets/images/chevrolet4.png"
+    },
+    {
+      "subastaId": "sub2",
+      "image_url": "assets/images/volquete1.png"
+    },
+    {
+      "subastaId": "sub2",
+      "image_url": "assets/images/volquete2.png"
+    },
+    {
+      "subastaId": "sub2",
+      "image_url": "assets/images/volquete3.png"
+    },
+    {
+      "subastaId": "sub2",
+      "image_url": "assets/images/volquete4.png"
+    }
+  ]
+}
