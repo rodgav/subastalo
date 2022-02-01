@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/like.dart';
@@ -61,22 +62,23 @@ class SubastaUsuario extends StatelessWidget {
           const Divider(),
           SizedBox(
               width: 258,
-              height: 170,
-              child: ClipRRect(
+              height: 124,
+              child: ImageNetwork(
+                image: '${urlImageConst}image$random-${subasta.id}.png',
+                height: 124,
+                width: 124,
+                duration: 800,
+                curve: Curves.easeIn,
+                onPointer: true,
+                fitAndroidIos: BoxFit.cover,
+                fitWeb: BoxFitWeb.cover,
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  '${urlImageConst}image$random-${subasta.id}.png',
-                  fit: BoxFit.cover,
-                  loadingBuilder: (_, child, loading) => loading == null
-                      ? child
-                      : const Center(
-                    child: SizedBox(
-                        width: 50, height: 50, child: LoadingWid()),
-                  ),
-                  errorBuilder: (_, __, ___) =>
-                  const Center(child: NoDataWid()),
+                onLoading: const Center(
+                  child:
+                  SizedBox(width: 50, height: 50, child: LoadingWid()),
                 ),
-              ),),
+                onError: const Center(child: NoDataWid()),
+              )),
           SizedBox(
               width: 258,
               child: FittedBox(

@@ -71,6 +71,7 @@ class MensajesPage extends StatelessWidget {
                                               Icons.restore_from_trash_outlined,
                                               color: ColorsUtils.grey1,
                                             )),
+                                        onTap: ()=> _.toMensajeDetail(mensaje.id),
                                       );
                                       /*SizedBox(
                                         width: width,

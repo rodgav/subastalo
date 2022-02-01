@@ -5,7 +5,9 @@ import 'package:subastalo/app/modules/administradores/administradores_logic.dart
 import 'package:subastalo/utils/colors_utils.dart';
 
 class DelAdmin extends StatelessWidget {
-  const DelAdmin({Key? key}) : super(key: key);
+  final int idAdmin;
+
+  const DelAdmin(this.idAdmin, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

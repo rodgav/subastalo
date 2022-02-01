@@ -7,13 +7,14 @@ import 'package:subastalo/utils/colors_utils.dart';
 import 'package:subastalo/utils/functions.dart';
 
 class EditCategoria extends StatelessWidget {
-  const EditCategoria({Key? key}) : super(key: key);
+  final int idCateg;
+
+  const EditCategoria(this.idCateg, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CategoriasLogic>(builder: (_) {
-      return Form(
-        child: SingleChildScrollView(
+      return  SingleChildScrollView(
           child: Container(
             width: 400,
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -54,7 +55,9 @@ class EditCategoria extends StatelessWidget {
                 const Text('Nombre de categoría',
                     style: TextStyle(fontSize: 12, color: ColorsUtils.grey1)),
                 const SizedBox(height: 5),
-                TxtFieldBor(controller: _.nameCtrl, validator: isNotEmpty,
+                TxtFieldBor(
+                    controller: _.nameUpdCtrl,
+                    validator: isNotEmpty,
                     width: 400,
                     hint: 'Autos & Otros Vehículos',
                     icon: null,
@@ -75,12 +78,11 @@ class EditCategoria extends StatelessWidget {
                     color1: ColorsUtils.blueButt1,
                     color2: ColorsUtils.blueButt2,
                     textButt: 'Guardar categoría',
-                    voidCallback: () => null),
+                    voidCallback: () => _.saveEditCateg(idCateg)),
               ],
             ),
           ),
-        ),
-      );
+        );
     });
   }
 }

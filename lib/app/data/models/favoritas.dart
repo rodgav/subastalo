@@ -125,33 +125,33 @@ class SubastaSubasta {
   DateTime createdAt;
   DateTime updatedAt;
 
-  factory SubastaSubasta.fromJson(Map<String, dynamic> json) => SubastaSubasta(
-        id: int.tryParse(json["id"].toString()) ?? 0,
-        idUser: int.tryParse(json["idUser"].toString()) ?? 0,
-        idCategory: int.tryParse(json["idCategory"].toString()) ?? 0,
-        idSubCategory: int.tryParse(json["idSubCategory"].toString()) ?? 0,
-        idTypeSubasta: int.tryParse(json["idTypeSubasta"].toString()) ?? 0,
-        idHoraSubasta: int.tryParse(json["idHoraSubasta"].toString()) ?? 0,
-        idStateSubasta: int.tryParse(json["idStateSubasta"].toString()) ?? 0,
-        title: json["title"].toString(),
-        price: json["price"].toString(),
-        date: json["date"] != null
-            ? DateTime.parse(json["date"])
+  factory SubastaSubasta.fromJson(Map<String, dynamic>? json) => SubastaSubasta(
+        id: int.tryParse((json?["id"]).toString()) ?? 0,
+        idUser: int.tryParse((json?["idUser"]).toString()) ?? 0,
+        idCategory: int.tryParse((json?["idCategory"]).toString()) ?? 0,
+        idSubCategory: int.tryParse((json?["idSubCategory"]).toString()) ?? 0,
+        idTypeSubasta: int.tryParse((json?["idTypeSubasta"]).toString()) ?? 0,
+        idHoraSubasta: int.tryParse((json?["idHoraSubasta"]).toString()) ?? 0,
+        idStateSubasta: int.tryParse((json?["idStateSubasta"]).toString()) ?? 0,
+        title: (json?["title"]).toString(),
+        price: (json?["price"]).toString(),
+        date: (json?["date"]) != null
+            ? DateTime.parse((json?["date"]))
             : DateTime.now(),
-        brand: json["brand"].toString(),
-        model: json["model"].toString(),
-        year: json["year"].toString(),
-        mileage: int.tryParse(json["mileage"].toString()) ?? 0,
-        fuel: json["fuel"].toString(),
-        details: json["details"].toString(),
-        viewsReal: int.tryParse(json["viewsReal"].toString()) ?? 0,
-        views: int.tryParse(json["views"].toString()) ?? 0,
-        love: int.tryParse(json["love"].toString()) ?? 0,
-        createdAt: json["created_at"] != null
-            ? DateTime.parse(json["created_at"])
+        brand: (json?["brand"]).toString(),
+        model: (json?["model"]).toString(),
+        year: (json?["year"]).toString(),
+        mileage: int.tryParse((json?["mileage"]).toString()) ?? 0,
+        fuel: (json?["fuel"]).toString(),
+        details: (json?["details"]).toString(),
+        viewsReal: int.tryParse((json?["viewsReal"]).toString()) ?? 0,
+        views: int.tryParse((json?["views"]).toString()) ?? 0,
+        love: int.tryParse((json?["love"]).toString()) ?? 0,
+        createdAt: (json?["created_at"]) != null
+            ? DateTime.parse((json?["created_at"]))
             : DateTime.now(),
-        updatedAt: json["updated_at"] != null
-            ? DateTime.parse(json["updated_at"])
+        updatedAt: (json?["updated_at"]) != null
+            ? DateTime.parse((json?["updated_at"]))
             : DateTime.now(),
       );
 

@@ -30,13 +30,13 @@ class HomePage extends StatelessWidget {
           endDrawer: web ? null : const DrawerHome(),
           body: Column(
             children: [
-              Text(S.of(context).title),
+              /*Text(S.of(context).title),
               ElevatedButton(
                   onPressed: () async {
                     await AuthService.to.saveLanguage();
                     Phoenix.rebirth(context);
                   },
-                  child: Text(S.of(context).language)),
+                  child: Text(S.of(context).language)),*/
               web
                   ? Container(
                       padding: const EdgeInsets.all(10),

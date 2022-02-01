@@ -135,13 +135,21 @@ class PagosPage extends StatelessWidget {
                                             ),
                                           ),
                                           ButtonIconRWid(
-                                              width: 200,
+                                              width: 120,
                                               height: 40,
                                               color1: ColorsUtils.blue3,
                                               color2: ColorsUtils.blue3,
                                               assetIcon:
                                                   'assets/icons/buscar.png',
-                                              textButt: 'Editar tipo de pago',
+                                              textButt: 'Aprobar',
+                                              voidCallback: () => null),  ButtonIconRWid(
+                                              width: 120,
+                                              height: 40,
+                                              color1: ColorsUtils.blue3,
+                                              color2: ColorsUtils.blue3,
+                                              assetIcon:
+                                                  'assets/icons/buscar.png',
+                                              textButt: 'Rechazar',
                                               voidCallback: () => null),
                                         ],
                                       ),

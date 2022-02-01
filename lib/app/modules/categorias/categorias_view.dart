@@ -80,12 +80,8 @@ class CategoriasPage extends StatelessWidget {
                               ? categorias.isNotEmpty
                                   ? web
                                       ? DataTable(
-                                          columns: [
-                                              DataColumn(
-                                                  label: Checkbox(
-                                                      value: false,
-                                                      onChanged: (value) {})),
-                                              const DataColumn(
+                                          columns: const [
+                                               DataColumn(
                                                   label: Text(
                                                 'ID',
                                                 style: TextStyle(
@@ -93,7 +89,7 @@ class CategoriasPage extends StatelessWidget {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
-                                              const DataColumn(
+                                               DataColumn(
                                                   label: Text(
                                                 'Nombre de categoría',
                                                 style: TextStyle(
@@ -101,7 +97,7 @@ class CategoriasPage extends StatelessWidget {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
-                                              const DataColumn(
+                                               DataColumn(
                                                   label: Text(
                                                 'Creado',
                                                 style: TextStyle(
@@ -109,7 +105,7 @@ class CategoriasPage extends StatelessWidget {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
-                                              const DataColumn(
+                                               DataColumn(
                                                   label: Text(
                                                 'Acciones',
                                                 style: TextStyle(
@@ -117,7 +113,7 @@ class CategoriasPage extends StatelessWidget {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               )),
-                                              const DataColumn(
+                                               DataColumn(
                                                   label: Text(
                                                 'Acciones',
                                                 style: TextStyle(
@@ -128,9 +124,6 @@ class CategoriasPage extends StatelessWidget {
                                             ],
                                           rows: categorias
                                               .map((e) => DataRow(cells: [
-                                                    DataCell(Checkbox(
-                                                        value: false,
-                                                        onChanged: (value) {})),
                                                     DataCell(
                                                         Text(e.id.toString())),
                                                     DataCell(Text(e.name),

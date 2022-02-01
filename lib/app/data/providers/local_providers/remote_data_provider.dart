@@ -53,6 +53,35 @@ class RemoteDataProvider {
     }
   }
 
+  Future<bool> editUser(String token, int idUser, String dni, String name,
+      String email, String password, String idRole) async {
+    final json = {
+      'dni': dni,
+      'name': name,
+      'email': email,
+      'password': password,
+      'idRole': idRole
+    };
+    try {
+      final response = await _dio.put('/user/$idUser',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return response.data['code'] == 200;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> deleteUser(String token, int idUser) async {
+    try {
+      final response = await _dio.delete('/user/$idUser',
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      return false;
+    }
+  }
+
   Future<TokenModel?> refresh(String token) async {
     try {
       final response = await _dio.post('/refresh',
@@ -73,6 +102,31 @@ class RemoteDataProvider {
     } catch (e) {
       print('createCategory error $e');
       return null;
+    }
+  }
+
+  Future<bool> updateCategory(
+      String name, String idCategory, String token) async {
+    try {
+      final json = {"name": name};
+      final response = await _dio.put('/category/$idCategory',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('updateCategory error $e');
+      return false;
+    }
+  }
+
+  Future<bool> deleteCategory(String idCategory, String token) async {
+    try {
+      final response = await _dio.delete('/category/$idCategory',
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('deleteCategory error $e');
+      return false;
     }
   }
 
@@ -121,7 +175,7 @@ class RemoteDataProvider {
           data: {'json': jsonEncode(json)});
       return Subasta.fromJson(response.data['subasta']);
     } catch (e) {
-      print('createSubasta error ${e.runtimeType}');
+      print('createSubasta error $e');
       return null;
     }
   }
@@ -192,6 +246,20 @@ class RemoteDataProvider {
     }
   }
 
+  Future<SubastaElement?> createFavorita(String token, String idSubasta) async {
+    try {
+      final response = await _dio.post('/favoritaSubasta',
+          data: {
+            'json': jsonEncode({'idSubasta': idSubasta})
+          },
+          options: Options(headers: {'Authorization': token}));
+      return SubastaElement.fromJson(response.data['subasta']);
+    } catch (e) {
+      print('createFavorita error $e');
+      return null;
+    }
+  }
+
   Future<FavoritaModel?> favoritas(String token) async {
     try {
       final response = await _dio.get('/favoritaSubasta',
@@ -199,6 +267,32 @@ class RemoteDataProvider {
       return FavoritaModel.fromJson(response.data);
     } catch (e) {
       print('favoritas error $e');
+      return null;
+    }
+  }
+
+  Future<SubastaElement?> deleteFavorita(
+      String token, String idFavoSubasta) async {
+    try {
+      final response = await _dio.delete('/favoritaSubasta/$idFavoSubasta',
+          options: Options(headers: {'Authorization': token}));
+      return SubastaElement.fromJson(response.data['subasta']);
+    } catch (e) {
+      print('deleteFavorita error $e');
+      return null;
+    }
+  }
+
+  Future<FavoritaModel?> createHistorial(String token, String idSubasta) async {
+    try {
+      final response = await _dio.post('/historialSubasta',
+          data: {
+            'json': jsonEncode({'idSubasta': idSubasta})
+          },
+          options: Options(headers: {'Authorization': token}));
+      return FavoritaModel.fromJson(response.data);
+    } catch (e) {
+      print('createHistorial error $e');
       return null;
     }
   }
@@ -376,6 +470,31 @@ class RemoteDataProvider {
     }
   }
 
+  Future<bool> updateSubCategory(
+      String name, String idSubCategory, String token) async {
+    try {
+      final json = {"name": name};
+      final response = await _dio.put('/subCategory/$idSubCategory',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('updateCategory error $e');
+      return false;
+    }
+  }
+
+  Future<bool> deleteSubCategory(String idSubCategory, String token) async {
+    try {
+      final response = await _dio.delete('/subCategory/$idSubCategory',
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('deleteCategory error $e');
+      return false;
+    }
+  }
+
   Future<Pagina?> createPage(String title, String html, String token) async {
     try {
       final json = {"title": title, "html": html};
@@ -397,6 +516,32 @@ class RemoteDataProvider {
     } catch (e) {
       print('pages error $e');
       return null;
+    }
+  }
+
+  Future<bool> deletePage(String token, int idPage) async {
+    try {
+      final response = await _dio.delete('/page/$idPage',
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('deletePage error $e');
+      return false;
+    }
+  }
+
+  Future<bool> updatePage(
+      String token, int idPage, String title, String html) async {
+    try {
+      final response = await _dio.put('/page/$idPage',
+          data: {
+            'json': jsonEncode({'title': title, 'html': html})
+          },
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('updatePage error $e');
+      return false;
     }
   }
 
@@ -426,6 +571,28 @@ class RemoteDataProvider {
     } catch (e) {
       print('comment error $e');
       return null;
+    }
+  }
+
+  Future<bool> deleComment(String token, int idComme) async {
+    try {
+      final response = await _dio.delete('/comment/$idComme',
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('deleComment error $e');
+      return false;
+    }
+  }
+
+  Future<bool> updaComment(String token, int idComme) async {
+    try {
+      final response = await _dio.put('/comment/$idComme',
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('updaComment error $e');
+      return false;
     }
   }
 
@@ -500,6 +667,37 @@ class RemoteDataProvider {
     }
   }
 
+  Future<bool> updateCampaign(int idCampaign, String name, String code,
+      String amount, String dateStart, String dateFinish, String token) async {
+    try {
+      final json = {
+        "name": name,
+        "code": code,
+        "amount": amount,
+        "dateStart": dateStart,
+        "dateFinish": dateFinish,
+      };
+      final response = await _dio.put('/campaign/$idCampaign',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('updateCampaign error $e');
+      return false;
+    }
+  }
+
+  Future<bool> deleteCampaign(int idCampaign, String token) async {
+    try {
+      final response = await _dio.delete('/campaign/$idCampaign',
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('deleteCampaign error $e');
+      return false;
+    }
+  }
+
   Future<CampaignModel?> campaign(String token) async {
     try {
       final response = await _dio.get('/campaign',
@@ -542,6 +740,17 @@ class RemoteDataProvider {
     }
   }
 
+  Future<bool> deleteMessage(String token,int idMessage) async {
+    try {
+      final response = await _dio.delete('/message/$idMessage',
+          options: Options(headers: {'Authorization': token}));
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('deleteMessage error $e');
+      return false;
+    }
+  }
+
   Future<bool> createPay(PlatformFile filePath, int idUser, int idTypePay,
       String name, String description, String dateFinish, String token) async {
     try {
@@ -577,7 +786,9 @@ class RemoteDataProvider {
       print('pays error $e');
       return null;
     }
-  } Future<PagoModel?> miPay(String token) async {
+  }
+
+  Future<PagoModel?> miPay(String token) async {
     try {
       final response = await _dio.get('/miPay',
           options: Options(headers: {'Authorization': token}));
@@ -587,4 +798,33 @@ class RemoteDataProvider {
       return null;
     }
   }
+
+  Future<bool> updateStatePay(String token, int idPay, int state)async {
+    try {
+      final json = {"state": state};
+      final response = await _dio.put('/pay/$idPay',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('updateStateSubas error $e');
+      return false;
+    }
+  }
+
+  Future<bool> updateStateSubas(
+      int idSubasta, int idStateSubasta, String token) async {
+    try {
+      final json = {"idStateSubasta": idStateSubasta};
+      final response = await _dio.put('/subastaState/$idSubasta',
+          options: Options(headers: {'Authorization': token}),
+          data: {'json': jsonEncode(json)});
+      return response.data['code'] == 200;
+    } catch (e) {
+      print('updateStateSubas error $e');
+      return false;
+    }
+  }
+
+
 }

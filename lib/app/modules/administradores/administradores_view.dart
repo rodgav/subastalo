@@ -98,25 +98,20 @@ class AdministradoresPage extends StatelessWidget {
           SizedBox(width: 5),
           Icon(Icons.edit, color: ColorsUtils.blue3)
         ],
-      )),
-      DataCell(MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: const [
-              Text(
-                'Eliminar administrador',
-                style: TextStyle(color: Colors.red),
-              ),
-              SizedBox(width: 5),
-              Icon(Icons.restore_from_trash_sharp,
-                  color: Colors.red)
-            ],
+      ),onTap: ()=>logic.editAdmin(e)),
+      DataCell(Row(
+        mainAxisSize: MainAxisSize.min,
+        children: const [
+          Text(
+            'Eliminar administrador',
+            style: TextStyle(color: Colors.red),
           ),
-          onTap: logic.delAdmin,
-        ),
-      )),
+          SizedBox(width: 5),
+          Icon(Icons.restore_from_trash_sharp,
+              color: Colors.red)
+        ],
+      ),
+        onTap: ()=>logic.delAdmin(e.id),),
     ])).toList()):
                ListView.separated(
                  physics: const NeverScrollableScrollPhysics(),

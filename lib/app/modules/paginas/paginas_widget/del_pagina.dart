@@ -5,13 +5,16 @@ import 'package:subastalo/app/modules/paginas/paginas_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class DelPagina extends StatelessWidget {
-  const DelPagina({Key? key}) : super(key: key);
+  final int idPage;
+
+  const DelPagina(this.idPage, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<PaginasLogic>(builder: (_) {
       return SingleChildScrollView(
-          child: Container(width: 400,
+          child: Container(
+              width: 400,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +67,7 @@ class DelPagina extends StatelessWidget {
                           color1: ColorsUtils.red,
                           color2: ColorsUtils.red,
                           textButt: 'Eliminar página',
-                          voidCallback: () => null),
+                          voidCallback: () => _.saveDelPagina(idPage)),
                     )
                   ])));
     });

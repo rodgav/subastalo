@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:subastalo/app/data/models/pago.dart';
 import 'package:subastalo/app/data/repositorys/local_repositorys/remote_data_repository.dart';
 import 'package:subastalo/app/data/services/auth_service.dart';
-import 'package:subastalo/app/modules/pagos/pagos_widget/new_pago.dart';
+import 'package:subastalo/app/data/services/dialog_service.dart';
+import 'package:subastalo/utils/colors_utils.dart';
 
 class PagosLogic extends GetxController {
   final nameCtrl = TextEditingController();
@@ -31,7 +32,31 @@ class PagosLogic extends GetxController {
     Get.rootDelegate.popRoute();
   }
 
-  void newPago() {
-    Get.dialog(const AlertDialog(content: NewPago()));
+  void aprobar(int idPay) async {
+    final token = await AuthService.to.getToken();
+    if (token != null) {
+      final response = await _dataRepository.updateStatePay(token, idPay, 2);
+      if (response) {
+        Get.rootDelegate.popRoute();
+        _pagos();
+      } else {
+        DialogService.to
+            .snackBar(ColorsUtils.red, 'ERROR', 'No se pudo aprobar el pago');
+      }
+    }
+  }
+
+  void rechazar(int idPay) async {
+    final token = await AuthService.to.getToken();
+    if (token != null) {
+      final response = await _dataRepository.updateStatePay(token, idPay, 3);
+      if (response) {
+        Get.rootDelegate.popRoute();
+        _pagos();
+      } else {
+        DialogService.to
+            .snackBar(ColorsUtils.red, 'ERROR', 'No se pudo rechazar el pago');
+      }
+    }
   }
 }

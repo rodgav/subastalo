@@ -16,27 +16,24 @@ class NewPaginaLogic extends GetxController {
 
   final _dataRepository = Get.find<RemoteDataRepository>();
 
-  Pagina? _pagina;
-
-  Pagina? get pagina => _pagina;
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
   void savePage() async {
     if (titleCtrl.text.isNotEmpty && pageCtrl.text.isNotEmpty) {
+      final title = titleCtrl.text.replaceAll(' ', '');
       final token = await AuthService.to.getToken();
       if (token != null) {
-        _pagina = await _dataRepository.createPage(
-            titleCtrl.text.trim(), pageCtrl.text.trim(), token);
-        titleCtrl.clear();
-        pageCtrl.clear();
+        final pagina = await _dataRepository.createPage(
+            title, pageCtrl.text.trim(), token);
+        if (pagina != null) {
+          titleCtrl.clear();
+          pageCtrl.clear();
+        } else {
+          DialogService.to
+              .snackBar(ColorsUtils.red, 'ERROR', 'No se pudo crear la página');
+        }
       }
     } else {
       DialogService.to
-          .snackBar(ColorsUtils.red, 'ERROR', 'No se pudo crear la pagina');
+          .snackBar(ColorsUtils.red, 'ERROR', 'Rellene el formulario');
     }
   }
 }

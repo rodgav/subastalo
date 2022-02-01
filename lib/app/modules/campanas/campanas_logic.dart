@@ -5,12 +5,16 @@ import 'package:subastalo/app/data/repositorys/local_repositorys/remote_data_rep
 import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/data/services/dialog_service.dart';
 import 'package:subastalo/app/modules/campanas/campanas_widget/del_campana.dart';
+import 'package:subastalo/app/modules/campanas/campanas_widget/edit_campana.dart';
 import 'package:subastalo/app/modules/campanas/campanas_widget/new_campana.dart';
 
 class CampanasLogic extends GetxController {
   final nameCompanCtrl = TextEditingController();
   final codePromCtrl = TextEditingController();
   final ammountDescCtrl = TextEditingController();
+  final editNameCompanCtrl = TextEditingController();
+  final editCodePromCtrl = TextEditingController();
+  final editAmmountDescCtrl = TextEditingController();
   final formKey = GlobalKey<FormState>();
   final _dataRepository = Get.find<RemoteDataRepository>();
 
@@ -61,8 +65,56 @@ class CampanasLogic extends GetxController {
     Get.dialog(const AlertDialog(content: NewlCampana()));
   }
 
-  void delCampana() {
-    Get.dialog(const AlertDialog(content: DelCampana()));
+  void editCampana(Campaign campana) {
+    Get.dialog(AlertDialog(content: EditCampana(campana.id)));
+    editNameCompanCtrl.text = campana.name;
+    editCodePromCtrl.text = campana.code;
+    editAmmountDescCtrl.text = campana.amount;
+    selectedStartDate = campana.dateStart;
+    selectedEndDate = campana.dateFinish;
+    update(['dateStart', 'dateEnd']);
+  }
+
+  void saveEditCampana(int idCampa) async {
+    final token = await AuthService.to.getToken();
+    if (token != null) {
+      final response = await _dataRepository.updateCampaign(
+          idCampa,
+          editNameCompanCtrl.text,
+          editCodePromCtrl.text,
+          editAmmountDescCtrl.text.trim(),
+          selectedStartDate.toString(),
+          selectedEndDate.toString(),
+          token);
+      if (response) {
+        editNameCompanCtrl.clear();
+        editCodePromCtrl.clear();
+        editAmmountDescCtrl.clear();
+        toBack();
+        _campanas();
+      } else {
+        DialogService.to.snackBar(
+            Colors.red, 'ERROR', 'Ocurrio un error al editar la campaña');
+      }
+    }
+  }
+
+  void delCampana(int idCampa) {
+    Get.dialog(AlertDialog(content: DelCampana(idCampa)));
+  }
+
+  void saveDelCampa(int idCampa) async {
+    final token = await AuthService.to.getToken();
+    if (token != null) {
+      final response = await _dataRepository.deleteCampaign(idCampa, token);
+      if (response) {
+        toBack();
+        _campanas();
+      } else {
+        DialogService.to.snackBar(
+            Colors.red, 'ERROR', 'Ocurrio un error al eliminar la campaña');
+      }
+    }
   }
 
   void _campanas() async {
@@ -77,15 +129,16 @@ class CampanasLogic extends GetxController {
     if (formKey.currentState!.validate()) {
       final token = await AuthService.to.getToken();
       if (token != null) {
-        final tokenModel = await _dataRepository.createCampaign(
+        final campaign = await _dataRepository.createCampaign(
             nameCompanCtrl.text,
             codePromCtrl.text,
             ammountDescCtrl.text.trim(),
             selectedStartDate.toString(),
             selectedEndDate.toString(),
             token);
-        if (tokenModel != null) {
-          Get.rootDelegate.popRoute();
+        if (campaign != null) {
+          toBack();
+          _campanas();
         } else {
           DialogService.to.snackBar(Colors.red, 'ERROR',
               'Ocurrio un error, vuelva a intentarlo luego');

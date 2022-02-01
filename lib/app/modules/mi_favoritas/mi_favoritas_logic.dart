@@ -17,10 +17,21 @@ class MiFavoritasLogic extends GetxController {
   }
 
   void _misSubastas() async {
-    print('execute misubastaPendiente');
     final token = await AuthService.to.getToken();
     if (token != null) {
       _subastaModel = await _dataRepository.favoritas(token);
+      update(['misSubastas']);
+    }
+  }
+
+  void delSubasta(String id) async {
+    final token = await AuthService.to.getToken();
+    if (token != null) {
+      final subasta = await _dataRepository.deleteFavorita(token, id);
+      if (subasta != null) {
+        _subastaModel?.subasta
+            .removeWhere((element) => element.id == subasta.id);
+      }
       update(['misSubastas']);
     }
   }

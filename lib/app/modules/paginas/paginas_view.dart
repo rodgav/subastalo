@@ -57,102 +57,132 @@ class PaginasPage extends StatelessWidget {
                       ],
                     ),
                     const Divider(height: 20),
-                    GetBuilder<PaginasLogic>(id:'paginas',builder: (_) {
-                      final paginas = _.paginasModel?.paginas;
-                      return paginas!=null? paginas.isNotEmpty?  web
-                          ? DataTable(columns: [
-                              DataColumn(
-                                  label: Checkbox(
-                                      value: false, onChanged: (value) {})),
-                              const DataColumn(
-                                  label: Text(
-                                'ID',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              )),
-                              const DataColumn(
-                                  label: Text(
-                                'Título',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              )),
-                              const DataColumn(
-                                  label: Text(
-                                'Creado',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              )),
-                              const DataColumn(
-                                  label: Text(
-                                'Acciones',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              )),
-                              const DataColumn(
-                                  label: Text(
-                                'Acciones',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              )),
-                            ], rows: paginas.map((e) => DataRow(cells: [
-                        DataCell(Checkbox(
-                            value: false, onChanged: (value) {})),
-                        DataCell(Text(e.id.toString())),
-                         DataCell(Text(e.title)),
-                         DataCell(Text(e.createdAt.toString().substring(0,10))),
-                        DataCell(Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: const [
-                            Text(
-                              'Editar página',
-                              style:
-                              TextStyle(color: ColorsUtils.blue3),
-                            ),
-                            SizedBox(width: 5),
-                            Icon(Icons.edit, color: ColorsUtils.blue3)
-                          ],
-                        )),
-                        DataCell(
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Text(
-                                  'Eliminar página',
-                                  style: TextStyle(color: Colors.red),
-                                ),
-                                SizedBox(width: 5),
-                                Icon(Icons.restore_from_trash_sharp,
-                                    color: Colors.red)
-                              ],
-                            ),
-                            onTap: logic.delPagina),
-                      ])).toList())
-                          : ListView.separated(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (__, index) {
-                                final pagina = paginas[index];
-                                return ListTile(
-                                  title: Text(pagina.title),
-                                  trailing: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      IconButton(
-                                          icon: const Icon(Icons.edit),
-                                          onPressed: () => null),
-                                      IconButton(
-                                          icon: const Icon(Icons.delete),
-                                          onPressed: () => null),
-                                    ],
-                                  ),
-                                );
-                              },
-                              separatorBuilder: (__, index) => const Divider(),
-                              itemCount: paginas.length,
-                            )
-                          : const NoDataWid()
-                          : const LoadingWid();
-                    })
+                    GetBuilder<PaginasLogic>(
+                        id: 'paginas',
+                        builder: (_) {
+                          final paginas = _.paginasModel?.paginas;
+                          return paginas != null
+                              ? paginas.isNotEmpty
+                                  ? web
+                                      ? DataTable(
+                                          columns: const [
+                                              DataColumn(
+                                                  label: Text(
+                                                'ID',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                              DataColumn(
+                                                  label: Text(
+                                                'Título',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                              DataColumn(
+                                                  label: Text(
+                                                'Creado',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                              DataColumn(
+                                                  label: Text(
+                                                'Acciones',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                              DataColumn(
+                                                  label: Text(
+                                                'Acciones',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ],
+                                          rows: paginas
+                                              .map((e) => DataRow(cells: [
+                                                    DataCell(
+                                                        Text(e.id.toString())),
+                                                    DataCell(Text(e.title)),
+                                                    DataCell(Text(e.createdAt
+                                                        .toString()
+                                                        .substring(0, 10))),
+                                                    DataCell(Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: const [
+                                                        Text(
+                                                          'Editar página',
+                                                          style: TextStyle(
+                                                              color: ColorsUtils
+                                                                  .blue3),
+                                                        ),
+                                                        SizedBox(width: 5),
+                                                        Icon(Icons.edit,
+                                                            color: ColorsUtils
+                                                                .blue3)
+                                                      ],
+                                                    ),onTap: ()=>_.editPagina(e)),
+                                                    DataCell(
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          children: const [
+                                                            Text(
+                                                              'Eliminar página',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .red),
+                                                            ),
+                                                            SizedBox(width: 5),
+                                                            Icon(
+                                                                Icons
+                                                                    .restore_from_trash_sharp,
+                                                                color:
+                                                                    Colors.red)
+                                                          ],
+                                                        ),
+                                                        onTap: ()=>logic.delPagina(e.id)),
+                                                  ]))
+                                              .toList())
+                                      : ListView.separated(
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          shrinkWrap: true,
+                                          itemBuilder: (__, index) {
+                                            final pagina = paginas[index];
+                                            return ListTile(
+                                              title: Text(pagina.title),
+                                              trailing: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  IconButton(
+                                                      icon: const Icon(
+                                                          Icons.edit),
+                                                      onPressed: () => _.editPagina(pagina)),
+                                                  IconButton(
+                                                      icon: const Icon(
+                                                          Icons.delete),
+                                                      onPressed: () => _.delPagina(pagina.id)),
+                                                ],
+                                              ),
+                                            );
+                                          },
+                                          separatorBuilder: (__, index) =>
+                                              const Divider(),
+                                          itemCount: paginas.length,
+                                        )
+                                  : const NoDataWid()
+                              : const LoadingWid();
+                        })
                   ],
                 )));
       },

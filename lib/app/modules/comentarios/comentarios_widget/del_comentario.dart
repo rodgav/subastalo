@@ -5,13 +5,16 @@ import 'package:subastalo/app/modules/comentarios/comentarios_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class DelComentario extends StatelessWidget {
-  const DelComentario({Key? key}) : super(key: key);
+  final int idComm;
+
+  const DelComentario(this.idComm, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ComentariosLogic>(builder: (_) {
       return SingleChildScrollView(
-          child: Container(width: 400,
+          child: Container(
+              width: 400,
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +67,7 @@ class DelComentario extends StatelessWidget {
                           color1: ColorsUtils.red,
                           color2: ColorsUtils.red,
                           textButt: 'Eliminar mensaje',
-                          voidCallback: () => null),
+                          voidCallback: () => _.saveDelComen(idComm)),
                     )
                   ])));
     });

@@ -88,35 +88,32 @@ class InfoSubastasPage extends GetView<InfoSubastasLogic> {
                     ),
                     const Divider(height: 20),
                     web
-                        ? DataTable(columns: [
-                            DataColumn(
-                                label: Checkbox(
-                                    value: false, onChanged: (value) {})),
-                            const DataColumn(
+                        ? DataTable(columns:const [
+                             DataColumn(
                                 label: Text(
                               'ID',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             )),
-                            const DataColumn(
+                             DataColumn(
                                 label: Text(
                               'Subasta',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             )),
-                            const DataColumn(
+                             DataColumn(
                                 label: Text(
                               'Dueño',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             )),
-                            const DataColumn(
+                             DataColumn(
                                 label: Text(
                               'Creado',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             )),
-                            const DataColumn(
+                             DataColumn(
                                 label: Text(
                               'Acciones',
                               style: TextStyle(
@@ -124,8 +121,6 @@ class InfoSubastasPage extends GetView<InfoSubastasLogic> {
                             ))
                           ], rows: [
                             DataRow(cells: [
-                              DataCell(Checkbox(
-                                  value: false, onChanged: (value) {})),
                               const DataCell(Text('001')),
                               const DataCell(Text(
                                   'VOLQUETE SCHACMAN F3000 DEL 2020 NUEVO')),

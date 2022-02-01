@@ -29,10 +29,23 @@ class RemoteDataRepository {
           String password, String idRole) =>
       _dataProvider.register(dni, name, email, password, idRole);
 
+  Future<bool> editUser(String token, int idUser, String dni, String name,
+          String email, String password, String idRole) =>
+      _dataProvider.editUser(token, idUser, dni, name, email, password, idRole);
+
+  Future<bool> deleteUser(String token, int idUser) =>
+      _dataProvider.deleteUser(token, idUser);
+
   Future<TokenModel?> refresh(String token) => _dataProvider.refresh(token);
 
   Future<Category?> createCategory(String name, String token) =>
       _dataProvider.createCategory(name, token);
+
+  Future<bool> updateCategory(String name, String idCategory, String token) =>
+      _dataProvider.updateCategory(name, idCategory, token);
+
+  Future<bool> deleteCategory(String idCategory, String token) =>
+      _dataProvider.deleteCategory(idCategory, token);
 
   Future<CategorysModel?> categorys() => _dataProvider.categorys();
 
@@ -123,8 +136,17 @@ class RemoteDataRepository {
   Future<SubastaModel?> misubastaPendiente(String token) =>
       _dataProvider.misubastaPendiente(token);
 
+  Future<SubastaElement?> createFavorita(String token, String idSubasta) =>
+      _dataProvider.createFavorita(token, idSubasta);
+
   Future<FavoritaModel?> favoritas(String token) =>
       _dataProvider.favoritas(token);
+
+  Future<SubastaElement?> deleteFavorita(String token, String idFavoSubasta) =>
+      _dataProvider.deleteFavorita(token, idFavoSubasta);
+
+  Future<FavoritaModel?> createHistorial(String token, String idSubasta) =>
+      _dataProvider.createHistorial(token, idSubasta);
 
   Future<FavoritaModel?> historial(String token) =>
       _dataProvider.historial(token);
@@ -154,16 +176,36 @@ class RemoteDataRepository {
   Future<List<SubCategory>?> subCategorys(String token, String idCategory) =>
       _dataProvider.subCategorys(token, idCategory);
 
+  Future<bool> updateSubCategory(
+          String name, String idSubCategory, String token) =>
+      _dataProvider.updateSubCategory(name, idSubCategory, token);
+
+  Future<bool> deleteSubCategory(String idSubCategory, String token) =>
+      _dataProvider.deleteSubCategory(idSubCategory, token);
+
   Future<Pagina?> createPage(String title, String html, String token) =>
       _dataProvider.createPage(title, html, token);
 
   Future<PaginasModel?> pages(String token) => _dataProvider.pages(token);
+
+  Future<bool> deletePage(String token, int idPage) =>
+      _dataProvider.deletePage(token, idPage);
+
+  Future<bool> updatePage(
+          String token, int idPage, String title, String html) =>
+      _dataProvider.updatePage(token, idPage, title, html);
 
   Future<Comment?> createComment(
           int idUser, int idSubasta, String comment, String token) =>
       _dataProvider.createComment(idUser, idSubasta, comment, token);
 
   Future<CommentModel?> comment(String token) => _dataProvider.comment(token);
+
+  Future<bool> deleComment(String token, int idComme) =>
+      _dataProvider.deleComment(token, idComme);
+
+  Future<bool> updaComment(String token, int idComme) =>
+      _dataProvider.updaComment(token, idComme);
 
   Future<UserModel?> user(String token) => _dataProvider.user(token);
 
@@ -180,6 +222,14 @@ class RemoteDataRepository {
       _dataProvider.createCampaign(
           name, code, amount, dateStart, dateFinish, token);
 
+  Future<bool> updateCampaign(int idCampaign, String name, String code,
+          String amount, String dateStart, String dateFinish, String token) =>
+      _dataProvider.updateCampaign(
+          idCampaign, name, code, amount, dateStart, dateFinish, token);
+
+  Future<bool> deleteCampaign(int idCampaign, String token) =>
+      _dataProvider.deleteCampaign(idCampaign, token);
+
   Future<CampaignModel?> campaign(String token) =>
       _dataProvider.campaign(token);
 
@@ -190,6 +240,9 @@ class RemoteDataRepository {
 
   Future<MessageModel?> message(String token) => _dataProvider.message(token);
 
+  Future<bool> deleteMessage(String token, int idMessage) =>
+      _dataProvider.deleteMessage(token, idMessage);
+
   Future<bool> createPay(PlatformFile filePath, int idUser, int idTypePay,
           String name, String description, String dateFinish, String token) =>
       _dataProvider.createPay(
@@ -198,4 +251,11 @@ class RemoteDataRepository {
   Future<PagoModel?> pays(String token) => _dataProvider.pays(token);
 
   Future<PagoModel?> miPay(String token) => _dataProvider.miPay(token);
+
+  Future<bool> updateStatePay(String token, int idPay, int state) =>
+      _dataProvider.updateStatePay(token,idPay,state);
+
+  Future<bool> updateStateSubas(
+          int idSubasta, int idStateSubasta, String token) =>
+      _dataProvider.updateStateSubas(idSubasta, idStateSubasta, token);
 }

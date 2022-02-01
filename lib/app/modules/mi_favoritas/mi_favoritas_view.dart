@@ -66,7 +66,7 @@ class MiFavoritasPage extends StatelessWidget {
                                     itemBuilder: (___, index) => ItemMiFavorita(
                                       subasta: subastas[index].subasta,
                                       width: width,
-                                      voidCallback: () => null,
+                                      voidCallback: ()=>_.delSubasta(subastas[index].id.toString()),
                                     ),
                                     itemCount: subastas.length,
                                     separatorBuilder:

@@ -12,8 +12,8 @@ class DependencyInjection {
   static void init() {
     Get.put<EncryptHelper>(EncryptHelper());
     Get.put(Dio(BaseOptions(
-        baseUrl: 'https://apisubastalo.rsgmsolutions.com/api',
-        //baseUrl: 'http://192.168.0.107/api-subastalo/public/api',
+        //baseUrl: 'https://apisubastalo.rsgmsolutions.com/api',
+        baseUrl: 'http://192.168.0.107/api-subastalo/public/api',
         contentType: Headers.formUrlEncodedContentType,
         followRedirects: false,
         validateStatus: (status) {

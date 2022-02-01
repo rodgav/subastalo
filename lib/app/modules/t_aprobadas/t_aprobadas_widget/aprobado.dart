@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 import 'package:subastalo/app/data/models/subasta.dart';
 import 'package:subastalo/app/global_widgets/button_icon_widget.dart';
 import 'package:subastalo/app/global_widgets/loading.dart';
@@ -34,20 +35,21 @@ class Aprobado extends StatelessWidget {
             SizedBox(
                 width: 258,
                 height: 124,
-                child: ClipRRect(
+                child: ImageNetwork(
+                  image: '${urlImageConst}image$random-${subasta.id}.png',
+                  height: 124,
+                  width: 124,
+                  duration: 800,
+                  curve: Curves.easeIn,
+                  onPointer: true,
+                  fitAndroidIos: BoxFit.cover,
+                  fitWeb: BoxFitWeb.cover,
                   borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    '${urlImageConst}image$random-${subasta.id}.png',
-                    fit: BoxFit.cover,
-                    loadingBuilder: (_, child, loading) => loading == null
-                        ? child
-                        : const Center(
-                      child: SizedBox(
-                          width: 50, height: 50, child: LoadingWid()),
-                    ),
-                    errorBuilder: (_, __, ___) =>
-                    const Center(child: NoDataWid()),
+                  onLoading: const Center(
+                    child:
+                    SizedBox(width: 50, height: 50, child: LoadingWid()),
                   ),
+                  onError: const Center(child: NoDataWid()),
                 )),
             SizedBox(
               width: 258,
@@ -55,9 +57,9 @@ class Aprobado extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    '2008 CHEVROLET SILVERADO K2500 HEAVY DUTY',
-                    style: TextStyle(
+                  Text(
+                   subasta.title,
+                    style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: ColorsUtils.blue3),
@@ -127,14 +129,6 @@ class Aprobado extends StatelessWidget {
                     color2: ColorsUtils.blueButt2,
                     assetIcon: 'assets/icons/buscar.png',
                     textButt: 'Editar',
-                    voidCallback: () => null),
-                ButtonIconWid(
-                    width: 153,
-                    height: 40,
-                    color1: ColorsUtils.blueButt1,
-                    color2: ColorsUtils.blueButt2,
-                    assetIcon: 'assets/icons/buscar.png',
-                    textButt: 'Eliminar',
                     voidCallback: () => null),
               ],
             ),

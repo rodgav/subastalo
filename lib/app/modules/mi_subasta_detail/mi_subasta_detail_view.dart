@@ -6,6 +6,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:image_network/image_network.dart';
 import 'package:intl/intl.dart';
 import 'package:subastalo/app/global_widgets/loading.dart';
 import 'package:subastalo/app/global_widgets/no_data.dart';
@@ -80,23 +81,24 @@ class MiSubastaDetailPage extends StatelessWidget {
                                               height: web ? 40 : 20,
                                             ),
                                             SizedBox(
-                                              width: 258,
-                                              height: 124,
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.circular(10),
-                                                child: Image.network(
-                                                  '${urlImageConst}image$random-${subasta.id}.png',
-                                                  fit: BoxFit.cover,
-                                                  loadingBuilder: (_, child, loading) => loading == null
-                                                      ? child
-                                                      : const Center(
-                                                    child:  SizedBox(
-                                                        width: 50, height: 50, child: LoadingWid()),
+                                                width: 258,
+                                                height: 124,
+                                                child: ImageNetwork(
+                                                  image: '${urlImageConst}image$random-${subasta.id}.png',
+                                                  height: 124,
+                                                  width: 124,
+                                                  duration: 800,
+                                                  curve: Curves.easeIn,
+                                                  onPointer: true,
+                                                  fitAndroidIos: BoxFit.cover,
+                                                  fitWeb: BoxFitWeb.cover,
+                                                  borderRadius: BorderRadius.circular(10),
+                                                  onLoading: const Center(
+                                                    child:
+                                                    SizedBox(width: 50, height: 50, child: LoadingWid()),
                                                   ),
-                                                  errorBuilder: (_, __, ___) =>const Center(child:  NoDataWid()),
-                                                ),
-                                              ),
-                                            ),
+                                                  onError: const Center(child: NoDataWid()),
+                                                )),
                                           ],
                                         ),
                                         SizedBox(

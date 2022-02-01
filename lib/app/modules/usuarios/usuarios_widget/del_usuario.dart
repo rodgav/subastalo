@@ -5,7 +5,9 @@ import 'package:subastalo/app/modules/usuarios/usuarios_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class DelUsuario extends StatelessWidget {
-  const DelUsuario({Key? key}) : super(key: key);
+  final int idUser;
+
+  const DelUsuario(this.idUser, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class DelUsuario extends StatelessWidget {
                   color1: ColorsUtils.red,
                   color2: ColorsUtils.red,
                   textButt: 'Eliminar usuario',
-                  voidCallback: () => null),
+                  voidCallback: () => _.saveDelUser(idUser)),
             )
           ]),
         ),

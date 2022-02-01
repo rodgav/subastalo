@@ -5,7 +5,8 @@ import 'package:subastalo/app/modules/campanas/campanas_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class DelCampana extends StatelessWidget {
-  const DelCampana({Key? key}) : super(key: key);
+  final int idCampa;
+  const DelCampana(this.idCampa,{Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class DelCampana extends StatelessWidget {
                           color1: ColorsUtils.red,
                           color2: ColorsUtils.red,
                           textButt: 'Eliminar Campaña',
-                          voidCallback: () => null),
+                          voidCallback: () => _.saveDelCampa(idCampa)),
                     )
                   ])));
     });

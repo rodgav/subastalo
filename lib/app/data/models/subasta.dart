@@ -29,7 +29,7 @@ class SubastaModel {
             : [],
         status: json["status"].toString(),
         message: json["message"].toString(),
-        code: int.parse(json["code"].toString()),
+        code: int.tryParse(json["code"].toString())??0,
       );
 
   Map<String, dynamic> toJson() => {
