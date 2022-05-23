@@ -561,7 +561,7 @@ class SubastasDetailPage extends StatelessWidget {
                           ],
                         ),
                         //SizedBox(height: web ? 100 : 20),
-                        const FooterWid()
+                        FooterWid()
                       ])),
                 )
               : const Scaffold(body: Center(child: LoadingWid()));

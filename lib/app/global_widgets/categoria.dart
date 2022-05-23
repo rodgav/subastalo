@@ -29,7 +29,7 @@ class CategoriaWid extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20)),
                 padding:
                     const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
-                child: DropdownButton(
+                child: DropdownButton<SubCategory>(
                   isExpanded: true,
                   underline: Container(
                     height: 0,
@@ -45,7 +45,7 @@ class CategoriaWid extends StatelessWidget {
                               value: subCategory))
                       .toList(),
                   onChanged: (value) =>
-                      _.subCategorySelect(value as SubCategory),
+                      _.subCategorySelect(value),
                 )),
           ],
         ),

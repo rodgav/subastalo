@@ -44,6 +44,5 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-.fvm/flutter_sdk
-/build/flutter_assets/
-/build/71735bbffbad7082a26f486cc9755643/
+/.fvm/
+/build/

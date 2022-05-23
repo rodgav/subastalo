@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/modules/dashboard/dashboard_logic.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
@@ -9,6 +10,7 @@ class DrawerWid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final role = AuthService.to.role;
     return GetBuilder<DashboardLogic>(
         id: 'drawer',
         builder: (_) {
@@ -108,7 +110,7 @@ class DrawerWid extends StatelessWidget {
                         ],
                       ),
                     ),
-                    ListTile(
+                   role==2? ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/categorias.png'),
@@ -121,8 +123,8 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Categorías',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Categorías'),
-                    ),
-                    Container(
+                    ):const SizedBox(),
+                    role==2? Container(
                       color: const Color(0xff253238),
                       child: ExpansionTile(
                         leading: const ImageIcon(
@@ -184,8 +186,8 @@ class DrawerWid extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
-                    ListTile(
+                    ):const SizedBox(),
+                    role==2?ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/paginas.png'),
@@ -198,8 +200,8 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Paginas',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Paginas'),
-                    ),
-                    ListTile(
+                    ):const SizedBox(),
+                   role==2? ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/comentarios.png'),
@@ -212,8 +214,8 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Comentarios',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Comentarios'),
-                    ),
-                    ListTile(
+                    ):const SizedBox(),
+                   role==2? ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/info.png'),
@@ -226,8 +228,8 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Informe de subastas',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Informe de subastas'),
-                    ),
-                    ListTile(
+                    ):const SizedBox(),
+                   role==2? ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/personas.png'),
@@ -240,8 +242,8 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Usuarios',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Usuarios'),
-                    ),
-                    ListTile(
+                    ):const SizedBox(),
+                   role==2? ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/campañas.png'),
@@ -254,8 +256,8 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Campañas',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Campañas'),
-                    ),
-                    ListTile(
+                    ):const SizedBox(),
+                   role==2? ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/mensajes.png'),
@@ -268,7 +270,7 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Mensajes',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Mensajes'),
-                    ),
+                    ):const SizedBox(),
                    /* ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
@@ -283,7 +285,7 @@ class DrawerWid extends StatelessWidget {
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Monetización'),
                     ),*/
-                    ListTile(
+                   role==2? ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/personas.png'),
@@ -296,8 +298,8 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Administradores',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Administradores'),
-                    ),
-                    ListTile(
+                    ):const SizedBox(),
+                   role==2? ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/mano.png'),
@@ -310,7 +312,7 @@ class DrawerWid extends StatelessWidget {
                       selected: select == 'Pagos',
                       selectedTileColor: const Color(0xff324047),
                       onTap: () => _.onSelectDrawer('Pagos'),
-                    ),ListTile(
+                    ):const SizedBox(),ListTile(
                       tileColor: const Color(0xff253238),
                       leading: const ImageIcon(
                         AssetImage('assets/icons/mano.png'),

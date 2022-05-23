@@ -670,7 +670,7 @@ class VenderPage extends GetView<VenderLogic> {
                   voidCallback: () => null)
             ]),
             const SizedBox(height: 20),
-            const FooterWid()
+            FooterWid()
           ],
         ),
       ),

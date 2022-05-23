@@ -6,8 +6,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/routes/app_pages.dart';
 import 'package:subastalo/utils/dependency_injection.dart';
-import 'package:subastalo/generated/l10n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,13 +27,6 @@ class MyApp extends StatelessWidget {
         getPages: AppPages.routes,
         theme: ThemeData(fontFamily: 'Mulish'),
         locale: AuthService.to.getLocale(),
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales
       );
   }
 }

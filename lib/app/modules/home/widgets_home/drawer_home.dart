@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/global_widgets/txt_field_circ.dart';
 import 'package:subastalo/app/modules/home/home_logic.dart';
+import 'package:subastalo/app/routes/app_pages.dart';
 import 'package:subastalo/utils/colors_utils.dart';
 
 class DrawerHome extends StatelessWidget {
@@ -13,24 +14,23 @@ class DrawerHome extends StatelessWidget {
     return GetBuilder<HomeLogic>(builder: (_) {
       return Drawer(
         child: SingleChildScrollView(
-
           child: Column(
             children: [
               AuthService.to.isLoggedIn
                   ? MouseRegion(cursor: SystemMouseCursors.click,
                     child: GestureDetector(
+                      onTap: _.toDashboard,
                       child: DrawerHeader(
                           child: Column(
-                          children: const [
-                            SizedBox(
+                          children:  [
+                            const SizedBox(
                               width: 100,
                               height: 100,
                               child: Placeholder(),
                             ),
-                            Text('Jhonatan')
+                            Text(AuthService.to.name)
                           ],
                         )),
-                      onTap: _.toDashboard,
                     ),
                   )
                   : ListTile(
@@ -41,6 +41,8 @@ class DrawerHome extends StatelessWidget {
                   width: double.infinity,
                   hint: 'Busca productos en SUBASTALO',
                   color: ColorsUtils.grey1.withOpacity(0.2),
+                  editingController: _.search,
+                  onSubmitted: _.subastaSearch,
                   suffix: true),
               const ExpansionTile(
                 title: Text('Nosostros'),

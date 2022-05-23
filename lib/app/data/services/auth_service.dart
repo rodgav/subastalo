@@ -13,28 +13,32 @@ class AuthService extends GetxService {
   final _getStorage = GetStorage();
 
   bool get isLoggedIn => _getStorage.read('isLoggedIn') ?? false;
+
   String get idUser => _encryptHelper.decrypt(_getStorage.read('id')) ?? '';
+  String get name => _encryptHelper.decrypt(_getStorage.read('name')) ?? '';
+  int get role => int.tryParse(_encryptHelper.decrypt(_getStorage.read('role')) ?? '')??0;
+
   Future<void> saveSession(TokenModel tokenModel) async {
     try {
-      final _payload = Jwt.parseJwt(tokenModel.jwt);
+      final payload = Jwt.parseJwt(tokenModel.jwt);
       await _getStorage.write('token', _encryptHelper.encrypt(tokenModel.jwt));
       await _getStorage.write('isLoggedIn', true);
       await _getStorage.write(
-          'id', _encryptHelper.encrypt(_payload['id'].toString()));
+          'id', _encryptHelper.encrypt(payload['id'].toString()));
       await _getStorage.write(
-          'name', _encryptHelper.encrypt(_payload['name'].toString()));
+          'name', _encryptHelper.encrypt(payload['name'].toString()));
       await _getStorage.write(
-          'role', _encryptHelper.encrypt(_payload['name'].toString()));
+          'role', _encryptHelper.encrypt(payload['role'].toString()));
       await _getStorage.write(
           'iat',
           _encryptHelper.encrypt(DateTime.fromMillisecondsSinceEpoch(
-                  _payload['iat'] * 1000,
+                  payload['iat'] * 1000,
                   isUtc: true)
               .toString()));
       await _getStorage.write(
           'exp',
           _encryptHelper.encrypt(DateTime.fromMillisecondsSinceEpoch(
-                  _payload['exp'] * 1000,
+                  payload['exp'] * 1000,
                   isUtc: true)
               .toString()));
     } catch (e) {

@@ -10,6 +10,7 @@ import 'package:subastalo/app/data/models/tipos_subasta.dart';
 import 'package:subastalo/app/data/repositorys/local_repositorys/remote_data_repository.dart';
 import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/data/services/dialog_service.dart';
+import 'package:subastalo/app/routes/app_pages.dart';
 
 class NuevaSubastaLogic extends GetxController {
   final _dataRepository = Get.find<RemoteDataRepository>();
@@ -22,12 +23,6 @@ class NuevaSubastaLogic extends GetxController {
   final emailBussnCtrl = TextEditingController();
   final phoneBussnCtrl = TextEditingController();
   final addreBussnCtrl = TextEditingController();
-  final brandCtrl = TextEditingController();
-  final modelCtrl = TextEditingController();
-  final yearCtrl = TextEditingController();
-  final mileageCtrl = TextEditingController();
-  final fuelCtrl = TextEditingController();
-  final detailsCtrl = TextEditingController();
   final formKey1 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
   final formKey3 = GlobalKey<FormState>();
@@ -223,13 +218,7 @@ class NuevaSubastaLogic extends GetxController {
           nameBussnCtrl.text.isNotEmpty &&
           emailBussnCtrl.text.isNotEmpty &&
           phoneBussnCtrl.text.isNotEmpty &&
-          addreBussnCtrl.text.isNotEmpty &&
-          brandCtrl.text.isNotEmpty &&
-          modelCtrl.text.isNotEmpty &&
-          yearCtrl.text.isNotEmpty &&
-          mileageCtrl.text.isNotEmpty &&
-          fuelCtrl.text.isNotEmpty &&
-          detailsCtrl.text.isNotEmpty) {
+          addreBussnCtrl.text.isNotEmpty) {
         if (files.length == 10) {
           if (selectedC != null &&
               selectedSC != null &&
@@ -244,12 +233,6 @@ class NuevaSubastaLogic extends GetxController {
                 titleCtrl.text.trim(),
                 priceCtrl.text.trim(),
                 selectedDate.toString(),
-                brandCtrl.text.trim(),
-                modelCtrl.text.trim(),
-                yearCtrl.text.trim(),
-                mileageCtrl.text.trim(),
-                fuelCtrl.text.trim(),
-                detailsCtrl.text.trim(),
                 token);
             DialogService.to.closeDialog();
             if (subasta != null) {
@@ -278,6 +261,7 @@ class NuevaSubastaLogic extends GetxController {
                   subasta.id,
                   token);
               DialogService.to.closeDialog();
+              Get.rootDelegate.toNamed(Routes.dashboard);
             } else {
               DialogService.to
                   .snackBar(Colors.red, 'ERROR', 'No se pudo crear la subasta');

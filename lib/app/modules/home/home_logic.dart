@@ -6,6 +6,7 @@ import 'package:subastalo/app/routes/app_pages.dart';
 
 class HomeLogic extends GetxController {
   final GlobalKey<ScaffoldState> scaffoldKeyHome = GlobalKey<ScaffoldState>();
+  final TextEditingController search = TextEditingController();
   final _remoteDataRepository = Get.find<RemoteDataRepository>();
   CategorysModel? _categoriasModel;
   SubCategory? _selected;
@@ -13,8 +14,6 @@ class HomeLogic extends GetxController {
   CategorysModel? get categoriasModel => _categoriasModel;
 
   SubCategory? get selected => _selected;
-
-
 
   @override
   void onReady() {
@@ -35,7 +34,7 @@ class HomeLogic extends GetxController {
     update(['categorias']);
   }
 
-  void subCategorySelect(SubCategory value) {
+  void subCategorySelect(SubCategory? value) {
     _selected = value;
     update(['categorias']);
   }
@@ -51,4 +50,6 @@ class HomeLogic extends GetxController {
   void toDashboard() {
     Get.rootDelegate.toNamed(Routes.dashboard);
   }
+
+  void subastaSearch(String value) {}
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:subastalo/app/data/models/subastas.dart';
 import 'package:subastalo/app/global_widgets/button_widget.dart';
 import 'package:subastalo/app/global_widgets/like.dart';

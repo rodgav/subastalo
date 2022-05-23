@@ -2,7 +2,6 @@
 //
 //     final tiposSubastaModel = tiposSubastaModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 TiposSubastaModel tiposSubastaModelFromJson(String str) =>

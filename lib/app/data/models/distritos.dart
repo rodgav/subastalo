@@ -2,7 +2,6 @@
 //
 //     final distritosModel = distritosModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 DistritosModel distritosModelFromJson(String str) => DistritosModel.fromJson(json.decode(str));

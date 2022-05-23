@@ -147,12 +147,6 @@ class RemoteDataProvider {
       String title,
       String price,
       String date,
-      String brand,
-      String model,
-      String year,
-      String mileage,
-      String fuel,
-      String details,
       String token) async {
     try {
       final json = {
@@ -163,12 +157,6 @@ class RemoteDataProvider {
         "title": title,
         "price": price,
         "date": date,
-        "brand": brand,
-        "model": model,
-        "year": year,
-        "mileage": mileage,
-        "fuel": fuel,
-        "details": details
       };
       final response = await _dio.post('/subasta',
           options: Options(headers: {'Authorization': token}),
@@ -740,7 +728,7 @@ class RemoteDataProvider {
     }
   }
 
-  Future<bool> deleteMessage(String token,int idMessage) async {
+  Future<bool> deleteMessage(String token, int idMessage) async {
     try {
       final response = await _dio.delete('/message/$idMessage',
           options: Options(headers: {'Authorization': token}));
@@ -799,7 +787,7 @@ class RemoteDataProvider {
     }
   }
 
-  Future<bool> updateStatePay(String token, int idPay, int state)async {
+  Future<bool> updateStatePay(String token, int idPay, int state) async {
     try {
       final json = {"state": state};
       final response = await _dio.put('/pay/$idPay',
@@ -825,6 +813,4 @@ class RemoteDataProvider {
       return false;
     }
   }
-
-
 }

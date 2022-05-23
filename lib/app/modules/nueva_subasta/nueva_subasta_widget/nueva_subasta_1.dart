@@ -216,69 +216,6 @@ class NuevaSubasta1 extends StatelessWidget {
                           : const NoDataWid():const LoadingWid();
                     }),
                 const SizedBox(height: 40),
-                const Text('Descripción', style: TextStyle(fontSize: 16)),
-                const SizedBox(height: 10),
-                CupertinoTextField(
-                  controller: logic.brandCtrl,
-                  prefix: const Text('Marca',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  placeholder: 'Toyota',
-                  decoration: const BoxDecoration(
-                    border:
-                        Border(bottom: BorderSide(color: ColorsUtils.grey1)),
-                  ),
-                ),
-                CupertinoTextField(
-                  controller: logic.modelCtrl,
-                  prefix: const Text('Modelo',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  placeholder: 'Modelo',
-                  decoration: const BoxDecoration(
-                    border:
-                        Border(bottom: BorderSide(color: ColorsUtils.grey1)),
-                  ),
-                ),
-                CupertinoTextField(
-                  controller: logic.yearCtrl,
-                  prefix: const Text('Año',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  placeholder: 'Año',
-                  decoration: const BoxDecoration(
-                    border:
-                        Border(bottom: BorderSide(color: ColorsUtils.grey1)),
-                  ),
-                ),
-                CupertinoTextField(
-                  controller: logic.mileageCtrl,
-                  prefix: const Text('Kilometraje',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  placeholder: 'Kilometraje',
-                  decoration: const BoxDecoration(
-                    border:
-                        Border(bottom: BorderSide(color: ColorsUtils.grey1)),
-                  ),
-                ),
-                CupertinoTextField(
-                  controller: logic.fuelCtrl,
-                  prefix: const Text('Combustible',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  placeholder: 'Combustible',
-                  decoration: const BoxDecoration(
-                    border:
-                        Border(bottom: BorderSide(color: ColorsUtils.grey1)),
-                  ),
-                ),
-                CupertinoTextField(
-                  controller: logic.detailsCtrl,
-                  prefix: const Text('Detalles',
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                  placeholder: 'Detalles',
-                  decoration: const BoxDecoration(
-                    border:
-                        Border(bottom: BorderSide(color: ColorsUtils.grey1)),
-                  ),
-                ),
-                const SizedBox(height: 40),
                 Center(
                   child: ButtonWid(
                       width: web ? size.width * 0.15 : size.width * 0.5,

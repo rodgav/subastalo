@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:subastalo/app/data/services/auth_service.dart';
 import 'package:subastalo/app/global_widgets/footer_dashboard.dart';
 import 'package:subastalo/app/global_widgets/txt_field_circ.dart';
 import 'package:subastalo/app/modules/dashboard/widgets_dashboard/drawer_home.dart';
@@ -58,20 +59,21 @@ class DashBoardPage extends StatelessWidget {
                           onChanged: (value) => null,
                         ),
                         const MouseRegion(
+                          cursor: SystemMouseCursors.click,
                           child: Text('¿Cómo comprar?',
                               style: TextStyle(fontSize: 16)),
-                          cursor: SystemMouseCursors.click,
                         ),
                         const MouseRegion(
+                          cursor: SystemMouseCursors.click,
                           child: Text('Empieza a vender',
                               style: TextStyle(fontSize: 16)),
-                          cursor: SystemMouseCursors.click,
                         ),
                         TxtFieldCirWid(
                             width: 378,
                             hint: 'Busca productos en SUBASTALO',
                             color: ColorsUtils.grey1.withOpacity(0.2),
-                            suffix: true),
+                            suffix: true,editingController: logic.search,
+                            onSubmitted: logic.subastaSearch),
                         ImageIcon(const AssetImage('assets/icons/mensaje.png'),
                             color: ColorsUtils.grey1.withOpacity(0.5)),
                         Container(
@@ -80,7 +82,7 @@ class DashBoardPage extends StatelessWidget {
                                 border: Border(
                                     bottom: BorderSide(
                                         color: ColorsUtils.blue3, width: 5))),
-                            child: const Text('Jhonatan')),
+                            child: Text(AuthService.to.name)),
                         Container(
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(

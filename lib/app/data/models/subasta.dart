@@ -52,12 +52,6 @@ class Subasta {
     required this.title,
     required this.price,
     required this.date,
-    required this.brand,
-    required this.model,
-    required this.year,
-    required this.mileage,
-    required this.fuel,
-    required this.details,
     required this.viewsReal,
     required this.views,
     required this.love,
@@ -75,12 +69,6 @@ class Subasta {
   String title;
   String price;
   String date;
-  String brand;
-  String model;
-  String year;
-  int mileage;
-  String fuel;
-  String details;
   int viewsReal;
   int views;
   int love;
@@ -98,12 +86,6 @@ class Subasta {
         title: json["title"].toString(),
         price: json["price"].toString(),
         date: json["date"].toString(),
-        brand: json["brand"].toString(),
-        model: json["model"].toString(),
-        year: json["year"].toString(),
-        mileage: int.tryParse(json["mileage"].toString())??0,
-        fuel: json["fuel"].toString(),
-        details: json["details"].toString(),
         viewsReal: int.tryParse(json["viewsReal"].toString())??0,
         views: int.tryParse(json["views"].toString())??0,
         love: int.tryParse(json["love"].toString())??0,
@@ -126,12 +108,6 @@ class Subasta {
         "title": title,
         "price": price,
         "date": date,
-        "brand": brand,
-        "model": model,
-        "year": year,
-        "mileage": mileage,
-        "fuel": fuel,
-        "details": details,
         "viewsReal": viewsReal,
         "views": views,
         "love": love,

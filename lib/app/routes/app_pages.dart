@@ -25,7 +25,6 @@ import 'package:subastalo/app/modules/mi_favoritas/mi_favoritas_view.dart';
 import 'package:subastalo/app/modules/mi_historial/mi_historial_binding.dart';
 import 'package:subastalo/app/modules/mi_historial/mi_historial_view.dart';
 import 'package:subastalo/app/modules/mi_pagos/mi_pagos_binding.dart';
-import 'package:subastalo/app/modules/mi_pagos/mi_pagos_logic.dart';
 import 'package:subastalo/app/modules/mi_pagos/mi_pagos_view.dart';
 import 'package:subastalo/app/modules/mi_pendientes/mi_pendientes_binding.dart';
 import 'package:subastalo/app/modules/mi_pendientes/mi_pendientes_view.dart';

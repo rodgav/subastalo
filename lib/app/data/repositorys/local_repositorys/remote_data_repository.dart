@@ -67,12 +67,6 @@ class RemoteDataRepository {
           String title,
           String price,
           String date,
-          String brand,
-          String model,
-          String year,
-          String mileage,
-          String fuel,
-          String details,
           String token) =>
       _dataProvider.createSubasta(
           idCategory,
@@ -82,12 +76,6 @@ class RemoteDataRepository {
           title,
           price,
           date,
-          brand,
-          model,
-          year,
-          mileage,
-          fuel,
-          details,
           token);
 
   Future<MediaSubasta?> createMediaSubasta(

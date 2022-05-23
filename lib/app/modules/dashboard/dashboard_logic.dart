@@ -5,6 +5,7 @@ import 'package:subastalo/app/routes/app_pages.dart';
 
 class DashboardLogic extends GetxController {
   final GlobalKey<ScaffoldState> scaffoldKeyHome = GlobalKey<ScaffoldState>();
+  final TextEditingController search = TextEditingController();
 
   String _select = '';
 
@@ -99,5 +100,11 @@ class DashboardLogic extends GetxController {
   void closeSession() async {
     await AuthService.to.logout();
     Get.rootDelegate.toNamed(Routes.home);
+  }
+
+  void subastaSearch(String value) {
+    if(value.isEmpty){
+
+    }
   }
 }

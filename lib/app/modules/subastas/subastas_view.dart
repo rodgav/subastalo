@@ -717,7 +717,7 @@ class SubastasPage extends StatelessWidget {
                   ],
                 ),
               ),
-              const FooterWid()
+              FooterWid()
             ],
           ),
         ),
